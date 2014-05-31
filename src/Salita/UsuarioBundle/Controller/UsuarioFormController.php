@@ -22,7 +22,7 @@ class UsuarioFormController extends Controller
 	private function getUsersRepo()
 	{
 		$em = $this->getEntityManager();
-                return $em->getRepository('SalitaUsuarioBundle:Usuario');
+        return $em->getRepository('SalitaUsuarioBundle:Usuario');
 	}
 
         private function getRepoUserFromSessionUser($session)
