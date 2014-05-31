@@ -116,8 +116,11 @@ class UsuarioFormController extends Controller
     public function modifPropioAction(Request $request)
     {
     	$session = $request->getSession();
+    	$em = $this->getDoctrine()->getEntityManager();
+    	$repoUsuarios = $em->getRepository('SalitaUsuarioBundle:Usuario');
     	$usuario = $session->get('usuario');    	
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$usuario = $repoUsuarios->findOneById($usuario->getId());
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
     				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig', 
