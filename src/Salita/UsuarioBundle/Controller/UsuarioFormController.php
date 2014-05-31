@@ -84,7 +84,6 @@ class UsuarioFormController extends Controller
     {
         $session = $request->getSession();
         $em = $this->getDoctrine()->getEntityManager();
-        var_dump($session);
         $usuario = $session->get('usuario');
         $form = $this->createForm(new UsuarioType(), $usuario);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
