@@ -17,16 +17,16 @@ class UsuarioRolController extends Controller
 {
     public function elegirAction(Request $request)
     {
-       var_dump($session);
        $em = $this->getDoctrine()->getEntityManager();
        $repoRoles = $em->getRepository('SalitaUsuarioBundle:Rol');
        $repoUsuarios = $em->getRepository('SalitaUsuarioBundle:Usuario');
        $usuario = $this->container->get('security.context')->getToken()->getUser();
        $usuario = $repoUsuarios->findOneById($usuario->getId());
        $session = $request->getSession();
-       
+       $session->set('usuario', $usuario);
        if(($usuario->hasRole('ROLE_ADMINISTRADOR')) and ($usuario->hasRole('ROLE_MEDICO')))
-       {          
+       {
+           /*Prepara el formulario para la seleccion de rol (O rol medico o rol administrador)*/
            $roles = $repoRoles->rolesAdministradorYMedico();
            $rolTemp = new RolTemporal();
            $form = $this->createForm(new RolType($roles), $rolTemp);
@@ -36,21 +36,29 @@ class UsuarioRolController extends Controller
                if ($form->isValid())
                {
                    $rolSeleccionado = $repoRoles->findOneByCodigo($rolTemp->getNombre());
-                   $session->set('rolSeleccionado', $rolSeleccionado);          
-               }       
+                   $session->set('rolSeleccionado', $rolSeleccionado);
+               }
            }
            else
            {
-               return $this->render('SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig', array('form' => $form->createView(),));    
-           }        
+               return $this->render('SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig', array('form' => $form->createView(),));
+           }
        }
-       $session->set('usuario', $usuario);     
-       //si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.
+       /*Si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.*/
        if (!$session->has('rolSeleccionado'))
        {
            $rolesUsuario = $usuario->getRoles();
-           //ESTO DE $rolesUsuario[0] ES UNA CAGADA. CORREGIR EN ALGUN MOMENTO.
-           $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[0]);
+           /*Esto es un parche para que seleccione bien el rol de un usuario si es administrador, ya que su primer rol es ROLE_ADMIN, y si se selecciona
+           ese rol, crashea la consulta en $repoRoles*/
+           if (in_array('ROLE_ADMIN', $rolesUsuario))
+           {
+               $index = 1;
+           }
+           else
+           {
+               $index = 0;
+           }
+           $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
