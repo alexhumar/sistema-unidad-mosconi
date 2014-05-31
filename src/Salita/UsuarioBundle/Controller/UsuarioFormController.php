@@ -94,7 +94,6 @@ class UsuarioFormController extends Controller
             $form->handleRequest($request);
             if ($form->isValid())
             {
-                $em->update($usuario);
                 $em->flush();
                 $session->set('usuario', $usuario);
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Sus datos fueron modificados exitosamente',
