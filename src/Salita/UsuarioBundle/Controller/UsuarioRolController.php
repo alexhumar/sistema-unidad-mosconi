@@ -17,13 +17,14 @@ class UsuarioRolController extends Controller
 {
     public function elegirAction(Request $request)
     {
+       var_dump($session);
        $em = $this->getDoctrine()->getEntityManager();
        $repoRoles = $em->getRepository('SalitaUsuarioBundle:Rol');
        $repoUsuarios = $em->getRepository('SalitaUsuarioBundle:Usuario');
        $usuario = $this->container->get('security.context')->getToken()->getUser();
-       //$session = $this->container->get('session');
        $usuario = $repoUsuarios->findOneById($usuario->getId());
-       $session = $this->container->get('request')->getSession();
+       $session = $request->getSession();
+       
        if(($usuario->hasRole('ROLE_ADMINISTRADOR')) and ($usuario->hasRole('ROLE_MEDICO')))
        {          
            $roles = $repoRoles->rolesAdministradorYMedico();
@@ -43,11 +44,12 @@ class UsuarioRolController extends Controller
                return $this->render('SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig', array('form' => $form->createView(),));    
            }        
        }
-       $session->set('usuario', $usuario);       
+       $session->set('usuario', $usuario);     
        //si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.
        if (!$session->has('rolSeleccionado'))
        {
            $rolesUsuario = $usuario->getRoles();
+           //ESTO DE $rolesUsuario[0] ES UNA CAGADA. CORREGIR EN ALGUN MOMENTO.
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[0]);
            $session->set('rolSeleccionado', $rolUsuario);
        }

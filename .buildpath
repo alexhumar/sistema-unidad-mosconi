@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="app"/>
+	<buildpathentry kind="src" path="src/Salita/OtrosBundle"/>
+	<buildpathentry kind="src" path="src/Salita/PacienteBundle"/>
+	<buildpathentry kind="src" path="src/Salita/PlanBundle"/>
+	<buildpathentry kind="src" path="src/Salita/TurnoBundle"/>
+	<buildpathentry kind="src" path="src/Salita/UsuarioBundle"/>
+	<buildpathentry kind="src" path="web"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>
