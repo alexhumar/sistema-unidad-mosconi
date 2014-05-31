@@ -135,7 +135,7 @@ class UsuarioFormController extends Controller
     /*Modificacion de usuario propio (fase GET)*/
     public function modifPropioAction(Request $request)
     {   	
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($request->getSession());
     	$usuario = $this->getRepoUserFromSessionUser();
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
