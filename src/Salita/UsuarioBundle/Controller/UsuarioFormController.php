@@ -14,16 +14,20 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class UsuarioFormController extends Controller
 {
+        private function getEntityManager()
+        {
+            return $this->getDoctrine()->getEntityManager();
+        }
+
 	private function getUsersRepo()
 	{
-		$em = $this->getDoctrine()->getEntityManager();
-		return $em->getRepository('SalitaUsuarioBundle:Usuario');
+		$em = $this->getEntityManager();
+                return $em->getRepository('SalitaUsuarioBundle:Usuario');
 	}
-	
-	private function getRepoUserFromSessionUser()
+
+        private function getRepoUserFromSessionUser($session)
 	{
 		$repoUsuarios = $this->getUsersRepo();
-		$session = $request->getSession();
 		$usuario = $session->get('usuario');
 		$usuario = $repoUsuarios->findOneById($usuario->getId());
 		return $usuario;
@@ -131,40 +135,44 @@ class UsuarioFormController extends Controller
             			));
         }
     }*/
-    
+
     /*Modificacion de usuario propio (fase GET)*/
     public function modifPropioAction(Request $request)
-    {   	
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($request->getSession());
-    	$usuario = $this->getRepoUserFromSessionUser();
+    {
+        $session = $request->getSession();
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$usuario = $this->getRepoUserFromSessionUser($session);
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig', 
+    				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
     				array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
     			);
     }
-    
+
     /*Modificacion de usuario propio (fase POST)*/
     public function modifPropioProcessAction(Request $request)
     {
-    	$usuario = $this->getRepoUserFromSessionUser();
-    	$form = $this->createForm(new UsuarioType(), $usuario);
+        $em = $this->getEntityManager();
+        $session = $request->getSession();
+    	$usuario = $this->getRepoUserFromSessionUser($session);
+        $form = $this->createForm(new UsuarioType(), $usuario);
     	$form->handleRequest($request);
     	if ($form->isValid())
     	{
-    		$em->flush();
-    		$session->set('usuario', $usuario);
-    		return $this->render(
-    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', 
-    					array('mensaje' => 'Sus datos fueron modificados exitosamente')
-    				);
+            $em = $this->getEntityManager();
+            $em->flush();
+    	    $session->set('usuario', $usuario);
+            return $this->render(
+    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    				array('mensaje' => 'Sus datos fueron modificados exitosamente')
+    			  );
     	}
     	else
     	{
     		return $this->render(
-    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    					array('mensaje' => 'Se produjo un error al intentar modificar sus datos')
-    				);
+    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    				array('mensaje' => 'Se produjo un error al intentar modificar sus datos')
+    			);
     	}
     }
 
