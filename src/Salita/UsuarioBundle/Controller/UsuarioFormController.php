@@ -1,5 +1,6 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
+
 use Salita\UsuarioBundle\Form\Type\UsuarioType;
 use Salita\UsuarioBundle\Entity\Usuario;
 use Salita\UsuarioBundle\Entity\Rol;
@@ -81,8 +82,9 @@ class UsuarioFormController extends Controller
 
     public function modifPropioAction(Request $request)
     {
+    	echo("Hola 1");
         $session = $request->getSession();
-        var_dump($session);
+		echo("Hola 2");
         $em = $this->getDoctrine()->getEntityManager();
         $usuario = $session->get('usuario');
         $form = $this->createForm(new UsuarioType(), $usuario);
