@@ -82,10 +82,9 @@ class UsuarioFormController extends Controller
 
     public function modifPropioAction(Request $request)
     {
-    	echo("Hola 1");
         $session = $request->getSession();
-		echo("Hola 2");
         $em = $this->getDoctrine()->getEntityManager();
+        var_dump($session);
         $usuario = $session->get('usuario');
         $form = $this->createForm(new UsuarioType(), $usuario);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
