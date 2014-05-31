@@ -82,6 +82,7 @@ class UsuarioFormController extends Controller
     public function modifPropioAction(Request $request)
     {
         $session = $request->getSession();
+        var_dump($session);
         $em = $this->getDoctrine()->getEntityManager();
         $usuario = $session->get('usuario');
         $form = $this->createForm(new UsuarioType(), $usuario);
