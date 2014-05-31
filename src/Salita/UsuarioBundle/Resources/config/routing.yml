@@ -25,6 +25,12 @@ listado_administrador:
 modif_usuario_propio:
     pattern:  /modificacion/usuariopropio
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropio }
+    methods: [GET]
+    
+modif_usuario_propio_process:
+    pattern:  /modificacion/usuariopropio
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropioProcess }
+    methods: [POST]
     
 modif_usuario:
     pattern:  /modificacion/usuario/{id}

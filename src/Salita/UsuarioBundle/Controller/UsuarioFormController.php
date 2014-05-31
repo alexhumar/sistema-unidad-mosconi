@@ -80,7 +80,7 @@ class UsuarioFormController extends Controller
         }
     }
 
-    public function modifPropioAction(Request $request)
+    /*public function modifPropioAction(Request $request)
     {
         $session = $request->getSession();
         $em = $this->getDoctrine()->getEntityManager();
@@ -110,6 +110,50 @@ class UsuarioFormController extends Controller
             return $this->render('SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig', array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
             ));
         }
+    }*/
+    
+    public function modifPropioAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	$usuario = $session->get('usuario');    	
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$form = $this->createForm(new UsuarioType(), $usuario);
+    	return $this->render(
+    			'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig', 
+    			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
+    		);
+    }
+    
+    public function modifPropioAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	$em = $this->getDoctrine()->getEntityManager();
+    	$repoUsuarios = $em->getRepository('SalitaUsuarioBundle:Usuario');
+    	$usuario = $session->get('usuario');
+    	$usuario = $repoUsuarios->findOneById($usuario->getId());
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$form = $this->createForm(new UsuarioType(), $usuario);
+    	if ($request->getMethod() == 'POST')
+    	{
+    		$form->handleRequest($request);
+    		if ($form->isValid())
+    		{
+    			$em->flush();
+    			$session->set('usuario', $usuario);
+    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Sus datos fueron modificados exitosamente',
+    			));
+    		}
+    		else
+    		{
+    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al intentar modificar sus datos',
+    			));
+    		}
+    	}
+    	else
+    	{
+    		return $this->render('SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig', array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
+    		));
+    	}
     }
 
     public function delSecretariaAction(Request $request, $id)
