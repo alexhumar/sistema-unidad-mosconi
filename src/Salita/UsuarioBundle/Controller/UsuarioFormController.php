@@ -50,7 +50,7 @@ class UsuarioFormController extends Controller
         return $this->render('SalitaUsuarioBundle:UsuarioForm:listadoMedicos.html.twig', array('usuarios' => $medicos,
             ));
     }
-          
+
     public function modifAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -59,7 +59,7 @@ class UsuarioFormController extends Controller
         $form = $this->createForm(new UsuarioType(),$usuario);
         if ($request->getMethod() == 'POST')
         {
-            $form->bindRequest($request);   
+            $form->bindRequest($request);
             if ($form->isValid())
             {
                 $em->persist($usuario);
@@ -67,11 +67,11 @@ class UsuarioFormController extends Controller
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Los datos del usuario fueron modificados exitosamente',
             ));
             }
-            else 
+            else
             {
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al intentar modificar los datos del usuario',
             ));
-            }            
+            }
         }
         else
         {
@@ -91,7 +91,7 @@ class UsuarioFormController extends Controller
         $form = $this->createForm(new UsuarioType(), $usuario);
         if ($request->getMethod() == 'POST')
         {
-            $form->bindRequest($request);     
+            $form->handleRequest($request);
             if ($form->isValid())
             {
                 $em->update($usuario);
@@ -100,11 +100,11 @@ class UsuarioFormController extends Controller
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Sus datos fueron modificados exitosamente',
             ));
             }
-            else 
+            else
             {
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al intentar modificar sus datos',
             ));
-            }            
+            }
         }
         else
         {
@@ -112,7 +112,7 @@ class UsuarioFormController extends Controller
             ));
         }
     }
-    
+
     public function delSecretariaAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getEntityManager();

@@ -9,11 +9,12 @@ class UsuarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
-        $builder->add('apellido');
-        $builder->add('email');
-        $builder->add('telefono');
-        $builder->add('matricula');
+        $builder
+              ->add('nombre')
+              ->add('apellido')
+              ->add('email')
+              ->add('telefono')
+              ->add('matricula');
     }
 
     public function getName()
