@@ -41,7 +41,7 @@ class Usuario extends BaseUser
     protected $telefono;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     protected $matricula;
 
