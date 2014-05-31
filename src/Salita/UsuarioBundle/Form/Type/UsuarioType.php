@@ -7,12 +7,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class UsuarioType extends AbstractType
 {
-	private $rolSeleccionado;
-	
+	private rolSeleccionado;
+
 	function __construct($rol)
 	{
 		parent::__construct();
-		$this->setRolSeleccionado($rol);
+		$this->rolSeleccionado = $rol;
 	}
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
