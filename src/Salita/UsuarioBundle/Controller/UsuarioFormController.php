@@ -86,13 +86,13 @@ class UsuarioFormController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $usuario = $session->get('usuario');
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-        $form = $this->createForm(new UsuarioType($rolSeleccionado), $usuario);
+        $form = $this->createForm(new UsuarioType(), $usuario);
         if ($request->getMethod() == 'POST')
         {
             $form->bindRequest($request);     
             if ($form->isValid())
             {
-                //$em->update($usuario);
+                $em->update($usuario);
                 $em->flush();
                 $session->set('usuario', $usuario);
                 return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => 'Sus datos fueron modificados exitosamente',
