@@ -1,0 +1,39 @@
+SalitaPlanBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SalitaPlanBundle:Default:index }
+
+alta_planprocresp:
+    pattern: /alta/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:new }
+
+habilitacion_planprocresp:
+    pattern: /habilitacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:hab }
+
+deshabilitacion_planprocresp:
+    pattern: /deshabilitacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:deshab }
+
+alta_metodoanticonceptivo:
+    pattern: /alta/metodoanticonceptivo
+    defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:new }
+
+alta_entregaplanprocresp:
+    pattern: /alta/entregaplanprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:new }
+
+listado_entregaplanprocresp:
+    pattern: /listado/entregaplanprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:list }
+
+listado_planprocresp:
+    pattern: /listado/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:list }
+
+modif_plan:
+    pattern:  /modificacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modif }
+
+listadoDes_planprocresp:
+    pattern: /listadoDes/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:listDes }

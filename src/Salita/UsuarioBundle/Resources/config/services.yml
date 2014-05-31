@@ -1,0 +1,6 @@
+services:
+    salita_usuario.registro.form.type:
+        class: Salita\UsuarioBundle\Form\Type\RegistroFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: salita_usuario_registro }

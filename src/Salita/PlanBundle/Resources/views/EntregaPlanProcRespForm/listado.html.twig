@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
+
+            {% if rol == 'ROLE_ADMINISTRADOR' %}
+                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}    
+
+            {% if rol == 'ROLE_SECRETARIA' %}
+                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}  
+
+            {% if rol == 'ROLE_MEDICO' %}
+                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %} 
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+<h1 id="tituloCentro">Entregas</h1>
+{% if entregasplanprocresp|length > 0 %}
+<table>
+<thead><tr><th>Paciente</th><th>Método</th><th>Fecha</th></thead>
+<tbody>
+{% for entregaplanprocresp in entregasplanprocresp %}
+  <tr><td>{{entregaplanprocresp.nombrePac}} {{entregaplanprocresp.apellidoPac}}</td><td>{{entregaplanprocresp.metodo}}</td><td>{{entregaplanprocresp.fecha}}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<h4 id="nota">- No se han encontrado resultados -</h4>
+{% endif %}
+{% endblock %}

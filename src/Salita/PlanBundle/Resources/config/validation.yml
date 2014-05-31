@@ -1,0 +1,8 @@
+Salita\PlanBundle\Entity\MetodoAnticonceptivo:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+    properties:
+        nombre:
+            - NotBlank: ~
+
+

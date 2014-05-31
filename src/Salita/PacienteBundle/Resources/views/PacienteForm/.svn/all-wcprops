@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Resources/views/PacienteForm
+END
+new.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Resources/views/PacienteForm/new.html.twig
+END
+datosFiliatorios.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Resources/views/PacienteForm/datosFiliatorios.html.twig
+END
+mensaje.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Resources/views/PacienteForm/mensaje.html.twig
+END

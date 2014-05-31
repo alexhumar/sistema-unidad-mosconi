@@ -1,0 +1,11 @@
+Salita\OtrosBundle\Entity\Barrio:
+    properties:
+        nombre:
+            - NotBlank: ~
+
+Salita\OtrosBundle\Entity\MetodoEstudio:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+    properties:
+        nombre:
+            - NotBlank: ~

@@ -1,0 +1,23 @@
+<?php
+
+namespace Salita\OtrosBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class BarrioType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('nombre');
+        $builder->add('localidad');
+    }
+
+    public function getName()
+    {
+        return 'barrio';
+    }
+
+}
+
+

@@ -1,0 +1,136 @@
+<?php
+
+namespace Salita\PacienteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="tipo", type="string")
+ * @ORM\DiscriminatorMap({"Consulta" = "Consulta", "Estudio" = "Estudio"})
+ */
+abstract class Visita
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="date", nullable="false")
+     */
+    protected $fecha;
+
+    /**
+     * @ORM\Column(type="time", nullable="false")
+     */
+    protected $hora;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Salita\UsuarioBundle\Entity\Usuario", inversedBy="visitas")
+     * @ORM\JoinColumn(name="idUsuario", referencedColumnName="id")
+     */
+    protected $usuario;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Salita\PacienteBundle\Entity\Paciente", inversedBy="visitas")
+     * @ORM\JoinColumn(name="idPaciente", referencedColumnName="id")
+     */
+    protected $paciente;
+
+
+    /**
+     * Get idVisita
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param date $fecha
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return date 
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set hora
+     *
+     * @param time $hora
+     */
+    public function setHora($hora)
+    {
+        $this->hora = $hora;
+    }
+
+    /**
+     * Get hora
+     *
+     * @return time 
+     */
+    public function getHora()
+    {
+        return $this->hora;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param Salita\UsuarioBundle\Entity\Usuario $usuario
+     */
+    public function setUsuario(\Salita\UsuarioBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return Salita\UsuarioBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set paciente
+     *
+     * @param Salita\PacienteBundle\Entity\Paciente $paciente
+     */
+    public function setPaciente(\Salita\PacienteBundle\Entity\Paciente $paciente)
+    {
+        $this->paciente = $paciente;
+    }
+
+    /**
+     * Get paciente
+     *
+     * @return Salita\PacienteBundle\Entity\Paciente 
+     */
+    public function getPaciente()
+    {
+        return $this->paciente;
+    }
+
+
+}

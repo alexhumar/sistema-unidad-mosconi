@@ -1,0 +1,22 @@
+<?php
+
+namespace Salita\TurnoBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class TurnoType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('especialidad');
+        $builder->add('medicoPreferido', null , array('label' => 'Medico Preferido'));
+        $builder->add('motivo');
+    }
+
+    public function getName()
+    {
+        return 'turno';
+    }
+
+}

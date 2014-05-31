@@ -1,0 +1,7 @@
+parameters:
+#    salita_turno.example.class: Salita\TurnoBundle\Example
+
+services:
+#    salita_turno.example:
+#        class: %salita_turno.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

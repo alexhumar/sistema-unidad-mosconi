@@ -1,0 +1,24 @@
+<?php
+
+namespace Salita\PlanBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class EntregaPlanProcRespType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        #$builder->add('fecha');
+        #$buider->add('planprocresp');
+    }
+
+    public function getName()
+    {
+        return 'entregaplanprocresp';
+    }
+
+}
+
+
+

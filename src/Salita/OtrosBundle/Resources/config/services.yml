@@ -1,0 +1,7 @@
+parameters:
+#    salita_otros.example.class: Salita\OtrosBundle\Example
+
+services:
+#    salita_otros.example:
+#        class: %salita_otros.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

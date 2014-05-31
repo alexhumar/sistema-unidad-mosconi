@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/taller/svn/!svn/ver/20/src/Salita/OtrosBundle/Entity
+END
+TipoDocumento.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/taller/svn/!svn/ver/16/src/Salita/OtrosBundle/Entity/TipoDocumento.php
+END
+Localidad.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Entity/Localidad.php
+END
+Pais.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/taller/svn/!svn/ver/16/src/Salita/OtrosBundle/Entity/Pais.php
+END
+Vacuna.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/taller/svn/!svn/ver/20/src/Salita/OtrosBundle/Entity/Vacuna.php
+END
+Barrio.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/taller/svn/!svn/ver/16/src/Salita/OtrosBundle/Entity/Barrio.php
+END
+Partido.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Entity/Partido.php
+END
+Diagnostico.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/taller/svn/!svn/ver/2/src/Salita/OtrosBundle/Entity/Diagnostico.php
+END
+MetodoEstudio.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Entity/MetodoEstudio.php
+END

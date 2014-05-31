@@ -1,0 +1,103 @@
+SalitaPacienteBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SalitaPacienteBundle:Default:index }
+
+#alta_antecedenteFamiliar:
+#    pattern: /alta/antecedenteFamiliar
+#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarForm:new }
+
+alta_paciente:
+    pattern: /alta/paciente
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
+
+modificacion_datosFiliatorios:
+    pattern: /modificacion/datosfiliatorios
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatorios }
+
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+
+seleccion_paciente:
+    pattern: /seleccion/paciente/{idPaciente}
+    defaults: { _controller: SalitaPacienteBundle:Seleccion:seleccionar}
+
+menu_paciente:
+    pattern: /menu/paciente
+    defaults: { _controller: SalitaPacienteBundle:Menu:principal}
+
+#alta_antecedenteFamiliarClinico:
+#    pattern: /alta/antecedenteFamiliarClinico
+#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:new }
+
+#alta_antecedenteFamiliarObstetrico:
+#    pattern: /alta/antecedenteFamiliarObstetrico
+#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:new }
+
+#alta_antecedentePersonal:
+#    pattern: /alta/antecedentePersonal
+#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalForm:new }
+
+#alta_antecedentePersonalClinico:
+#    pattern: /alta/antecedentePersonalClinico
+#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:new }
+
+#alta_antecedentePersonalObstetrico:
+#    pattern: /alta/antecedentePersonalObstetrico
+#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalObstetricoForm:new }
+
+#modif_antecedenteFamiliar:
+#    pattern:  /modificacion/antecedenteFamiliar/{id}
+#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarForm:modif }
+      
+modif_antecedenteFamiliarClinico:
+    pattern:  /modificacion/antecedenteFamiliarClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }
+
+modif_antecedenteFamiliarObstetrico:
+    pattern:  /modificacion/antecedenteFamiliarObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif }
+    
+#modif_antecedentePersonal:
+#    pattern:  /modificacion/antecedentePersonal
+#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalForm:modif }
+
+modif_antecedentePersonalClinico:
+    pattern:  /modificacion/antecedentePersonalClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif }
+    
+modif_antecedentePersonalObstetrico:
+    pattern:  /modificacion/antecedentePersonalObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalObstetricoForm:modif }
+
+alta_estudio:
+    pattern: /alta/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
+
+alta_consulta:
+    pattern: /alta/consulta
+    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:new }
+
+alta_aplicacion_vacuna:
+    pattern: /alta/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:new }
+
+listado_aplicacion_vacuna:
+    pattern: /listado/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:list }
+
+modif_estudio:
+    pattern: /modif/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
+
+generar_historiaClinica:
+    pattern: /generarHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:generar }
+
+generar_resumenHC:
+    pattern: /generarResumenHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:resumen }
+
+fechas_resumenHC:
+    pattern: /resumenHC/elegirFechas
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechas }

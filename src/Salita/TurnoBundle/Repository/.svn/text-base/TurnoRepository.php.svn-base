@@ -1,0 +1,27 @@
+<?php
+
+namespace Salita\TurnoBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class TurnoRepository extends EntityRepository
+{
+    public function turnosDelDia()
+    {
+        $fechaHoy = "'".Date("d-m-Y")."'";
+        $sql = "SELECT p.nombre as nombre,p.apellido as apellido,t.motivo as motivo,e.nombre as especialidad FROM SalitaTurnoBundle:Turno t JOIN t.paciente p JOIN t.especialidad e WHERE t.fecha=".$fechaHoy;
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+
+    public function turnosDelDiaDeEspecialidad()
+    {
+        $idEspecialidad = $_SESSION['idEspecialidad']; //cambiar si es necesario. De algun lado lo tiene que sacar.
+        $fechaHoy = "'".Date("d-m-Y")."'";
+        $sql = "SELECT p.nombre as nombre,p.apellido as apellido,t.motivo as motivo FROM SalitaTurnoBundle:Turno t JOIN t.paciente p JOIN t.especialidad e WHERE t.fecha=".$fechaHoy. " AND e.id=".$idEspecialidad;
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+}

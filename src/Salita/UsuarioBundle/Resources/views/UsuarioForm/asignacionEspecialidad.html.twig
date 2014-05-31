@@ -1,0 +1,13 @@
+{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block contenido %}
+<form action="{{ path('asignacion_especialidad') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+
+{% endblock %}

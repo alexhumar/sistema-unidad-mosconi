@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Resources/views/BarrioForm
+END
+new.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Resources/views/BarrioForm/new.html.twig
+END
+modif.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/taller/svn/!svn/ver/33/src/Salita/OtrosBundle/Resources/views/BarrioForm/modif.html.twig
+END
+listado.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/taller/svn/!svn/ver/33/src/Salita/OtrosBundle/Resources/views/BarrioForm/listado.html.twig
+END

@@ -1,0 +1,156 @@
+<?php
+
+namespace Salita\PacienteBundle\Entity;
+
+use Salita\PacienteBundle\Entity\AntecedenteFamiliar;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Salita\PacienteBundle\Repository\AntecedenteFamiliarObstetricoRepository")
+ */
+class AntecedenteFamiliarObstetrico extends AntecedenteFamiliar
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $preeclampsiaEclampsia;
+
+    /**
+     * @var boolean $tuberculosis
+     */
+    protected $tuberculosis;
+
+    /**
+     * @var boolean $diabetes
+     */
+    protected $diabetes;
+
+    /**
+     * @var boolean $hipertensionArterial
+     */
+    protected $hipertensionArterial;
+
+    /**
+     * @var text $otros
+     */
+    protected $otros;
+
+
+    /**
+     * Get idAntecedenteFamiliarObstetrico
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set preeclampsiaEclampsia
+     *
+     * @param boolean $preeclampsiaEclampsia
+     */
+    public function setPreeclampsiaEclampsia($preeclampsiaEclampsia)
+    {
+        $this->preeclampsiaEclampsia = $preeclampsiaEclampsia;
+    }
+
+    /**
+     * Get preeclampsiaEclampsia
+     *
+     * @return boolean 
+     */
+    public function getPreeclampsiaEclampsia()
+    {
+        return $this->preeclampsiaEclampsia;
+    }
+
+    /**
+     * Set tuberculosis
+     *
+     * @param boolean $tuberculosis
+     */
+    public function setTuberculosis($tuberculosis)
+    {
+        $this->tuberculosis = $tuberculosis;
+    }
+
+    /**
+     * Get tuberculosis
+     *
+     * @return boolean 
+     */
+    public function getTuberculosis()
+    {
+        return $this->tuberculosis;
+    }
+
+    /**
+     * Set diabetes
+     *
+     * @param boolean $diabetes
+     */
+    public function setDiabetes($diabetes)
+    {
+        $this->diabetes = $diabetes;
+    }
+
+    /**
+     * Get diabetes
+     *
+     * @return boolean 
+     */
+    public function getDiabetes()
+    {
+        return $this->diabetes;
+    }
+
+    /**
+     * Set hipertensionArterial
+     *
+     * @param boolean $hipertensionArterial
+     */
+    public function setHipertensionArterial($hipertensionArterial)
+    {
+        $this->hipertensionArterial = $hipertensionArterial;
+    }
+
+    /**
+     * Get hipertensionArterial
+     *
+     * @return boolean 
+     */
+    public function getHipertensionArterial()
+    {
+        return $this->hipertensionArterial;
+    }
+
+    /**
+     * Set otros
+     *
+     * @param text $otros
+     */
+    public function setOtros($otros)
+    {
+        $this->otros = $otros;
+    }
+
+    /**
+     * Get otros
+     *
+     * @return text 
+     */
+    public function getOtros()
+    {
+        return $this->otros;
+    }
+
+}

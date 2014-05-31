@@ -1,0 +1,3 @@
+{% for turno in turnos %}
+  {{turno.nombre}} {{turno.apellido}} {{turno.motivo}}
+{% endfor %}

@@ -1,0 +1,3 @@
+{% for vacuna in vacunas %}
+  {{vacuna.nombre}}
+{% endfor %}

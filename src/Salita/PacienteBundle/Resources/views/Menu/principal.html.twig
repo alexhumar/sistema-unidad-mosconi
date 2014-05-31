@@ -1,0 +1,136 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
+
+            {% if rol == 'ROLE_ADMINISTRADOR' %}
+                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}    
+
+            {% if rol == 'ROLE_SECRETARIA' %}
+                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}  
+
+            {% if rol == 'ROLE_MEDICO' %}
+                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %} 
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="tituloMenu">
+    <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
+</div>
+<br>
+<div class="subtituloMenu">
+    Datos Filiatorios:
+</div>
+
+<ul><div class="opcionMenu">
+    <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
+</div>
+</ul>
+{% if ((rol != 'ROLE_SECRETARIA')) %}
+<div class="subtituloMenu">
+    Historia Clínica:
+</div>
+
+<ul><div class="opcionMenu">
+    <li><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></li>
+    <li><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></li>
+</div>
+</ul>
+{% endif %}
+
+{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+<div class="subtituloMenu">
+    Antecedentes:
+</div>
+<ul><div class="opcionMenu">
+    <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
+</div>
+{% endif %}
+
+{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+<div class="opcionMenu">
+    <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
+</div>
+{% endif %}
+
+{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+<div class="opcionMenu">
+    <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
+</div>
+{% endif %}
+
+{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+<div class="opcionMenu">
+    <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
+<div>
+{% endif %}
+</ul>
+
+<div class="subtituloMenu">
+Turnos:
+{% if (rol == 'ROLE_MEDICO') %}
+</div>
+<ul><div class="opcionMenu">
+    <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
+</div>
+</ul>
+{% else %}
+</div>
+<ul><div class="opcionMenu">
+    <li><a href="{{path('alta_turno')}}">Agregar un turno</a></li>
+</div>
+</ul>
+{% endif %}
+
+{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+<div class="subtituloMenu">
+Estudios:
+</div>
+<ul><div class="opcionMenu">
+<li><a href="{{path('alta_estudio')}}">Registrar un estudio</a></li>
+</div>
+</ul>
+{% endif %}
+
+{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='CLINICO' or especialidad =='PEDIATRA'))) %}
+<div class="subtituloMenu">
+Consultas:
+</div>
+<ul><div class="opcionMenu">
+<li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
+</div>
+</ul>
+{% endif %}
+{% if ((rol != 'ROLE_SECRETARIA')) %}
+<div class="subtituloMenu">
+Vacunacion:
+</div>
+<ul><div class="opcionMenu">
+{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %}
+    <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
+{% endif %}
+    <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
+</div>
+</ul>
+
+{% endif %}
+{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA')) %}
+<div class="subtituloMenu">
+    Proyecto Procreacion Responsable:
+</div>
+<ul><div class="opcionMenu">
+    <li><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></li>
+    <li><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></li>
+    <li><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></li>
+</div>
+</ul>
+{% endif %}
+{% endblock %}

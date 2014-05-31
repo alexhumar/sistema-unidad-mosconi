@@ -1,0 +1,7 @@
+{% for usuario in usuarios %}  
+  {{usuario.nombre}}<a href="{{ path('modif_usuario', { 'id': usuario.id }) }}">
+      Editar</a> -- <a href="{{ path('del_usuario', { 'id': usuario.id }) }}">
+      Borrar     
+  </a>
+  </br>
+{% endfor %}

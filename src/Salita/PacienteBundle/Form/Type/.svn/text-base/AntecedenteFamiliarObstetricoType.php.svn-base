@@ -1,0 +1,24 @@
+<?php
+
+namespace Salita\PacienteBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class AntecedenteFamiliarObstetricoType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('preeclampsiaEclampsia', 'checkbox', array('label' => 'Preeclampasia/Eclampsia'));        
+        $builder->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis'));
+        $builder->add('diabetes', 'checkbox', array('label' => 'Diabetes'));
+        $builder->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial'));
+        $builder->add('otros', 'textarea', array('label' => 'Otros'));
+    }
+    
+    public function getName()
+    {
+        return 'antecedenteFamiliarObstetrico';
+    }
+
+}

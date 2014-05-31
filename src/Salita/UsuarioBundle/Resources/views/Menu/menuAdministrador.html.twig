@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+     <div class="subtituloMenu">
+          Usuarios:
+     </div>
+
+     <div class="opcionMenu">
+          <a href="{{path('fos_user_registration_register')}}">Agregar usuario</a>
+     </div>
+
+     <div class="opcionMenu">
+          <a href="{{path('listado_usuario')}}">Administrar roles</a>
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('listado_administrador')}}">Listar administradores</a>
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('listado_medico')}}">Listar medicos</a>
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('listado_secretaria')}}">Listar secretarias</a>
+     </div>
+
+     <div class="subtituloMenu">
+          Pacientes:
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('alta_paciente')}}">Alta de paciente</a>
+     </div>
+
+     <div class="subtituloMenu">
+          Barrios:
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('alta_barrio')}}">Alta de barrio</a>
+     </div>
+
+     <div class="subtituloMenu">
+          Estudios Ginecologicos:
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('alta_metodoestudio')}}">Alta de metodo de estudio ginecologico</a>
+     </div>
+
+     <div class="subtituloMenu">
+          Plan Procreacion Responsable:
+     </div>
+     <div class="opcionMenu">
+          <a href="{{path('alta_metodoanticonceptivo')}}">Alta de metodo anticonceptivo</a>
+     </div>
+     
+{% endblock %}

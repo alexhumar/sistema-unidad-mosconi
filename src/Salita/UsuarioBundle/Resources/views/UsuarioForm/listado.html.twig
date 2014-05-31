@@ -1,0 +1,14 @@
+{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+
+{% block contenido %}
+<h1 id="tituloCentro">Usuarios</h1>
+<table id="tabla">
+<thead><tr><th>Nombre y Apellido</th><th></th></tr></thead>
+<tbody>
+{% for usuario in usuarios %} 
+        <tr><td>{{usuario.nombre}} {{usuario.apellido}}</td>
+        <td><a href="{{ path('seleccion_usuario', { 'id': usuario.id }) }}">Asignar rol</a></td></tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

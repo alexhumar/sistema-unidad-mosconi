@@ -1,0 +1,118 @@
+<?php
+
+namespace Salita\OtrosBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="barrio")
+ */
+
+class Barrio
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50, unique="true", nullable="false")
+     */
+    protected $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\Paciente", mappedBy="barrio")
+     */
+    protected $pacientes;
+
+    public function __construct()
+    {
+        $this->pacientes= new ArrayCollection();
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Salita\OtrosBundle\Entity\Localidad", inversedBy="barrios")
+     * @ORM\JoinColumn(name="idLocalidad", referencedColumnName="id")
+     */
+    protected $localidad;
+
+
+    /**
+     * Get idBarrio
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Add pacientes
+     *
+     * @param Salita\PacienteBundle\Entity\Paciente $pacientes
+     */
+    public function addPaciente(\Salita\PacienteBundle\Entity\Paciente $pacientes)
+    {
+        $this->pacientes[] = $pacientes;
+    }
+
+    /**
+     * Get pacientes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPacientes()
+    {
+        return $this->pacientes;
+    }
+
+    /**
+     * Set localidad
+     *
+     * @param Salita\OtrosBundle\Entity\Localidad $localidad
+     */
+    public function setLocalidad(\Salita\OtrosBundle\Entity\Localidad $localidad)
+    {
+        $this->localidad = $localidad;
+    }
+
+    /**
+     * Get localidad
+     *
+     * @return Salita\OtrosBundle\Entity\Localidad 
+     */
+    public function getLocalidad()
+    {
+        return $this->localidad;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+}

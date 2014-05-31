@@ -1,0 +1,25 @@
+<?php
+
+namespace Salita\UsuarioBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class UsuarioType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('nombre', null, array('label' => "Nombre");
+        $builder->add('apellido');
+        $builder->add('rol');
+        $builder->add('especialidad');
+    }
+
+    public function getName()
+    {
+        return 'usuario';
+    }
+
+}
+
+

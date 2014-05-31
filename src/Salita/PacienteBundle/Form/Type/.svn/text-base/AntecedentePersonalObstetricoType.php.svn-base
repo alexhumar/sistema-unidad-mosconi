@@ -1,0 +1,37 @@
+<?php
+
+namespace Salita\PacienteBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class AntecedentePersonalObstetricoType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+
+        $builder->add('cirugiaPelviana', 'checkbox', array('label' => 'Cirugía pelviana'));
+        $builder->add('infertilidad', 'checkbox', array('label' => 'Infertilidad'));
+        $builder->add('vih', 'checkbox', array('label' => 'VIH'));
+        $builder->add('cardiopatiaNefropatia', 'checkbox', array('label' => 'Cardiopatía/Nefropatía'));
+        $builder->add('condicionMedicaGrave', 'checkbox', array('label' => 'Condición médica grave'));
+        $builder->add('gestasPrevias', 'number', array('label' => 'Gestas previas'));
+        $builder->add('abortos', 'number', array('label' => 'Abortos'));
+        $builder->add('cesareas', 'number', array('label' => 'Cesáreas'));
+        $builder->add('partos', 'number', array('label' => 'Partos'));
+        $builder->add('sifilis', 'checkbox', array('label' => 'Sífilis'));
+        $builder->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis'));
+        $builder->add('diabetes', 'checkbox', array('label' => 'Diabetes'));
+        $builder->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial'));
+        $builder->add('drogas', 'checkbox', array('label' => 'Drogas'));
+        $builder->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo'));
+        $builder->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo'));
+        $builder->add('otros', 'textarea', array('label' => 'Otros'));
+    }
+    
+    public function getName()
+    {
+        return 'antecedentePersonalObstetrico';
+    }
+
+}

@@ -1,0 +1,31 @@
+SalitaOtrosBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SalitaOtrosBundle:Default:index }
+
+alta_barrio:
+    pattern: /alta/barrio
+    defaults: { _controller: SalitaOtrosBundle:BarrioForm:new }
+
+seleccion_vacuna:
+    pattern: /seleccion/vacuna/{idVacuna}
+    defaults: { _controller: SalitaOtrosBundle:Vacuna:seleccionar }
+
+seleccion_diagnostico:
+    pattern: /seleccion/diagnostico/{idDiagnostico}
+    defaults: { _controller: SalitaOtrosBundle:Diagnostico:seleccionar }
+
+busqueda_vacuna:
+    pattern: /busqueda/vacuna
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+
+busqueda_diagnostico:
+    pattern: /busqueda/diagnostico
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
+
+alta_metodoestudio:
+    pattern: /alta/metodoEstudio
+    defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:new }
+
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }

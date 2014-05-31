@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+
+     <div class="subtituloMenu">
+          Pacientes:
+     </div>
+     <ul><div class="opcionMenu">
+          <li><a href="{{path('alta_paciente')}}">Alta de paciente</a></li>
+     </div>
+     </ul>
+     
+     <div class="subtituloMenu">
+          Barrios:
+     </div>
+     <ul><div class="opcionMenu">
+          <li><a href="{{path('alta_barrio')}}">Alta de barrio</a></li>
+     </div>
+     </ul>
+
+     <div class="subtituloMenu">
+          Estudios Ginecologicos:
+     </div>
+     <ul><div class="opcionMenu">
+          <li><a href="{{path('alta_metodoestudio')}}">Alta de metodo de estudio ginecologico</a></li>
+     </div>
+     </ul>
+
+     <div class="subtituloMenu">
+          Plan Procreacion Responsable:
+     </div>
+     <ul><div class="opcionMenu">
+          <li><a href="{{path('alta_metodoanticonceptivo')}}">Alta de metodo anticonceptivo</a></li>
+     </div>
+     </ul>
+     
+{% endblock %}

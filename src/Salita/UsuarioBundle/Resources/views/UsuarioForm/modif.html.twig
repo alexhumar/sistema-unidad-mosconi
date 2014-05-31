@@ -1,0 +1,9 @@
+{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+
+{% block contenido %}
+<form action="{{ path('modif_usuario',{ 'id': id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+{% endblock %}

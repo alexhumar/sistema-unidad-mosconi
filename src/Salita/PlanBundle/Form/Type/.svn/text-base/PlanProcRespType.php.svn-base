@@ -1,0 +1,26 @@
+<?php
+
+namespace Salita\PlanBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class PlanProcRespType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('periodicidad');
+        $builder->add('finalizado');
+        #$builder->add('metodoanticonceptivo');
+        #$builder->add('paciente');
+    }
+
+    public function getName()
+    {
+        return 'planprocresp';
+    }
+
+}
+
+
+

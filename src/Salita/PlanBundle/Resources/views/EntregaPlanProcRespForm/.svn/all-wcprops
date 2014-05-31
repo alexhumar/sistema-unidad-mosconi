@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/taller/svn/!svn/ver/15/src/Salita/PlanBundle/Resources/views/EntregaPlanProcRespForm
+END
+new.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/taller/svn/!svn/ver/15/src/Salita/PlanBundle/Resources/views/EntregaPlanProcRespForm/new.html.twig
+END
+listado.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/taller/svn/!svn/ver/26/src/Salita/PlanBundle/Resources/views/EntregaPlanProcRespForm/listado.html.twig
+END
+mensaje.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/taller/svn/!svn/ver/15/src/Salita/PlanBundle/Resources/views/EntregaPlanProcRespForm/mensaje.html.twig
+END

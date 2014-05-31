@@ -1,0 +1,341 @@
+<?php
+
+namespace Salita\PacienteBundle\Entity;
+
+use Salita\PacienteBundle\Entity\AntecedentePersonal;
+use Doctrine\ORM\Mapping as ORM;
+
+/** 
+ * @ORM\Entity
+ */
+class AntecedentePersonalClinico extends AntecedentePersonal
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="boolean", nullable="true")
+     */
+    protected $medicamentos;
+
+    /**
+     * @ORM\Column(type="boolean", nullable="true")
+     */
+    protected $tatuajes;
+
+    /**
+     * @ORM\Column(type="boolean", nullable="true")
+     */
+    protected $infectoContagiosas;
+
+    /**
+     * @ORM\Column(type="boolean", nullable="true")
+     */
+    protected $traumatismos;
+
+    /**
+     * @ORM\Column(type="boolean", nullable="true")
+     */
+    protected $internacionesPrevias;     
+
+    /**
+     * @var boolean $tuberculosis
+     */
+    protected $tuberculosis;
+
+    /**
+     * @var boolean $diabetes
+     */
+    protected $diabetes;
+
+    /**
+     * @var boolean $hipertensionArterial
+     */
+    protected $hipertensionArterial;
+
+    /**
+     * @var boolean $drogas
+     */
+    protected $drogas;
+
+    /**
+     * @var boolean $tabaquismo
+     */
+    protected $tabaquismo;
+
+    /**
+     * @var boolean $alcoholismo
+     */
+    protected $alcoholismo;
+
+    /**
+     * @var text $otros
+     */
+    protected $otros;
+
+
+    /**
+     * Get idAntecedentePersonalClinico
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set medicamentos
+     *
+     * @param boolean $medicamentos
+     */
+    public function setMedicamentos($medicamentos)
+    {
+        $this->medicamentos = $medicamentos;
+    }
+
+    /**
+     * Get medicamentos
+     *
+     * @return boolean 
+     */
+    public function getMedicamentos()
+    {
+        return $this->medicamentos;
+    }
+
+    /**
+     * Set tatuajes
+     *
+     * @param boolean $tatuajes
+     */
+    public function setTatuajes($tatuajes)
+    {
+        $this->tatuajes = $tatuajes;
+    }
+
+    /**
+     * Get tatuajes
+     *
+     * @return boolean 
+     */
+    public function getTatuajes()
+    {
+        return $this->tatuajes;
+    }
+
+    /**
+     * Set infectoContagiosas
+     *
+     * @param boolean $infectoContagiosas
+     */
+    public function setInfectoContagiosas($infectoContagiosas)
+    {
+        $this->infectoContagiosas = $infectoContagiosas;
+    }
+
+    /**
+     * Get infectoContagiosas
+     *
+     * @return boolean 
+     */
+    public function getInfectoContagiosas()
+    {
+        return $this->infectoContagiosas;
+    }
+
+    /**
+     * Set traumatismos
+     *
+     * @param boolean $traumatismos
+     */
+    public function setTraumatismos($traumatismos)
+    {
+        $this->traumatismos = $traumatismos;
+    }
+
+    /**
+     * Get traumatismos
+     *
+     * @return boolean 
+     */
+    public function getTraumatismos()
+    {
+        return $this->traumatismos;
+    }
+
+    /**
+     * Set internacionesPrevias
+     *
+     * @param boolean $internacionesPrevias
+     */
+    public function setInternacionesPrevias($internacionesPrevias)
+    {
+        $this->internacionesPrevias = $internacionesPrevias;
+    }
+
+    /**
+     * Get internacionesPrevias
+     *
+     * @return boolean 
+     */
+    public function getInternacionesPrevias()
+    {
+        return $this->internacionesPrevias;
+    }
+
+    /**
+     * Get idAntecedentePersonal
+     *
+     * @return integer 
+     */
+    public function getIdAntecedentePersonal()
+    {
+        return $this->idAntecedentePersonal;
+    }
+
+    /**
+     * Set tuberculosis
+     *
+     * @param boolean $tuberculosis
+     */
+    public function setTuberculosis($tuberculosis)
+    {
+        $this->tuberculosis = $tuberculosis;
+    }
+
+    /**
+     * Get tuberculosis
+     *
+     * @return boolean 
+     */
+    public function getTuberculosis()
+    {
+        return $this->tuberculosis;
+    }
+
+    /**
+     * Set diabetes
+     *
+     * @param boolean $diabetes
+     */
+    public function setDiabetes($diabetes)
+    {
+        $this->diabetes = $diabetes;
+    }
+
+    /**
+     * Get diabetes
+     *
+     * @return boolean 
+     */
+    public function getDiabetes()
+    {
+        return $this->diabetes;
+    }
+
+    /**
+     * Set hipertensionArterial
+     *
+     * @param boolean $hipertensionArterial
+     */
+    public function setHipertensionArterial($hipertensionArterial)
+    {
+        $this->hipertensionArterial = $hipertensionArterial;
+    }
+
+    /**
+     * Get hipertensionArterial
+     *
+     * @return boolean 
+     */
+    public function getHipertensionArterial()
+    {
+        return $this->hipertensionArterial;
+    }
+
+    /**
+     * Set drogas
+     *
+     * @param boolean $drogas
+     */
+    public function setDrogas($drogas)
+    {
+        $this->drogas = $drogas;
+    }
+
+    /**
+     * Get drogas
+     *
+     * @return boolean 
+     */
+    public function getDrogas()
+    {
+        return $this->drogas;
+    }
+
+    /**
+     * Set tabaquismo
+     *
+     * @param boolean $tabaquismo
+     */
+    public function setTabaquismo($tabaquismo)
+    {
+        $this->tabaquismo = $tabaquismo;
+    }
+
+    /**
+     * Get tabaquismo
+     *
+     * @return boolean 
+     */
+    public function getTabaquismo()
+    {
+        return $this->tabaquismo;
+    }
+
+    /**
+     * Set alcoholismo
+     *
+     * @param boolean $alcoholismo
+     */
+    public function setAlcoholismo($alcoholismo)
+    {
+        $this->alcoholismo = $alcoholismo;
+    }
+
+    /**
+     * Get alcoholismo
+     *
+     * @return boolean 
+     */
+    public function getAlcoholismo()
+    {
+        return $this->alcoholismo;
+    }
+
+    /**
+     * Set otros
+     *
+     * @param text $otros
+     */
+    public function setOtros($otros)
+    {
+        $this->otros = $otros;
+    }
+
+    /**
+     * Get otros
+     *
+     * @return text 
+     */
+    public function getOtros()
+    {
+        return $this->otros;
+    }
+
+}

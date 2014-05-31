@@ -1,0 +1,35 @@
+<?php
+
+namespace Salita\PacienteBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class PacienteRepository extends EntityRepository
+{
+    public function buscarPorNombre($nombre)
+    {
+        $nombreAux = "'%".$nombre."%'";
+        $sql = "SELECT p FROM SalitaPacienteBundle:Paciente p WHERE p.nombre like ".$nombreAux." ORDER BY p.nombre ASC";
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+
+    public function buscarPorApellido($apellido)
+    {
+        $apellidoAux = "'%".$apellido."%'";
+        $sql = "SELECT p FROM SalitaPacienteBundle:Paciente p WHERE p.apellido like ".$apellidoAux." ORDER BY p.apellido ASC";
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+
+    public function buscarPorDNI($dni)
+    {
+        $dniAux = "'%".$dni."%'";
+        $sql = "SELECT p FROM SalitaPacienteBundle:Paciente p WHERE p.nroDoc LIKE ".$dniAux." ORDER BY p.apellido ASC";
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+}

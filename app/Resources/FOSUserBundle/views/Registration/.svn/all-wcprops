@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration
+END
+register.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration/register.html.twig
+END
+checkEmail.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration/checkEmail.html.twig
+END
+confirmed.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration/confirmed.html.twig
+END
+register_content.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration/register_content.html.twig
+END
+email.txt.twig
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/taller/svn/!svn/ver/1/vendor/bundles/FOS/UserBundle/Resources/views/Registration/email.txt.twig
+END

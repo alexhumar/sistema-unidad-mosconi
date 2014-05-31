@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
+
+            {% if rol == 'ROLE_ADMINISTRADOR' %}
+                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}    
+
+            {% if rol == 'ROLE_SECRETARIA' %}
+                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %}  
+
+            {% if rol == 'ROLE_MEDICO' %}
+                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
+            {% endif %} 
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+<form action="{{ path('fechas_resumenHC') }}" method="post" {{ form_enctype(form) }}>
+  <div id="fechasB">
+    <label> Desde: </label>
+        {{ form_row(form.diaDesde) }} {{ form_row(form.mesDesde) }} {{ form_row(form.anioDesde) }}
+    <br />
+    <label> Hasta: </label>
+        {{ form_row(form.diaHasta) }} {{ form_row(form.mesHasta) }} {{ form_row(form.anioHasta) }}
+    <br />
+    {{ form_rest(form) }}
+
+    <input type="submit" />
+  </div>
+</form>
+{% endblock %}

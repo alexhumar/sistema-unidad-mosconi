@@ -1,0 +1,26 @@
+<?php
+
+namespace Salita\UsuarioBundle\Form\Type;
+
+use Symfony\Component\Form\FormBuilder;
+use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+
+class RegistroFormType extends BaseType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+
+        //aca se agregan los campos que necesitamos
+        $builder->add('nombre');
+        $builder->add('apellido');
+        $builder->add('telefono');
+        $builder->add('matricula');
+        $builder->add('especialidad');
+    }
+
+    public function getName()
+    {
+        return 'salita_usuario_registro';
+    }
+}

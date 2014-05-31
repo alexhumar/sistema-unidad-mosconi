@@ -1,0 +1,17 @@
+<?php
+
+namespace Salita\PlanBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class PlanProcRespRepository extends EntityRepository
+{
+    public function findAllById($id)
+    {
+        $idAux = "'%".$id."%'";
+        $sql="SELECT p FROM SalitaPlanBundle:PlanProcResp p WHERE p.paciente= ".$id."";
+        return $this->getEntityManager()
+            ->createQuery($sql)
+            ->getResult();
+    }
+}

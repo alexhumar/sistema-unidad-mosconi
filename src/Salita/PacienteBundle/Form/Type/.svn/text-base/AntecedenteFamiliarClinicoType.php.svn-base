@@ -1,0 +1,29 @@
+<?php
+
+namespace Salita\PacienteBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class AntecedenteFamiliarClinicoType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        
+        $builder->add('cardiovascularMenorA55', 'checkbox', array('label' => 'Cardiovascular menor a 55'));
+        $builder->add('asma', 'checkbox', array('label' => 'Asma'));
+        $builder->add('trastornosMentales', 'checkbox', array('label' => 'Trastornos mentales'));
+        $builder->add('alergias', 'checkbox', array('label' => 'Alergias'));
+        $builder->add('adiccionesTabaquismo', 'checkbox', array('label' => 'Adicciones/Tabaquismo'));
+        $builder->add('infectoContagiosas', 'checkbox', array('label' => 'Infectocontagiosas'));
+        $builder->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis'));
+        $builder->add('diabetes', 'checkbox', array('label' => 'Diabetes'));
+        $builder->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial'));
+        $builder->add('otros', 'textarea', array('label' => 'Otros'));
+    }
+    
+    public function getName()
+    {
+        return 'antecedenteFamiliarClinico';
+    }
+}

@@ -1,0 +1,16 @@
+<?php
+
+namespace Salita\PlanBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class EntregaPlanProcRespRepository extends EntityRepository
+{
+    public function encontrarTodosOrdenadosPorFecha($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM SalitaPlanBundle:EntregaPlanProcResp e WHERE e.idPlanProcResp=:id ORDER BY e.fecha ASC')
+            ->setParameter('id', $id)
+            ->getResult();
+    }
+}

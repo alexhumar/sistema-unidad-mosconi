@@ -1,0 +1,38 @@
+{% if consultas|length > 0 %}
+
+<div class="tituloSeccion">
+Consultas
+</div><br>
+{% for consulta in consultas %}
+<div class="caja1">
+<span class="aux"> Fecha y hora: </span> <span class="datos"> {{consulta.fecha|date("d/m/Y")}}, {{consulta.hora}} </span><br>
+<span class="aux"> Diagnotisco: </span> <span class="datos"> {{consulta.diagnostico}}</span><br>
+<span class="aux"> Anotaciones: </span> <span class="datos"> {% if consulta.otrasAnotaciones == null %} - {% else %} {{consulta.otrasAnotaciones}} {% endif %} </span><br>
+<span class="aux"> Médico: </span> <span class="datos"> {{consulta.nombreUsuario}} {{consulta.apellidoUsuario}} </span><br>
+</div>
+<br>
+<h1>____________________________________________________________________</h1>
+<br>
+{% endfor %}
+
+{% endif %}
+{% if paciente.sexo == '1' %}
+{% if estudios|length > 0 %}
+
+<div class="tituloSeccion">
+Estudios
+</div><br>
+{% for estudio in estudios %}
+<div class="caja1">
+<span class="aux"> Fecha y hora: </span> <span class="datos"> {{estudio.fecha|date("d/m/Y")}}, {{estudio.hora}} </span><br>
+<span class="aux"> Método: </span> <span class="datos"> {{estudio.metodoEstudio}}</span><br>
+<span class="aux"> Resultado: </span> <span class="datos"> {{estudio.resultado}} </span><br>
+<span class="aux"> Médico: </span> <span class="datos"> {{estudio.nombreUsuario}} {{estudio.apellidoUsuario}} </span><br>
+</div>
+<br>
+<h1>____________________________________________________________________</h1>
+<br>
+{% endfor %}
+
+{% endif %}
+{% endif %}

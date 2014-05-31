@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/taller/svn/!svn/ver/5/src/Salita/TurnoBundle/Resources/views/Listados
+END
+turnosDelDiaEspecialidad.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/taller/svn/!svn/ver/5/src/Salita/TurnoBundle/Resources/views/Listados/turnosDelDiaEspecialidad.html.twig
+END
+turnosDelDia.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/taller/svn/!svn/ver/5/src/Salita/TurnoBundle/Resources/views/Listados/turnosDelDia.html.twig
+END

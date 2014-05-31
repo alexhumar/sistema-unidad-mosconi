@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Resources/views/PaisForm
+END
+new.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Resources/views/PaisForm/new.html.twig
+END
+listado.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/taller/svn/!svn/ver/29/src/Salita/OtrosBundle/Resources/views/PaisForm/listado.html.twig
+END
+mensaje.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/taller/svn/!svn/ver/1/src/Salita/OtrosBundle/Resources/views/PaisForm/mensaje.html.twig
+END

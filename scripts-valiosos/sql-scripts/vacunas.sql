@@ -1,0 +1,16 @@
+INSERT INTO vacuna (nombre) VALUES ('BCG');
+INSERT INTO vacuna (nombre) VALUES ('Hepatitis B');
+INSERT INTO vacuna (nombre) VALUES ('Prevenar');
+INSERT INTO vacuna (nombre) VALUES ('DPT-HB-Hib');
+INSERT INTO vacuna (nombre) VALUES ('DPT-Hib');
+INSERT INTO vacuna (nombre) VALUES ('OPV');
+INSERT INTO vacuna (nombre) VALUES ('SRP');
+INSERT INTO vacuna (nombre) VALUES ('Gripe');
+INSERT INTO vacuna (nombre) VALUES ('HA');
+INSERT INTO vacuna (nombre) VALUES ('DPT');
+INSERT INTO vacuna (nombre) VALUES ('dTap');
+INSERT INTO vacuna (nombre) VALUES ('dT');
+INSERT INTO vacuna (nombre) VALUES ('VPH');
+INSERT INTO vacuna (nombre) VALUES ('SR');
+INSERT INTO vacuna (nombre) VALUES ('FA');
+INSERT INTO vacuna (nombre) VALUES ('FHA');

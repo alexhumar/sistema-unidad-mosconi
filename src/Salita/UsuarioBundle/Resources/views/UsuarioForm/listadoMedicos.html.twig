@@ -1,0 +1,16 @@
+{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+
+{% block contenido %}
+<h1 id="tituloCentro">Médicos</h1>
+<table id="tabla">
+<thead><tr><th>Nombre y Apellido</th><th></th><th></th></tr></thead>
+<tbody>
+{% for usuario in usuarios %} 
+        <tr><td>{{usuario.nombre}} {{usuario.apellido}}</td>
+        <td><a href="{{ path('modif_usuario', { 'id': usuario.id }) }}">Editar</a></td>
+        <td><a href="{{ path('del_medico', { 'id': usuario.id }) }}">Dar de baja</a></td></tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
+

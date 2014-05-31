@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block contenido %}
+<form action="{{ path('elegir_rol') }}" method="post" {{ form_enctype(form) }}>
+    Ingresar al sistema como:
+
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+
+{% endblock %}

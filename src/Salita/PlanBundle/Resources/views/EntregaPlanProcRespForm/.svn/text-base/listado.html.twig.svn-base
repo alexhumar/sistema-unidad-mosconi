@@ -1,0 +1,3 @@
+{% for entregaplanprocresp in entregaplanprocresps %}
+  {{entregaplanprocresp.fecha}}
+{% endfor %}

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/taller/svn/!svn/ver/21/src/Salita/PacienteBundle/Entity
+END
+Estudio.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/Estudio.php
+END
+Visita.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/Visita.php
+END
+AntecedentePersonalObstetrico.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/AntecedentePersonalObstetrico.php
+END
+AntecedenteFamiliarObstetrico.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Entity/AntecedenteFamiliarObstetrico.php
+END
+AntecedentePersonal.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Entity/AntecedentePersonal.php
+END
+AntecedenteFamiliar.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/taller/svn/!svn/ver/16/src/Salita/PacienteBundle/Entity/AntecedenteFamiliar.php
+END
+AntecedentePersonalClinico.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/AntecedentePersonalClinico.php
+END
+AntecedenteFamiliarClinico.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/AntecedenteFamiliarClinico.php
+END
+Consulta.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/taller/svn/!svn/ver/1/src/Salita/PacienteBundle/Entity/Consulta.php
+END
+Paciente.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/taller/svn/!svn/ver/21/src/Salita/PacienteBundle/Entity/Paciente.php
+END

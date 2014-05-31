@@ -1,0 +1,7 @@
+parameters:
+#    salita_paciente.example.class: Salita\PacienteBundle\Example
+
+services:
+#    salita_paciente.example:
+#        class: %salita_paciente.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

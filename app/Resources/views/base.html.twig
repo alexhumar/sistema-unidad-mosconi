@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %} Unidad Mosconi {% endblock %}</title>
+        {% block stylesheets %}
+         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+         <link href="{{ asset('css/miEstilo.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div id="header-wrapper">
+          <div id="header">
+              <div id="logo">
+                  <h1><a href="#">Unidad Mosconi</a></h1>
+                      <p>Facultad de informatica UNLP</a></p>
+              </div>
+
+              {% block menu %}
+                <div id="menu">
+                  <ul>
+                    {% if rol == 'ROLE_ADMINISTRADOR' %}
+                      {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
+                    {% endif %}    
+
+                    {% if rol == 'ROLE_SECRETARIA' %}
+                      {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig' %}
+                    {% endif %}  
+
+                    {% if rol == 'ROLE_MEDICO' %}
+                      {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
+                    {% endif %}       
+                  </ul>
+                </div>
+              {% endblock %}
+          </div>
+        </div>
+        
+        
+        <div id="contenido">
+        <br>
+        {% block contenido %}    
+        {% endblock %}
+        <br>
+        </div>
+        
+        <div id="footer">
+	     <p>Unidad Mosconi</p>
+        </div>
+    </body>
+</html>

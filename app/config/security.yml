@@ -1,0 +1,77 @@
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                login_path: /login
+                always_use_default_target_path: true
+                default_target_path: /elegirRol/usuario
+                csrf_provider: form.csrf_provider
+            logout:
+                target: /login
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_ADMIN ] }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/menu/administrador, role: ROLE_ADMINISTRADOR }
+        - { path: ^/menu/secretaria, role: ROLE_SECRETARIA }
+        - { path: ^/menu/medico, role: ROLE_MEDICO }
+        - { path: ^/modificacion/antecedentePersonalClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/modificacion/antecedentePersonalObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/modificacion/antecedenteFamiliarClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }     
+        - { path: ^/modificacion/antecedenteFamiliarObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/modificacion/usuario/.*, role: ROLE_ADMINISTRADOR }
+        - { path: ^/listadoEspecialidad/turnos, role: ROLE_MEDICO }
+        - { path: ^/listado/turnos, roles: [ ROLE_ADMINISTRADOR, ROLE_SECRETARIA] }
+        - { path: ^/generarResumenHC/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/change-password, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/modificacion/datosfiliatorios, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/elegirRol/usuario, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/del/secretaria/.*, role: ROLE_ADMINISTRADOR }
+        - { path: ^/del/medico/.*, role: ROLE_ADMINISTRADOR }
+        - { path: ^/generarHC/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/modificacion/usuariopropio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/alta/turno, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/alta/metodoEstudio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/alta/estudio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/alta/consulta, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/alta/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/asignacion/rol, role: ROLE_ADMINISTRADOR }
+        - { path: ^/alta/barrio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/alta/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/listado/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/alta/metodoanticonceptivo, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/alta/planprocresp, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/deshabilitacion/planprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/habilitacion/planprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/alta/entregaplanprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/asignacion/especialidad, role: ROLE_ADMINISTRADOR }
+        - { path: ^/busqueda/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/seleccion/vacuna/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/busqueda/vacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/busqueda/diagnostico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/seleccion/diagnostico/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/menu/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/listado/entregaplanprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/listado/planprocresp, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/listadoDes/planprocresp, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: ^/listado/usuario, role: ROLE_ADMINISTRADOR }
+        - { path: ^/listado/secretaria, role: ROLE_ADMINISTRADOR }
+        - { path: ^/listado/medico, role: ROLE_ADMINISTRADOR }
+        - { path: ^/seleccion/fechorturno, role: ROLE_MEDICO }
+        - { path: ^/alta/turnofuturo, role: ROLE_MEDICO }
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN

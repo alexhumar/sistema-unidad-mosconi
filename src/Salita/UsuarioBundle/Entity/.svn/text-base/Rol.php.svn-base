@@ -1,0 +1,90 @@
+<?php
+
+namespace Salita\UsuarioBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="rol")
+ */
+
+class Rol
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=15, unique="true", nullable="false")
+     */
+     protected $nombre; 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Salita\UsuarioBundle\Entity\Usuario", mappedBy="rol")
+     */
+    protected $usuarios;
+
+    public function __construct() {
+        $this->usuarios = new ArrayCollection();
+    }
+
+    /**
+     * Get idRol
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Add usuarios
+     *
+     * @param Salita\UsuarioBundle\Entity\Usuario $usuarios
+     */
+    public function addUsuario(\Salita\UsuarioBundle\Entity\Usuario $usuarios)
+    {
+        $this->usuarios[] = $usuarios;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+}

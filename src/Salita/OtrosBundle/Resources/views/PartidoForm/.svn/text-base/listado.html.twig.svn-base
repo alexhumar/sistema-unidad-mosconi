@@ -1,0 +1,5 @@
+{% for partido in partidos %}
+  {{partido.nombre}}<a href="{{ path('modif_partido', { 'id': partido.id }) }}">
+      Editar
+  </a>
+{% endfor %}

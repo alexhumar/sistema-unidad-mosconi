@@ -1,0 +1,29 @@
+{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+
+{% block menu %}
+    <div id="menu">
+        <ul>
+            {% if rol == 'ROLE_ADMINISTRADOR' %}
+                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
+            {% endif %}    
+
+            {% if rol == 'ROLE_SECRETARIA' %}
+                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig' %}
+            {% endif %}  
+
+            {% if rol == 'ROLE_MEDICO' %}
+                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
+            {% endif %}       
+        </ul>
+    </div>
+{% endblock %}
+
+{% block contenido %}
+<form action="{{ path('modif_usuario_propio') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+
+<a href="{{path('fos_user_change_password')}}">Cambiar clave</a>
+{% endblock %}

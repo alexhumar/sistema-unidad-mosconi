@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block contenido %}
+<h1 id="tituloCentro">Turnos del día</h1>
+{% if turnos|length > 0 %}
+<table id="tabla">
+<thead><tr><th>Nombre y Apellido</th><th>Motivo</th><th>Especialidad</th><th>Profesional</th><th>Fecha y hora</th></tr></thead>
+<tbody>
+{% for turno in turnos %}
+    <div class="turno">
+        <tr><td>{{turno.nombre}} {{turno.apellido}}</td><td>{{turno.motivo}}</td><td>{{turno.especialidad}}</td><td>{{turno.medico}}</td><td>{{turno.fecha}} - {{turno.hora}}</td>
+        {% if rol == 'ROLE_ADMINISTRADOR' %}
+            <td><a href="{{path('atencion_turno', { 'idTurno': turno.id }) }}">Atender</a></td>
+        {% endif %} 
+        </tr>
+    </div>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<h4 id="nota">-No hay turnos-</h4>
+{% endif %}
+{% endblock %}

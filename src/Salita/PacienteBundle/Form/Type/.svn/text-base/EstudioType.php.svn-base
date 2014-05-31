@@ -1,0 +1,26 @@
+<?php
+
+namespace Salita\PacienteBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class EstudioType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        
+        $builder->add('resultado', 'textarea', array('label' => 'Resultado'));
+        $builder->add('nroProtocolo', 'textarea', array('label' => 'Nro de Protocolo'));
+        #$builder->add('metodoEstudio', 'checkbox', array('label' => 'Metodo de estudio'));
+        $builder->add('metodoEstudio', 'entity', array('class' => 'SalitaOtrosBundle:MetodoEstudio',
+    'query_builder' => function($repository) { return $repository->createQueryBuilder('m')->orderBy('m.id', 'ASC'); },
+    'property' => 'nombre', 'label' => "Metodo de estudio"));
+
+    }
+    
+    public function getName()
+    {
+        return 'antecedenteFamiliarClinico';
+    }
+}

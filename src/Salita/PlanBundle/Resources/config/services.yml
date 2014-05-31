@@ -1,0 +1,7 @@
+parameters:
+#    salita_plan.example.class: Salita\PlanBundle\Example
+
+services:
+#    salita_plan.example:
+#        class: %salita_plan.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

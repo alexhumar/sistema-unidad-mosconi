@@ -1,0 +1,27 @@
+SalitaTurnoBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SalitaTurnoBundle:Default:index }
+
+listado_turnos:
+    pattern: /listado/turnos
+    defaults: { _controller: SalitaTurnoBundle:ListadoTurnos:listar }
+
+listado_turnos_especialidad:
+    pattern: /listadoEspecialidad/turnos
+    defaults: { _controller: SalitaTurnoBundle:ListadoTurnos:listarEspecialidad }
+
+alta_turno:
+    pattern: /alta/turno
+    defaults: { _controller: SalitaTurnoBundle:Turno:new }
+
+seleccion_fecHor_futuro:
+    pattern: /seleccion/fechorturno
+    defaults: { _controller: SalitaTurnoBundle:Turno:seleccionarFecHor }
+
+alta_turno_futuro:
+    pattern: /alta/turnofuturo
+    defaults: { _controller: SalitaTurnoBundle:Turno:newFuturo }
+
+atencion_turno:
+    pattern: /atencion/turno/{idTurno}
+    defaults: { _controller: SalitaTurnoBundle:Turno:atencion }

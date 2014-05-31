@@ -1,0 +1,8 @@
+{% for planprocresp in planes %}
+  {{planprocresp.id}}<a href="{{ path('habilitacion_planprocresp', { 'id': planprocresp.id }) }}">
+      Deshabilitar
+  </a>
+  <a href="{{ path('alta_entregaplanprocresp', { 'id': planprocresp.id }) }}">
+      Registrar entrega
+  </a>
+{% endfor %}

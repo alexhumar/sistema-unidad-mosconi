@@ -1,0 +1,27 @@
+<?php
+
+namespace Salita\PacienteBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+
+class AntecedentePersonalType extends AbstractType
+{
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+
+        $builder->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis'));
+        $builder->add('diabetes', 'checkbox', array('label' => 'Diabetes'));
+        $builder->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial'));
+        $builder->add('drogas', 'checkbox', array('label' => 'Drogas'));
+        $builder->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo'));
+        $builder->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo'));
+        $builder->add('otros', 'textarea', array('label' => 'Otros'));
+    }
+    
+    public function getName()
+    {
+        return 'antecedentePersonal';
+    }
+
+}
