@@ -401,7 +401,7 @@ class UsuarioFormController extends Controller
    			}
    			$usuario = $this->getRepoUserFromSelectedSessionUser($session);
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
-			if ($this->assignRoleToUser($usuario, $rolElegido))
+			if ($this->assignRoleToUser($usuario, $rolElegido, $session))
 			{
 				/*Si se asigno exitosamente el rol y el rol elejido fue el de medico, debe asignarse la especialidad*/
 				if($rolElegido->getCodigo() == 'ROLE_MEDICO')
