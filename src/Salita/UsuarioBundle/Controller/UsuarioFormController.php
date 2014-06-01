@@ -31,19 +31,9 @@ class UsuarioFormController extends Controller
         return $em->getRepository('SalitaUsuarioBundle:Usuario');
 	}
 	
-    private function getRepoUserFromSessionUser($session)
+    private function getRepoUserFromSessionUser($usuario)
 	{
 		$repoUsuarios = $this->getUsersRepo();
-		$usuario = $session->get('usuario');
-		$usuario = $repoUsuarios->findOneById($usuario->getId());
-		return $usuario;
-	}
-	
-	/*Ojo que este metodo es casi igual al de arriba.*/
-	private function getRepoUserFromSelectedSessionUser($session)
-	{
-		$repoUsuarios = $this->getUsersRepo();
-		$usuario = $session->get('usuarioSeleccionado');
 		$usuario = $repoUsuarios->findOneById($usuario->getId());
 		return $usuario;
 	}
@@ -87,9 +77,12 @@ class UsuarioFormController extends Controller
 						else
 						{
 							$usuario->setEnabled(true);
+							$usuario->agregarRol($rol);
 							$em = $this->getEntityManager();
 							$em->persist($usuario);
 							$em->flush();
+							/*Se "refresca" el usuario almacenado en la sesion*/
+							$session->set('usuarioSeleccionado',$usuario);
 							$exito = true;
 							$mensaje = 'El rol se asigno exitosamente al usuario';
 						}
@@ -195,7 +188,7 @@ class UsuarioFormController extends Controller
     {
         $session = $request->getSession();
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-    	$usuario = $this->getRepoUserFromSessionUser($session);
+    	$usuario = $this->getRepoUserFromSessionUser($session->get('usuario'));
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
     				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
@@ -208,13 +201,14 @@ class UsuarioFormController extends Controller
     {
         $em = $this->getEntityManager();
         $session = $request->getSession();
-    	$usuario = $this->getRepoUserFromSessionUser($session);
+    	$usuario = $this->getRepoUserFromSessionUser($session->get('usuario'));
         $form = $this->createForm(new UsuarioType(), $usuario);
     	$form->handleRequest($request);
     	if ($form->isValid())
     	{
             $em = $this->getEntityManager();
             $em->flush();
+            /*Se "refresca" el usuario almacenado en la sesion*/
     	    $session->set('usuario', $usuario);
             return $this->render(
     				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
@@ -291,81 +285,6 @@ class UsuarioFormController extends Controller
         $em->flush();
         return $this->redirect($this->generateUrl('listado_administrador')); 
     }
-
-/*    public function asignarRolAction(Request $request)
-    {
-        $session = $request->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
-        $repoRoles = $em->getRepository('SalitaUsuarioBundle:Rol');
-        $roles = $repoRoles->findAll();
-        $rolTemp = new RolTemporal();  
-        $form = $this->createForm(new RolType($roles), $rolTemp);
-        if ($request->getMethod() == 'POST')
-        {
-            $form->bindRequest($request);
-            if ($form->isValid())
-            {
-                $rolElegido = $repoRoles->findOneByCodigo($rolTemp->getNombre());
-                $usuario = $session->get('usuarioSeleccionado');
-                if($usuario->hasRole($rolElegido->getCodigo()))
-                {
-                    $mensaje = 'El usuario ya tiene el rol que ha elegido';
-                }
-                else
-                {
-                    if(($usuario->hasRole('ROLE_SECRETARIA')) && ($rolElegido->getCodigo() == 'ROLE_ADMINISTRADOR'))
-                    {
-                        $mensaje = 'Un usuario con rol secretaria no puede ser administrador';
-                    }
-                    else
-                    {
-                        if(($usuario->hasRole('ROLE_ADMINISTRADOR')) && ($rolElegido->getCodigo() == 'ROLE_SECRETARIA'))
-                        {
-                            $mensaje = 'Un usuario con rol administrador no puede ser secretaria';
-                        }
-                        else
-                        {
-                            if(($usuario->hasRole('ROLE_MEDICO')) && ($rolElegido->getCodigo() == 'ROLE_SECRETARIA'))
-                            {
-                                $mensaje = 'Un usuario con rol medico no puede ser secretaria'; 
-                            }
-                            else
-                            {
-                                if(($usuario->hasRole('ROLE_SECRETARIA')) && ($rolElegido->getCodigo() == 'ROLE_MEDICO'))
-                                {
-                                    $mensaje = 'Un usuario con rol secretaria no puede ser medico';
-                                }
-                                else
-                                {
-                                    $mensaje = 'El rol se asigno exitosamente al usuario';
-                                    $usuario->setEnabled(true);
-                                    $em->persist($usuario);
-                                    $em->flush();
-                                    if($rolElegido->getCodigo() == 'ROLE_MEDICO')
-                                    {
-                                        return $this->redirect($this->generateUrl('asignacion_especialidad')); 
-                                    }
-                                }
-                            }
-                        }
-                    }    
-                }   
-
-                return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-            ));
-            }
-            else 
-            {
-                $mensaje = 'Se produjo un error al intentar asignar un rol al usuario';
-                return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-            ));
-            }            
-        }
-        else
-        {
-            return $this->render('SalitaUsuarioBundle:UsuarioForm:asignacionRol.html.twig', array('form' => $form->createView(),));
-        }
-    }*/
     
     /*Asignacion de rol a usuario (fase GET)*/
     public function asignarRolAction(Request $request)
@@ -394,12 +313,11 @@ class UsuarioFormController extends Controller
    		{
    			$session = $request->getSession();
    			$rolElegido = $repoRoles->findOneByCodigo($rolTemp->getNombre());
-   			//$usuario = $session->get('usuarioSeleccionado');
    			if (!$session->has('usuarioSeleccionado')) 
    			{
    				return $this->redirect($this->generateUrl('listado_usuario'));
    			}
-   			$usuario = $this->getRepoUserFromSelectedSessionUser($session);
+   			$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
 			if ($this->assignRoleToUser($usuario, $rolElegido, $session))
 			{
@@ -425,52 +343,7 @@ class UsuarioFormController extends Controller
    		}
     }
     
-    /*public function asignarEspecialidadAction(Request $request)
-    {
-        $session = $request->getSession();
-        $em = $this->getEntityManager();
-        if($session->has('usuarioSeleccionado'))
-        {
-            $usuario = $session->get('usuarioSeleccionado');
-        }
-        else
-        {
-            return $this->redirect($this->generateUrl('listado_usuario'));
-        }
-        if ($usuario->hasRole('ROLE_MEDICO'))
-        {
-            $form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
-            if ($request->getMethod() == 'POST')
-            {
-                $form->bindRequest($request);
-                if ($form->isValid())
-                {
-                    $em->persist($usuario);
-                    $em->flush();
-                    $session->remove('usuarioSeleccionado');
-                    $mensaje = 'La especialidad fue asignada exitosamente al medico';
-                    return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-                    ));
-                }
-                else 
-                {
-                    $mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
-                    return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-                    ));
-                }            
-            }
-            else
-            {
-                return $this->render('SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig', array('form' => $form->createView(),));
-            }
-        }
-        else
-        {
-            $mensaje = 'El usuario no es un medico';
-            return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-            ));           
-        }
-    }*/
+ 
     
     /*Asignacion de especialidad a usuario medico (fase GET)*/
     public function asignarEspecialidadAction(Request $request)
@@ -478,7 +351,7 @@ class UsuarioFormController extends Controller
     	$session = $request->getSession();
     	if($session->has('usuarioSeleccionado'))
     	{
-    		$usuario = $session->get('usuarioSeleccionado');
+    		$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
     	}
     	else
     	{
@@ -509,7 +382,7 @@ class UsuarioFormController extends Controller
     	$em = $this->getEntityManager();
     	if($session->has('usuarioSeleccionado'))
     	{
-    		$usuario = $session->get('usuarioSeleccionado');
+    		$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
     	}
     	else
     	{
