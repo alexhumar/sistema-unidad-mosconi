@@ -460,7 +460,6 @@ class UsuarioFormController extends Controller
     public function asignarEspecialidadAction(Request $request)
     {
     	$session = $request->getSession();
-    	$em = $this->getEntityManager();
     	if($session->has('usuarioSeleccionado'))
     	{
     		$usuario = $session->get('usuarioSeleccionado');
@@ -472,35 +471,18 @@ class UsuarioFormController extends Controller
     	if ($usuario->hasRole('ROLE_MEDICO'))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
-    		if ($request->getMethod() == 'POST')
-    		{
-    			$form->bindRequest($request);
-    			if ($form->isValid())
-    			{
-    				$em->persist($usuario);
-    				$em->flush();
-    				$session->remove('usuarioSeleccionado');
-    				$mensaje = 'La especialidad fue asignada exitosamente al medico';
-    				return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    				));
-    			}
-    			else
-    			{
-    				$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
-    				return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    				));
-    			}
-    		}
-    		else
-    		{
-    			return $this->render('SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig', array('form' => $form->createView(),));
-    		}
+   			return $this->render(
+   						'SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig',
+   						array('form' => $form->createView())
+   					);
     	}
     	else
     	{
     		$mensaje = 'El usuario no es un medico';
-    		return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    		));
+    		return $this->render(
+    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    					array('mensaje' => $mensaje)
+    				);
     	}
     }
     
@@ -520,28 +502,21 @@ class UsuarioFormController extends Controller
     	if ($usuario->hasRole('ROLE_MEDICO'))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
-    		if ($request->getMethod() == 'POST')
+    		$form->bindRequest($request);
+    		if ($form->isValid())
     		{
-    			$form->bindRequest($request);
-    			if ($form->isValid())
-    			{
-    				$em->persist($usuario);
-    				$em->flush();
-    				$session->remove('usuarioSeleccionado');
-    				$mensaje = 'La especialidad fue asignada exitosamente al medico';
-    				return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    				));
-    			}
-    			else
-    			{
-    				$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
-    				return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    				));
-    			}
+    			$em->persist($usuario);
+    			$em->flush();
+    			$session->remove('usuarioSeleccionado');
+    			$mensaje = 'La especialidad fue asignada exitosamente al medico';
+    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
+    			));
     		}
     		else
     		{
-    			return $this->render('SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig', array('form' => $form->createView(),));
+    			$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
+    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
+    			));
     		}
     	}
     	else
