@@ -116,16 +116,16 @@ class Rol
     
     public function isRoleAdministrador()
     {
-    	return $this->getCodigo() == 'ROLE_ADMINISTRADOR';
+    	return $this->getCodigo() == "ROLE_ADMINISTRADOR";
     }
     
     public function isRoleMedico()
     {
-    	return $this->getCodigo() == 'ROLE_MEDICO';
+    	return $this->getCodigo() == "ROLE_MEDICO";
     }
     
     public function isRoleSecretaria()
     {
-    	return $this->getCodigo() == 'ROLE_SECRETARIA';
+    	return $this->getCodigo() == "ROLE_SECRETARIA";
     }
 }
