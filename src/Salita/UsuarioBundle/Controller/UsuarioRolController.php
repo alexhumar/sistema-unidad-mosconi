@@ -24,7 +24,7 @@ class UsuarioRolController extends Controller
        $usuario = $repoUsuarios->findOneById($usuario->getId());
        $session = $request->getSession();
        $session->set('usuario', $usuario);
-       if(($usuario->hasRole('ROLE_ADMINISTRADOR')) and ($usuario->hasRole('ROLE_MEDICO')))
+       if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
            /*Prepara el formulario para la seleccion de rol (O rol medico o rol administrador)*/
            $roles = $repoRoles->rolesAdministradorYMedico();

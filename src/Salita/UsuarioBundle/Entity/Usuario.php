@@ -263,7 +263,7 @@ class Usuario extends BaseUser
     
     public function isAdministrador()
     {
-    	return $this->hasRole("'ROLE_ADMINISTRADOR'");
+    	return (($this->hasRole("'ROLE_ADMINISTRADOR'")) or ($this->hasRole("'ROLE_ADMIN'")));
     }
     
     public function isSecretaria()
