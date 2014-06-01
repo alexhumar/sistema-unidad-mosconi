@@ -1,5 +1,5 @@
 SalitaUsuarioBundle_homepage:
-    pattern:  /hello/{name}
+    pattern: /hello/{name}
     defaults: { _controller: SalitaUsuarioBundle:Default:index }
 
 elegir_rol:
@@ -35,30 +35,60 @@ modif_usuario_propio_process:
 modif_usuario:
     pattern:  /modificacion/usuario/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modif }
+    methods: [GET]
+    requirements:
+        id: \d+
+    
+modif_usuario_process:
+    pattern:  /modificacion/usuario/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifProcess }
+    methods: [POST]
+    requirements:
+        id: \d+
 
 del_secretaria:
     pattern:  /del/secretaria/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delSecretaria }
+    requirements:
+        id: \d+
 
 del_medico:
     pattern:  /del/medico/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delMedico }
+    requirements:
+        id: \d+
 
 del_administrador:
     pattern:  /del/administrador/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delAdministrador }
+    requirements:
+        id: \d+
 
 seleccion_usuario:
     pattern:  /seleccion/usuario/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:seleccionar }
+    requirements:
+        id: \d+
 
 asignacion_rol:
     pattern:  /asignacion/rol
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
+    methods: [GET]
+    
+asignacion_rol_process:
+    pattern:  /asignacion/rol
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRolProcess }
+    methods: [POST]
 
 asignacion_especialidad:
     pattern:  /asignacion/especialidad
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidad }
+    methods: [GET]
+    
+asignacion_especialidad_process:
+    pattern:  /asignacion/especialidad
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidadProcess }
+    methods: [POST]
 
 menu_secretaria:
     pattern: /menu/secretaria

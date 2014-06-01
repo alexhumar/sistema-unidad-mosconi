@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class RolType extends AbstractType
 {
-
     protected $roles;
 
     public function __construct($roles) {
@@ -26,12 +25,11 @@ class RolType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre','choice', array('choices' => $this->getRoles() ,'required'  => true,));
+        $builder->add('nombre','choice', array('choices' => $this->getRoles(),'required' => true));
     }
 
     public function getName()
     {
         return 'rolTemporal';
     }
-
 }
