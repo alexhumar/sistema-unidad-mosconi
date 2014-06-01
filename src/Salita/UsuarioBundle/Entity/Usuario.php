@@ -255,4 +255,19 @@ class Usuario extends BaseUser
         }
         unset ($this->rol[$idAux]);
     }
+    
+    public function isMedico()
+    {
+    	return $this->hasRole("'ROLE_MEDICO'");
+    }
+    
+    public function isAdministrador()
+    {
+    	return $this->hasRole("'ROLE_ADMINISTRADOR'");
+    }
+    
+    public function isSecretaria()
+    {
+    	return $this->hasRole("'ROLE_SECRETARIA'");
+    }
 }
