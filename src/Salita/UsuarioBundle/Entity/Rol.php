@@ -113,4 +113,19 @@ class Rol
     {
         return $this->getNombre();
     }
+    
+    public function isRoleAdministrador()
+    {
+    	return $this->getCodigo() == 'ROLE_ADMINISTRADOR';
+    }
+    
+    public function isRoleMedico()
+    {
+    	return $this->getCodigo() == 'ROLE_MEDICO';
+    }
+    
+    public function isRoleSecretaria()
+    {
+    	return $this->getCodigo() == 'ROLE_SECRETARIA';
+    }
 }

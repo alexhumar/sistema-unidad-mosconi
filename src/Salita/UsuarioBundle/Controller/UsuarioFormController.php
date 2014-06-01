@@ -53,25 +53,25 @@ class UsuarioFormController extends Controller
 		}
 		else
 		{
-			if(($usuario->isSecretaria()) && ($rol->getCodigo() == 'ROLE_ADMINISTRADOR'))
+			if(($usuario->isSecretaria()) && ($rol->isRoleAdministrador()))
 			{
 				$mensaje = 'Un usuario con rol secretaria no puede ser administrador';
 			}
 			else
 			{
-				if(($usuario->isAdministrador()) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+				if(($usuario->isAdministrador()) && ($rol->isRoleSecretaria()))
 				{
 					$mensaje = 'Un usuario con rol administrador no puede ser secretaria';
 				}
 				else
 				{
-					if(($usuario->isMedico()) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+					if(($usuario->isMedico()) && ($rol->isRoleSecretaria()))
 					{
 						$mensaje = 'Un usuario con rol medico no puede ser secretaria';
 					}
 					else
 					{
-						if(($usuario->isSecretaria()) && ($rol->getCodigo() == 'ROLE_MEDICO'))
+						if(($usuario->isSecretaria()) && ($rol->isRoleMedico()))
 						{
 							$mensaje = 'Un usuario con rol secretaria no puede ser medico';
 						}
