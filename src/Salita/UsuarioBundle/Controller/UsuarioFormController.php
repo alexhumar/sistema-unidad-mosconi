@@ -251,11 +251,11 @@ class UsuarioFormController extends Controller
         	throw $this->createNotFoundException("El usuario no existe");
         }
         /*Si el usuario solamente es medico, lo deshabilita*/
-        if(!$usuario->hasRole('ROLE_ADMINISTRADOR'))
+        if(!$usuario->isAdministrador())
         {
         	$usuario->setEnabled(false);
         }
-        $rol = $repoRoles->findOneByCodigo("'ROLE_MEDICO'");
+        $rol = $repoRoles->findOneByCodigo("ROLE_MEDICO");
         $usuario->quitarRol($rol);
         /*Guarda con esta linea de codigo...*/
         $em->persist($usuario);
@@ -274,11 +274,11 @@ class UsuarioFormController extends Controller
         	throw $this->createNotFoundException("El usuario no existe");
         }
         /*Si el usuario es solamente administrador*/
-        if(!$usuario->hasRole('ROLE_MEDICO'))
+        if(!$usuario->isMedico())
         {
             $usuario->setEnabled(false);
         }
-        $rol = $repoRoles->findOneByCodigo("'ROLE_ADMINISTRADOR'");
+        $rol = $repoRoles->findOneByCodigo("ROLE_ADMINISTRADOR");
         $usuario->quitarRol($rol);
         /*Guarda con esta linea de codigo...*/
         $em->persist($usuario);    
@@ -322,7 +322,7 @@ class UsuarioFormController extends Controller
 			if ($this->assignRoleToUser($usuario, $rolElegido, $session))
 			{
 				/*Si se asigno exitosamente el rol y el rol elejido fue el de medico, debe asignarse la especialidad*/
-				if($rolElegido->getCodigo() == 'ROLE_MEDICO')
+				if($rolElegido->getCodigo() == "ROLE_MEDICO")
 				{
 					return $this->redirect($this->generateUrl('asignacion_especialidad'));
 				}
@@ -357,7 +357,7 @@ class UsuarioFormController extends Controller
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	if ($usuario->hasRole("'ROLE_MEDICO'"))
+    	if ($usuario->isMedico())
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
    			return $this->render(
@@ -388,7 +388,7 @@ class UsuarioFormController extends Controller
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	if ($usuario->hasRole("'ROLE_MEDICO'"))
+    	if ($usuario->isMedico())
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
     		$form->handleRequest($request);
