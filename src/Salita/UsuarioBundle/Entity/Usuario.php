@@ -241,7 +241,8 @@ class Usuario extends BaseUser
 
     public function agregarRol($rol)
     {
-        $this->addRole("'".$rol->getCodigo()."'");
+        //$this->addRole("'".$rol->getCodigo()."'");
+    	$this->addRole($rol->getCodigo());
         $this->addRol($rol);
     }
 
@@ -258,16 +259,16 @@ class Usuario extends BaseUser
     
     public function isMedico()
     {
-    	return $this->hasRole("'ROLE_MEDICO'");
+    	return $this->hasRole("ROLE_MEDICO");
     }
     
     public function isAdministrador()
     {
-    	return (($this->hasRole("'ROLE_ADMINISTRADOR'")) or ($this->hasRole("'ROLE_ADMIN'")));
+    	return (($this->hasRole("ROLE_ADMINISTRADOR")) or ($this->hasRole("ROLE_ADMIN")));
     }
     
     public function isSecretaria()
     {
-    	return $this->hasRole("'ROLE_SECRETARIA'");
+    	return $this->hasRole("ROLE_SECRETARIA");
     }
 }
