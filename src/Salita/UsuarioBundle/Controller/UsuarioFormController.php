@@ -52,25 +52,25 @@ class UsuarioFormController extends Controller
 		}
 		else
 		{
-			if(($usuario->hasRole('ROLE_SECRETARIA')) && ($rol->getCodigo() == 'ROLE_ADMINISTRADOR'))
+			if(($usuario->hasRole("'ROLE_SECRETARIA'")) && ($rol->getCodigo() == 'ROLE_ADMINISTRADOR'))
 			{
 				$mensaje = 'Un usuario con rol secretaria no puede ser administrador';
 			}
 			else
 			{
-				if(($usuario->hasRole('ROLE_ADMINISTRADOR')) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+				if(($usuario->hasRole("'ROLE_ADMINISTRADOR'")) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
 				{
 					$mensaje = 'Un usuario con rol administrador no puede ser secretaria';
 				}
 				else
 				{
-					if(($usuario->hasRole('ROLE_MEDICO')) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+					if(($usuario->hasRole("'ROLE_MEDICO'")) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
 					{
 						$mensaje = 'Un usuario con rol medico no puede ser secretaria';
 					}
 					else
 					{
-						if(($usuario->hasRole('ROLE_SECRETARIA')) && ($rol->getCodigo() == 'ROLE_MEDICO'))
+						if(($usuario->hasRole("'ROLE_SECRETARIA'")) && ($rol->getCodigo() == 'ROLE_MEDICO'))
 						{
 							$mensaje = 'Un usuario con rol secretaria no puede ser medico';
 						}
@@ -388,7 +388,6 @@ class UsuarioFormController extends Controller
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	var_dump($usuario->getRolesUsuario());
     	if ($usuario->hasRole("'ROLE_MEDICO'"))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
