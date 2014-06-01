@@ -32,7 +32,7 @@ class UsuarioRolController extends Controller
            $form = $this->createForm(new RolType($roles), $rolTemp);
            if ($request->getMethod() == 'POST')
            {
-               $form->bindRequest($request);
+               $form->handleRequest($request);
                if ($form->isValid())
                {
                    $rolSeleccionado = $repoRoles->findOneByCodigo($rolTemp->getNombre());
