@@ -45,8 +45,6 @@ class UsuarioFormController extends Controller
 	{
 		$exito = false;
 		$mensaje = "";
-		echo ($rol->getCodigo() == 'ROLE_ADMINISTRADOR');
-		die;
 		if($usuario->hasRole($rol->getCodigo()))
 		{
 			$mensaje = 'El usuario ya tiene el rol que ha elegido';
