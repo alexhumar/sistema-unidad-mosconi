@@ -31,10 +31,19 @@ class UsuarioFormController extends Controller
         return $em->getRepository('SalitaUsuarioBundle:Usuario');
 	}
 	
-        private function getRepoUserFromSessionUser($session)
+    private function getRepoUserFromSessionUser($session)
 	{
 		$repoUsuarios = $this->getUsersRepo();
 		$usuario = $session->get('usuario');
+		$usuario = $repoUsuarios->findOneById($usuario->getId());
+		return $usuario;
+	}
+	
+	/*Ojo que este metodo es casi igual al de arriba.*/
+	private function getRepoUserFromSelectedSessionUser($session)
+	{
+		$repoUsuarios = $this->getUsersRepo();
+		$usuario = $session->get('usuarioSeleccionado');
 		$usuario = $repoUsuarios->findOneById($usuario->getId());
 		return $usuario;
 	}
@@ -383,7 +392,12 @@ class UsuarioFormController extends Controller
    		{
    			$session = $request->getSession();
    			$rolElegido = $repoRoles->findOneByCodigo($rolTemp->getNombre());
-   			$usuario = $session->get('usuarioSeleccionado');
+   			//$usuario = $session->get('usuarioSeleccionado');
+   			if (!$session->has('usuarioSeleccionado')) 
+   			{
+   				return $this->redirect($this->generateUrl('listado_usuario'));
+   			}
+   			$usuario = $this->getRepoUserFromSelectedSessionUser($session);
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
    			$mensaje = "";
 			if ($this->assignRoleToUser($usuario, $rolElegido, $mensaje))
@@ -542,6 +556,8 @@ class UsuarioFormController extends Controller
         {
         	throw $this->createNotFoundException("El usuario no existe");
         }
+        /*Usuario seleccionado contiene el usuario al cual se le asignara un rol (y posiblemente especialidad).
+         * Se mantiene seteado en la variable de sesion mientras dura el proceso de asignacion de rol.*/
         $session->set('usuarioSeleccionado', $usuario);
         return $this->redirect($this->generateUrl('asignacion_rol'));
     }
