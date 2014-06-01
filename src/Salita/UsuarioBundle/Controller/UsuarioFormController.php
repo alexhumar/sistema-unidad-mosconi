@@ -502,28 +502,34 @@ class UsuarioFormController extends Controller
     	if ($usuario->hasRole('ROLE_MEDICO'))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
-    		$form->bindRequest($request);
+    		$form->handleRequest($request);
     		if ($form->isValid())
     		{
     			$em->persist($usuario);
     			$em->flush();
     			$session->remove('usuarioSeleccionado');
     			$mensaje = 'La especialidad fue asignada exitosamente al medico';
-    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    			));
+    			return $this->render(
+    						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    						array('mensaje' => $mensaje)
+    					);
     		}
     		else
     		{
     			$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
-    			return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    			));
+    			return $this->render(
+    						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    						array('mensaje' => $mensaje)
+    					);
     		}
     	}
     	else
     	{
     		$mensaje = 'El usuario no es un medico';
-    		return $this->render('SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig', array('mensaje' => $mensaje,
-    		));
+    		return $this->render(
+    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
+    					array('mensaje' => $mensaje)
+    				);
     	}
     }
 
