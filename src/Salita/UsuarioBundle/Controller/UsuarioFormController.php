@@ -45,10 +45,6 @@ class UsuarioFormController extends Controller
 	{
 		$exito = false;
 		$mensaje = "";
-		echo(var_dump($rol->getCodigo()));
-        echo(var_dump($usuario->isMedico()));
-        echo(var_dump($usuario->isAdministrador()));
-        echo(var_dump($usuario->isSecretaria()));
 		die;
 		if($usuario->hasRole($rol->getCodigo()))
 		{
