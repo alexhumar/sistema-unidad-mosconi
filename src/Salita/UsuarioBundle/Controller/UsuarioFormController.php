@@ -45,6 +45,7 @@ class UsuarioFormController extends Controller
 	{
 		$exito = false;
 		$mensaje = "";
+		echo ($rol->getCodigo() == 'ROLE_ADMINISTRADOR');
 		die;
 		if($usuario->hasRole($rol->getCodigo()))
 		{
@@ -52,25 +53,25 @@ class UsuarioFormController extends Controller
 		}
 		else
 		{
-			if(($usuario->hasRole("'ROLE_SECRETARIA'")) && ($rol->getCodigo() == 'ROLE_ADMINISTRADOR'))
+			if(($usuario->isSecretaria()) && ($rol->getCodigo() == 'ROLE_ADMINISTRADOR'))
 			{
 				$mensaje = 'Un usuario con rol secretaria no puede ser administrador';
 			}
 			else
 			{
-				if(($usuario->hasRole("'ROLE_ADMINISTRADOR'")) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+				if(($usuario->isAdministrador()) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
 				{
 					$mensaje = 'Un usuario con rol administrador no puede ser secretaria';
 				}
 				else
 				{
-					if(($usuario->hasRole("'ROLE_MEDICO'")) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
+					if(($usuario->isMedico()) && ($rol->getCodigo() == 'ROLE_SECRETARIA'))
 					{
 						$mensaje = 'Un usuario con rol medico no puede ser secretaria';
 					}
 					else
 					{
-						if(($usuario->hasRole("'ROLE_SECRETARIA'")) && ($rol->getCodigo() == 'ROLE_MEDICO'))
+						if(($usuario->isSecretaria()) && ($rol->getCodigo() == 'ROLE_MEDICO'))
 						{
 							$mensaje = 'Un usuario con rol secretaria no puede ser medico';
 						}
