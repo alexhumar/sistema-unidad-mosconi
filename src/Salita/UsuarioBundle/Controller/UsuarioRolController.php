@@ -63,7 +63,7 @@ class UsuarioRolController extends Controller
        }
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
-           case 'ROLE_MEDICO': $session->set('especialidad', $this->usuario->getEspecialidad());
+           case 'ROLE_MEDICO': $session->set('especialidad', $usuario->getEspecialidad());
                                return $this->redirect($this->generateUrl('menu_medico'));
                                break;
            case 'ROLE_SECRETARIA': return $this->redirect($this->generateUrl('menu_secretaria'));
