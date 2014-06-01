@@ -49,11 +49,12 @@ class UsuarioFormController extends Controller
 	}
 	
 	/*Esta funcion encapsula la logica de negocio relacionada a la asignacion de rol a un usuario.
-	 * Retona en un boolean si la operacion fue exitosa o no, y devuelve en el parametro "mensaje"
-	 * el string especificando el resultado exacto de la operacion.*/
-	private function assignRoleToUser($usuario, $rol, $mensaje)
+	 * Retona en un boolean si la operacion fue exitosa o no, y almacena en la sesion el string especificando 
+	 * el resultado exacto de la operacion.*/
+	private function assignRoleToUser($usuario, $rol, $session)
 	{
 		$exito = false;
+		$mensaje = "";
 		
 		if($usuario->hasRole($rol->getCodigo()))
 		{
@@ -96,6 +97,7 @@ class UsuarioFormController extends Controller
 				}
 			}
 		}
+		$session->set('mensaje_asignacion_rol', $mensaje);
 		return $exito;
 	}
 
@@ -399,8 +401,7 @@ class UsuarioFormController extends Controller
    			}
    			$usuario = $this->getRepoUserFromSelectedSessionUser($session);
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
-   			$mensaje = "";
-			if ($this->assignRoleToUser($usuario, $rolElegido, $mensaje))
+			if ($this->assignRoleToUser($usuario, $rolElegido))
 			{
 				/*Si se asigno exitosamente el rol y el rol elejido fue el de medico, debe asignarse la especialidad*/
 				if($rolElegido->getCodigo() == 'ROLE_MEDICO')
@@ -408,6 +409,7 @@ class UsuarioFormController extends Controller
 					return $this->redirect($this->generateUrl('asignacion_especialidad'));
 				}
 			}
+			$mensaje = $session->get('mensaje_asignacion_rol');
    			return $this->render(
    						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
    						array('mensaje' => $mensaje)
