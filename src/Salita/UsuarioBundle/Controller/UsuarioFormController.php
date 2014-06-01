@@ -357,7 +357,7 @@ class UsuarioFormController extends Controller
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	if ($usuario->hasRole('ROLE_MEDICO'))
+    	if ($usuario->hasRole("'ROLE_MEDICO'"))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
    			return $this->render(
@@ -388,7 +388,8 @@ class UsuarioFormController extends Controller
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	if ($usuario->hasRole('ROLE_MEDICO'))
+    	var_dump($usuario->getRolesUsuario());
+    	if ($usuario->hasRole("'ROLE_MEDICO'"))
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
     		$form->handleRequest($request);
