@@ -3,6 +3,7 @@
 namespace Salita\UsuarioBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Salita\UsuarioBundle\Entity\Rol;
 
 class UsuarioRepository extends EntityRepository
 {
@@ -18,38 +19,35 @@ class UsuarioRepository extends EntityRepository
 
     public function encontrarMedicosOrdenadosPorNombre()
     {
-        $codigoRol = 'ROLE_MEDICO';
         $sql = 'SELECT m 
                 FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
                 WHERE r.codigo = :codigo_rol ORDER BY m.nombre ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
-            ->setParameter('codigo_rol', $codigoRol)
+            ->setParameter('codigo_rol', Rol::getCodigoRolMedico())
             ->getResult();
     }
 
     public function encontrarSecretariasOrdenadasPorNombre()
     {
-        $codigoRol = 'ROLE_SECRETARIA';
         $sql = 'SELECT m 
                 FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
                 WHERE r.codigo = :codigo_rol 
                 ORDER BY m.nombre ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
-            ->setParameter('codigo_rol', $codigoRol)
+            ->setParameter('codigo_rol', Rol::getCodigoRolSecretaria())
             ->getResult();
     }
 
     public function encontrarAdministradoresOrdenadosPorNombre()
     {
-        $codigoRol = 'ROLE_ADMINISTRADOR';
         $sql = 'SELECT m 
                 FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
                 WHERE r.codigo = :codigo_rol ORDER BY m.nombre ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
-            ->setParameter('codigo_rol', $codigoRol)
+            ->setParameter('codigo_rol', Rol::getCodigoRolAdministrador())
             ->getResult();
     }
 }

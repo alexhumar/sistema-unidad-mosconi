@@ -103,11 +103,14 @@ asignacion_especialidad_process:
 menu_secretaria:
     pattern: /menu/secretaria
     defaults: { _controller: SalitaUsuarioBundle:Menu:secretaria }
+    methods: [GET]
 
 menu_medico:
     pattern: /menu/medico
     defaults: { _controller: SalitaUsuarioBundle:Menu:medico }
+    methods: [GET]
 
 menu_administrador:
     pattern: /menu/administrador
     defaults: { _controller: SalitaUsuarioBundle:Menu:administrador }
+    methods: [GET]
