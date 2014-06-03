@@ -1,7 +1,3 @@
-SalitaUsuarioBundle_homepage:
-    pattern: /hello/{name}
-    defaults: { _controller: SalitaUsuarioBundle:Default:index }
-
 elegir_rol:
     pattern: /elegirRol/usuario
     defaults: { _controller: SalitaUsuarioBundle:UsuarioRol:elegir }
