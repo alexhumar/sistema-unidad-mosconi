@@ -255,7 +255,7 @@ class UsuarioFormController extends Controller
         {
         	$usuario->setEnabled(false);
         }
-        $rol = $repoRoles->findOneByCodigo("ROLE_MEDICO");
+        $rol = $repoRoles->findOneByCodigo(Rol::getCodigoRolMedico());
         $usuario->quitarRol($rol);
         /*Guarda con esta linea de codigo...*/
         $em->persist($usuario);
@@ -278,7 +278,7 @@ class UsuarioFormController extends Controller
         {
             $usuario->setEnabled(false);
         }
-        $rol = $repoRoles->findOneByCodigo("ROLE_ADMINISTRADOR");
+        $rol = $repoRoles->findOneByCodigo(Rol::getCodigoRolAdministrador());
         $usuario->quitarRol($rol);
         /*Guarda con esta linea de codigo...*/
         $em->persist($usuario);    
@@ -322,7 +322,7 @@ class UsuarioFormController extends Controller
 			if ($this->assignRoleToUser($usuario, $rolElegido, $session))
 			{
 				/*Si se asigno exitosamente el rol y el rol elejido fue el de medico, debe asignarse la especialidad*/
-				if($rolElegido->getCodigo() == "ROLE_MEDICO")
+				if($rolElegido->getCodigo() == Rol::getCodigoRolMedico())
 				{
 					return $this->redirect($this->generateUrl('asignacion_especialidad'));
 				}
