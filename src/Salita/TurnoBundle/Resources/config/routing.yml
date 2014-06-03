@@ -1,27 +1,46 @@
-SalitaTurnoBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SalitaTurnoBundle:Default:index }
-
 listado_turnos:
     pattern: /listado/turnos
     defaults: { _controller: SalitaTurnoBundle:ListadoTurnos:listar }
+    methods: [GET]
 
 listado_turnos_especialidad:
     pattern: /listadoEspecialidad/turnos
     defaults: { _controller: SalitaTurnoBundle:ListadoTurnos:listarEspecialidad }
+    methods: [GET]
 
 alta_turno:
     pattern: /alta/turno
     defaults: { _controller: SalitaTurnoBundle:Turno:new }
+    methods: [GET]
+    
+alta_turno_process:
+    pattern: /alta/turno
+    defaults: { _controller: SalitaTurnoBundle:Turno:newProcess }
+    methods: [POST]
 
 seleccion_fecHor_futuro:
     pattern: /seleccion/fechorturno
     defaults: { _controller: SalitaTurnoBundle:Turno:seleccionarFecHor }
+    methods: [GET]
+    
+seleccion_fecHor_futuro_process:
+    pattern: /seleccion/fechorturno
+    defaults: { _controller: SalitaTurnoBundle:Turno:seleccionarFecHorProcess }
+    methods: [POST]
 
 alta_turno_futuro:
     pattern: /alta/turnofuturo
     defaults: { _controller: SalitaTurnoBundle:Turno:newFuturo }
+    methods: [GET]
+    
+alta_turno_futuro_process:
+    pattern: /alta/turnofuturo
+    defaults: { _controller: SalitaTurnoBundle:Turno:newFuturoProcess }
+    methods: [POST]
 
 atencion_turno:
     pattern: /atencion/turno/{idTurno}
     defaults: { _controller: SalitaTurnoBundle:Turno:atencion }
+    methods: [GET]
+    requirements:
+        idTurno: \d+
