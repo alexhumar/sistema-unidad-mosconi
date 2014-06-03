@@ -3,6 +3,7 @@ namespace Salita\UsuarioBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MisRoles;
+use Salita\UsuarioBundle\Entity\Rol;
 use Salita\UsuarioBundle\Clases\RolTemporal;
 use Salita\UsuarioBundle\Form\Type\RolType;
 use Salita\OtrosBundle\Clases\ConsultaRol;
@@ -50,7 +51,7 @@ class UsuarioRolController extends Controller
            $rolesUsuario = $usuario->getRoles();
            /*Esto es un parche para que seleccione bien el rol de un usuario si es administrador, ya que su primer rol es ROLE_ADMIN, y si se selecciona
            ese rol, crashea la consulta en $repoRoles*/
-           if (in_array('ROLE_ADMIN', $rolesUsuario))
+           if (in_array(Rol::getCodigoRolAdmin(), $rolesUsuario))
            {
                $index = 1;
            }
@@ -63,12 +64,12 @@ class UsuarioRolController extends Controller
        }
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
-           case 'ROLE_MEDICO': $session->set('especialidad', $usuario->getEspecialidad());
+           case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
                                return $this->redirect($this->generateUrl('menu_medico'));
                                break;
-           case 'ROLE_SECRETARIA': return $this->redirect($this->generateUrl('menu_secretaria'));
+           case Rol::getCodigoRolSecretaria(): return $this->redirect($this->generateUrl('menu_secretaria'));
                                    break;
-           case 'ROLE_ADMINISTRADOR': return $this->redirect($this->generateUrl('menu_administrador'));
+           case Rol::getCodigoRolAdministrador(): return $this->redirect($this->generateUrl('menu_administrador'));
                                       break;
        }
     }

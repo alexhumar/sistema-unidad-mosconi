@@ -128,4 +128,24 @@ class Rol
     {
     	return $this->getCodigo() == "ROLE_SECRETARIA";
     }
+    
+    public static function getCodigoRolAdmin()
+    {
+    	return "ROLE_ADMIN";
+    }
+    
+    public static function getCodigoRolAdministrador()
+    {
+    	return "ROLE_ADMINISTRADOR";
+    }
+    
+    public static function getCodigoRolMedico()
+    {
+    	return "ROLE_MEDICO";
+    }
+    
+    public static function getCodigoRolSecretaria()
+    {
+    	return "ROLE_SECRETARIA";
+    }
 }
