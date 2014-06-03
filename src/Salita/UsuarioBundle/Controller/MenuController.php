@@ -6,17 +6,17 @@ use Salita\OtrosBundle\Clases\MisRoles;
 
 class MenuController extends Controller
 {
-    public function administradorAction(Request $request)
+    public function administradorAction()
     {
        return $this->render('SalitaUsuarioBundle:Menu:menuAdministrador.html.twig');
     }
 
-    public function medicoAction(Request $request)
+    public function medicoAction()
     {
        return $this->render('SalitaUsuarioBundle:Menu:menuMedico.html.twig');
     }
 
-    public function secretariaAction(Request $request)
+    public function secretariaAction()
     {
        return $this->render('SalitaUsuarioBundle:Menu:menuSecretaria.html.twig');
     }

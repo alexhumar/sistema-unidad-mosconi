@@ -16,12 +16,33 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 //ATENCION!!: me parece que tengo que cargar el usuario en la sesion a partir de una consulta por id porque creo que me esta cargando solo los datos de la superclase!! Me fui a comer... Acordate que tenias abierto el UsuarioFormController.php
 class UsuarioRolController extends Controller
 {
-    public function elegirAction(Request $request)
+    private function getSessionUser()
     {
-       $em = $this->getDoctrine()->getEntityManager();
-       $repoRoles = $em->getRepository('SalitaUsuarioBundle:Rol');
-       $repoUsuarios = $em->getRepository('SalitaUsuarioBundle:Usuario');
-       $usuario = $this->container->get('security.context')->getToken()->getUser();
+    	return $this->container->get('security.context')->getToken()->getUser();
+    }
+    
+    private function getEntityManager()
+    {
+    	return $this->getDoctrine()->getEntityManager();
+    }
+    
+    private function getUsersRepo()
+    {
+    	$em = $this->getEntityManager();
+    	return $em->getRepository('SalitaUsuarioBundle:Usuario');
+    }
+    
+    private function getRolesRepo()
+    {
+    	$em = $this->getEntityManager();
+    	return $em->getRepository('SalitaUsuarioBundle:Rol');
+    }
+	
+public function elegirAction(Request $request)
+    {
+       $repoRoles = $this->getRolesRepo();
+       $repoUsuarios = $this->getUsersRepo();
+       $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->findOneById($usuario->getId());
        $session = $request->getSession();
        $session->set('usuario', $usuario);
@@ -42,7 +63,10 @@ class UsuarioRolController extends Controller
            }
            else
            {
-               return $this->render('SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig', array('form' => $form->createView(),));
+               return $this->render(
+               			'SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig',
+               			array('form' => $form->createView())
+               		);
            }
        }
        /*Si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.*/

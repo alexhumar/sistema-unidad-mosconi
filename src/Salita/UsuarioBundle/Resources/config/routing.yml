@@ -5,22 +5,32 @@ SalitaUsuarioBundle_homepage:
 elegir_rol:
     pattern: /elegirRol/usuario
     defaults: { _controller: SalitaUsuarioBundle:UsuarioRol:elegir }
+    methods: [GET]
+    
+elegir_rol_process:
+    pattern: /elegirRol/usuario
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioRol:elegirProcess }
+    methods: [POST]
 
 listado_usuario:
     pattern: /listado/usuario
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listUsuario }
+    methods: [GET]
 
 listado_secretaria:
     pattern: /listado/secretaria
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listSecretaria }
+    methods: [GET]
 
 listado_medico:
     pattern: /listado/medico
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listMedico }
+    methods: [GET]
 
 listado_administrador:
     pattern: /listado/administrador
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listAdministrador }
+    methods: [GET]
 
 modif_usuario_propio:
     pattern:  /modificacion/usuariopropio
