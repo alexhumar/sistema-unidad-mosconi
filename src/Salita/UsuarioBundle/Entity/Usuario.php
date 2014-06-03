@@ -7,8 +7,8 @@ namespace Salita\UsuarioBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
 use FOS\UserBundle\Entity\UserManager;
+use Salita\UsuarioBundle\Entity\Rol;
 
 /**
  * @ORM\Entity(repositoryClass="Salita\UsuarioBundle\Repository\UsuarioRepository")
@@ -259,16 +259,16 @@ class Usuario extends BaseUser
     
     public function isMedico()
     {
-    	return $this->hasRole("ROLE_MEDICO");
+    	return $this->hasRole(Rol::getCodigoRolMedico());
     }
     
     public function isAdministrador()
     {
-    	return (($this->hasRole("ROLE_ADMINISTRADOR")) or ($this->hasRole("ROLE_ADMIN")));
+    	return (($this->hasRole(Rol::getCodigoRolAdministrador())) or ($this->hasRole(Rol::getCodigoRolAdmin())));
     }
     
     public function isSecretaria()
     {
-    	return $this->hasRole("ROLE_SECRETARIA");
+    	return $this->hasRole(Rol::getCodigoRolSecretaria());
     }
 }

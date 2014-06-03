@@ -114,21 +114,6 @@ class Rol
         return $this->getNombre();
     }
     
-    public function isRoleAdministrador()
-    {
-    	return $this->getCodigo() == "ROLE_ADMINISTRADOR";
-    }
-    
-    public function isRoleMedico()
-    {
-    	return $this->getCodigo() == "ROLE_MEDICO";
-    }
-    
-    public function isRoleSecretaria()
-    {
-    	return $this->getCodigo() == "ROLE_SECRETARIA";
-    }
-    
     public static function getCodigoRolAdmin()
     {
     	return "ROLE_ADMIN";
@@ -147,5 +132,20 @@ class Rol
     public static function getCodigoRolSecretaria()
     {
     	return "ROLE_SECRETARIA";
+    }
+    
+    public function isRoleAdministrador()
+    {
+    	return $this->getCodigo() == self::getCodigoRolAdministrador();
+    }
+    
+    public function isRoleMedico()
+    {
+    	return $this->getCodigo() == self::getCodigoRolMedico();
+    }
+    
+    public function isRoleSecretaria()
+    {
+    	return $this->getCodigo() == self::getCodigoRolSecretaria();
     }
 }
