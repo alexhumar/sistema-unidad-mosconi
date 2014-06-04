@@ -2,10 +2,6 @@ SalitaPacienteBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: SalitaPacienteBundle:Default:index }
 
-#alta_antecedenteFamiliar:
-#    pattern: /alta/antecedenteFamiliar
-#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarForm:new }
-
 alta_paciente:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
@@ -25,46 +21,36 @@ seleccion_paciente:
 menu_paciente:
     pattern: /menu/paciente
     defaults: { _controller: SalitaPacienteBundle:Menu:principal}
-
-#alta_antecedenteFamiliarClinico:
-#    pattern: /alta/antecedenteFamiliarClinico
-#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:new }
-
-#alta_antecedenteFamiliarObstetrico:
-#    pattern: /alta/antecedenteFamiliarObstetrico
-#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:new }
-
-#alta_antecedentePersonal:
-#    pattern: /alta/antecedentePersonal
-#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalForm:new }
-
-#alta_antecedentePersonalClinico:
-#    pattern: /alta/antecedentePersonalClinico
-#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:new }
-
-#alta_antecedentePersonalObstetrico:
-#    pattern: /alta/antecedentePersonalObstetrico
-#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalObstetricoForm:new }
-
-#modif_antecedenteFamiliar:
-#    pattern:  /modificacion/antecedenteFamiliar/{id}
-#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarForm:modif }
       
 modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }
+    methods: [GET]
+    
+modif_antecedenteFamiliarClinico_process:
+    pattern:  /modificacion/antecedenteFamiliarClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modifProcess }
+    methods: [POST]
 
 modif_antecedenteFamiliarObstetrico:
     pattern:  /modificacion/antecedenteFamiliarObstetrico
     defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif }
+    methods: [GET]
     
-#modif_antecedentePersonal:
-#    pattern:  /modificacion/antecedentePersonal
-#    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalForm:modif }
+modif_antecedenteFamiliarObstetrico_process:
+    pattern:  /modificacion/antecedenteFamiliarObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modifProcess }
+    methods: [POST]
 
 modif_antecedentePersonalClinico:
     pattern:  /modificacion/antecedentePersonalClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif }
+    methods: [GET]
+
+modif_antecedentePersonalClinico_process:
+    pattern:  /modificacion/antecedentePersonalClinico
+    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modifProcess }
+    methods: [POST]
     
 modif_antecedentePersonalObstetrico:
     pattern:  /modificacion/antecedentePersonalObstetrico

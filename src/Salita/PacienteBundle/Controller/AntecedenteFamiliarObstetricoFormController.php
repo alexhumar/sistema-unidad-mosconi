@@ -8,34 +8,69 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class AntecedenteFamiliarObstetricoFormController extends Controller
 {
+	private function getEntityManager()
+	{
+		return $this->getDoctrine()->getEntityManager();
+	}
+	
+	private function getAntecedentesFamiliaresObstetricosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:AntecedenteFamiliarObstetrico');
+	}
     
+	/*Modificacion de antecedentes familiares obstetricos (fase GET)*/
     public function modifAction(Request $request)
     {      
-        //$session = $this->container->get('session');
-        $session = $this->container->get('request')->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
-        $repoAntecedentes = $this->getDoctrine()->getRepository('SalitaPacienteBundle:AntecedenteFamiliarObstetrico');
-        $antecedenteFamiliarObstetrico = $repAntecedente->buscarAntecedenteDePaciente($session->get('paciente')->getId());
+        $session = $request->getSession();
+        $repoAntecedentes = $this->getAntecedentesFamiliaresObstetricosRepo();
+        $antecedenteFamiliarObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
+        if(!$antecedenteFamiliarObstetrico)
+        {
+        	throw $this->createNotFoundException("Antecedentes inexistentes");
+        }
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $form = $this->createForm(new AntecedenteFamiliarObstetricoType(), $antecedenteFamiliarObstetrico);
-        if ($request->getMethod() == 'POST')
-        {
-            $form->bindRequest($request);           
-            if ($form->isValid())
-            {
-                $em->persist($antecedenteFamiliarObstetrico);
-                $em->flush();
-                return $this->render('SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig', array('mensaje' => 'Los antecedentes del paciente se modificaron exitosamente','rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre(),));
-            }
-            else 
-            {
-                return $this->render('SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al modificar los antecedentes del paciente','rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre(),));
-            }  
-        }
-        else
-        {
-            return $this->render('SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig', array('form' => $form->createView(), 'rol' => $rolSeleccionado->getCodigo(), 'nombreRol' => $rolSeleccionado->getNombre(),
-            ));
-        }
+        return $this->render(
+        			'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig',
+            		array('form' => $form->createView(), 'rol' => $rolSeleccionado->getCodigo(), 
+            			  'nombreRol' => $rolSeleccionado->getNombre())
+            	);
+    }
+    
+    /*Modificacion de antecedentes familiares obstetricos (fase POST)*/
+    public function modifProcessAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	$repoAntecedentes = $this->getAntecedentesFamiliaresObstetricosRepo();
+    	$antecedenteFamiliarObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
+    	if(!$antecedenteFamiliarObstetrico)
+    	{
+    		throw $this->createNotFoundException("Antecedentes inexistentes");
+    	}
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$form = $this->createForm(new AntecedenteFamiliarObstetricoType(), $antecedenteFamiliarObstetrico);
+    	$form->handleRequest($request);
+    	if ($form->isValid())
+    	{
+    		$em = $this->getEntityManager();
+    		$em->persist($antecedenteFamiliarObstetrico);
+    		$em->flush();
+    		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
+    		return $this->render(
+    				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig',
+    				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
+    					  'nombreRol' => $rolSeleccionado->getNombre())
+    			);
+    	}
+    	else
+    	{
+    		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
+    		return $this->render(
+    				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig',
+    				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
+    					  'nombreRol' => $rolSeleccionado->getNombre())
+    			);
+    	}
     }
 }
