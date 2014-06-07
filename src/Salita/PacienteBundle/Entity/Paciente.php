@@ -619,4 +619,16 @@ class Paciente
     {
         return $this->visitas;
     }
+    
+    /*Metodos propios*/
+    
+    public function isMujer()
+    {
+    	return $this->getSexo() == '1';
+    }
+    
+    public function isHombre()
+    {
+    	return !$this->isMujer();
+    }
 }

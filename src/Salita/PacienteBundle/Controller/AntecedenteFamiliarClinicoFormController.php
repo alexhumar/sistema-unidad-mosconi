@@ -48,13 +48,13 @@ class AntecedenteFamiliarClinicoFormController extends Controller
     	{
     		throw $this->createNotFoundException("Antecedentes inexistentes");
     	}
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$form = $this->createForm(new AntecedenteFamiliarClinicoType(), $antecedenteFamiliarClinico);
     	$form->handleRequest($request);
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
-    		$em->persist($antecedenteFamiliarClinico);
+    		//$em->persist($antecedenteFamiliarClinico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
     		return $this->render(

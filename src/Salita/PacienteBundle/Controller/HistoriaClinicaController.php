@@ -8,7 +8,53 @@ use Salita\OtrosBundle\Clases\FechasResumenHC;
 
 class HistoriaClinicaController extends Controller
 {
-
+	private function getEntityManager()
+	{
+		return $this->getDoctrine()->getManager();
+	}
+	
+	private function getAplicacionesVacunasRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaOtrosBundle:AplicacionVacuna');
+	}
+	
+	private function getEstudiosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:Estudio');
+	}
+	
+	private function getConsultasRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:Consulta');
+	}
+		
+	private function getAntecedentesPersonalesClinicosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:AntecedentePersonalClinico');
+	}
+	
+	private function getAntecedentesFamiliaresClinicosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:AntecedenteFamiliarClinico');
+	}
+	
+	private function getAntecedentesPersonalesObstetricosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:AntecedentePersonalObstetrico');
+	}
+	
+	private function getAntecedentesFamiliaresObstetricosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaPacienteBundle:AntecedenteFamiliarObstetrico');
+	}
+	
     private function ordenarVisitasPorFecha($toOrderArray, $field, $inverse = false)
     {  
         $position = array();  
@@ -50,57 +96,65 @@ class HistoriaClinicaController extends Controller
 
     public function generarAction(Request $request)
     {
-       //$session = $this->container->get('session');
-       $session = $this->container->get('request')->getSession();
+       $session = $request->getSession();
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
        }
        else
        {
-           $repoAplicacionesVacuna = $this->getDoctrine()->getRepository('SalitaOtrosBundle:AplicacionVacuna');
-           $repoEstudios = $this->getDoctrine()->getRepository('SalitaPacienteBundle:Estudio');
-           $repoConsultas = $this->getDoctrine()->getRepository('SalitaPacienteBundle:Consulta');
            $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
            $paciente = $session->get('paciente');
-
-           $repAntecedentePersonalClinico = $this->getDoctrine()->getRepository('SalitaPacienteBundle:AntecedentePersonalClinico');
-           $antecedentePersonalClinico = $repAntecedentePersonalClinico->buscarAntecedenteDePaciente($paciente->getId());
-           
-           $repAntecedenteFamiliarClinico = $this->getDoctrine()->getRepository('SalitaPacienteBundle:AntecedenteFamiliarClinico');
-           $antecedenteFamiliarClinico = $repAntecedenteFamiliarClinico->buscarAntecedenteDePaciente($paciente->getId()); 
-           
-           if($paciente->getSexo() == '1')
+           $idPaciente = $paciente->getId();
+           /*Consultas*/
+           $repoConsultas = $this->getConsultasRepo();
+           $consultas = $repoConsultas->obtenerConsultasDePaciente($idPaciente);
+           /*Estudios*/
+           $repoEstudios = $this->getEstudiosRepo();
+           $estudios = $repoEstudios->obtenerEstudiosDePaciente($idPaciente);
+           /*Ordenamiento de visitas*/
+           $consultas = $this->ordenarVisitasPorFecha($consultas,'fecha');
+           $estudios = $this->ordenarVisitasPorFecha($estudios,'fecha');
+           /*Aplicaciones de vacunas*/ 
+           $repoAplicacionesVacuna = $this->getAplicacionesVacunasRepo();
+           $aplicaciones = $repoAplicacionesVacuna->aplicacionesVacunaDePaciente($idPaciente);
+		   /*Antecedentes personales clinicos*/
+           $repoAntecedentesPersonalesClinicos = $this->getAntecedentesPersonalesClinicosRepo();
+           $antecedentePersonalClinico = $repoAntecedentesPersonalesClinicos->buscarAntecedenteDePaciente($idPaciente);
+           /*Antecedentes familiares clinicos*/
+           $repoAntecedentesFamiliaresClinicos = $this->getAntecedentesFamiliaresClinicosRepo();
+           $antecedenteFamiliarClinico = $repoAntecedentesFamiliaresClinicos->buscarAntecedenteDePaciente($idPaciente); 
+           /*LO QUE ESTABA ANTES-POR LAS DUDAS: if($paciente->getSexo() == '1')*/
+           if($paciente->isMujer())
            {
-           $repAntecedentePersonalObstetrico = $this->getDoctrine()->getRepository('SalitaPacienteBundle:AntecedentePersonalObstetrico');
-           $antecedentePersonalObstetrico = $repAntecedentePersonalObstetrico->buscarAntecedenteDePaciente($paciente->getId()); 
-           
-           $repAntecedenteFamiliarObstetrico = $this->getDoctrine()->getRepository('SalitaPacienteBundle:AntecedenteFamiliarObstetrico');
-           $antecedenteFamiliarObstetrico = $repAntecedenteFamiliarObstetrico->buscarAntecedenteDePaciente($paciente->getId());
+           	   /*Antecedentes personales obstetricos*/
+               $repoAntecedentesPersonalesObstetricos = $this->getAntecedentesPersonalesObstetricosRepo();
+               $antecedentePersonalObstetrico = $repoAntecedentesPersonalesObstetricos->buscarAntecedenteDePaciente($idPaciente); 
+               /*Antecedentes familiares obstetricos*/
+               $repoAntecedentesFamiliaresObstetricos = $this->getAntecedentesFamiliaresObstetricosRepo();
+               $antecedenteFamiliarObstetrico = $repoAntecedentesFamiliaresObstetricos->buscarAntecedenteDePaciente($idPaciente);
            }
            else
            {
                $antecedentePersonalObstetrico = null;
                $antecedenteFamiliarObstetrico = null;
            }
-
-           $consultas = $repoConsultas->obtenerConsultasDePaciente($paciente->getId());
-           $estudios = $repoEstudios->obtenerEstudiosDePaciente($paciente->getId());
-
-           $consultas = $this->ordenarVisitasPorFecha($consultas,'fecha');
-           $estudios = $this->ordenarVisitasPorFecha($estudios,'fecha');
-
-           $usuarioGenerador = $session->get('usuario');
-
-           $aplicaciones = $repoAplicacionesVacuna->aplicacionesVacunaDePaciente($paciente->getId());
-           
-           return $this->render('SalitaPacienteBundle:HistoriaClinica:generacionHC.html.twig', array('paciente' => $paciente,'antecedentePC' => $antecedentePersonalClinico,'antecedenteFC' => $antecedenteFamiliarClinico,'antecedenteFO' => $antecedenteFamiliarObstetrico,'antecedentePO' => $antecedentePersonalObstetrico,'consultas' => $consultas, 'estudios' => $estudios, 'usuarioGenerador' => $usuarioGenerador, 'rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre(), 'aplicaciones' => $aplicaciones ));
+           $usuarioGenerador = $session->get('usuario');          
+           return $this->render(
+           			'SalitaPacienteBundle:HistoriaClinica:generacionHC.html.twig', 
+           			array('paciente' => $paciente,'antecedentePC' => $antecedentePersonalClinico,
+           				  'antecedenteFC' => $antecedenteFamiliarClinico,
+           				  'antecedenteFO' => $antecedenteFamiliarObstetrico,
+           				  'antecedentePO' => $antecedentePersonalObstetrico,
+           				  'consultas' => $consultas, 'estudios' => $estudios, 
+           				  'usuarioGenerador' => $usuarioGenerador, 'rol' => $rolSeleccionado->getCodigo(),
+           				  'nombreRol' => $rolSeleccionado->getNombre(), 'aplicaciones' => $aplicaciones)
+           		);
        }
     }
     
     public function resumenAction(Request $request)
     {
-       //$session = $this->container->get('session');
        $session = $this->container->get('request')->getSession();
        if(!$session->has('paciente'))
        {
@@ -111,31 +165,36 @@ class HistoriaClinicaController extends Controller
            if(!$session->has('fechaDesde'))
            {
                return $this->redirect($this->generateUrl('fechas_resumenHC'));
-           }
-           $repoEstudios = $this->getDoctrine()->getRepository('SalitaPacienteBundle:Estudio');
-           $repoConsultas = $this->getDoctrine()->getRepository('SalitaPacienteBundle:Consulta');
+           }      
            $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-           $paciente = $session->get('paciente'); 
-           $consultas = $repoConsultas->obtenerConsultasDePaciente($paciente->getId());
-           $estudios = $repoEstudios->obtenerEstudiosDePaciente($paciente->getId());
+           $paciente = $session->get('paciente');
+           $idPaciente = $paciente->getId();
            $fechaDesde = \DateTime::createFromFormat('d-m-Y', $session->get('fechaDesde'));
-           $fechaHasta = \DateTime::createFromFormat('d-m-Y', $session->get('fechaHasta'));  
+           $fechaHasta = \DateTime::createFromFormat('d-m-Y', $session->get('fechaHasta'));
+           $repoEstudios = $this->getEstudiosRepo();
+           $repoConsultas = $this->getConsultasRepo();
+           $consultas = $repoConsultas->obtenerConsultasDePaciente($idPaciente);
+           $estudios = $repoEstudios->obtenerEstudiosDePaciente($idPaciente); 
            $consultas = $this->visitasEntreFechas($consultas, $fechaDesde, $fechaHasta);
            $consultas = $this->ordenarVisitasPorFecha($consultas, 'fecha');
            $estudios = $this->visitasEntreFechas($estudios, $fechaDesde, $fechaHasta);
            $estudios = $this->ordenarVisitasPorFecha($estudios, 'fecha');
            $usuarioGenerador = $session->get('usuario');
            $session->remove('fechaDesde');
-           $session->remove('fechaHasta');
-                    
-           return $this->render('SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig', array('paciente' => $paciente ,'consultas' => $consultas, 'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios, 'rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre() ));
+           $session->remove('fechaHasta');                  
+           return $this->render(
+           			'SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig',
+           			array('paciente' => $paciente ,'consultas' => $consultas, 
+           				  'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios, 
+           				  'rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre())
+           		);
        }
     }
 
+    /*Eleccion de fechas para el resumen de historia clinica (fase GET)*/
     public function elegirFechasAction(Request $request)
     {
-       //$session = $this->container->get('session');
-       $session = $this->container->get('request')->getSession();
+       $session = $request->getSession();
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
@@ -145,20 +204,33 @@ class HistoriaClinicaController extends Controller
            $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
            $fechas = new FechasResumenHC();
            $form = $this->createForm(new FechasResumenHCType(), $fechas);
-           if ($request->getMethod() == 'POST')
-           {
-               $form->bindRequest($request);
-               if ($form->isValid())
-               {
-                   $session->set('fechaDesde', $fechas->getFechaDesde());
-                   $session->set('fechaHasta', $fechas->getFechaHasta());
-                   return $this->redirect($this->generateUrl('generar_resumenHC'));
-               }
-           }
-           else
-           {
-               return $this->render('SalitaPacienteBundle:HistoriaClinica:ingresoFechas.html.twig', array('form' => $form->createView(),'rol' =>  $rolSeleccionado->getCodigo(), 'nombreRol' => $rolSeleccionado->getNombre()));
-           }
+           return $this->render(
+           			'SalitaPacienteBundle:HistoriaClinica:ingresoFechas.html.twig', 
+           			array('form' => $form->createView(),'rol' =>  $rolSeleccionado->getCodigo(), 
+           				  'nombreRol' => $rolSeleccionado->getNombre())
+           		);
        }
+    }
+    
+    /*Eleccion de fechas para el resumen de historia clinica (fase POST)*/
+    public function elegirFechasProcessAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	if(!$session->has('paciente'))
+    	{
+    		return $this->redirect($this->generateUrl('busqueda_paciente'));
+    	}
+    	else
+    	{
+    		$fechas = new FechasResumenHC();
+    		$form = $this->createForm(new FechasResumenHCType(), $fechas);
+   			$form->handleRequest($request);
+   			if ($form->isValid())
+   			{
+   				$session->set('fechaDesde', $fechas->getFechaDesde());
+   				$session->set('fechaHasta', $fechas->getFechaHasta());
+   				return $this->redirect($this->generateUrl('generar_resumenHC'));
+   			}
+    	}
     }
 }
