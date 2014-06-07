@@ -9,9 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="especialidad")
  */
-
 class Especialidad
 {
+	public static function getCodigoNoTieneEspecialidad()
+	{
+		return "NO_TIENE";
+	}
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

@@ -5,10 +5,22 @@ SalitaPacienteBundle_homepage:
 alta_paciente:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
+    methods: [GET]
+    
+alta_paciente_process:
+    pattern: /alta/paciente
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:newProcess }
+    methods: [POST]
 
 modificacion_datosFiliatorios:
     pattern: /modificacion/datosfiliatorios
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatorios }
+    methods: [GET]
+    
+modificacion_datosFiliatorios_process:
+    pattern: /modificacion/datosfiliatorios
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatoriosProcess }
+    methods: [POST]
 
 busqueda_paciente:
     pattern: /busqueda/paciente
@@ -29,6 +41,7 @@ seleccion_paciente:
 menu_paciente:
     pattern: /menu/paciente
     defaults: { _controller: SalitaPacienteBundle:Menu:principal}
+    methods: [GET]
       
 modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico
