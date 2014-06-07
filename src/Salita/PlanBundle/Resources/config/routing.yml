@@ -1,35 +1,78 @@
 alta_planprocresp:
     pattern: /alta/planprocresp
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:new }
+    methods: [GET]
+    
+alta_planprocresp_process:
+    pattern: /alta/planprocresp
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:newProcess }
+    methods: [POST]
+    
+modif_plan:
+    pattern:  /modificacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modif }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
+        
+modif_plan_process:
+    pattern:  /modificacion/planprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modifProcess }
+    methods: [POST]
+    requirements:
+        idPlan: \d+
 
 habilitacion_planprocresp:
     pattern: /habilitacion/planprocresp/{idPlan}
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:hab }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
 
 deshabilitacion_planprocresp:
     pattern: /deshabilitacion/planprocresp/{idPlan}
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:deshab }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
 
 alta_metodoanticonceptivo:
     pattern: /alta/metodoanticonceptivo
     defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:new }
+    methods: [GET]
+    
+alta_metodoanticonceptivo_process:
+    pattern: /alta/metodoanticonceptivo
+    defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:newProcess }
+    methods: [POST]
 
 alta_entregaplanprocresp:
     pattern: /alta/entregaplanprocresp/{idPlan}
     defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:new }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
+        
+alta_entregaplanprocresp_process:
+    pattern: /alta/entregaplanprocresp/{idPlan}
+    defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:newProcess }
+    methods: [POST]
+    requirements:
+        idPlan: \d+
 
 listado_entregaplanprocresp:
     pattern: /listado/entregaplanprocresp/{idPlan}
     defaults: { _controller: SalitaPlanBundle:EntregaPlanProcRespForm:list }
+    methods: [GET]
+    requirements:
+        idPlan: \d+
 
 listado_planprocresp:
     pattern: /listado/planprocresp
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:list }
-
-modif_plan:
-    pattern:  /modificacion/planprocresp/{idPlan}
-    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modif }
+    methods: [GET]
 
 listadoDes_planprocresp:
     pattern: /listadoDes/planprocresp
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:listDes }
+    methods: [GET]
