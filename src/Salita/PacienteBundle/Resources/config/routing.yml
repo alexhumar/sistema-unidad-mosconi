@@ -113,6 +113,7 @@ listado_aplicacion_vacuna:
     defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:list }
     methods: [GET]
 
+#Esta ruta no esta bien. Lleva al newAction de EstudioFormController. Habria que revisar si se usa la ruta.
 modif_estudio:
     pattern: /modif/estudio
     defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
