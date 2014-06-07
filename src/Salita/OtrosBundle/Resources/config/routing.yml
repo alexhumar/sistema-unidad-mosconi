@@ -1,6 +1,4 @@
-SalitaOtrosBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SalitaOtrosBundle:Default:index }
+#Aca faltaria el alta de pais!!
 
 alta_barrio:
     pattern: /alta/barrio

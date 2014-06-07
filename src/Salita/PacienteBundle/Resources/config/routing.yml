@@ -1,7 +1,3 @@
-SalitaPacienteBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SalitaPacienteBundle:Default:index }
-
 alta_paciente:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
