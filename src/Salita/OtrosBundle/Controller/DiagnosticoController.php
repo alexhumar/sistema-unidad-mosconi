@@ -5,14 +5,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DiagnosticoController extends Controller
 {
+	private function getEntityManager()
+	{
+		return $this->getDoctrine()->getManager();
+	}
+	
+	private function getDiagnosticosRepo()
+	{
+		$em = $this->getEntityManager();
+		return $em->getRepository('SalitaOtrosBundle:Diagnostico');
+	}
 
     public function seleccionarAction(Request $request, $idDiagnostico)
     {
-       //$session = $this->container->get('session');
-       $session = $this->container->get('request')->getSession();
-       $em = $this->getDoctrine()->getEntityManager();
-       $repoDiagnosticos = $em->getRepository('SalitaOtrosBundle:Diagnostico');
-       $diagnostico = $repoDiagnosticos->finOneById($idDiagnostico);
+       $session = $request->getSession();
+       $repoDiagnosticos = $this->getDiagnosticosRepo();
+       $diagnostico = $repoDiagnosticos->find($idDiagnostico);
+       if(!$diagnostico)
+       {
+       		throw $this->createNotFoundException("Diagnostico inexistente");
+       }
        $session->set('diagnosticoSeleccionado', $diagnostico); 
        return $this->redirect($this->generateUrl('alta_consulta'));
     }

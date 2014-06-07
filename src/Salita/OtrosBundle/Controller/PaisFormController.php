@@ -7,33 +7,53 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PaisFormController extends Controller
 {
-
+	private function getEntityManager()
+	{
+		return $this->getDoctrine()->getManager();
+	}
+	
+	private function guardarPais($pais)
+	{
+		$em = $this->getEntityManager();
+		$em->persist($pais);
+		$em->flush();
+	}
+	
+	/*ATENCION: NO HAY RUTA QUE REFERENCIE ESTE CONTROLADOR.*/
+	
+	/*Alta de pais (fase GET)*/
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $pais= new Pais();
+        $pais = new Pais();
         $form = $this->createForm(new PaisType(), $pais);
-        if ($request->getMethod() == 'POST')
-        {
-            $form->bindRequest($request);          
-            if ($form->isValid())
-            {
-                $em->persist($pais);
-                $em->flush();
-                return $this->render('SalitaOtrosBundle:PaisForm:mensaje.html.twig', array('mensaje' => 'El pais se cargo exitosamente en el sistema',
-            ));
-            }
-            else 
-            {
-                return $this->render('SalitaOtrosBundle:PaisForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al intentar cargar un pais en el sistema',
-            ));
-            }
-            
-        }
-        else
-        {
-            return $this->render('SalitaOtrosBundle:PaisForm:new.html.twig', array('form' => $form->createView(),
-            ));
-        }
+        return $this->render(
+           			'SalitaOtrosBundle:PaisForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
+    }
+    
+    /*Alta de pais (fase POST)*/
+    public function newProcessAction(Request $request)
+    {
+    	$pais = new Pais();
+    	$form = $this->createForm(new PaisType(), $pais);
+   		$form->handleRequest($request);
+   		if ($form->isValid())
+   		{
+   			$this->guardarPais($pais);
+   			$mensaje = 'El pais se cargo exitosamente en el sistema';
+   			return $this->render(
+   					'SalitaOtrosBundle:PaisForm:mensaje.html.twig',
+   					array('mensaje' => $mensaje)
+   			);
+   		}
+   		else
+   		{
+   			$mensaje = 'Se produjo un error al intentar cargar un pais en el sistema';
+   			return $this->render(
+   					'SalitaOtrosBundle:PaisForm:mensaje.html.twig',
+   					array('mensaje' => $mensaje)
+   			);
+   		}
     }
 }

@@ -1,28 +1,60 @@
 #Aca faltaria el alta de pais!!
+#Y el alta de localidad!!
+#Y el alta de partidos!!
+#Y el listado de partidos!!
+#Y la modificacion de partidos!!
 
 alta_barrio:
     pattern: /alta/barrio
     defaults: { _controller: SalitaOtrosBundle:BarrioForm:new }
+    methods: [GET]
+    
+alta_barrio_process:
+    pattern: /alta/barrio
+    defaults: { _controller: SalitaOtrosBundle:BarrioForm:newProcess }
+    methods: [POST]
 
 seleccion_vacuna:
     pattern: /seleccion/vacuna/{idVacuna}
     defaults: { _controller: SalitaOtrosBundle:Vacuna:seleccionar }
+    requirements:
+        idVacuna: \d+
 
 seleccion_diagnostico:
     pattern: /seleccion/diagnostico/{idDiagnostico}
     defaults: { _controller: SalitaOtrosBundle:Diagnostico:seleccionar }
+    requirements:
+        idDiagnostico: \d+
 
 busqueda_vacuna:
     pattern: /busqueda/vacuna
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+    methods: [GET]
+    
+busqueda_vacuna_process:
+    pattern: /busqueda/vacuna
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarProcess }
+    methods: [POST]
 
 busqueda_diagnostico:
     pattern: /busqueda/diagnostico
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
+    methods: [GET]
+    
+busqueda_diagnostico_process:
+    pattern: /busqueda/diagnostico
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnosticoProcess }
+    methods: [POST]
 
 alta_metodoestudio:
     pattern: /alta/metodoEstudio
     defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:new }
+    methods: [GET]
+    
+alta_metodoestudio_process:
+    pattern: /alta/metodoEstudio
+    defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:newProcess }
+    methods: [POST]
 
 busqueda_paciente:
     pattern: /busqueda/paciente

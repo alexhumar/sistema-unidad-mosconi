@@ -8,34 +8,55 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class BarrioFormController extends Controller
 {
+	private function getEntityManager()
+	{
+		return $this->getDoctrine()->getManager();
+	}
+	
+	private function guardarBarrio($barrio)
+	{
+		$em = $this->getEntityManager();
+		$em->persist($barrio);
+		$em->flush();
+	}
 
+	/*Alta de barrio (fase GET)*/
     public function newAction(Request $request)
     {
-        //$session = $this->container->get('session');
-        $session = $this->container->get('request')->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
+        $session = $request->getSession();
         $barrio= new Barrio();
         $form = $this->createForm(new BarrioType(), $barrio);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-        if ($request->getMethod() == 'POST')
-        {
-            $form->bindRequest($request);     
-            if ($form->isValid())
-            {
-                $em->persist($barrio);
-                $em->flush();
-                return $this->render('SalitaOtrosBundle:BarrioForm:mensaje.html.twig', array('mensaje' => 'El barrio se cargo exitosamente en el sistema','rol' => $rolSeleccionado->getCodigo(),));
-            }
-            else 
-            {
-                return $this->render('SalitaOtrosBundle:BarrioForm:mensaje.html.twig', array('mensaje' => 'Se produjo un error al intentar cargar el barrio al sistema','rol' => $rolSeleccionado->getCodigo(),
-            ));
-            }
-        }
-        else
-        {
-            return $this->render('SalitaOtrosBundle:BarrioForm:new.html.twig', array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-            ));
-        }
+        return $this->render(
+           			'SalitaOtrosBundle:BarrioForm:new.html.twig',
+           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
+           		);
+    }
+    
+    /*Alta de barrio (fase POST)*/
+    public function newProcessAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	$barrio= new Barrio();
+    	$form = $this->createForm(new BarrioType(), $barrio);
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+   		$form->handleRequest($request);
+   		if ($form->isValid())
+   		{
+   			$this->guardarBarrio($barrio);
+   			$mensaje = 'El barrio se cargo exitosamente en el sistema';
+   			return $this->render(
+   					'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
+   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
+   			);
+   		}
+   		else
+   		{
+   			$mensaje = 'Se produjo un error al intentar cargar el barrio al sistema';
+   			return $this->render(
+   					'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
+   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
+   			);
+   		}
     }
 }
