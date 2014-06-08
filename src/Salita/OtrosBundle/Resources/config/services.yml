@@ -1,14 +1,12 @@
 parameters:
     repos_manager.class: Salita\OtrosBundle\Service\ReposManager
-    repos_manager.entitymanager: @doctrine.orm.entity_manager
-    
     
 #    salita_otros.example.class: Salita\OtrosBundle\Example
 
 services:
     repos_manager:
         class: %repos_manager.class%
-        arguments: [%repos_manager.entitymanager%]
+        arguments: [@doctrine.orm.entity_manager]
         
         
 #    salita_otros.example:
