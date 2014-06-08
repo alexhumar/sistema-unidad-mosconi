@@ -45,7 +45,7 @@ public function elegirAction(Request $request)
        $repoRoles = $this->get('repos_manager')->getRolesRepo();
        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
        $usuario = $this->getSessionUser();
-       $usuario = $repoUsuarios->findOneById($usuario->getId());
+       $usuario = $repoUsuarios->find($usuario->getId());
        $session = $request->getSession();
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
