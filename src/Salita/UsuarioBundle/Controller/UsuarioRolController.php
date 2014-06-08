@@ -40,8 +40,10 @@ class UsuarioRolController extends Controller
 	
 public function elegirAction(Request $request)
     {
-       $repoRoles = $this->getRolesRepo();
-       $repoUsuarios = $this->getUsersRepo();
+       //$repoRoles = $this->getRolesRepo();
+       //$repoUsuarios = $this->getUsersRepo();
+       $repoRoles = $this->get('repos_manager')->getRolesRepo();
+       $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
        $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->findOneById($usuario->getId());
        $session = $request->getSession();
