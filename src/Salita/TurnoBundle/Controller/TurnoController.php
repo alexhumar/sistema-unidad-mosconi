@@ -17,7 +17,7 @@ class TurnoController extends Controller
 	
 	private function saveTurno($turno, $medico, $paciente, $fecha, $hora)
 	{
-		$em = $this->getEntityManager();
+		$em = $this->getEntityManager(); //
 		$turno->setPaciente($paciente);
 		$turno->setUsuario($medico);
 		$turno->setFecha($fecha);
