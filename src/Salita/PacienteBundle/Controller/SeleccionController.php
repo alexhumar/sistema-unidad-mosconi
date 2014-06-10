@@ -7,7 +7,7 @@ class SeleccionController extends Controller
 {
 	private function getEntityManager()
 	{
-		return $this->getDoctrine->getManager();
+		return $this->getDoctrine()->getManager();
 	}
 	
 	private function getPacientesRepo()
