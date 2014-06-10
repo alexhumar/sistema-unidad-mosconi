@@ -17,7 +17,11 @@ class TurnoController extends Controller
 	
 	private function saveTurno($turno, $medico, $paciente, $fecha, $hora)
 	{
-		$em = $this->getEntityManager(); //
+		$em = $this->getEntityManager();
+		$repoPacientes = $this->get('repos_manager')->getPacientesRepo();
+		$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+		$paciente = $repoPacientes->find($paciente->getId());
+		$medico = $repoUsuarios->find($medico->getId());
 		$turno->setPaciente($paciente);
 		$turno->setUsuario($medico);
 		$turno->setFecha($fecha);
