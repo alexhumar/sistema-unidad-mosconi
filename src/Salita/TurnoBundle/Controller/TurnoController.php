@@ -18,6 +18,8 @@ class TurnoController extends Controller
 	private function saveTurno($turno, $medico, $paciente, $fecha, $hora)
 	{
 		$em = $this->getEntityManager();
+		/*Si no agrego esto, falla doctrine... como que necesita que los objetos vengan de los repos asi les
+		 * mantiene la pista*/
 		$repoPacientes = $this->get('repos_manager')->getPacientesRepo();
 		$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
 		$paciente = $repoPacientes->find($paciente->getId());
