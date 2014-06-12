@@ -9,8 +9,9 @@ class BarrioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
-        $builder->add('localidad');
+        $builder->add('nombre')
+        		->add('localidad')
+        		->add('guardar', 'submit');
     }
 
     public function getName()

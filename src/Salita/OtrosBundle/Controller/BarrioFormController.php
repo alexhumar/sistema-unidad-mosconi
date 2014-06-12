@@ -43,7 +43,8 @@ class BarrioFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->guardarBarrio($barrio);
+   			//$this->guardarBarrio($barrio);
+   			$this->get('persistence_manager')->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			return $this->render(
    					'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',

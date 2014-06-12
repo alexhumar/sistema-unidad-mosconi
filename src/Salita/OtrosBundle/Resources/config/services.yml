@@ -2,6 +2,8 @@ parameters:
     repos_manager.class: Salita\OtrosBundle\Service\ReposManager
     session_manager.class: Salita\OtrosBundle\Service\SessionManager
     dialogs_manager.class: Salita\OtrosBundle\Service\DialogsManager
+    queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
+    persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
     
 #    salita_otros.example.class: Salita\OtrosBundle\Example
 
@@ -14,6 +16,12 @@ services:
         arguments: [@session]
     dialogs_manager:
         class: %dialogs_manager.class%
+    queries_manager:
+        class: %queries_manager.class%
+        arguments: [@repos_manager]
+    persistence_manager:
+        class: %persistence_manager.class%
+        arguments: [@repos_manager]
         
         
 #    salita_otros.example:

@@ -70,7 +70,8 @@ class TurnoController extends Controller
     		$paciente = $session->get('paciente');
     		$medico = $session->get('usuario');
     		/*Da de alta un turno del momento*/
-    		$this->saveNowTurno($turno, $medico, $paciente);
+    		/*$this->saveNowTurno($turno, $medico, $paciente);*/
+			$this->get('persistence_manager')->saveNowTurno($turno, $medico, $paciente);
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
     		$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     		return $this->render(
@@ -123,7 +124,8 @@ class TurnoController extends Controller
     	{
     		$paciente = $session->get('paciente');
     		$medico = $session->get('usuario');
-    		$this->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));
+    		/*$this->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));*/
+    		$this->get('persistence_manager')->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));
     		$session->remove('fecha');
     		$session->remove('hora'); 		
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
@@ -201,7 +203,7 @@ class TurnoController extends Controller
     
     public function atencionAction(Request $request, $idTurno)
     {
-        $em = $this->getEntityManager();
+        /*$em = $this->getEntityManager();
         $repoTurnos = $this->getTurnosRepo();
         $turno = $repoTurnos->find($idTurno);
         if(!$turno)
@@ -210,10 +212,14 @@ class TurnoController extends Controller
         }
         $turno->setAtendido(true);
         $em->persist($turno);
-        $em->flush();
-        $session = $request->getSession();
+        $em->flush();*/
+    	
+    	/*Aca le paso el controller para poder tirar la excepcion (ver metodo), pero no me parece lo mas
+    	 * correcto hacer eso... revisar*/
+    	$this->get('persistence_manager')->setTurnoAtendido($idTurno, $this);
+        //$session = $request->getSession();
         /*Esto ni idea por que lo hice... atento con eso...*/
-        $session->set('paciente', $turno->getPaciente());
+        //$session->set('paciente', $turno->getPaciente());
         return $this->redirect($this->generateUrl('menu_paciente'));   
     }
 }
