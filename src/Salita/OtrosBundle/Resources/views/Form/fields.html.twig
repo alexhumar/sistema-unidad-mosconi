@@ -1,0 +1,13 @@
+{# Codigo para generar un widget de un form de forma personalizada, con su label y errores incluidos.
+   Se expondra como un servicio.
+ #}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="form_row">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widgets(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}

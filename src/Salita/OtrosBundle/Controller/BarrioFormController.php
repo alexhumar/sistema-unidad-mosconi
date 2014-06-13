@@ -37,7 +37,7 @@ class BarrioFormController extends Controller
     public function newProcessAction(Request $request)
     {
     	$session = $request->getSession();
-    	$barrio= new Barrio();
+    	$barrio = new Barrio();
     	$form = $this->createForm(new BarrioType(), $barrio);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		$form->handleRequest($request);
