@@ -1,6 +1,6 @@
 <?php
 
-namespace Salita\TurnoBundle\Service;
+namespace Salita\OtrosBundle\Service;
 
 use Salita\OtrosBundle\Service\ReposManager;
 
