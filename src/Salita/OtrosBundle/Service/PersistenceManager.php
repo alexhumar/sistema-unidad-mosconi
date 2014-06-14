@@ -13,7 +13,7 @@ class PersistenceManager
 		$this->reposManager = $reposManager;
 	}
 	
-	private function getReposManager()
+	public function getReposManager()
 	{
 		return $this->reposManager;
 	}

@@ -12,7 +12,7 @@ class ReposManager
 		$this->em = $entitymanager;
 	}
 	
-	protected function getEntityManager()
+	public function getEntityManager()
 	{
 		return $this->em;
 	}
