@@ -1,5 +1,6 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MisRoles;
@@ -9,11 +10,7 @@ use Salita\UsuarioBundle\Form\Type\RolType;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-//despues de revisarlo llegue a la conclusion de que: 1-La variable de sesion funciona. 2-El objeto usuario queda cargado en la sesion.
-//3-El rol seleccionado queda bien cargado en la sesion (si no lo elegis, si lo elegis no lo probe).
 
-
-//ATENCION!!: me parece que tengo que cargar el usuario en la sesion a partir de una consulta por id porque creo que me esta cargando solo los datos de la superclase!! Me fui a comer... Acordate que tenias abierto el UsuarioFormController.php
 class UsuarioRolController extends Controller
 {
     private function getSessionUser()
@@ -23,25 +20,11 @@ class UsuarioRolController extends Controller
     
     private function getEntityManager()
     {
-    	return $this->getDoctrine()->getEntityManager();
-    }
-    
-    private function getUsersRepo()
-    {
-    	$em = $this->getEntityManager();
-    	return $em->getRepository('SalitaUsuarioBundle:Usuario');
-    }
-    
-    private function getRolesRepo()
-    {
-    	$em = $this->getEntityManager();
-    	return $em->getRepository('SalitaUsuarioBundle:Rol');
+    	return $this->get('repos_manager')->getEntityManager();
     }
 	
 public function elegirAction(Request $request)
     {
-       //$repoRoles = $this->getRolesRepo();
-       //$repoUsuarios = $this->getUsersRepo();
        $repoRoles = $this->get('repos_manager')->getRolesRepo();
        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
        $usuario = $this->getSessionUser();
