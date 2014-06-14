@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
 
 {% block contenido %}
-    {{ form(form) }}
+    {{ form(form, {'action': path('alta_barrio') }) }}
 {% endblock %}
