@@ -364,7 +364,7 @@ class UsuarioFormController extends Controller
     	}
     	else
     	{
-    		$mensaje = 'El usuario no es un medico';
+    		$mensaje = 'El usuario no es medico';
     	}
     	$session->set('mensaje', $mensaje);
     	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
