@@ -68,7 +68,7 @@ class UsuarioFormController extends Controller
 						}
 						else
 						{
-							$this->get('persistence_manager')->assignRolAUsuario($usuario,$rol);
+							$this->get('persistence_manager')->assignRolAUsuario($usuario, $rol);
 							/*Se "refresca" el usuario almacenado en la sesion*/
 							$session->set('usuarioSeleccionado',$usuario);
 							$exito = true;

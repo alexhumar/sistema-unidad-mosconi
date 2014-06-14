@@ -102,7 +102,7 @@ class PersistenceManager
 	}
 	
 	/*Metodos de UsuarioBundle*/
-	public function assignRolAsuario($usuario, $rol)
+	public function assignRolAUsuario($usuario, $rol)
 	{
 		/*Aclaracion: tanto el usuario como el rol deben venir traidos de sus respectivos repos*/
 		$usuario->setEnabled(true);
