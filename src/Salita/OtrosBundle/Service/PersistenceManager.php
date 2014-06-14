@@ -13,7 +13,7 @@ class PersistenceManager
 		$this->reposManager = $reposManager;
 	}
 	
-	public function getReposManager()
+	private function getReposManager()
 	{
 		return $this->reposManager;
 	}
@@ -57,7 +57,7 @@ class PersistenceManager
 	}
 	
 	/*Metodos de OtrosBundle*/
-	private function saveBarrio($barrio)
+	public function saveBarrio($barrio)
 	{
 		$em = $this->getReposManager()->getEntityManager();
 		$em->persist($barrio);
