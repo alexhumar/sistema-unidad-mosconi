@@ -1,5 +1,6 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
+
 use Salita\OtrosBundle\Form\Type\PaisType;
 use Salita\OtrosBundle\Entity\Pais;
 use Symfony\Component\HttpFoundation\Request;
@@ -7,18 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PaisFormController extends Controller
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function guardarPais($pais)
-	{
-		$em = $this->getEntityManager();
-		$em->persist($pais);
-		$em->flush();
-	}
-	
 	/*ATENCION: NO HAY RUTA QUE REFERENCIE ESTE CONTROLADOR.*/
 	
 	/*Alta de pais (fase GET)*/
@@ -40,7 +29,7 @@ class PaisFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->guardarPais($pais);
+   			$this->get('persistence_manager')->savePais($pais);
    			$mensaje = 'El pais se cargo exitosamente en el sistema';
    			return $this->render(
    					'SalitaOtrosBundle:PaisForm:mensaje.html.twig',

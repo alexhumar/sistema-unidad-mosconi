@@ -63,4 +63,43 @@ class PersistenceManager
 		$em->persist($barrio);
 		$em->flush();
 	}
+	
+	public function saveLocalidad($localidad)
+	{
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($localidad);
+		$em->flush();
+	}
+	
+	public function saveMetodoDeEstudio($metodo)
+	{
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($metodo);
+		$em->flush();
+	}
+	
+	public function savePais($pais)
+	{
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($pais);
+		$em->flush();
+	}
+
+	private function savePartido($partido)
+	{
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($partido);
+		$em->flush();
+	}
+	
+	private function updatePartido($partido)
+	{
+		/* $partido se obtuvo de una consulta al repositorio de partidos,
+		 * por lo que no es necesaria la ejecucion del metodo persist*/
+		$em = $this->getReposManager()->getEntityManager();
+		//$em->persist($partido);
+		$em->flush();
+	}
+	
+
 }

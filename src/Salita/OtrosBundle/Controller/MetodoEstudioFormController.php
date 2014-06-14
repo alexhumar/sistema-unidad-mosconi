@@ -1,5 +1,6 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
+
 use Salita\OtrosBundle\Form\Type\MetodoEstudioType;
 use Salita\OtrosBundle\Entity\MetodoEstudio;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,23 +10,11 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class MetodoEstudioFormController extends Controller
 {
 	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function guardarMetodoDeEstudio($metodo)
-	{
-		$em = $this->getEntityManager();
-		$em->persist($metodo);
-		$em->flush();
-	}
-
 	/*Alta de metodo de estudio (fase GET)*/
     public function newAction(Request $request)
     {
         $session = $request->getSession();
-        $metodo= new MetodoEstudio();
+        $metodo = new MetodoEstudio();
         $form = $this->createForm(new MetodoEstudioType(), $metodo);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
@@ -38,13 +27,13 @@ class MetodoEstudioFormController extends Controller
     public function newProcessAction(Request $request)
     {
     	$session = $request->getSession();
-    	$metodo= new MetodoEstudio();
+    	$metodo = new MetodoEstudio();
     	$form = $this->createForm(new MetodoEstudioType(), $metodo);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->guardarMetodoDeEstudio($metodo);
+   			$this->get('persistence_manager')->saveMetodoDeEstudio($metodo);
    			$mensaje = 'El metodo de estudio se cargo exitosamente en el sistema';
    			return $this->render(
    					'SalitaOtrosBundle:MetodoEstudioForm:mensaje.html.twig',

@@ -1,5 +1,6 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
+
 use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,7 @@ class BarrioFormController extends Controller
     public function newAction(Request $request)
     {
         $session = $request->getSession();
-        $barrio= new Barrio();
+        $barrio = new Barrio();
         $form = $this->createForm(new BarrioType(), $barrio);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(

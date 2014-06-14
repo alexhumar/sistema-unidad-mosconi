@@ -1,5 +1,6 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
+
 use Salita\OtrosBundle\Form\Type\PartidoType;
 use Salita\OtrosBundle\Entity\Partido;
 use Symfony\Component\HttpFoundation\Request;
@@ -7,36 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PartidoFormController extends Controller
 {
-	
 	/*ATENCION: ninguno de los controladores de esta clase tiene rutas asociadas.*/
 	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getPartidosRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaOtrosBundle:Partido');
-	}
-	
-	private function guardarPartido($partido)
-	{
-		$em = $this->getEntityManager();
-		$em->persist($partido);
-		$em->flush();
-	}
-	
-	private function actualizarPartido($partido)
-	{
-		/*A diferencia de guardarPartido, $partido se obtuvo de una consulta al repositorio de partidos,
-		 * por lo que no es necesaria la ejecucion del metodo persist*/
-		$em = $this->getEntityManager();
-		//$em->persist($partido);
-		$em->flush();
-	}
-
 	/*Alta de partido (fase GET)*/
     public function newAction(Request $request)
     {
@@ -56,7 +29,7 @@ class PartidoFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->guardarPartido($partido);
+   			$this->get('persistence_manager')->savePartido($partido);
    			$mensaje = 'El partido se cargo exitosamente en el sistema';
    			return $this->render(
    						'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',
@@ -75,7 +48,7 @@ class PartidoFormController extends Controller
       
     function listAction(Request $request)
     {
-        $repoPartidos = $this->getPartidosRepo();
+        $repoPartidos = $this->get('repos_manager')->getPartidosRepo();
         $partidos = $repoPartidos->encontrarTodosOrdenadosPorNombre();
         return $this->render(
         			'SalitaOtrosBundle:PartidoForm:listado.html.twig',
@@ -86,7 +59,7 @@ class PartidoFormController extends Controller
     /*Modificacion de partido (fase GET)*/
     public function modifAction(Request $request, $id)
     {
-        $repoPartidos = $this->getPartidosRepo();
+        $repoPartidos = $this->get('repos_manager')->getPartidosRepo();
         $partido = $repoPartidos->find($id);
         if(!$partido)
         {
@@ -102,7 +75,7 @@ class PartidoFormController extends Controller
     /*Modificacion de partido (fase POST)*/
     public function modifProcessAction(Request $request, $id)
     {
-    	$repoPartidos = $this->getPartidosRepo();
+    	$repoPartidos = $this->get('repos_manager')->getPartidosRepo();
     	$partido = $repoPartidos->find($id);
     	if(!$partido)
     	{
@@ -112,7 +85,7 @@ class PartidoFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->actualizarPartido($partido);
+   			$this->get('persistence_manager')->updatePartido($partido);
    			$mensaje = 'El partido fue modificado exitosamente';
    			return $this->render(
    					'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',

@@ -1,25 +1,16 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DiagnosticoController extends Controller
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getDiagnosticosRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaOtrosBundle:Diagnostico');
-	}
 
     public function seleccionarAction(Request $request, $idDiagnostico)
     {
        $session = $request->getSession();
-       $repoDiagnosticos = $this->getDiagnosticosRepo();
+       $repoDiagnosticos = $this->get('repos_manager')->getDiagnosticosRepo();
        $diagnostico = $repoDiagnosticos->find($idDiagnostico);
        if(!$diagnostico)
        {
