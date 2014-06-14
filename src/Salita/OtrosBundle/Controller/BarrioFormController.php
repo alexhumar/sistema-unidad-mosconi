@@ -32,7 +32,8 @@ class BarrioFormController extends Controller
    		if ($form->isValid())
    		{
    			$this->get('persistence_manager')->saveBarrio($barrio);
-   			$session->set('mensaje', 'El barrio se cargo exitosamente en el sistema');
+   			$mensaje = 'El barrio se cargo exitosamente en el sistema';
+   			$session->getFlashBag()->add('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';

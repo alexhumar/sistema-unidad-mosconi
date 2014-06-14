@@ -9,4 +9,10 @@
 		form(form, { 'action': path('ruta_deseada'), 'method': GET })
      #}
     {{ form(form) }}
+
+	{% for flashMessage in app.session.flashbag.get('mensaje') %}
+		<div class="flash_message">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
 {% endblock %}
