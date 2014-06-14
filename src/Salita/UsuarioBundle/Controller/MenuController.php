@@ -1,5 +1,6 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MisRoles;

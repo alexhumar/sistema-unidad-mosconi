@@ -16,25 +16,17 @@ class UsuarioFormController extends Controller
 {
     private function getEntityManager()
     {
-        return $this->getDoctrine()->getEntityManager();
+        return $this->get('repos_manager')->getEntityManager();
     }
-    
-    private function getRolesRepo()
-    {
-    	$em = $this->getEntityManager();
-    	return $em->getRepository('SalitaUsuarioBundle:Rol');
-    }
-
-	private function getUsersRepo()
-	{
-		$em = $this->getEntityManager();
-        return $em->getRepository('SalitaUsuarioBundle:Usuario');
-	}
 	
     private function getRepoUserFromSessionUser($usuario)
 	{
-		$repoUsuarios = $this->getUsersRepo();
-		$usuario = $repoUsuarios->findOneById($usuario->getId());
+		$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+		$usuario = $repoUsuarios->find($usuario->getId());
+		if(!$usuario)
+		{
+			throw $this->createNotFoundException("Usuario inexistente");
+		}
 		return $usuario;
 	}
 	
@@ -76,11 +68,7 @@ class UsuarioFormController extends Controller
 						}
 						else
 						{
-							$usuario->setEnabled(true);
-							$usuario->agregarRol($rol);
-							$em = $this->getEntityManager();
-							$em->persist($usuario);
-							$em->flush();
+							$this->get('persistence_manager')->assignRolAUsuario($usuario,$rol);
 							/*Se "refresca" el usuario almacenado en la sesion*/
 							$session->set('usuarioSeleccionado',$usuario);
 							$exito = true;
@@ -96,7 +84,7 @@ class UsuarioFormController extends Controller
 
     public function listUsuarioAction(Request $request)
     {
-        $repoUsuarios = $this->getUsersRepo();
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
         $usuarios = $repoUsuarios->encontrarUsuariosOrdenadosPorNombre();
         return $this->render(
         			'SalitaUsuarioBundle:UsuarioForm:listado.html.twig',
@@ -106,7 +94,7 @@ class UsuarioFormController extends Controller
 
     public function listSecretariaAction(Request $request)
     {
-    	$repoUsuarios = $this->getUsersRepo();
+    	$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
         $secretarias = $repoUsuarios->encontrarSecretariasOrdenadasPorNombre();
         return $this->render(
         			'SalitaUsuarioBundle:UsuarioForm:listadoSecretarias.html.twig',
@@ -116,7 +104,7 @@ class UsuarioFormController extends Controller
 
     public function listAdministradorAction(Request $request)
     {
-        $repoUsuarios = $this->getUsersRepo();
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
         $administradores = $repoUsuarios->encontrarAdministradoresOrdenadosPorNombre();
         return $this->render(
         			'SalitaUsuarioBundle:UsuarioForm:listadoAdministradores.html.twig',
@@ -126,7 +114,7 @@ class UsuarioFormController extends Controller
 
     public function listMedicoAction(Request $request)
     {
-        $repoUsuarios = $this->getUsersRepo();
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
         $medicos = $repoUsuarios->encontrarMedicosOrdenadosPorNombre();
         return $this->render(
         			'SalitaUsuarioBundle:UsuarioForm:listadoMedicos.html.twig',
@@ -137,8 +125,8 @@ class UsuarioFormController extends Controller
     /*Modificacion de algun usuario (fase GET)*/
     public function modifAction(Request $request, $id)
     {
-    	$repoUsuarios = $this->getUsersRepo();
-    	$usuario = $repoUsuarios->findOneById($id);
+    	$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+    	$usuario = $repoUsuarios->find($id);
     	/*Si no existe el usuario*/
     	if(!$usuario)
     	{
@@ -154,8 +142,8 @@ class UsuarioFormController extends Controller
     /*Modificacion de algun usuario (fase POST)*/
     public function modifProcessAction(Request $request, $id)
     {
-    	$repoUsuarios = $this->getUsersRepo();
-    	$usuario = $repoUsuarios->findOneById($id);
+    	$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+    	$usuario = $repoUsuarios->find($id);
     	/*Si no existe el usuario*/
     	if(!$usuario)
     	{
@@ -163,24 +151,19 @@ class UsuarioFormController extends Controller
     	}
     	$form = $this->createForm(new UsuarioType(),$usuario);
     	$form->handleRequest($request);
+    	$session = $request->getSession();
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
-    		/*Ojo: esta linea puede que sea motivo de falla*/
-    		$em->persist($usuario);
     		$em->flush();
-    		return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    				array('mensaje' => 'Los datos del usuario fueron modificados exitosamente')
-    		);
+    		$mensaje = 'Los datos del usuario fueron modificados exitosamente';	
     	}
     	else
     	{
-    		return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    				array('mensaje' => 'Se produjo un error al intentar modificar los datos del usuario')
-    		);
-    	}		
+    		$mensaje = 'Se produjo un error al intentar modificar los datos del usuario';
+    	}
+    	$session->set('mensaje', $mensaje);
+    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     }
 
     /*Modificacion de usuario propio (fase GET)*/
@@ -199,7 +182,6 @@ class UsuarioFormController extends Controller
     /*Modificacion de usuario propio (fase POST)*/
     public function modifPropioProcessAction(Request $request)
     {
-        $em = $this->getEntityManager();
         $session = $request->getSession();
     	$usuario = $this->getRepoUserFromSessionUser($session->get('usuario'));
         $form = $this->createForm(new UsuarioType(), $usuario);
@@ -210,40 +192,33 @@ class UsuarioFormController extends Controller
             $em->flush();
             /*Se "refresca" el usuario almacenado en la sesion*/
     	    $session->set('usuario', $usuario);
-            return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    				array('mensaje' => 'Sus datos fueron modificados exitosamente')
-    			  );
+    	    $mensaje = 'Sus datos fueron modificados exitosamente';
     	}
     	else
     	{
-    		return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    				array('mensaje' => 'Se produjo un error al intentar modificar sus datos')
-    			);
+    		$mensaje = 'Se produjo un error al intentar modificar sus datos';
     	}
+    	$session->set('mensaje', $mensaje);
+    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     }
 
     public function delSecretariaAction(Request $request, $id)
     {
-    	$em = $this->getEntityManager();
-        $repoUsuarios = $this->getUsersRepo();
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
         $usuario = $repoUsuarios->find($id);
         /*Si no existe el usuario*/
         if (!$usuario)
         {
         	throw $this->createNotFoundException("El usuario no existe");
         }
-        $em->remove($usuario);
-        $em->flush();
+        $this->get('persistence_manager')->removeUsuario($usuario);
         return $this->redirect($this->generateUrl('listado_secretaria'));
     }
 
     public function delMedicoAction(Request $request, $id)
     {
-        $em = $this->getEntityManager();
-        $repoUsuarios = $this->getUsersRepo();
-        $repoRoles = $this->getRolesRepo();
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+        $repoRoles = $this->get('repos_manager')->getRolesRepo();
         $usuario = $repoUsuarios->find($id);
         /*Si no existe el usuario*/
         if(!$usuario)
@@ -256,18 +231,15 @@ class UsuarioFormController extends Controller
         	$usuario->setEnabled(false);
         }
         $rol = $repoRoles->findOneByCodigo(Rol::getCodigoRolMedico());
-        $usuario->quitarRol($rol);
-        /*Guarda con esta linea de codigo...*/
-        $em->persist($usuario);
-        $em->flush();
+        $this->get('persistence_manager')->removeRolAUsuario($usuario, $rol);
         return $this->redirect($this->generateUrl('listado_medico'));   
     }
 
     public function delAdministradorAction(Request $request, $id)
     {
-        $em = $this->getEntityManager();
-        $repoUsuarios = $this->getUsersRepo();
-        $repoRoles = $this->getRolesRepo();
+        
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+        $repoRoles = $this->get('repos_manager')->getRolesRepo();
         $usuario = $repoUsuarios->find($id);
         if(!$usuario)
         {
@@ -279,17 +251,14 @@ class UsuarioFormController extends Controller
             $usuario->setEnabled(false);
         }
         $rol = $repoRoles->findOneByCodigo(Rol::getCodigoRolAdministrador());
-        $usuario->quitarRol($rol);
-        /*Guarda con esta linea de codigo...*/
-        $em->persist($usuario);    
-        $em->flush();
+        $this->get('persistence_manager')->removeRolAUsuario($usuario, $rol);
         return $this->redirect($this->generateUrl('listado_administrador')); 
     }
     
     /*Asignacion de rol a usuario (fase GET)*/
     public function asignarRolAction(Request $request)
     {
-    	$repoRoles = $this->getRolesRepo();
+    	$repoRoles = $this->get('repos_manager')->getRolesRepo();
     	$roles = $repoRoles->findAll();
     	$rolTemp = new RolTemporal();
     	/*Crea un formulario con un combo box con los roles existentes para asignar al usuario.
@@ -304,14 +273,14 @@ class UsuarioFormController extends Controller
     /*Asignacion de rol a usuario (fase POST)*/
     public function asignarRolProcessAction(Request $request)
     {
-    	$repoRoles = $this->getRolesRepo();
+    	$repoRoles = $this->get('repos_manager')->getRolesRepo();
     	$roles = $repoRoles->findAll();
     	$rolTemp = new RolTemporal();
     	$form = $this->createForm(new RolType($roles), $rolTemp);
    		$form->handleRequest($request);
+   		$session = $request->getSession();
    		if ($form->isValid())
    		{
-   			$session = $request->getSession();
    			$rolElegido = $repoRoles->findOneByCodigo($rolTemp->getNombre());
    			if (!$session->has('usuarioSeleccionado')) 
    			{
@@ -328,23 +297,15 @@ class UsuarioFormController extends Controller
 				}
 			}
 			$mensaje = $session->get('mensaje_asignacion_rol');
-   			return $this->render(
-   						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-   						array('mensaje' => $mensaje)
-   					);
     	}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar asignar un rol al usuario';
-   			return $this->render(
-   						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-   						array('mensaje' => $mensaje)
-   					);
    		}
+   		$session->set('mensaje', $mensaje);
+   		return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     }
-    
- 
-    
+        
     /*Asignacion de especialidad a usuario medico (fase GET)*/
     public function asignarEspecialidadAction(Request $request)
     {
@@ -368,10 +329,8 @@ class UsuarioFormController extends Controller
     	else
     	{
     		$mensaje = 'El usuario no es un medico';
-    		return $this->render(
-    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    					array('mensaje' => $mensaje)
-    				);
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     	}
     }
     
@@ -379,7 +338,6 @@ class UsuarioFormController extends Controller
     public function asignarEspecialidadProcessAction(Request $request)
     {
     	$session = $request->getSession();
-    	$em = $this->getEntityManager();
     	if($session->has('usuarioSeleccionado'))
     	{
     		$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
@@ -394,39 +352,29 @@ class UsuarioFormController extends Controller
     		$form->handleRequest($request);
     		if ($form->isValid())
     		{
-    			$em->persist($usuario);
+    			$em = $this->getEntityManager();
     			$em->flush();
     			$session->remove('usuarioSeleccionado');
-    			$mensaje = 'La especialidad fue asignada exitosamente al medico';
-    			return $this->render(
-    						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    						array('mensaje' => $mensaje)
-    					);
+    			$mensaje = 'La especialidad fue asignada exitosamente al medico';	
     		}
     		else
     		{
     			$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
-    			return $this->render(
-    						'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    						array('mensaje' => $mensaje)
-    					);
     		}
     	}
     	else
     	{
     		$mensaje = 'El usuario no es un medico';
-    		return $this->render(
-    					'SalitaUsuarioBundle:UsuarioForm:mensaje.html.twig',
-    					array('mensaje' => $mensaje)
-    				);
     	}
+    	$session->set('mensaje', $mensaje);
+    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     }
 
     public function seleccionarAction(Request $request, $id)
     {
         $session = $request->getSession();
-        $repoUsuarios = $this->getUsersRepo();
-        $usuario = $repoUsuarios->findOneById($id);
+        $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+        $usuario = $repoUsuarios->find($id);
         if(!$usuario)
         {
         	throw $this->createNotFoundException("El usuario no existe");

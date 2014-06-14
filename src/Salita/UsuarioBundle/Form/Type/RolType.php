@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\UsuarioBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -25,7 +24,8 @@ class RolType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre','choice', array('choices' => $this->getRoles(),'required' => true));
+        $builder->add('nombre','choice', array('choices' => $this->getRoles(),'required' => true))
+        		->add('asignar', 'submit');
     }
 
     public function getName()

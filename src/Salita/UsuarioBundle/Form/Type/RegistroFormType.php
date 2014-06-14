@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\UsuarioBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;

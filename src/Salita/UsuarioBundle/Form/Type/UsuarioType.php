@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\UsuarioBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -14,7 +13,8 @@ class UsuarioType extends AbstractType
               ->add('apellido')
               ->add('email')
               ->add('telefono')
-              ->add('matricula');
+              ->add('matricula')
+              ->add('modificar', 'submit');
     }
 
     public function getName()
@@ -22,5 +22,3 @@ class UsuarioType extends AbstractType
         return 'usuario';
     }
 }
-
-

@@ -1,3 +1,8 @@
+resultado_operacion_usuario:
+    pattern: /resultado/operacion/usuario
+    defaults: { _controller: SalitaUsuarioBundle:Mensajes:resultado }
+    methods: [GET]
+
 elegir_rol:
     pattern: /elegirRol/usuario
     defaults: { _controller: SalitaUsuarioBundle:UsuarioRol:elegir }

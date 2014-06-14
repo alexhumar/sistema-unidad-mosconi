@@ -19,11 +19,10 @@
 {% endblock %}
 
 {% block contenido %}
-<form action="{{ path('modif_usuario_propio') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
-
-<a href="{{path('fos_user_change_password')}}">Cambiar clave</a>
+	{{ form(form) }}
+	{#<form action="{{ path('modif_usuario_propio') }}" method="post" {{ form_enctype(form) }}>
+    	{{ form_widget(form) }}
+    	<input type="submit" />
+	</form>#}
+	<a href="{{path('fos_user_change_password')}}">Cambiar clave</a>
 {% endblock %}

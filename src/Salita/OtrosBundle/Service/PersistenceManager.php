@@ -85,14 +85,14 @@ class PersistenceManager
 		$em->flush();
 	}
 
-	private function savePartido($partido)
+	public function savePartido($partido)
 	{
 		$em = $this->getReposManager()->getEntityManager();
 		$em->persist($partido);
 		$em->flush();
 	}
 	
-	private function updatePartido($partido)
+	public function updatePartido($partido)
 	{
 		/* $partido se obtuvo de una consulta al repositorio de partidos,
 		 * por lo que no es necesaria la ejecucion del metodo persist*/
@@ -101,5 +101,30 @@ class PersistenceManager
 		$em->flush();
 	}
 	
-
+	/*Metodos de UsuarioBundle*/
+	public function assignRolAsuario($usuario, $rol)
+	{
+		/*Aclaracion: tanto el usuario como el rol deben venir traidos de sus respectivos repos*/
+		$usuario->setEnabled(true);
+		$usuario->agregarRol($rol);
+		$em = $this->getReposManager()->getEntityManager();
+		//no hace falta--$em->persist($usuario);
+		$em->flush();
+	}
+	
+	public function removeUsuario($usuario)
+	{
+		/*Aclaracion: el usuario debe venir traido del repo de usuarios*/
+		$em = $this->getReposManager()->getEntityManager();
+		$em->remove($usuario);
+		$em->flush();
+	}
+	
+	public function removeRolAUsuario($usuario, $rol)
+	{
+		/*Aclaracion: tanto el usuario como el rol deben venir traidos de sus respectivos repos*/
+		$usuario->quitarRol($rol);
+		$em = $this->getReposManager()->getEntityManager();
+		$em->flush();
+	}
 }
