@@ -21,19 +21,22 @@
 {% endblock %}
 
 {% block contenido %}
-<h1 id="tituloCentro">Resultado de la búsqueda</h1>
-{% if vacunas|length > 0 %}
-<table>
-<thead><tr><th>Vacuna</th><th></th></tr></thead>
-<tbody>
-{% for vacuna in vacunas %}
-   <div class="vacuna">
-      <tr><td>{{vacuna.nombre}}</td><td><a href="{{ path('seleccion_vacuna', { 'idVacuna': vacuna.id }) }}">Seleccionar</a></td></tr>
-   </div>
-{% endfor %}
-</tbody>
-</table>
-{% else %}
-<h4 id="nota">- No se han encontrado resultados -</h4>
-{% endif %}
+	<h1 id="tituloCentro">Resultado de la búsqueda</h1>
+	{% if vacunas|length > 0 %}
+		<table>
+			<thead><tr><th>Vacuna</th><th></th></tr></thead>
+			<tbody>
+				{% for vacuna in vacunas %}
+   					<div class="vacuna">
+      					<tr>
+							<td>{{vacuna.nombre}}</td>
+							<td><a href="{{ path('seleccion_vacuna', { 'idVacuna': vacuna.id }) }}">Seleccionar</a></td>
+						</tr>
+   					</div>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<h4 id="nota">- No se han encontrado resultados -</h4>
+	{% endif %}
 {% endblock %}

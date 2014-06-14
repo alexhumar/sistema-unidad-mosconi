@@ -9,7 +9,8 @@ class BusquedaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('palabra','text', array('label' => 'Vacuna'));
+        $builder->add('palabra','text', array('label' => 'Vacuna'))
+        		->add('buscar','submit');
     }
 
     public function getName()
