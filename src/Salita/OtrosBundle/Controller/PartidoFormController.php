@@ -24,6 +24,7 @@ class PartidoFormController extends Controller
     /*Alta de partido (fase POST)*/
     public function newProcessAction(Request $request)
     {
+    	$session = $request->getSession();
     	$partido = new Partido();
     	$form = $this->createForm(new PartidoType(), $partido);
    		$form->handleRequest($request);
@@ -31,18 +32,18 @@ class PartidoFormController extends Controller
    		{
    			$this->get('persistence_manager')->savePartido($partido);
    			$mensaje = 'El partido se cargo exitosamente en el sistema';
-   			return $this->render(
-   						'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',
-   						array('mensaje' => $mensaje)
-   					);
+   			$session->set('mensaje', $mensaje);
+   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   				? 'alta_partido'
+   				: 'resultado_operacion';
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar cargar un partido en el sistema';
-   			return $this->render(
-   						'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',
-   						array('mensaje' => $mensaje)
-   					);
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
     }
       
@@ -87,18 +88,13 @@ class PartidoFormController extends Controller
    		{
    			$this->get('persistence_manager')->updatePartido($partido);
    			$mensaje = 'El partido fue modificado exitosamente';
-   			return $this->render(
-   					'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar modificar el partido seleccionado';
-   			return $this->render(
-   					'SalitaOtrosBundle:PartidoForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
    		}
+   		$session = $request->getSession();
+   		$session->set('mensaje', $mensaje);
+   		return $this->redirect($this->generateUrl('resultado_operacion'));
     }
 }

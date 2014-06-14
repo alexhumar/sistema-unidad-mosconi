@@ -1,10 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block contenido %}
-<form action="{{ path('alta_metodoestudio') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+	{{ form(form) }}
 
-    <input type="submit" />
-</form>
-
+	{% for flashMessage in app.session.fashbag.get('mensaje') %}
+		<div class="flash-message">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
 {% endblock %}

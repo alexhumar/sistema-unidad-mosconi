@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\OtrosBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -9,14 +8,14 @@ class LocalidadType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
-        $builder->add('partido');
+        $builder->add('nombre')
+        		->add('partido')
+        		->add('guardar', 'submit')
+        		->add('guardarynuevo', 'submit');
     }
 
     public function getName()
     {
         return 'localidad';
     }
-
 }
-

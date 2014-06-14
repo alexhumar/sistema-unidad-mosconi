@@ -24,6 +24,7 @@ class PaisFormController extends Controller
     /*Alta de pais (fase POST)*/
     public function newProcessAction(Request $request)
     {
+    	$session = $request->getSession();
     	$pais = new Pais();
     	$form = $this->createForm(new PaisType(), $pais);
    		$form->handleRequest($request);
@@ -31,18 +32,18 @@ class PaisFormController extends Controller
    		{
    			$this->get('persistence_manager')->savePais($pais);
    			$mensaje = 'El pais se cargo exitosamente en el sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:PaisForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
+   			$session->set('mensaje', $mensaje);
+   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   				? 'alta_pais'
+   				: 'resultado_operacion';
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar cargar un pais en el sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:PaisForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
     }
 }

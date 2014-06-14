@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\OtrosBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -9,7 +8,8 @@ class BusquedaDiagnosticoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('palabra','text', array('label' => 'Diagnostico'));
+        $builder->add('palabra','text', array('label' => 'Diagnostico'))
+        		->add('guardar', 'submit');
     }
 
     public function getName()

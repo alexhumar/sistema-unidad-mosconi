@@ -24,6 +24,7 @@ class LocalidadFormController extends Controller
     /*Alta de localidad (fase POST)*/
     public function newProcessAction(Request $request)
     {
+    	$session = $request->getSession();
     	$localidad = new Localidad();
     	$form = $this->createForm(new LocalidadType(), $localidad);
    		$form->handleRequest($request);
@@ -31,18 +32,18 @@ class LocalidadFormController extends Controller
    		{
    			$this->get('persistence_manager')->saveLocalidad($localidad);
    			$mensaje = 'La localidad se cargo exitosamente en el sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:LocalidadForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
+   			$session->set('mensaje', $mensaje);
+   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   				? 'alta_localidad'
+   				: 'resultado_operacion';
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al cargar la localidad al sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:LocalidadForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje)
-   			);
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
     }
 }

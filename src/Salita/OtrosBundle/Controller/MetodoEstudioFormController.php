@@ -29,24 +29,23 @@ class MetodoEstudioFormController extends Controller
     	$session = $request->getSession();
     	$metodo = new MetodoEstudio();
     	$form = $this->createForm(new MetodoEstudioType(), $metodo);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
    			$this->get('persistence_manager')->saveMetodoDeEstudio($metodo);
    			$mensaje = 'El metodo de estudio se cargo exitosamente en el sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:MetodoEstudioForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
-   			);
+   			$session->set('mensaje', $mensaje);
+   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   				? 'alta_metodoestudio'
+   				: 'resultado_operacion';
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar cargar el metodo de estudio al sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:MetodoEstudioForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
-   			);
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
     }
 }

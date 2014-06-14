@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\OtrosBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;

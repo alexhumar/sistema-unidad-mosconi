@@ -1,5 +1,11 @@
-<form action="{{ path('alta_localidad') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+{% extends '::base.html.twig' %}
 
-    <input type="submit" />
-</form>
+{% block contenido %}
+    {{ form(form) }}
+
+	{% for flashMessage in app.session.flashbag.get('mensaje') %}
+		<div class="flash_message">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
+{% endblock %}

@@ -21,19 +21,22 @@
 {% endblock %}
 
 {% block contenido %}
-<h1 id="tituloCentro">Resultado de la búsqueda</h1>
-{% if diagnosticos|length > 0 %}
-<table>
-<thead><tr><th>Diagnóstico</th><th></th></tr></thead>
-<tbody>
-{% for diagnostico in diagnosticos %}
-   <div class="diagnostico">
-      <tr><td>{{diagnostico.nombre}}</td><td> <a href="{{ path('seleccion_diagnostico', { 'idDiagnostico': diagnostico.id }) }}">Seleccionar</a></td></tr>
-   </div>
-{% endfor %}
-</tbody>
-</table>
-{% else %}
-<h4 id="nota">- No se han encontrado resultados -</h4>
-{% endif %}
+	<h1 id="tituloCentro">Resultado de la búsqueda</h1>
+	{% if diagnosticos|length > 0 %}
+		<table>
+			<thead><tr><th>Diagnóstico</th><th></th></tr></thead>
+			<tbody>
+				{% for diagnostico in diagnosticos %}
+   					<div class="diagnostico">
+	   	   				<tr>
+							<td>{{diagnostico.nombre}}</td>
+							<td> <a href="{{ path('seleccion_diagnostico', { 'idDiagnostico': diagnostico.id }) }}">Seleccionar</a></td>
+						</tr>
+  					</div>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<h4 id="nota">- No se han encontrado resultados -</h4>
+	{% endif %}
 {% endblock %}

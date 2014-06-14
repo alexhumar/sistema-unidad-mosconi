@@ -11,7 +11,7 @@
     {{ form(form) }}
 
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
-		<div class="flash_message">
+		<div class="flash-message">
 			{{ flashMessage }}
 		</div>
 	{% endfor %}

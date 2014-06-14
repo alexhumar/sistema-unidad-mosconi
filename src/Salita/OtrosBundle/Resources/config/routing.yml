@@ -16,7 +16,7 @@ alta_barrio_process:
     
 resultado_operacion:
     pattern: /resultado/operacion
-    defaults: { _controller: SalitaOtrosBundle:BarrioForm:resultado }
+    defaults: { _controller: SalitaOtrosBundle:Mensajes:resultado }
     methods: [GET]
 
 seleccion_vacuna:

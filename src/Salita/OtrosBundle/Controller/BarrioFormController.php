@@ -43,19 +43,9 @@ class BarrioFormController extends Controller
    		}
    		else
    		{
-   			$session->set('mensaje', 'Se produjo un error al cargar un barrio en el sistema');
+   			$mensaje = 'Se produjo un error al cargar un barrio en el sistema';
+   			$session->set('mensaje', $mensaje);
    			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
-    }
-    
-    public function resultadoAction(Request $request)
-    {
-    	$session = $request->getSession();
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-		$mensaje = $session->get('mensaje');
-    	return $this->render(
-    			'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
-    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
-    	);
     }
 }
