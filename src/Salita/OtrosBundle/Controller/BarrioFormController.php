@@ -8,17 +8,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class BarrioFormController extends Controller
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function guardarBarrio($barrio)
-	{
-		$em = $this->getEntityManager();
-		$em->persist($barrio);
-		$em->flush();
-	}
 
 	/*Alta de barrio (fase GET)*/
     public function newAction(Request $request)
@@ -36,28 +25,34 @@ class BarrioFormController extends Controller
     /*Alta de barrio (fase POST)*/
     public function newProcessAction(Request $request)
     {
-    	$session = $request->getSession();
     	$barrio = new Barrio();
     	$form = $this->createForm(new BarrioType(), $barrio);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		$form->handleRequest($request);
+   		$session = $request->getSession();
    		if ($form->isValid())
    		{
-   			//$this->guardarBarrio($barrio);
    			$this->get('persistence_manager')->saveBarrio($barrio);
-   			$mensaje = 'El barrio se cargo exitosamente en el sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
-   			);
+   			$session->set('mensaje', 'El barrio se cargo exitosamente en el sistema');
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+				? 'alta_barrio'
+				: 'resultado_operacion';
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		else
    		{
-   			$mensaje = 'Se produjo un error al intentar cargar el barrio al sistema';
-   			return $this->render(
-   					'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
-   					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
-   			);
+   			$session->set('mensaje', 'El barrio se cargo exitosamente en el sistema');
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
+    }
+    
+    public function resultadoAction(Request $request)
+    {
+    	$session = $request->getSession();
+    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+		$mensaje = $session->get('mensaje');
+    	return $this->render(
+    			'SalitaOtrosBundle:BarrioForm:mensaje.html.twig',
+    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
+    	);
     }
 }

@@ -11,7 +11,8 @@ class BarrioType extends AbstractType
     {
         $builder->add('nombre')
         		->add('localidad')
-        		->add('guardar', 'submit');
+        		->add('guardar', 'submit')
+        		->add('guardarynuevo', 'submit');
     }
 
     public function getName()

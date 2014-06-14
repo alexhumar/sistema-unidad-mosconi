@@ -13,6 +13,11 @@ alta_barrio_process:
     pattern: /alta/barrio
     defaults: { _controller: SalitaOtrosBundle:BarrioForm:newProcess }
     methods: [POST]
+    
+resultado_operacion:
+    pattern: /resultado/operacion
+    defaults: { _controller: SalitaOtrosBundle:BarrioForm:resultado }
+    methods: [GET]
 
 seleccion_vacuna:
     pattern: /seleccion/vacuna/{idVacuna}
