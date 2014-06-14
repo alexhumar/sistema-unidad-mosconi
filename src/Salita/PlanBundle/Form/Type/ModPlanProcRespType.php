@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\PlanBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -16,8 +15,4 @@ class ModPlanProcRespType extends AbstractType
     {
         return 'modifplanprocresp';
     }
-
 }
-
-
-

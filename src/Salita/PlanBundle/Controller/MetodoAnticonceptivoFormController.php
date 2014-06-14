@@ -1,5 +1,6 @@
 <?php
 namespace Salita\PlanBundle\Controller;
+
 use Salita\PlanBundle\Form\Type\MetodoAnticonceptivoType;
 use Salita\PlanBundle\Entity\MetodoAnticonceptivo;
 use Symfony\Component\HttpFoundation\Request;
@@ -8,18 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class MetodoAnticonceptivoFormController extends Controller
 {
-	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function guardarMetodoAnticonceptivo($metodo)
-	{
-		$em = $this->getEntityManager();
-		$em->persist($metodo);
-		$em->flush();
-	}
 
 	/*Alta de metodo anticonceptivo (fase GET)*/
     public function newAction(Request $request)
@@ -44,7 +33,7 @@ class MetodoAnticonceptivoFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->guardarMetodoAnticonceptivo($metodo);
+   			$this->get('persistence_manager')->saveMetodoAnticonceptivo($metodo);
    			$mensaje = 'El metodo anticonceptivo se cargo exitosamente en el sistema';
    			return $this->render(
    					'SalitaPlanBundle:MetodoAnticonceptivoForm:mensaje.html.twig',

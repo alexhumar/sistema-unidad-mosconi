@@ -9,35 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class PlanProcRespFormController extends Controller
 {
-	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getPlanesProcreacionResponsableRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPlanBundle:PlanProcResp');
-	}
-	
-	private function guardarPlanProcreacionResponsable($plan, $paciente)
-	{
-		$plan->setPaciente($paciente);
-		$plan->setFinalizado('0');
-		$em = $this->getEntityManager();
-		$em->persist($plan);
-		$em->flush();
-	}
-	
-	private function actualizarPlanProcreacionResponsable($plan)
-	{
-		$em = $this->getEntityManager();
-		/*Plan es un objeto "vigilado" por Doctrine, por lo que no es necesaria la invocacion 
-		 * del metodo persist*/
-		//$em->persist($plan);
-		$em->flush();
-	}
 
 	/*Alta de plan de procreacion responsable (fase GET)*/
     public function newAction(Request $request)
@@ -64,7 +35,7 @@ class PlanProcRespFormController extends Controller
    		if ($form->isValid())
    		{
    			$paciente = $session->get('paciente');
-   			$this->guardarPlanProcreacionResponsable($plan, $paciente);
+   			$this->get('persistence_manager')->savePlanProcreacionResponsable($plan, $paciente);
    			$mensaje = 'El plan del paciente se agrego  exitosamente';
    			return $this->render(
    						'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
@@ -87,7 +58,7 @@ class PlanProcRespFormController extends Controller
     public function modifAction(Request $request, $idPlan)
     {
         $session = $request->getSession();      
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $plan = $repoPlanes->find($idPlan);
         if(!$plan)
         {
@@ -107,7 +78,7 @@ class PlanProcRespFormController extends Controller
     public function modifProcessAction(Request $request, $idPlan)
     {
     	$session = $request->getSession();
-    	$repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+    	$repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
     	$plan = $repoPlanes->find($idPlan);
     	if(!$plan)
     	{
@@ -118,7 +89,7 @@ class PlanProcRespFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->actualizarPlanProcreacionResponsable($plan);
+   			$this->get('persistence_manager')->updatePlanProcreacionResponsable($plan);
    			$mensaje = 'El plan del paciente se modifico exitosamente';
    			return $this->render(
    					'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
@@ -140,7 +111,7 @@ class PlanProcRespFormController extends Controller
     function listAction(Request $request)
     {
         $session = $request->getSession();
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $planes = $repoPlanes->findAllById($session->get('paciente')->getId());
         return $this->render(
@@ -153,7 +124,7 @@ class PlanProcRespFormController extends Controller
     function listDesAction(Request $request)
     {
         $session = $request->getSession();
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $planes = $repoPlanes->findAllByIdDes($session->get('paciente')->getId());
         return $this->render(
@@ -165,14 +136,14 @@ class PlanProcRespFormController extends Controller
 
     function habAction(Request $request, $idPlan)
     {
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $repoPlanes->habilitar($idPlan);
         return $this->redirect($this->generateUrl('listadoDes_planprocresp'));
     }
 
     function deshabAction(Request $request, $idPlan)
     {
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $repoPlanes->deshabilitar($idPlan);
         return $this->redirect($this->generateUrl('listado_planprocresp'));
     }

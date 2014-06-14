@@ -21,11 +21,10 @@
 {% endblock %}
 
 {% block contenido %}
-<form action="{{ path('alta_entregaplanprocresp', { 'idPlan': id }) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    ¿Confirma el registro de entrega?
-
-    <input type="submit" />
-</form>
-
+	¿Confirma el registro de entrega?
+	{{ form(form, { 'action': path('alta_entregaplanprocresp'), 'idPlan': id }) }}
+	{#<form action="{{ path('alta_entregaplanprocresp', { 'idPlan': id }) }}" method="post" {{ form_enctype(form) }}>
+    	{{ form_widget(form) }}
+    	<input type="submit" />
+	</form>#}
 {% endblock %}

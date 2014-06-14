@@ -9,28 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class EntregaPlanProcRespFormController extends Controller
 {
 	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getPlanesProcreacionResponsableRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPlanBundle:PlanProcResp');
-	}
-	
-	private function guardarEntregaPlanProcreacionResponsable($plan, $entrega)
-	{
-		$entrega->setFecha(date("d-m-Y"));
-		$entrega->setPlan($plan);
-		$em = $this->getEntityManager();
-		/*Como el plan se obtuvo del repo, esta "seguido" por doctrine. Como la entrega se asocia al plan
-		 * el persist no haria falta ya que la entrega deberia almacenarse gracias a la persistencia en cascada*/
-		//$em->persist($entrega);
-		$em->flush();
-	}
-
 	/*Alta de entrega de plan de procreacion responsable (fase GET)*/
     public function newAction(Request $request, $idPlan)
     {
@@ -56,13 +34,13 @@ class EntregaPlanProcRespFormController extends Controller
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+   			$repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
    			$plan = $repoPlanes->find($idPlan);
    			if(!$plan)
    			{
    				throw $this->createNotFoundException("Plan inexistente");
    			}
-   			$this->guardarEntregaPlanProcreacionResponsable($plan, $entrega);
+   			$this->get('persistence_manager')->saveEntregaPlanProcreacionResponsable($plan, $entrega);
    			$mensaje = 'La entrega del plan se registro correctamente';
    			return $this->render(
    					'SalitaPlanBundle:EntregaPlanProcRespForm:mensaje.html.twig',
@@ -82,7 +60,7 @@ class EntregaPlanProcRespFormController extends Controller
     function listAction(Request $request, $idPlan)
     {
         $session = $request->getSession();
-        $repoPlanes = $this->getPlanesProcreacionResponsableRepo();
+        $repoPlanes = $this->get('repos_manager')->getPlanesProcreacionResponsableRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $entregasplanprocresp = $repoPlanes->encontrarTodosOrdenadosPorFecha($idPlan);
         return $this->render(

@@ -127,4 +127,40 @@ class PersistenceManager
 		$em = $this->getReposManager()->getEntityManager();
 		$em->flush();
 	}
+	
+	/*Metodos de PlanBundle*/
+	public function saveEntregaPlanProcreacionResponsable($plan, $entrega)
+	{
+		$entrega->setFecha(date("d-m-Y"));
+		$entrega->setPlan($plan);
+		$em = $this->getReposManager()->getEntityManager();
+		/*Como el plan se obtuvo del repo, esta "seguido" por doctrine. Como la entrega se asocia al plan
+		 * el persist no haria falta ya que la entrega deberia almacenarse gracias a la persistencia en cascada*/
+		//$em->persist($entrega);
+		$em->flush();
+	}
+	
+	public function saveMetodoAnticonceptivo($metodo)
+	{
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($metodo);
+		$em->flush();
+	}
+	
+	public function savePlanProcreacionResponsable($plan, $paciente)
+	{
+		$plan->setPaciente($paciente);
+		$plan->setFinalizado('0');
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($plan);
+		$em->flush();
+	}
+	
+	public function updatePlanProcreacionResponsable($plan)
+	{
+		$em = $this->getEntityManager();
+		/*Plan es un objeto "vigilado" por Doctrine, por lo que no es necesaria la invocacion
+		 * del metodo persist*/
+		$em->flush();
+	}
 }
