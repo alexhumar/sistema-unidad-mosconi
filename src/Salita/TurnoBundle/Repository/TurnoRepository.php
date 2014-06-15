@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\TurnoBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\PacienteBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\PlanBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
