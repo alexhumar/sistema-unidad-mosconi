@@ -21,7 +21,6 @@ class PersistenceManager
 	/*Metodos de TurnoBundle*/
 	public function saveTurno($turno, $medico, $paciente, $fecha, $hora)
 	{
-		$em = $this->getReposManager()->getEntityManager();
 		/*Si no agrego esto, falla doctrine... como que necesita que los objetos vengan de los repos asi les
 		 * mantiene la pista*/
 		$repoPacientes = $this->getReposManager()->getPacientesRepo();
@@ -33,6 +32,7 @@ class PersistenceManager
 		$turno->setFecha($fecha);
 		$turno->setHora($hora);
 		$turno->setAtendido(false);
+		$em = $this->getReposManager()->getEntityManager();
 		$em->persist($turno);
 		$em->flush();
 	}

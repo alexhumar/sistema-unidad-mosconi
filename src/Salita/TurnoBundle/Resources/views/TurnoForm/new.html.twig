@@ -21,10 +21,9 @@
 {% endblock %}
 
 {% block contenido %}
-<form action="{{ path('alta_turno') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
-
+	{{ form(form) }}
+	{#<form action="{{ path('alta_turno') }}" method="post" {{ form_enctype(form) }}>
+    	{{ form_widget(form) }}
+    	<input type="submit" />
+	</form>#}
 {% endblock %}

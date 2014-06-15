@@ -18,7 +18,7 @@ class TurnoRepository extends EntityRepository
             ->getResult();
     }
 
-    public function turnosDelDiaDeEspecialidad()
+    public function turnosDelDiaDeEspecialidad($especialidad)
     {
         $fechaHoy = Date("d-m-Y");
         $sql = 'SELECT p.nombre as nombre,p.apellido as apellido,t.motivo as motivo,t.fecha as fecha,t.hora as hora, t.medicoPreferido as medico, t.id as id 
@@ -27,7 +27,7 @@ class TurnoRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery($sql)
             ->setParameter('fecha_hoy', $fechaHoy)
-            ->setParameter('id_especialidad', $_SESSION['idEspecialidad'])
+            ->setParameter('id_especialidad', $especialidad->getId())
             ->getResult();
     }
 }
