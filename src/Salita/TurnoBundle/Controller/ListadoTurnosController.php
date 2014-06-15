@@ -23,10 +23,10 @@ class ListadoTurnosController extends Controller
     public function listarEspecialidadAction(Request $request)
     {
         $session = $request->getSession();
+        /* REVISAR: Quizas esto sea innecesario porque la especialidad me la sigue trayendo como NULL...*/
         $usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-        var_dump($usuario->getEspecialidad());die;
         $turnos = $repoTurnos->turnosDelDiaDeEspecialidad($usuario->getEspecialidad());
         return $this->render(
         			'SalitaTurnoBundle:Listados:turnosDelDiaEspecialidad.html.twig',
