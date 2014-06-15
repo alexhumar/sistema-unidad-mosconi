@@ -24,7 +24,7 @@ class ListadoTurnosController extends Controller
     {
         $session = $request->getSession();
         $usuario = $session->get('usuario');
-        var_dump($usuario->getEspecialidad()->getId());die;
+        echo(var_dump($usuario->getEspecialidad()->getId()));die;
         //$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
