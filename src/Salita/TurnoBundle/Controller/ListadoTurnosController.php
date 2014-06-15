@@ -23,9 +23,9 @@ class ListadoTurnosController extends Controller
     public function listarEspecialidadAction(Request $request)
     {
         $session = $request->getSession();
-        $usuario = $session->get('usuario');
+        //$usuario = $session->get('usuario');
+        $usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'), $this);
         echo($usuario->getEspecialidad()->getId());die;
-        //$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $turnos = $repoTurnos->turnosDelDiaDeEspecialidad($usuario->getEspecialidad());
