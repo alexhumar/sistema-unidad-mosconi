@@ -26,6 +26,7 @@ class ListadoTurnosController extends Controller
         $usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+        var_dump($usuario->getEspecialidad());die;
         $turnos = $repoTurnos->turnosDelDiaDeEspecialidad($usuario->getEspecialidad());
         return $this->render(
         			'SalitaTurnoBundle:Listados:turnosDelDiaEspecialidad.html.twig',
