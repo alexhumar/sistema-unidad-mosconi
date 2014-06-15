@@ -19,17 +19,6 @@ class UsuarioFormController extends Controller
         return $this->get('repos_manager')->getEntityManager();
     }
 	
-    private function getRepoUserFromSessionUser($usuario)
-	{
-		$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
-		$usuario = $repoUsuarios->find($usuario->getId());
-		if(!$usuario)
-		{
-			throw $this->createNotFoundException("Usuario inexistente");
-		}
-		return $usuario;
-	}
-	
 	/*Esta funcion encapsula la logica de negocio relacionada a la asignacion de rol a un usuario.
 	 * Retona en un boolean si la operacion fue exitosa o no, y almacena en la sesion el string especificando 
 	 * el resultado exacto de la operacion.*/
@@ -171,7 +160,7 @@ class UsuarioFormController extends Controller
     {
         $session = $request->getSession();
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-    	$usuario = $this->getRepoUserFromSessionUser($session->get('usuario'));
+    	$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'));
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
     				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
@@ -183,7 +172,7 @@ class UsuarioFormController extends Controller
     public function modifPropioProcessAction(Request $request)
     {
         $session = $request->getSession();
-    	$usuario = $this->getRepoUserFromSessionUser($session->get('usuario'));
+    	$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuario'));
         $form = $this->createForm(new UsuarioType(), $usuario);
     	$form->handleRequest($request);
     	if ($form->isValid())
@@ -286,7 +275,7 @@ class UsuarioFormController extends Controller
    			{
    				return $this->redirect($this->generateUrl('listado_usuario'));
    			}
-   			$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
+   			$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
 			if ($this->assignRoleToUser($usuario, $rolElegido, $session))
 			{
@@ -312,7 +301,7 @@ class UsuarioFormController extends Controller
     	$session = $request->getSession();
     	if($session->has('usuarioSeleccionado'))
     	{
-    		$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
+    		$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
     	}
     	else
     	{
@@ -340,7 +329,7 @@ class UsuarioFormController extends Controller
     	$session = $request->getSession();
     	if($session->has('usuarioSeleccionado'))
     	{
-    		$usuario = $this->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
+    		$usuario = $this->get('persistence_manager')->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
     	}
     	else
     	{

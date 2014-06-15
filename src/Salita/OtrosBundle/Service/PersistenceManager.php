@@ -128,6 +128,17 @@ class PersistenceManager
 		$em->flush();
 	}
 	
+	public function getRepoUserFromSessionUser($usuario, $controller)
+	{
+		$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
+		$usuario = $repoUsuarios->find($usuario->getId());
+		if(!$usuario)
+		{
+			throw $controller->createNotFoundException("Usuario inexistente");
+		}
+		return $usuario;
+	}
+	
 	/*Metodos de PlanBundle*/
 	public function saveEntregaPlanProcreacionResponsable($plan, $entrega)
 	{
