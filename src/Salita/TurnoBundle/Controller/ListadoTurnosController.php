@@ -25,7 +25,7 @@ class ListadoTurnosController extends Controller
         $session = $request->getSession();
         echo("Hola 1");
         $especialidad = $session->get('usuario')->getEspecialidad();
-        echo("Hola 2");
+        echo(var_dump($especialidad));die;
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         /*Ojo que podria fallar. No estoy seguro que sea un usuario vigilado por el entity manager, asi que
