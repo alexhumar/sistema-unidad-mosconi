@@ -10,15 +10,10 @@ class ListadoTurnosController extends Controller
 
     public function listarAction(Request $request)
     {
-    	echo("Hola");
         $session = $request->getSession();
-        echo ("Hola 2");
         $repoTurnos = $this->get('repos_manager')->getTurnosRepo();
-        echo ("Hola 3");
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-        echo ("Hola 4");
         $turnos = $repoTurnos->turnosDelDia();
-        echo ("Hola 5");
         return $this->render(
         			'SalitaTurnoBundle:Listados:turnosDelDia.html.twig',
         			array('turnos' => $turnos, 'rol' => $rolSeleccionado->getCodigo())
