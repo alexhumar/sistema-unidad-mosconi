@@ -2,7 +2,8 @@
 namespace Salita\UsuarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+//use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\MisRoles;
 use Salita\UsuarioBundle\Entity\Rol;
 use Salita\UsuarioBundle\Clases\RolTemporal;
@@ -11,9 +12,9 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class UsuarioRolController extends Controller
+class UsuarioRolController extends MyController
 {
-    private function getSessionUser()
+    /*private function getSessionUser()
     {
     	return $this->container->get('security.context')->getToken()->getUser();
     }
@@ -21,15 +22,18 @@ class UsuarioRolController extends Controller
     private function getEntityManager()
     {
     	return $this->get('repos_manager')->getEntityManager();
-    }
+    }*/
 	
 public function elegirAction(Request $request)
     {
-       $repoRoles = $this->get('repos_manager')->getRolesRepo();
-       $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+       //$repoRoles = $this->get('repos_manager')->getRolesRepo();
+    	$repoRoles = $this->getReposManager()->getRolesRepo();
+       //$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+    	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
        $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->find($usuario->getId());
-       $session = $request->getSession();
+       //$session = $request->getSession();
+       $session = $this->getSession();
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {

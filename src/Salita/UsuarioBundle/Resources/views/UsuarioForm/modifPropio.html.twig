@@ -4,7 +4,7 @@
     <div id="menu">
         <ul>
 
-         {# {% if rol == 'ROLE_ADMINISTRADOR' %}
+         {% if rol == 'ROLE_ADMINISTRADOR' %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
             {% endif %}    
 
@@ -14,15 +14,15 @@
 
             {% if rol == 'ROLE_MEDICO' %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
-            {% endif %} #}
+            {% endif %} 
 
-            {% if is_granted(expression('user and user.isAdministrador()')) %}
+         {# {% if is_granted(expression('user and user.isAdministrador()')) %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
             {% elseif is_granted(expression('user and user.isSecretaria()')) %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig' %}
             {% elseif is_granted(expression('user and user.isMedico()')) %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
-            {% endif %}
+            {% endif %} #}
         </ul>
     </div>
 {% endblock %}
