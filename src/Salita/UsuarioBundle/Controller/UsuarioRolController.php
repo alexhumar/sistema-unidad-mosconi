@@ -35,7 +35,6 @@ public function elegirAction(Request $request)
        //$session = $request->getSession();
        $session = $this->getSession();
        $session->set('usuario', $usuario);
-       echo(var_dump($session->get('usuario')));die;
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
            /*Prepara el formulario para la seleccion de rol (O rol medico o rol administrador)*/
@@ -76,6 +75,8 @@ public function elegirAction(Request $request)
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
+       echo(var_dump($session->get('usuario')->getNombre()));
+       echo(var_dump($session->get('rolSeleccionado')));
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
