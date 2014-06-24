@@ -26,14 +26,14 @@ class UsuarioRolController extends MyController
 	
 public function elegirAction(Request $request)
     {
-       $repoRoles = $this->get('repos_manager')->getRolesRepo();
-       //$repoRoles = $this->getReposManager()->getRolesRepo();
-       $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
-       //$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
+       //$repoRoles = $this->get('repos_manager')->getRolesRepo();
+       $repoRoles = $this->getReposManager()->getRolesRepo();
+       //$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+       $repoUsuarios = $this->getReposManager()->getUsuariosRepo();
        $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->find($usuario->getId());
-       $session = $request->getSession();
-       //$session = $this->getSession();
+       //$session = $request->getSession();
+       $session = $this->getSession();
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
@@ -75,8 +75,8 @@ public function elegirAction(Request $request)
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
-       echo(var_dump($session->get('usuario')->getNombre()));
-       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;
+       //echo(var_dump($session->get('usuario')->getNombre()));
+       //echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
