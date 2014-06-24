@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class UsuarioRolController extends MyController
 {
-    /*private function getSessionUser()
+    private function getSessionUser()
     {
     	return $this->container->get('security.context')->getToken()->getUser();
     }
@@ -22,18 +22,18 @@ class UsuarioRolController extends MyController
     private function getEntityManager()
     {
     	return $this->get('repos_manager')->getEntityManager();
-    }*/
+    }
 	
 public function elegirAction(Request $request)
     {
-       //$repoRoles = $this->get('repos_manager')->getRolesRepo();
-    	$repoRoles = $this->getReposManager()->getRolesRepo();
-       //$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
-    	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
+       $repoRoles = $this->get('repos_manager')->getRolesRepo();
+       //$repoRoles = $this->getReposManager()->getRolesRepo();
+       $repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
+       //$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
        $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->find($usuario->getId());
-       $session = $request->getSession();
-       //$session = $this->getSession();
+       //$session = $request->getSession();
+       $session = $this->getSession();
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
