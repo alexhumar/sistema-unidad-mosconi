@@ -76,7 +76,7 @@ public function elegirAction(Request $request)
            $session->set('rolSeleccionado', $rolUsuario);
        }
        echo(var_dump($session->get('usuario')->getNombre()));
-       echo(var_dump($session->get('rolSeleccionado')));
+       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
