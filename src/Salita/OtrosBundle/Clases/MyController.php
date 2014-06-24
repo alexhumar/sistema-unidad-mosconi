@@ -8,7 +8,12 @@ class MyController extends Controller
 	/*Clase que define metodos shortcut comunes a todos mis controllers*/
 	protected function getSessionUser()
 	{
-		return $this->container->get('security.context')->getToken()->getUser();
+		return $this->getSecurityContext()->getToken()->getUser();
+	}
+	
+	protected function getSecurityContext()
+	{
+		return $this->get('security.context');
 	}
 	
 	protected function getSession()
