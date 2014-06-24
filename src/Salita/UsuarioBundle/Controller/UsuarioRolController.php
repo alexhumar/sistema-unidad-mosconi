@@ -34,6 +34,10 @@ public function elegirAction(Request $request)
        $usuario = $repoUsuarios->find($usuario->getId());
        //$session = $request->getSession();
        $session = $this->getSession();
+       if($session->has('rolSeleccionado'))
+       {
+           $session->unset('rolSeleccionado');
+       }
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
