@@ -2,7 +2,6 @@
 namespace Salita\UsuarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\MisRoles;
 use Salita\UsuarioBundle\Entity\Rol;
@@ -14,25 +13,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class UsuarioRolController extends MyController
 {
-    /*private function getSessionUser()
-    {
-    	return $this->container->get('security.context')->getToken()->getUser();
-    }
-    
-    private function getEntityManager()
-    {
-    	return $this->get('repos_manager')->getEntityManager();
-    }*/
 	
-public function elegirAction(Request $request)
+    public function elegirAction()
     {
-       //$repoRoles = $this->get('repos_manager')->getRolesRepo();
        $repoRoles = $this->getReposManager()->getRolesRepo();
-       //$repoUsuarios = $this->get('repos_manager')->getUsuariosRepo();
        $repoUsuarios = $this->getReposManager()->getUsuariosRepo();
        $usuario = $this->getSessionUser();
        $usuario = $repoUsuarios->find($usuario->getId());
-       //$session = $request->getSession();
        $session = $this->getSession();
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
@@ -41,6 +28,7 @@ public function elegirAction(Request $request)
            $roles = $repoRoles->rolesAdministradorYMedico();
            $rolTemp = new RolTemporal();
            $form = $this->createForm(new RolType($roles), $rolTemp);
+           $request = $this->getRequest();
            if ($request->getMethod() == 'POST')
            {
                $form->handleRequest($request);
@@ -58,8 +46,6 @@ public function elegirAction(Request $request)
                		);
            }
        }
-       /*Si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.
-       if (!$session->has('rolSeleccionado'))*/
        else
        {
            $rolesUsuario = $usuario->getRoles();
@@ -76,8 +62,7 @@ public function elegirAction(Request $request)
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
-       /*echo(var_dump($session->get('usuario')->getNombre()));
-       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;*/
+       
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
