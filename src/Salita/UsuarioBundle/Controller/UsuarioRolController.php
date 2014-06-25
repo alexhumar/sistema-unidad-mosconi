@@ -76,8 +76,8 @@ public function elegirAction(Request $request)
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
-       echo(var_dump($session->get('usuario')->getNombre()));
-       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;
+       /*echo(var_dump($session->get('usuario')->getNombre()));
+       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;*/
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
