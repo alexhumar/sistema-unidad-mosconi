@@ -34,10 +34,6 @@ public function elegirAction(Request $request)
        $usuario = $repoUsuarios->find($usuario->getId());
        //$session = $request->getSession();
        $session = $this->getSession();
-       if($session->has('rolSeleccionado'))
-       {
-           $session->unset('rolSeleccionado');
-       }
        $session->set('usuario', $usuario);
        if(($usuario->isAdministrador()) and ($usuario->isMedico()))
        {
@@ -62,8 +58,9 @@ public function elegirAction(Request $request)
                		);
            }
        }
-       /*Si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.*/
-       if (!$session->has('rolSeleccionado'))
+       /*Si no esta seteada la variable de sesion es porque no tiene los dos roles, administrador y medico, juntos.
+       if (!$session->has('rolSeleccionado'))*/
+       else
        {
            $rolesUsuario = $usuario->getRoles();
            /*Esto es un parche para que seleccione bien el rol de un usuario si es administrador, ya que su primer rol es ROLE_ADMIN, y si se selecciona
@@ -79,8 +76,8 @@ public function elegirAction(Request $request)
            $rolUsuario = $repoRoles->findOneByCodigo($rolesUsuario[$index]);
            $session->set('rolSeleccionado', $rolUsuario);
        }
-       //echo(var_dump($session->get('usuario')->getNombre()));
-       //echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;
+       echo(var_dump($session->get('usuario')->getNombre()));
+       echo(var_dump($session->get('rolSeleccionado')->getCodigo()));die;
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());
