@@ -13,7 +13,7 @@ class MyController extends Controller
 	
 	protected function getSecurityContext()
 	{
-		return $this->get('security.context');
+		return $this->container->get('security.context');
 	}
 	
 	protected function getSession()
