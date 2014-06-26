@@ -1,11 +1,10 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Salita\OtrosBundle\Clases\MisRoles;
+use Salita\OtrosBundle\Clases\MyController;
+//use Salita\OtrosBundle\Clases\MisRoles;
 
-class MenuController extends Controller
+class MenuController extends MyController
 {
     public function administradorAction()
     {

@@ -3,15 +3,14 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\PaisType;
 use Salita\OtrosBundle\Entity\Pais;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 
-class PaisFormController extends Controller
+class PaisFormController extends MyController
 {
 	/*ATENCION: NO HAY RUTA QUE REFERENCIE ESTE CONTROLADOR.*/
 	
 	/*Alta de pais (fase GET)*/
-    public function newAction(Request $request)
+    public function newAction()
     {
         $pais = new Pais();
         $form = $this->createForm(new PaisType(), $pais);
@@ -22,15 +21,16 @@ class PaisFormController extends Controller
     }
     
     /*Alta de pais (fase POST)*/
-    public function newProcessAction(Request $request)
+    public function newProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$pais = new Pais();
     	$form = $this->createForm(new PaisType(), $pais);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->get('persistence_manager')->savePais($pais);
+   			$this->getPersistenceManager()->savePais($pais);
    			$mensaje = 'El pais se cargo exitosamente en el sistema';
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);

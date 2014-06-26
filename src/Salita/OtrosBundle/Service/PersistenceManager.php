@@ -3,6 +3,11 @@
 namespace Salita\OtrosBundle\Service;
 
 use Salita\OtrosBundle\Service\ReposManager;
+use Salita\OtrosBundle\Entity\AplicacionVacuna;
+use Salita\PacienteBundle\Entity\AntecedentePersonalClinico;
+use Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico;
+use Salita\PacienteBundle\Entity\AntecedenteFamiliarClinico;
+use Salita\PacienteBundle\Entity\AntecedenteFamiliarObstetrico;
 
 class PersistenceManager
 {
@@ -169,9 +174,66 @@ class PersistenceManager
 	
 	public function updatePlanProcreacionResponsable($plan)
 	{
-		$em = $this->getEntityManager();
+		$em = $this->getReposManager()->getEntityManager();
 		/*Plan es un objeto "vigilado" por Doctrine, por lo que no es necesaria la invocacion
 		 * del metodo persist*/
+		$em->flush();
+	}
+	
+	/*Metodos de PacienteBundle*/
+	public function createAplicacionVacuna($paciente, $vacuna)
+	{
+		/*Guarda que tanto paciente como vacuna vienen de la sesion, por lo que no creo que esten 
+		 * "vigilados" por doctrine. Ante un error, probar traerlos de un repo a ambos
+		 * */
+		$aplicacion = new AplicacionVacuna();
+		$aplicacion->setFecha(date("d-m-Y"));
+		$aplicacion->setPaciente($paciente);
+		$aplicacion->setVacuna($vacuna);
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($aplicacion);
+		/*Me parece que el persist de paciente no hace falta*/
+		$em->persist($paciente);
+		$em->flush();
+	}
+	
+	public function saveConsulta($consulta, $paciente, $usuario, $diagnostico)
+	{
+		/*Ojo que ni paciente, ni usuario, ni diagnostico vienen del repo... sino de la sesion*/
+		$consulta->setPaciente($paciente);
+		$consulta->setUsuario($usuario);
+		$consulta->setDiagnostico($diagnostico);
+		$consulta->setFecha(date("d-m-Y"));
+		$consulta->setHora(date("H:i:s"));
+		$em = $this->getEntityManager();
+		$em->persist($consulta);
+		$em->flush();
+	}
+	
+	public function saveEstudio($estudio, $paciente, $usuario)
+	{
+		/*Ojo que ni paciente, ni usuario, ni diagnostico vienen del repo... sino de la sesion*/
+		$estudio->setPaciente($paciente);
+		$estudio->setUsuario($usuario);
+		$estudio->setFecha(date("d-m-Y"));
+		$estudio->setHora(date("H:i:s"));
+		$em = $this->getEntityManager();
+		$em->persist($estudio);
+		$em->flush();
+	}
+	
+	private function savePaciente($paciente)
+	{
+		$antecedentePersonalObstetrico = new AntecedentePersonalObstetrico();
+		$antecedentePersonalObstetrico->setPaciente($paciente);
+		$antecedenteFamiliarObstetrico = new AntecedenteFamiliarObstetrico();
+		$antecedenteFamiliarObstetrico->setPaciente($paciente);
+		$antecedentePersonalClinico = new AntecedentePersonalClinico();
+		$antecedentePersonalClinico->setPaciente($paciente);
+		$antecedenteFamiliarClinico = new AntecedenteFamiliarClinico();
+		$antecedenteFamiliarClinico->setPaciente($paciente);
+		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($paciente);
 		$em->flush();
 	}
 }

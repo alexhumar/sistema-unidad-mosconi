@@ -1,30 +1,19 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
+
 use Salita\PacienteBundle\Form\Type\BusquedaType;
 use Salita\PacienteBundle\Clases\Busqueda;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BusquedaController extends Controller
+class BusquedaController extends MyController
 {
 	
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getPacientesRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPacienteBundle:Paciente'); 
-	}
-    
 	/*Busqueda de paciente (fase GET)*/
-    public function buscarAction(Request $request)
+    public function buscarAction()
     {
-        $session = $request->getSession();
-        $busqueda= new Busqueda();
+        $session = $this->getSession();
+        $busqueda = new Busqueda();
         $form = $this->createForm(new BusquedaType(), $busqueda);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
@@ -35,14 +24,15 @@ class BusquedaController extends Controller
     }
     
     /*Busqueda de paciente (fase POST)*/
-    public function buscarProcessAction(Request $request)
+    public function buscarProcessAction()
     { 	
     	$busqueda = new Busqueda();
     	$form = $this->createForm(new BusquedaType(), $busqueda);
+    	$request = $this->getRequest();
     	$form->handleRequest($request);
     	if ($form->isValid())
     	{
-    		$repoPacientes = $this->getPacientesRepo();
+    		$repoPacientes = $this->getReposManager()->getPacientesRepo();
     		switch ($busqueda->getCriterio())
     		{
     			case 'DNI':
@@ -55,7 +45,7 @@ class BusquedaController extends Controller
     				$pacientes = $repoPacientes->buscarPorNombre($busqueda->getPalabra());
     				break;
     		}
-    		$session = $request->getSession();
+    		$session = $this->getSession();
     		$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     		return $this->render(
     				'SalitaPacienteBundle:Busqueda:resultado.html.twig',

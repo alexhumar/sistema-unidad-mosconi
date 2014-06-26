@@ -3,17 +3,16 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\MetodoEstudioType;
 use Salita\OtrosBundle\Entity\MetodoEstudio;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class MetodoEstudioFormController extends Controller
+class MetodoEstudioFormController extends MyController
 {
 	
 	/*Alta de metodo de estudio (fase GET)*/
-    public function newAction(Request $request)
+    public function newAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         $metodo = new MetodoEstudio();
         $form = $this->createForm(new MetodoEstudioType(), $metodo);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -24,15 +23,16 @@ class MetodoEstudioFormController extends Controller
     }
     
     /*Alta de metodo de estudio (fase POST)*/
-    public function newProcessAction(Request $request)
+    public function newProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$metodo = new MetodoEstudio();
     	$form = $this->createForm(new MetodoEstudioType(), $metodo);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->get('persistence_manager')->saveMetodoDeEstudio($metodo);
+   			$this->getPersistenceManager()->saveMetodoDeEstudio($metodo);
    			$mensaje = 'El metodo de estudio se cargo exitosamente en el sistema';
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);

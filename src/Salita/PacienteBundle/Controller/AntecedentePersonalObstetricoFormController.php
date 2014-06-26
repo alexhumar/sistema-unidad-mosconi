@@ -1,29 +1,19 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
+
 use Salita\PacienteBundle\Form\Type\AntecedentePersonalObstetricoType;
 use Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class AntecedentePersonalObstetricoFormController extends Controller
+class AntecedentePersonalObstetricoFormController extends MyController
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getAntecedentesPersonalesObstetricosRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPacienteBundle:AntecedentePersonalObstetrico');
-	}
 	
 	/*Modificacion de antecedente personal obstetrico (fase GET)*/
-    public function modifAction(Request $request)
+    public function modifAction()
     {
-        $session = $request->getSession();
-        $repoAntecedentes = $this->getAntecedentesPersonalesObstetricosRepo(); 
+        $session = $this->getSession();
+        $repoAntecedentes = $this->getReposManager()->getAntecedentesPersonalesObstetricosRepo(); 
         $antecedentePersonalObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
         if (!$antecedentePersonalObstetrico)
         {
@@ -39,16 +29,17 @@ class AntecedentePersonalObstetricoFormController extends Controller
     }
     
     /*Modificacion de antecedente personal obstetrico (fase GET)*/
-    public function modifProcessAction(Request $request)
+    public function modifProcessAction()
     {
-    	$session = $request->getSession();  	
-    	$repoAntecedentes = $this->getAntecedentesPersonalesObstetricosRepo();
+    	$session = $this->getSession();  	
+    	$repoAntecedentes = $this->getReposManager()->getAntecedentesPersonalesObstetricosRepo();
     	$antecedentePersonalObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
     	if (!$antecedentePersonalObstetrico)
     	{
     		throw $this->createNotFoundException("Antecedente inexistente");
     	}
     	$form = $this->createForm(new AntecedentePersonalObstetricoType(), $antecedentePersonalObstetrico);
+    	$request = $this->getRequest();
     	$form->handleRequest($request);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
@@ -57,20 +48,15 @@ class AntecedentePersonalObstetricoFormController extends Controller
     		//$em->persist($antecedentePersonalObstetrico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
-    		return $this->render(
-    				'SalitaPacienteBundle:AntecedentePersonalObstetricoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    					  'nombreRol' => $rolSeleccionado->getNombre())
-    		);
     	}
     	else
     	{
     		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
-    		return $this->render(
-    				'SalitaPacienteBundle:AntecedentePersonalObstetricoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    					  'nombreRol' => $rolSeleccionado->getNombre())
-    		);
     	}
+    	return $this->render(
+    			'SalitaPacienteBundle:AntecedentePersonalObstetricoForm:mensaje.html.twig',
+    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
+    				  'nombreRol' => $rolSeleccionado->getNombre())
+    			);
     }
 }

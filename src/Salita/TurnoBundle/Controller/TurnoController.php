@@ -3,19 +3,18 @@ namespace Salita\TurnoBundle\Controller;
 
 use Salita\TurnoBundle\Form\Type\TurnoType;
 use Salita\TurnoBundle\Entity\Turno;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\FechaYHoraTurno;
 use Salita\PacienteBundle\Form\Type\FechaYHoraTurnoType;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class TurnoController extends Controller
+class TurnoController extends MyController
 {
 
 	/*Alta de turno (fase GET)*/
-    public function newAction(Request $request)
+    public function newAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         $turno = new Turno();
         $form = $this->createForm(new TurnoType(), $turno);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -27,10 +26,11 @@ class TurnoController extends Controller
     }
     
     /*Alta de turno (fase POST)*/
-    public function newProcessAction(Request $request)
+    public function newProcessAction()
     { 	
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$turno = new Turno();
+    	$request = $this->getRequest();
     	$form = $this->createForm(new TurnoType(), $turno);
     	$form->handleRequest($request);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -39,7 +39,7 @@ class TurnoController extends Controller
     		$paciente = $session->get('paciente');
     		$medico = $session->get('usuario');
     		/*Da de alta un turno del momento*/
-			$this->get('persistence_manager')->saveNowTurno($turno, $medico, $paciente);
+			$this->getPersistenceManager()->saveNowTurno($turno, $medico, $paciente);
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
     	}
     	else
@@ -54,9 +54,9 @@ class TurnoController extends Controller
     }
     
     /*Alta de turno futuro (fase GET)*/
-    public function newFuturoAction(Request $request)
+    public function newFuturoAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	if((!$session->has('fecha')) and (!$session->has('hora')))
     	{
     		return $this->redirect($this->generateUrl('seleccion_fecHor_futuro'));
@@ -72,22 +72,23 @@ class TurnoController extends Controller
     }
     
     /*Alta de turno futuro (fase POST)*/
-    public function newFuturoProcessAction(Request $request)
+    public function newFuturoProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	if((!$session->has('fecha')) and (!$session->has('hora')))
     	{
     		return $this->redirect($this->generateUrl('seleccion_fecHor_futuro'));
     	}
     	$turno = new Turno();
     	$form = $this->createForm(new TurnoType(),$turno);
+    	$request = $this->getRequest();
     	$form->handleRequest($request);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
     	{
     		$paciente = $session->get('paciente');
     		$medico = $session->get('usuario');
-    		$this->get('persistence_manager')->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));
+    		$this->getPersistenceManager()->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));
     		$session->remove('fecha');
     		$session->remove('hora'); 		
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
@@ -104,9 +105,9 @@ class TurnoController extends Controller
     }
 
     /*Seleccionar fecha y hora para un turno (fase GET)*/
-    public function seleccionarFecHorAction(Request $request)
+    public function seleccionarFecHorAction()
     {
-       $session = $request->getSession();
+       $session = $this->getSession();
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
@@ -125,9 +126,9 @@ class TurnoController extends Controller
     }
     
     /*Seleccionar fecha y hora para un turno (fase POST)*/
-    public function seleccionarFecHorProcessAction(Request $request)
+    public function seleccionarFecHorProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	if(!$session->has('paciente'))
     	{
     		return $this->redirect($this->generateUrl('busqueda_paciente'));
@@ -136,6 +137,7 @@ class TurnoController extends Controller
     	{
     		$fecHor = new FechaYHoraTurno();
     		$form = $this->createForm(new FechaYHoraTurnoType(), $fecHor);
+    		$request = $this->getRequest();
     		$form->handleRequest($request);
     		if ($form->isValid())
     		{
@@ -157,12 +159,12 @@ class TurnoController extends Controller
     	}
     }
     
-    public function atencionAction(Request $request, $idTurno)
+    public function atencionAction($idTurno)
     {
     	/*Aca le paso el controller para poder tirar la excepcion (ver metodo), pero no me parece lo mas
     	 * correcto hacer eso... revisar*/
-    	$this->get('persistence_manager')->setTurnoAtendido($idTurno, $this);
-        //$session = $request->getSession();
+    	$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
+        //$session = $this->getSession();
         /*Esto ni idea por que lo hice... atento con eso...*/
         //$session->set('paciente', $turno->getPaciente());
         return $this->redirect($this->generateUrl('menu_paciente'));   

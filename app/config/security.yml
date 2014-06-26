@@ -73,5 +73,7 @@ security:
         - { path: ^/alta/turnofuturo, role: ROLE_MEDICO }
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_ADMINISTRADOR] #Atento si esto jode. Agregue ADMINISTRADOR el 25/06/14.
         ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_MEDICO:      ROLE_USER
+        ROLE_SECRETARIA:  ROLE_USER

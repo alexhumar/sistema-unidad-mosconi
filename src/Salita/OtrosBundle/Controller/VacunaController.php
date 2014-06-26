@@ -1,16 +1,15 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 
-class VacunaController extends Controller
+class VacunaController extends MyController
 {
 
-    public function seleccionarAction(Request $request, $idVacuna)
+    public function seleccionarAction($idVacuna)
     {
-       $session = $request->getSession();
-       $repoVacunas = $this->get('repos_manager')->getVacunasRepo();
+       $session = $this->getSession();
+       $repoVacunas = $this->getReposManager()->getVacunasRepo();
        $vacuna = $repoVacunas->find($idVacuna);
        if(!$vacuna)
        {

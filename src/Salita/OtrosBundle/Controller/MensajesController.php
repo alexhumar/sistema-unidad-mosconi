@@ -1,16 +1,15 @@
 <?php
 namespace Salita\OtrosBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class MensajesController extends Controller
+class MensajesController extends MyController
 {
     
-    public function resultadoAction(Request $request)
+    public function resultadoAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
 		$mensaje = $session->get('mensaje');
     	return $this->render(

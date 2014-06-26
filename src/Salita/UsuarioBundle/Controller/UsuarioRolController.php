@@ -69,9 +69,9 @@ class UsuarioRolController extends MyController
                                return $this->redirect($this->generateUrl('menu_medico'));
                                break;
            case Rol::getCodigoRolSecretaria(): return $this->redirect($this->generateUrl('menu_secretaria'));
-                                   break;
+                               break;
            case Rol::getCodigoRolAdministrador(): return $this->redirect($this->generateUrl('menu_administrador'));
-                                      break;
+                               break;
        }
     }
 }

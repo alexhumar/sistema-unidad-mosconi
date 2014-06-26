@@ -3,17 +3,16 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BarrioFormController extends Controller
+class BarrioFormController extends MyController
 {
 
 	/*Alta de barrio (fase GET)*/
-    public function newAction(Request $request)
+    public function newAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         $barrio = new Barrio();
         $form = $this->createForm(new BarrioType(), $barrio);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -24,15 +23,16 @@ class BarrioFormController extends Controller
     }
     
     /*Alta de barrio (fase POST)*/
-    public function newProcessAction(Request $request)
+    public function newProcessAction()
     {
     	$barrio = new Barrio();
     	$form = $this->createForm(new BarrioType(), $barrio);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
-   		$session = $request->getSession();
+   		$session = $this->getSession();
    		if ($form->isValid())
    		{
-   			$this->get('persistence_manager')->saveBarrio($barrio);
+   			$this->getPersistenceManager()->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);

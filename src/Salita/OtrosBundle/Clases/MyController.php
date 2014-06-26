@@ -21,6 +21,11 @@ class MyController extends Controller
 		return $this->get('session');
 	}
 	
+	protected function getPersistenceManager()
+	{
+		return $this->get('persistence_manager');
+	}
+	
 	protected function getReposManager()
 	{
 		return $this->get('repos_manager');

@@ -1,29 +1,19 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
+
 use Salita\PacienteBundle\Form\Type\AntecedenteFamiliarClinicoType;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliarClinico;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class AntecedenteFamiliarClinicoFormController extends Controller
+class AntecedenteFamiliarClinicoFormController extends MyController
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getEntityManager();
-	}
 	
-	private function getAntecedentesFamiliaresClinicosRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPacienteBundle:AntecedenteFamiliarClinico');
-	}
-    
 	/*Modificacion de antecedente familiar clinico (fase GET)*/ 
-	public function modifAction(Request $request)
+	public function modifAction()
     {   
-        $session = $request->getSession();   
-        $repoAntecedentes = $this->getAntecedentesFamiliaresClinicosRepo(); 
+        $session = $this->getSession();   
+        $repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresClinicosRepo(); 
         $antecedenteFamiliarClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
         if(!$antecedenteFamiliarClinico)
         {
@@ -39,16 +29,17 @@ class AntecedenteFamiliarClinicoFormController extends Controller
 	}
     
     /*Modificacion de antecedente familiar clinico (fase POST)*/
-    public function modifProcessAction(Request $request)
+    public function modifProcessAction()
     {
-    	$session = $request->getSession();  	
-    	$repoAntecedentes = $this->getAntecedentesFamiliaresClinicosRepo();
+    	$session = $this->getSession();  	
+    	$repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresClinicosRepo();
     	$antecedenteFamiliarClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
     	if(!$antecedenteFamiliarClinico)
     	{
     		throw $this->createNotFoundException("Antecedentes inexistentes");
     	}
     	$form = $this->createForm(new AntecedenteFamiliarClinicoType(), $antecedenteFamiliarClinico);
+    	$request = $this->getRequest();
     	$form->handleRequest($request);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
@@ -57,20 +48,15 @@ class AntecedenteFamiliarClinicoFormController extends Controller
     		//$em->persist($antecedenteFamiliarClinico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
-    		return $this->render(
-    					'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:mensaje.html.twig',
-    					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    						  'nombreRol' => $rolSeleccionado->getNombre())
-    				);
     	}
     	else
     	{
     		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
-    		return $this->render(
-    					'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:mensaje.html.twig',
-    					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    						  'nombreRol' => $rolSeleccionado->getNombre())
-    				);
     	}
+    	return $this->render(
+    			'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:mensaje.html.twig',
+    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
+    				  'nombreRol' => $rolSeleccionado->getNombre())
+    			);
     }
 }

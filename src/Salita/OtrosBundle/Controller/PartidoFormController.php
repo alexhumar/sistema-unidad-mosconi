@@ -3,15 +3,14 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\PartidoType;
 use Salita\OtrosBundle\Entity\Partido;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 
-class PartidoFormController extends Controller
+class PartidoFormController extends MyController
 {
 	/*ATENCION: ninguno de los controladores de esta clase tiene rutas asociadas.*/
 	
 	/*Alta de partido (fase GET)*/
-    public function newAction(Request $request)
+    public function newAction()
     {
         $partido = new Partido();
         $form = $this->createForm(new PartidoType(), $partido);
@@ -22,15 +21,16 @@ class PartidoFormController extends Controller
     }
     
     /*Alta de partido (fase POST)*/
-    public function newProcessAction(Request $request)
+    public function newProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$partido = new Partido();
     	$form = $this->createForm(new PartidoType(), $partido);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->get('persistence_manager')->savePartido($partido);
+   			$this->getPersistenceManager()->savePartido($partido);
    			$mensaje = 'El partido se cargo exitosamente en el sistema';
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);
@@ -47,9 +47,9 @@ class PartidoFormController extends Controller
    		}
     }
       
-    function listAction(Request $request)
+    function listAction()
     {
-        $repoPartidos = $this->get('repos_manager')->getPartidosRepo();
+        $repoPartidos = $this->getReposManager()->getPartidosRepo();
         $partidos = $repoPartidos->encontrarTodosOrdenadosPorNombre();
         return $this->render(
         			'SalitaOtrosBundle:PartidoForm:listado.html.twig',
@@ -58,9 +58,9 @@ class PartidoFormController extends Controller
     }
     
     /*Modificacion de partido (fase GET)*/
-    public function modifAction(Request $request, $id)
+    public function modifAction($id)
     {
-        $repoPartidos = $this->get('repos_manager')->getPartidosRepo();
+        $repoPartidos = $this->getReposManager()->getPartidosRepo();
         $partido = $repoPartidos->find($id);
         if(!$partido)
         {
@@ -74,26 +74,27 @@ class PartidoFormController extends Controller
     }
     
     /*Modificacion de partido (fase POST)*/
-    public function modifProcessAction(Request $request, $id)
+    public function modifProcessAction($id)
     {
-    	$repoPartidos = $this->get('repos_manager')->getPartidosRepo();
+    	$repoPartidos = $this->getReposManager()->getPartidosRepo();
     	$partido = $repoPartidos->find($id);
     	if(!$partido)
     	{
     		throw $this->createNotFoundException("Partido inexistente");
     	}
     	$form = $this->createForm(new PartidoType(), $partido);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$this->get('persistence_manager')->updatePartido($partido);
+   			$this->getPersistenceManager()->updatePartido($partido);
    			$mensaje = 'El partido fue modificado exitosamente';
    		}
    		else
    		{
    			$mensaje = 'Se produjo un error al intentar modificar el partido seleccionado';
    		}
-   		$session = $request->getSession();
+   		$session = $this->getSession();
    		$session->set('mensaje', $mensaje);
    		return $this->redirect($this->generateUrl('resultado_operacion'));
     }

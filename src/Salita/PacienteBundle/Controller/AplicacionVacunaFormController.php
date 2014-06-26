@@ -1,39 +1,15 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Salita\OtrosBundle\Entity\AplicacionVacuna;
+
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class AplicacionVacunaFormController extends Controller
+class AplicacionVacunaFormController extends MyController
 {
-	private function getEntityManager()
-	{
-		return $this->getDoctrine()->getManager();
-	}
-	
-	private function getPacientesRepo()
-	{
-		$em = $this->getEntityManager();
-		return $em->getRepository('SalitaPacienteBundle:Paciente');
-	}
-	
-	private function crearAplicacionVacuna($paciente, $vacuna)
-	{
-		$aplicacion = new AplicacionVacuna();
-		$aplicacion->setFecha(date("d-m-Y"));
-		$aplicacion->setPaciente($paciente);
-		$aplicacion->setVacuna($vacuna);
-		$em = $this->getEntityManager();
-		$em->persist($aplicacion);
-		/*Me parece que el persist de paciente no hace falta*/
-		$em->persist($paciente);
-		$em->flush();
-	}
 
-    public function newAction(Request $request)
+    public function newAction()
     {
-       $session = $request->getSession();
+       $session = $this->getSession();
        if (!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
@@ -48,23 +24,23 @@ class AplicacionVacunaFormController extends Controller
            {    
                 $paciente = $session->get('paciente');
                 $vacuna = $session->get('vacunaSeleccionada');
-                $this->crearAplicacionVacuna($paciente, $vacuna);
+                $this->getPersistenceManager()->createAplicacionVacuna($paciente, $vacuna);
                 $session->remove('vacunaSeleccionada');
            }
        }
        return $this->redirect($this->generateUrl('menu_paciente'));
     }
 
-    public function listAction(Request $request)
+    public function listAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         if (!$session->has('paciente'))
         {
             return $this->redirect($this->generateUrl('busqueda_paciente'));
         }
         else
         {
-            $repoPacientes = $this->getPacientesRepo();           
+            $repoPacientes = $this->getReposManager()->getPacientesRepo();           
             $aplicaciones = $repoPacientes->aplicacionesVacuna($session->get('paciente')->getId());
             $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
             return $this->render(

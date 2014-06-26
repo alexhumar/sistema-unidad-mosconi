@@ -1,17 +1,17 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 use Salita\OtrosBundle\Clases\ConsultaEspecialidad;
 use Salita\UsuarioBundle\Entity\Especialidad;
 
-class MenuController extends Controller
+class MenuController extends MyController
 {
 
-    public function principalAction(Request $request)
+    public function principalAction()
     {
-       $session = $request->getSession();
+       $session = $this->getSession();
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));

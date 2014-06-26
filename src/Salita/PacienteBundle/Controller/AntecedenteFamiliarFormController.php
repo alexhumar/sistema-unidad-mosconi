@@ -1,29 +1,30 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
+
 use Salita\PacienteBundle\Form\Type\AntecedenteFamiliarType;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliar;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 
-class AntecedenteFamiliarFormController extends Controller
+class AntecedenteFamiliarFormController extends MyController
 {
 
-    public function newAction(Request $request)
+    public function newAction()
     {
         //$p = $this->getDoctrine()->getRepository('SalitaPacienteBundle:Paciente');
         //$paciente = $p->find($_SESSION['DNI']); denuevo... por que hice esto???
         //$session = $this->container->get('session');
-        $session = $this->container->get('request')->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
+        $session = $this->getSession();
         $paciente = $session->get('paciente');
-        $antecedenteFamiliar= new AntecedenteFamiliar();
+        $antecedenteFamiliar = new AntecedenteFamiliar();
         $antecedenteFamiliar->setPaciente($paciente);
         $form = $this->createForm(new AntecedenteFamiliarType(), $antecedenteFamiliar);
+        $request = $this->getRequest();
         if ($request->getMethod() == 'POST')
         {
             $form->bindRequest($request);           
             if ($form->isValid())
             {
+            	$em = $this->getEntityManager();
                 $em->persist($antecedenteFamiliar);
                 $em->flush();
                 return $this->render('SalitaPacienteBundle:AntecedenteFamiliarForm:mensaje.html.twig', array('mensaje' => 'Los antecedentes familiares fueron creados exitosamente',

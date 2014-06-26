@@ -5,17 +5,16 @@ use Salita\OtrosBundle\Form\Type\BusquedaType;
 use Salita\OtrosBundle\Clases\Busqueda;
 use Salita\OtrosBundle\Form\Type\BusquedaDiagnosticoType;
 use Salita\OtrosBundle\Clases\BusquedaDiagnostico;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BusquedaController extends Controller
+class BusquedaController extends MyController
 {
 
 	/*Busqueda de vacuna (fase GET)*/
-    public function buscarAction(Request $request)
+    public function buscarAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         $busqueda = new Busqueda();
         $form = $this->createForm(new BusquedaType(), $busqueda);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -27,16 +26,17 @@ class BusquedaController extends Controller
     }
     
     /*Busqueda de vacuna (fase POST)*/
-    public function buscarProcessAction(Request $request)
+    public function buscarProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$busqueda = new Busqueda();
     	$form = $this->createForm(new BusquedaType(), $busqueda);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$repoVacunas = $this->get('repos_manager')->getVacunasRepo();
+   			$repoVacunas = $this->getReposManager()->getVacunasRepo();
    			$vacunas = $repoVacunas->buscarVacuna($busqueda->getPalabra());
    			return $this->render(
    					'SalitaOtrosBundle:Busqueda:resultado.html.twig',
@@ -47,9 +47,9 @@ class BusquedaController extends Controller
     }
     
     /*Busqueda de diagnostico (fase GET)*/
-    public function buscarDiagnosticoAction(Request $request)
+    public function buscarDiagnosticoAction()
     {
-        $session = $request->getSession();
+        $session = $this->getSession();
         $busqueda = new BusquedaDiagnostico();
         $form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
@@ -61,16 +61,17 @@ class BusquedaController extends Controller
     }
     
     /*Busqueda de diagnostico (fase POST)*/
-    public function buscarDiagnosticoProcessAction(Request $request)
+    public function buscarDiagnosticoProcessAction()
     {
-    	$session = $request->getSession();
+    	$session = $this->getSession();
     	$busqueda = new BusquedaDiagnostico();
     	$form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
     	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+    	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
-   			$repoDiagnosticos = $this->get('repos_manager')->getDiagnosticosRepo();
+   			$repoDiagnosticos = $this->getReposManager()->getDiagnosticosRepo();
    			$diagnosticos = $repoDiagnosticos->buscarDiagnostico($busqueda->getPalabra());
    			return $this->render(
    					'SalitaOtrosBundle:BusquedaDiagnostico:resultado.html.twig',
