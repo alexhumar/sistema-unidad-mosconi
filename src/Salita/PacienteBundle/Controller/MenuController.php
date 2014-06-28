@@ -22,9 +22,9 @@ class MenuController extends MyController
            /*if ($rolSeleccionado->getCodigo() == 'ROLE_MEDICO')*/
            if ($rolSeleccionado->isRoleMedico())
            {
+           	   echo("Hola " . $session->get('especialidad'));die;
                $especialidad = ConsultaEspecialidad::especialidadSeleccionada($session);
                $codigoEspecialidad = $especialidad->getCodigo();
-               echo("Hola " . $session->get('especialidad'));die;
            }
            else 
            {

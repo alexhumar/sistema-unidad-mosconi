@@ -41,7 +41,9 @@ class Especialidad
 
     public function __construct()
     {
-        $this->turnos= new ArrayCollection();
+        $this->turnos = new ArrayCollection();
+        /*Agregado el 28/06/14*/
+        $this->usuarios = new ArrayCollection();
     }
 
     /**
