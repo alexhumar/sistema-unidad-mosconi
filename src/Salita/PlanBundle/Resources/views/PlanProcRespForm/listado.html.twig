@@ -1,5 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PlanBundle::base.html.twig' %}
 
+{#
 {% block menu %}
     <div id="menu">
         <ul>
@@ -19,26 +20,27 @@
         </ul>
     </div>
 {% endblock %}
+#}
 
 {% block contenido %}
-<h1 id="tituloCentro">Planes habilitados</h1>
-{% if planes|length > 0 %}
-<table>
-<thead><tr><th>Plan</th><th>Periodicidad</th><th></th><th></th><th></th><th></th></tr></thead>
-<tbody>
-{% for planprocresp in planes %}
-    <div id="planHab">
-        <tr><td>{{planprocresp.nombre}}</td>
-        <td>{{planprocresp.periodicidad}}</td>
-        <td><a href="{{ path('modif_plan', { 'idPlan': planprocresp.id }) }}">Modificar</a></td>
-        <td><a href="{{ path('deshabilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">Deshabilitar</a></td>
-        <td><a href="{{ path('alta_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Registrar entrega</a></td>
-        <td><a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Listar entregas</a></td></tr>
-    </div>
-{% endfor %}
-</tbody>
-</table>
-{% else %}
-<h4 id="nota">- No hay planes habilitados -</h4>
-{% endif %}
+  <h1 id="tituloCentro">Planes habilitados</h1>
+  {% if planes|length > 0 %}
+    <table>
+      <thead><tr><th>Plan</th><th>Periodicidad</th><th></th><th></th><th></th><th></th></tr></thead>
+      <tbody>
+        {% for planprocresp in planes %}
+          <div id="planHab">
+            <tr><td>{{planprocresp.nombre}}</td>
+            <td>{{planprocresp.periodicidad}}</td>
+            <td><a href="{{ path('modif_plan', { 'idPlan': planprocresp.id }) }}">Modificar</a></td>
+            <td><a href="{{ path('deshabilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">Deshabilitar</a></td>
+            <td><a href="{{ path('alta_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Registrar entrega</a></td>
+            <td><a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Listar entregas</a></td></tr>
+          </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h4 id="nota">- No hay planes habilitados -</h4>
+  {% endif %}
 {% endblock %}

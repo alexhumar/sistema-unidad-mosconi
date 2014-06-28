@@ -1,0 +1,19 @@
+{% extends ::base.html.twig %}
+
+{# Toda esta parte sobreescribe las opciones del menu definidas en ::base.html.twig #}
+{% block menuIncludes %}
+  {{ include('SalitaPacienteBundle:OpcionesMenu:opciones.html.twig') }}
+{% endblock %}
+
+{% block opcionesMenuAdministrador %}
+  <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
+{% endblock %}
+
+{% block opcionesMenuSecretaria %}
+  <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
+{% endblock %}
+
+{% block opcionesMenuMedico %}
+  <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
+{% endblock %}
+{#----------------------------------------------------------------------------------#}

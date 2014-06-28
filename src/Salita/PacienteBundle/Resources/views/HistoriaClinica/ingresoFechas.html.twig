@@ -1,5 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PacienteBundle::base.html.twig' %}
 
+{#
 {% block menu %}
     <div id="menu">
         <ul>
@@ -19,6 +20,7 @@
         </ul>
     </div>
 {% endblock %}
+#}
 
 {% block contenido %}
 <form action="{{ path('fechas_resumenHC') }}" method="post" {{ form_enctype(form) }}>
@@ -30,7 +32,6 @@
         {{ form_row(form.diaHasta) }} {{ form_row(form.mesHasta) }} {{ form_row(form.anioHasta) }}
     <br />
     {{ form_rest(form) }}
-
     <input type="submit" />
   </div>
 </form>

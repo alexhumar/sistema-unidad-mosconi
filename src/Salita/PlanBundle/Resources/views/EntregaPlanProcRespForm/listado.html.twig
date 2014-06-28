@@ -1,5 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PlanBundle::base.html.twig' %}
 
+{#
 {% block menu %}
     <div id="menu">
         <ul>
@@ -19,19 +20,20 @@
         </ul>
     </div>
 {% endblock %}
+#}
 
 {% block contenido %}
-<h1 id="tituloCentro">Entregas</h1>
-{% if entregasplanprocresp|length > 0 %}
-<table>
-<thead><tr><th>Paciente</th><th>Método</th><th>Fecha</th></thead>
-<tbody>
-{% for entregaplanprocresp in entregasplanprocresp %}
-  <tr><td>{{entregaplanprocresp.nombrePac}} {{entregaplanprocresp.apellidoPac}}</td><td>{{entregaplanprocresp.metodo}}</td><td>{{entregaplanprocresp.fecha}}</td></tr>
-{% endfor %}
-</tbody>
-</table>
-{% else %}
-<h4 id="nota">- No se han encontrado resultados -</h4>
-{% endif %}
+  <h1 id="tituloCentro">Entregas</h1>
+  {% if entregasplanprocresp|length > 0 %}
+    <table>
+      <thead><tr><th>Paciente</th><th>Método</th><th>Fecha</th></thead>
+      <tbody>
+        {% for entregaplanprocresp in entregasplanprocresp %}
+          <tr><td>{{entregaplanprocresp.nombrePac}} {{entregaplanprocresp.apellidoPac}}</td><td>{{entregaplanprocresp.metodo}}</td><td>{{entregaplanprocresp.fecha}}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h4 id="nota">- No se han encontrado resultados -</h4>
+  {% endif %}
 {% endblock %}

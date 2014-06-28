@@ -1,5 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PacienteBundle::base.html.twig' %}
 
+{#
 {% block menu %}
     <div id="menu">
         <ul>
@@ -19,65 +20,62 @@
         </ul>
     </div>
 {% endblock %}
+#}
 
 {% block contenido %}
-
-<div class="tituloMenu">
+  <div class="tituloMenu">
     <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
-</div>
-<br>
-<div class="subtituloMenu">
+  </div>
+  <br>
+  <div class="subtituloMenu">
     Datos Filiatorios:
-</div>
+  </div>
+  <ul>
+    <div class="opcionMenu">
+      <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
+    </div>
+  </ul>
+  {% if ((rol != 'ROLE_SECRETARIA')) %}
+    <div class="subtituloMenu">
+      Historia Clínica:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></li>
+        <li><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></li>
+      </div>
+    </ul>
+  {% endif %}
+  {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+    <div class="subtituloMenu">
+      Antecedentes:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
+      </div>
+  {% endif %}
+  {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+    <div class="opcionMenu">
+      <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
+    </div>
+  {% endif %}
+  {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+    <div class="opcionMenu">
+      <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
+    </div>
+  {% endif %}
+  {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+    <div class="opcionMenu">
+      <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
+    <div>
+  {% endif %}
+  </ul>
 
-<ul><div class="opcionMenu">
-    <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
-</div>
-</ul>
-{% if ((rol != 'ROLE_SECRETARIA')) %}
-<div class="subtituloMenu">
-    Historia Clínica:
-</div>
-
-<ul><div class="opcionMenu">
-    <li><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></li>
-    <li><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></li>
-</div>
-</ul>
-{% endif %}
-
-{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
-<div class="subtituloMenu">
-    Antecedentes:
-</div>
-<ul><div class="opcionMenu">
-    <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
-</div>
-{% endif %}
-
-{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
-<div class="opcionMenu">
-    <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
-</div>
-{% endif %}
-
-{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
-<div class="opcionMenu">
-    <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
-</div>
-{% endif %}
-
-{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
-<div class="opcionMenu">
-    <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
-<div>
-{% endif %}
-</ul>
-
-<div class="subtituloMenu">
-Turnos:
-{% if (rol == 'ROLE_MEDICO') %}
-</div>
+  <div class="subtituloMenu">
+    Turnos:
+    {% if (rol == 'ROLE_MEDICO') %}
+      </div>
 <ul><div class="opcionMenu">
     <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
 </div>
