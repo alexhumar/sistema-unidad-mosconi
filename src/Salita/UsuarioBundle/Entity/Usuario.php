@@ -292,7 +292,7 @@ class Usuario extends BaseUser
     
     public function isAuthenticatedAdministrador($rolSeleccionado)
     {
-    	echo(rolSeleccionado);die;
+    	echo($rolSeleccionado);die;
     	return $rolSeleccionado == Rol::getCodigoRolAdministrador();
     }
     
