@@ -1,4 +1,4 @@
-{% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
+{% extends "SalitaUsuarioBundle:Menu:menuAdministrador.html.twig" %}
 
 {% block contenido %}
 	{{ form(form, {'action': path('modif_usuario', { 'id': id })}) }}
