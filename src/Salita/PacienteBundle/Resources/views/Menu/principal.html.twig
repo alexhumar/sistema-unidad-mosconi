@@ -123,7 +123,7 @@ Consultas:
 Vacunacion:
 </div>
 <ul><div class="opcionMenu">
-{{ rolSeleccionado }}
+{{ usuario.isAuthenticatedAdministrador(rolSeleccionado) }}
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
 {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
     <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
