@@ -6,7 +6,6 @@
    invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
    forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
  #}
-{% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
 
 {#
 {% block menu %}
@@ -31,8 +30,9 @@
 #}
 
 {% block contenido %}
+   {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
 
-   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado.value) %}
+   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
       Lo esta tomando....
    {% else %}
       {{ rolSeleccionado }}
