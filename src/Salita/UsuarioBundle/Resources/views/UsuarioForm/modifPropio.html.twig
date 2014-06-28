@@ -1,10 +1,12 @@
 {% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
 
+{% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+
 {% block menu %}
     <div id="menu">
         <ul>
 
-         {% if rol == 'ROLE_ADMINISTRADOR' %}
+           {# {% if rol == 'ROLE_ADMINISTRADOR' %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
             {% endif %}    
 
@@ -14,15 +16,15 @@
 
             {% if rol == 'ROLE_MEDICO' %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
-            {% endif %} 
-
-         {# {% if is_granted(expression('user and user.isAdministrador()')) %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
-            {% elseif is_granted(expression('user and user.isSecretaria()')) %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig' %}
-            {% elseif is_granted(expression('user and user.isMedico()')) %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
             {% endif %} #}
+
+            {% if is_granted(expression('user and user.isAuthenticatedAdministrador(rolSeleccionado)')) %}
+                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig') }}
+            {% elseif is_granted(expression('user and user.isAuthenticatedSecretaria(rolSeleccionado)')) %}
+                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig') }}
+            {% elseif is_granted(expression('user and user.isAuthenticatedMedico(rolSeleccionado)')) %}
+                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig') }}
+            {% endif %} 
         </ul>
     </div>
 {% endblock %}
