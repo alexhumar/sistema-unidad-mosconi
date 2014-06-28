@@ -10,12 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="especialidad")
  */
 class Especialidad
-{
-	public static function getCodigoNoTieneEspecialidad()
-	{
-		return "NO_TIENE";
-	}
-	
+{	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -122,5 +117,10 @@ class Especialidad
     public function __toString()
     {
         return $this->nombre;
+    }
+    
+    public static function getCodigoNoTieneEspecialidad()
+    {
+    	return "NO_TIENE";
     }
 }

@@ -22,7 +22,7 @@ class MenuController extends MyController
            /*if ($rolSeleccionado->getCodigo() == 'ROLE_MEDICO')*/
            if ($rolSeleccionado->isRoleMedico())
            {
-               $especialidad = ConsultaEspecialidad::especialidadSeleccionada();
+               $especialidad = Especialidad::especialidadSeleccionada();
                $codigoEspecialidad = $especialidad->getCodigo();
                echo($codigoEspecialidad);die;
            }
