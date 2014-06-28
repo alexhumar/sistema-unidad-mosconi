@@ -124,7 +124,7 @@ Vacunacion:
 </div>
 <ul><div class="opcionMenu">
 
-{% if usuario.AuthenticatedAdministrador(rolSeleccionado) %}
+{% if usuario.AuthenticatedAdministrador('ROLE_ADMINISTRADOR') %}
   Esta como admin loco!
 {% else %}
   No funciona :(
