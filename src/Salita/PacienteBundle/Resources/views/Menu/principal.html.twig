@@ -31,18 +31,18 @@
 #}
 
 {% block contenido %}
-  <div class="tituloMenu">
-    <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
-  </div>
-  <br>
-  <div class="subtituloMenu">
-    Datos Filiatorios:
-  </div>
-  <ul>
-    <div class="opcionMenu">
-      <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
+    <div class="tituloMenu">
+      <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
     </div>
-  </ul>
+    <br>
+    <div class="subtituloMenu">
+      Datos Filiatorios:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
+      </div>
+    </ul>
   {# {% if ((rol != 'ROLE_SECRETARIA')) %} #}
   {% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
     <div class="subtituloMenu">
@@ -56,9 +56,9 @@
     </ul>
   {% endif %}
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
-    {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
-         {# or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %} #}
-    Antecedentes personales clinicos
+   {# or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %} #}
+  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
+    Antecedentes personales clinicos {# Esto es de prueba, borrar #}
     <div class="subtituloMenu">
       Antecedentes:
     </div>
@@ -70,94 +70,100 @@
  {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
   {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
         or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
-    <div class="opcionMenu">
-      <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
-    </div>
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
+      </div>
   {% endif %}
   {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
         or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra()))) %}
-    <div class="opcionMenu">
-      <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
-    </div>
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
+      </div>
   {% endif %}
  {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
   {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
      or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
-    <div class="opcionMenu">
-      <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
-    <div>
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
+      <div>
   {% endif %}
-  </ul>
+    </ul>
 
-  <div class="subtituloMenu">
-    Turnos:
+    <div class="subtituloMenu">
+      Turnos:
    {# {% if (rol == 'ROLE_MEDICO') %} #}
-      {% if usuario.isAuthenticatedMedico(rolSeleccionado) %}
+    {% if usuario.isAuthenticatedMedico(rolSeleccionado) %}
       </div>
-<ul><div class="opcionMenu">
-    <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
-</div>
-</ul>
-{% else %}
-</div>
-<ul><div class="opcionMenu">
-    <li><a href="{{path('alta_turno')}}">Agregar un turno</a></li>
-</div>
-</ul>
-{% endif %}
+      <ul>
+        <div class="opcionMenu">
+          <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
+        </div>
+      </ul>
+    {% else %}
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('alta_turno')}}">Agregar un turno</a></li>
+      </div>
+    </ul>
+    {% endif %}
 
 {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
-{% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-      or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
-<div class="subtituloMenu">
-Estudios:
-</div>
-<ul><div class="opcionMenu">
-<li><a href="{{path('alta_estudio')}}">Registrar un estudio</a></li>
-</div>
-</ul>
-{% endif %}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+          or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
+    <div class="subtituloMenu">
+      Estudios:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('alta_estudio')}}">Registrar un estudio</a></li>
+      </div>
+    </ul>
+  {% endif %}
 
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='CLINICO' or especialidad =='PEDIATRA'))) %} #}
-{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-      or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isClinico() or usuario.isPediatra()))) %}
-<div class="subtituloMenu">
-Consultas:
-</div>
-<ul><div class="opcionMenu">
-<li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
-</div>
-</ul>
-{% endif %}
+  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isClinico() or usuario.isPediatra()))) %}
+    <div class="subtituloMenu">
+      Consultas:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
+      </div>
+    </ul>
+  {% endif %}
 {# {% if ((rol != 'ROLE_SECRETARIA')) %} #}
-{% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
-<div class="subtituloMenu">
-Vacunacion:
-</div>
-<ul><div class="opcionMenu">
-
+  {% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
+    <div class="subtituloMenu">
+      Vacunacion:
+    </div>
+    <ul>
+      <div class="opcionMenu">
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
-{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-   or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
-    <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
-{% endif %}
-    <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
-</div>
-</ul>
+    {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+       or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
+        <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
+    {% endif %}
+        <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
+      </div>
+    </ul>
+  {% endif %}
 
-{% endif %}
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA')) %} #}
-{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-   or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra())) %}
-<div class="subtituloMenu">
-    Proyecto Procreacion Responsable:
-</div>
-<ul><div class="opcionMenu">
-    <li><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></li>
-    <li><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></li>
-    <li><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></li>
-</div>
-</ul>
-{% endif %}
+  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+     or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra())) %}
+    <div class="subtituloMenu">
+      Proyecto Procreacion Responsable:
+    </div>
+    <ul>
+      <div class="opcionMenu">
+        <li><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></li>
+        <li><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></li>
+        <li><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></li>
+      </div>
+    </ul>
+  {% endif %}
+
 {% endblock %}
