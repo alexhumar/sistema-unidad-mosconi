@@ -18,8 +18,8 @@ class MenuController extends MyController
        }
        else
        {
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
-           echo("Hola " . $session->get('especialidad'));die;
+       	   echo("Hola " . $session->get('especialidad'));die;
+           $rolSeleccionado = ConsultaRol::rolSeleccionado($session); 
            /*if ($rolSeleccionado->getCodigo() == 'ROLE_MEDICO')*/
            if ($rolSeleccionado->isRoleMedico())
            { 	   

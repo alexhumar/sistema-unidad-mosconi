@@ -1,15 +1,14 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\MisRoles;
 use Salita\UsuarioBundle\Entity\Rol;
 use Salita\UsuarioBundle\Clases\RolTemporal;
 use Salita\UsuarioBundle\Form\Type\RolType;
 use Salita\OtrosBundle\Clases\ConsultaRol;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+/*use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;*/
 
 class UsuarioRolController extends MyController
 {
