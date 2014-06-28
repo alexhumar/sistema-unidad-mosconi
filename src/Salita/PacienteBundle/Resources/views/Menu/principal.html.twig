@@ -35,7 +35,7 @@
    {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) == 1 %}
       Lo esta tomando....
    {% else %}
-      No lo esta tomando...
+      {{ rolSeleccionado }}
    {% endif %}
 
     <div class="tituloMenu">
