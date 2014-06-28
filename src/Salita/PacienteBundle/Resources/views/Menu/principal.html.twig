@@ -1,7 +1,7 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% set usuario = app.session.get('usuario') %}
-{% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+{% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
 
 {#
 {% block menu %}
@@ -123,12 +123,6 @@ Consultas:
 Vacunacion:
 </div>
 <ul><div class="opcionMenu">
-
-{% if usuario.AuthenticatedAdministrador('ROLE_ADMINISTRADOR') %}
-  Esta como admin loco!
-{% else %}
-  No funciona :(
-{% endif %}
 
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
 {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
