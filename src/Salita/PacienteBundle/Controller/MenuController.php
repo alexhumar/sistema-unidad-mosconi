@@ -26,7 +26,7 @@ class MenuController extends MyController
            }
            else 
            {
-               //$codigoEspecialidad = 'NO TIENE';
+               //$codigoEspecialidad = 'NO_TIENE';
                $codigoEspecialidad = Especialidad::getCodigoNoTieneEspecialidad();
            }
            $paciente = $session->get('paciente');
