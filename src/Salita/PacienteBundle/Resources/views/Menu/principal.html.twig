@@ -1,6 +1,11 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% set usuario = app.session.get('usuario') %}
+
+{# ATENCION: como los metodos de Usuario de la forma isAuthenticatedXXXX reciben un string, es necesario
+   invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
+   forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
+ #}
 {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
 
 {#
