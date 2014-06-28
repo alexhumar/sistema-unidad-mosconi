@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\OtrosBundle\Clases;
 
 class ConsultaEspecialidad

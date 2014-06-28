@@ -19,10 +19,10 @@ class MenuController extends MyController
        else
        {
            $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+           echo("Hola " . $session->get('especialidad'));die;
            /*if ($rolSeleccionado->getCodigo() == 'ROLE_MEDICO')*/
            if ($rolSeleccionado->isRoleMedico())
-           {
-           	   echo("Hola " . $session->get('especialidad'));die;
+           { 	   
                $especialidad = ConsultaEspecialidad::especialidadSeleccionada($session);
                $codigoEspecialidad = $especialidad->getCodigo();
            }
