@@ -12,7 +12,6 @@ class MenuController extends MyController
     public function principalAction()
     {
        $session = $this->getSession();
-       //echo(var_dump($session->get('especialidad')));die;
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
@@ -24,6 +23,7 @@ class MenuController extends MyController
            { 	   
                $especialidad = ConsultaEspecialidad::especialidadSeleccionada($session);
                $codigoEspecialidad = $especialidad->getCodigo();
+               echo($codigoEspecialidad);die;
            }
            else 
            {
