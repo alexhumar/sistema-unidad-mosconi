@@ -12,7 +12,7 @@ class MenuController extends MyController
     public function principalAction()
     {
        $session = $this->getSession();
-       echo("Hola...      ");
+       echo($session->has('especialidad'));
        echo("Hola " . $session->get('especialidad'));die;
        if(!$session->has('paciente'))
        {

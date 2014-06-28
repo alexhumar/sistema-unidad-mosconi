@@ -18,7 +18,6 @@ class MyController extends Controller
 	
 	protected function getSession()
 	{
-		echo("getSession()");
 		return $this->get('session');
 	}
 	
