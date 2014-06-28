@@ -1,14 +1,13 @@
 {% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
 
 {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
-{% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionado ~ ')' %}
+{% set adminexpression = 'user and user.isAuthenticatedAdministrador(rolSeleccionado)' %}
 {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionado ~ ')' %}
 {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionado ~ ')' %}
 
 {% block menu %}
     <div id="menu">
         <ul>
-           {{ rolSeleccionado }}
 
            {# {% if rol == 'ROLE_ADMINISTRADOR' %}
                 {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
