@@ -1,9 +1,9 @@
 {% extends 'SalitaUsuarioBundle:Menu:menuAdministrador.html.twig' %}
 
-{% set rolSeleccionado = app.session.get('rolSeleccionado') ~ ')' %}
-{% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionado %}
-{% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionado %}
-{% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionado %}
+{% set rolSeleccionado = "'" ~ app.session.get('rolSeleccionado') ~ "'" %}
+{% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionado ~ ')' %}
+{% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionado ~ ')' %}
+{% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionado ~ ')' %}
 
 {% block menu %}
     <div id="menu">
