@@ -1,4 +1,4 @@
-{% if app.session.get('rolSeleccionado') is defined %}
+{% if app.session.get('rolSeleccionado') is not null %}
 	{% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
 {% endif %}
 <!DOCTYPE html>
