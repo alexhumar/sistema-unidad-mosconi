@@ -12,13 +12,14 @@ class MenuController extends MyController
     public function principalAction()
     {
        $session = $this->getSession();
+       echo("Hola...      ");
+       echo("Hola " . $session->get('especialidad'));die;
        if(!$session->has('paciente'))
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
        }
        else
        {
-       	   echo("Hola " . $session->get('especialidad'));die;
            $rolSeleccionado = ConsultaRol::rolSeleccionado($session); 
            /*if ($rolSeleccionado->getCodigo() == 'ROLE_MEDICO')*/
            if ($rolSeleccionado->isRoleMedico())
