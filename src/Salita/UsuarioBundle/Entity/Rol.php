@@ -148,4 +148,10 @@ class Rol
     {
     	return $this->getCodigo() == self::getCodigoRolSecretaria();
     }
+    
+    public function getCodigoWithQuotes()
+    {
+    	/*Esto lo uso mas que nada para los templates*/
+    	return "'" . $this->getCodigo() . "'";
+    }
 }
