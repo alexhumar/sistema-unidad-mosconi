@@ -32,7 +32,7 @@
 
 {% block contenido %}
 
-   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) == true %}
+   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) == 1 %}
       Lo esta tomando....
    {% else %}
       No lo esta tomando...
