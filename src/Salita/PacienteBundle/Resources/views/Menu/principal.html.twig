@@ -6,32 +6,10 @@
    invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
    forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
  #}
-
-{#
-{% block menu %}
-    <div id="menu">
-        <ul>
-            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
-
-            {% if rol == 'ROLE_ADMINISTRADOR' %}
-                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}    
-
-            {% if rol == 'ROLE_SECRETARIA' %}
-                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}  
-
-            {% if rol == 'ROLE_MEDICO' %}
-                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %} 
-        </ul>
-    </div>
-{% endblock %}
-#}
+{% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
 
 {% block contenido %}
-   {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
-
+   
    {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
       Lo esta tomando....
    {% else %}
