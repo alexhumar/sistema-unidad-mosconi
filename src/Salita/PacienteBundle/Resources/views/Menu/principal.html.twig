@@ -31,6 +31,10 @@
 #}
 
 {% block contenido %}
+   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) %}
+      Lo esta tomando....
+   {% endif %}
+
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
     </div>
