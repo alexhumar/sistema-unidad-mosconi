@@ -3,18 +3,11 @@
 {% set usuario = app.session.get('usuario') %}
 
 {% block contenido %}
-  {# ATENCION: como los metodos de Usuario de la forma isAuthenticatedXXXX reciben un string, es necesario
-     invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
-     forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
-     ATENCION: si no lo seteo dentro del block contenido, tampoco funciona. NO SE POR QUE PASA ESO! NO DEBERIA
-   #}
-   {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}   
-
-   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
-      Lo esta tomando....
-   {% else %}
-      {{ rolSeleccionado }}
-   {% endif %}
+   {# ATENCION: si no lo seteo dentro del block contenido, no funciona. Es decir, la funciones de la forma
+      isAuthenticatedXXXX no se comportan como deberian.
+      NO SE POR QUE PASA ESO! NO DEBERIA...
+    #}
+   {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
@@ -41,9 +34,9 @@
     </ul>
   {% endif %}
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
-   {# or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %} #}
-  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) %}
-    Antecedentes personales clinicos {# Esto es de prueba, borrar #}
+   {#  #}
+  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %}
     <div class="subtituloMenu">
       Antecedentes:
     </div>
