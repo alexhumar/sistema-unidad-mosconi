@@ -124,7 +124,7 @@ Vacunacion:
 </div>
 <ul><div class="opcionMenu">
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
-{% if (usuario.isAutenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
+{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
     <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
 {% endif %}
     <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
