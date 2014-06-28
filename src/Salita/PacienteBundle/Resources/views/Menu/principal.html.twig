@@ -32,7 +32,7 @@
 
 {% block contenido %}
 
-   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
+   {% if usuario.isAuthenticatedAdministrador(app.session.get('rolSeleccionado').getCodigo()) %}
       Lo esta tomando....
    {% else %}
       {{ rolSeleccionado }}
