@@ -1,5 +1,8 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
+{% set usuario = app.session.get('usuario') %}
+{% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+
 {#
 {% block menu %}
     <div id="menu">
@@ -46,7 +49,8 @@
       </div>
     </ul>
   {% endif %}
-  {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+ {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
+    {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and not usuario.isObstetra())) %}
     <div class="subtituloMenu">
       Antecedentes:
     </div>
@@ -55,17 +59,20 @@
         <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
       </div>
   {% endif %}
-  {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+ {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
     <div class="opcionMenu">
       <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
     </div>
   {% endif %}
-  {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %}
+  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
+  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and not usuario.isObstetra())) %}
     <div class="opcionMenu">
       <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
     </div>
   {% endif %}
-  {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+ {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
     <div class="opcionMenu">
       <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
     <div>
@@ -74,7 +81,8 @@
 
   <div class="subtituloMenu">
     Turnos:
-    {% if (rol == 'ROLE_MEDICO') %}
+   {# {% if (rol == 'ROLE_MEDICO') %} #}
+      {% if usuario.isAuthenticatedMedico(rolSeleccionado) %}
       </div>
 <ul><div class="opcionMenu">
     <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
@@ -88,7 +96,8 @@
 </ul>
 {% endif %}
 
-{% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %}
+{# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
+{% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
 <div class="subtituloMenu">
 Estudios:
 </div>
@@ -98,7 +107,8 @@ Estudios:
 </ul>
 {% endif %}
 
-{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='CLINICO' or especialidad =='PEDIATRA'))) %}
+{# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='CLINICO' or especialidad =='PEDIATRA'))) %} #}
+{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isClinico() or usuario.isPediatra()))) %}
 <div class="subtituloMenu">
 Consultas:
 </div>
@@ -107,12 +117,14 @@ Consultas:
 </div>
 </ul>
 {% endif %}
-{% if ((rol != 'ROLE_SECRETARIA')) %}
+{# {% if ((rol != 'ROLE_SECRETARIA')) %} #}
+{% if not usuario.isAuthenticatedSecretaria(rolSeleccionado) %}
 <div class="subtituloMenu">
 Vacunacion:
 </div>
 <ul><div class="opcionMenu">
-{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %}
+{# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
+{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
     <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
 {% endif %}
     <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
@@ -120,7 +132,8 @@ Vacunacion:
 </ul>
 
 {% endif %}
-{% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA')) %}
+{# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA')) %} #}
+{% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra())) %}
 <div class="subtituloMenu">
     Proyecto Procreacion Responsable:
 </div>

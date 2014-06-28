@@ -23,7 +23,6 @@ class MenuController extends MyController
            { 	   
                $especialidad = ConsultaEspecialidad::especialidadSeleccionada($session);
                $codigoEspecialidad = $especialidad->getCodigo();
-               echo($codigoEspecialidad);die;
            }
            else 
            {

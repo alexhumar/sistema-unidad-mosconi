@@ -272,6 +272,24 @@ class Usuario extends BaseUser
     	return $this->hasRole(Rol::getCodigoRolSecretaria());
     }
     
+    public function isClinico()
+    {
+    	return ($this->isMedico()) and 
+    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadClinico());
+    }
+    
+    public function isPediatra()
+    {
+    	return ($this->isMedico()) and 
+    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadPediatra());
+    }
+    
+    public function isObstetra()
+    {
+    	return ($this->isMedico()) and
+    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
+    }
+    
     public function isAuthenticatedAdministrador($rolSeleccionado)
     {
     	return $rolSeleccionado == Rol::getCodigoRolAdministrador();

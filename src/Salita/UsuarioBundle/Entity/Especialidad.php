@@ -121,6 +121,21 @@ class Especialidad
         return $this->nombre;
     }
     
+    public static function getCodigoEspecialidadPediatra()
+    {
+    	return "PEDIATRA";
+    }
+    
+    public static function getCodigoEspecialidadObstetra()
+    {
+    	return "OBSTETRA";
+    }
+    
+    public static function getCodigoEspecialidadClinico()
+    {
+    	return "CLINICO";
+    }
+    
     public static function getCodigoNoTieneEspecialidad()
     {
     	return "NO_TIENE";
