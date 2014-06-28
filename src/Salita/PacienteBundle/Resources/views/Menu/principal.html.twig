@@ -2,13 +2,12 @@
 
 {% set usuario = app.session.get('usuario') %}
 
-{# ATENCION: como los metodos de Usuario de la forma isAuthenticatedXXXX reciben un string, es necesario
-   invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
-   forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
- #}
-
-
 {% block contenido %}
+  {# ATENCION: como los metodos de Usuario de la forma isAuthenticatedXXXX reciben un string, es necesario
+     invocar el metodo desde Twig con el parametro entre comillas. Lo siguiente hace que se invoque de esta 
+     forma por ejemplo: usuario.isAuthenticatedAdministrador('ROLE_MEDICO'). Sino no funciona.
+     ATENCION: si no lo seteo dentro del block contenido, tampoco funciona. NO SE POR QUE PASA ESO! NO DEBERIA
+   #}
    {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}   
 
    {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
