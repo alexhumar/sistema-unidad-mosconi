@@ -57,7 +57,7 @@
   {% endif %}
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
    {# or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %} #}
-  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) %}
+  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) %}
     Antecedentes personales clinicos {# Esto es de prueba, borrar #}
     <div class="subtituloMenu">
       Antecedentes:
