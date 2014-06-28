@@ -274,16 +274,16 @@ class Usuario extends BaseUser
     
     public function isAuthenticatedAdministrador($rolSeleccionado)
     {
-    	return $rolSeleccionado = Rol::getCodigoRolAdministrador();
+    	return $rolSeleccionado == Rol::getCodigoRolAdministrador();
     }
     
     public function isAuthenticatedMedico($rolSeleccionado)
     {
-    	return $rolSeleccionado = Rol::getCodigoRolMedico();
+    	return $rolSeleccionado == Rol::getCodigoRolMedico();
     }
     
     public function isAuthenticatedSecretaria($rolSeleccionado)
     {
-    	return $rolSeleccionado = Rol::getCodigoRolSecretaria();
+    	return $rolSeleccionado == Rol::getCodigoRolSecretaria();
     }
 }
