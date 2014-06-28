@@ -33,6 +33,8 @@
 {% block contenido %}
    {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado)) %}
       Lo esta tomando....
+   {% else %}
+      No lo esta tomando...
    {% endif %}
 
     <div class="tituloMenu">
