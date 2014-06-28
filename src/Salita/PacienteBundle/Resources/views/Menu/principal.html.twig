@@ -44,7 +44,7 @@
     </div>
   </ul>
   {# {% if ((rol != 'ROLE_SECRETARIA')) %} #}
-  {% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
+  {% if not(usuario.isAuthenticatedSecretaria(rol)) %}
     <div class="subtituloMenu">
       Historia Clínica:
     </div>
