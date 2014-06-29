@@ -25,10 +25,8 @@ class BusquedaController extends MyController
     /*Busqueda de vacuna (fase POST)*/
     public function buscarProcessAction()
     {
-    	$session = $this->getSession();
     	$busqueda = new Busqueda();
     	$form = $this->createForm(new BusquedaType(), $busqueda);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
@@ -37,8 +35,7 @@ class BusquedaController extends MyController
    			$vacunas = $repoVacunas->buscarVacuna($busqueda->getPalabra());
    			return $this->render(
    					'SalitaOtrosBundle:Busqueda:resultado.html.twig',
-   					array('vacunas' => $vacunas/*,'rol' => $rolSeleccionado->getCodigo(),
-   							'nombreRol' => $rolSeleccionado->getNombre()*/)
+   					array('vacunas' => $vacunas)
    			);
    		}
     }
