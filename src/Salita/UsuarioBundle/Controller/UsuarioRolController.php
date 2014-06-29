@@ -62,8 +62,6 @@ class UsuarioRolController extends MyController
            $session->set('rolSeleccionado', $rolUsuario);
        }
        
-       echo(var_dump($usuario->getEspecialidad()));die;
-       
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico(): $session->set('especialidad', $usuario->getEspecialidad());

@@ -7,7 +7,11 @@
     #}
    {% set usuario = app.session.get('usuario') %}
    {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
-   {% set codigoEspecialidad = app.session.get('especialidad').getCodigo() %}
+   {% if not(app.session.get('especialidad') is empty) %}
+     {% set codigoEspecialidad = app.session.get('especialidad').getCodigo() %}
+   {% else %}
+     {% set codigoEspecialidad = 'NO_TIENE' %}
+   {% endif %}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
