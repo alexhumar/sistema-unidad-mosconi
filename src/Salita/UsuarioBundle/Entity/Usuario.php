@@ -287,9 +287,19 @@ class Usuario extends BaseUser
     
     public function isObstetra()
     {
-    	echo(var_dump($this->getRolesUsuario()));die;
     	return ($this->isMedico()) and
     	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
+    }
+    
+    /* Como en los templates twig no funcionan los metodos isObstetra, isPediatra e isAdministrador (me parece
+     * que tiene que ver con que no puede reemplazar los proxies de doctrine con los objetos a partir de una
+     * consulta a la bd desde twig.
+     * creo estas versiones alternas para 
+     *  */
+    public function isObstetra()
+    {
+    	return ($this->isMedico()) and
+    	($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
     }
     
     public function isAuthenticatedAdministrador($rolSeleccionado)

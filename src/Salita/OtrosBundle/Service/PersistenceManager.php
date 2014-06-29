@@ -8,6 +8,7 @@ use Salita\PacienteBundle\Entity\AntecedentePersonalClinico;
 use Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliarClinico;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliarObstetrico;
+use Salita\UsuarioBundle\Entity\Rol;
 
 class PersistenceManager
 {
@@ -129,6 +130,11 @@ class PersistenceManager
 	{
 		/*Aclaracion: tanto el usuario como el rol deben venir traidos de sus respectivos repos*/
 		$usuario->quitarRol($rol);
+		/* Si el rol quitado es de medico, se le elimina la especialidad */
+		if ($rol->getCodigo() == Rol::getCodigoRolMedico())
+		{
+			$usuario->setEspecialidad(null);
+		}
 		$em = $this->getReposManager()->getEntityManager();
 		$em->flush();
 	}

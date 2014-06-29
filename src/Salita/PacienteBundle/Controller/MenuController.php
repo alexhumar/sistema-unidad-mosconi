@@ -29,9 +29,7 @@ class MenuController extends MyController
                //$codigoEspecialidad = 'NO_TIENE';
                $codigoEspecialidad = Especialidad::getCodigoNoTieneEspecialidad();
            }
-           $paciente = $this
-                          ->getPersistenceManager()
-                          ->getRepoPacientFromSessionPacient($session->get('paciente'), $this);
+           $paciente = $session->get('paciente');
            return $this->render(
            			'SalitaPacienteBundle:Menu:principal.html.twig',
            			array('paciente' => $paciente, 'rol' =>$rolSeleccionado->getCodigo(), 
