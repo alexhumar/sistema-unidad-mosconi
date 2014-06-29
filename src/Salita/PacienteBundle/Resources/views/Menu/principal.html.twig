@@ -46,12 +46,17 @@
   {% endif %}
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
    {#  #}
-  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
-    <div class="subtituloMenu"> {# Esto tengo que meterlo en un if aparte. #}
+
+  {# Si el usuario es secretaria o el medico es obstetra y el paciente no es mujer, no debe mostrarse la parte de antecedentes #}
+  {% set muestraAntecedentes = not(usuario.isAuthenticatedSecretaria(rolSeleccionado) 
+                     or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
+  {% if muestraAntecedentes %}
+    <div class="subtituloMenu">
       Antecedentes:
     </div>
     <ul>
+  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
       </div>
@@ -78,6 +83,7 @@
       <div>
   {% endif %}
     </ul>
+  {% endif %} {# if muestraAntecedentes #}
 
     <div class="subtituloMenu">
       Turnos:
