@@ -310,6 +310,7 @@ class Usuario extends BaseUser
     
     public function isObstetraSession($codigoEspecialidad)
     {
+    	echo(var_dump($codigoEspecialidad . "vs." . Especialidad::getCodigoEspecialidadObstetra()));die;
     	return $codigoEspecialidad == Especialidad::getCodigoEspecialidadObstetra();
     }
     
