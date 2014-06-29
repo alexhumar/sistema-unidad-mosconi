@@ -18,7 +18,7 @@ class BarrioFormController extends MyController
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:BarrioForm:new.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
+           			array('form' => $form->createView(),/*'rol' => $rolSeleccionado->getCodigo()*/)
            		);
     }
     
