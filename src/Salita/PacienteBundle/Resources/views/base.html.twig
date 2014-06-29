@@ -5,7 +5,7 @@
   {{ include('SalitaPacienteBundle:OpcionesMenu:opciones.html.twig') }}
 {% endblock %}
 
-{{ includes("SalitaOtrosBundle::variables.html.twig") }}
+{{ include("SalitaOtrosBundle::variables.html.twig") }}
 
 {% block opcionesMenuAdministrador %}
   <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
