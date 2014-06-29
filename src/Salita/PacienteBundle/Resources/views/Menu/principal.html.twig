@@ -5,18 +5,21 @@
       isAuthenticatedXXXX no se comportan como deberian.
       NO SE POR QUE PASA ESO! NO DEBERIA...
     #}
-   {% set usuario = app.session.get('usuario') %}
+{#   {% set usuario = app.session.get('usuario') %}
    {% if not(app.session.get('paciente') is empty) %}
      {% set paciente = app.session.get('paciente') %}
    {% endif %}
    {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
-   {% set codigoRolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
+   {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
+   {% set nombreRolSeleccionado = rolSeleccionado.getNombre() %}
    {% if not(app.session.get('especialidad') is empty) %}
      {% set especialidad = app.session.get('especialidad') %}
-     {% set codigoEspecialidad = app.session.get('especialidad').getCodigo() %}
+     {% set codigoEspecialidad = especialidad.getCodigo() %}
    {% else %}
      {% set codigoEspecialidad = 'NO_TIENE' %}
-   {% endif %}
+   {% endif %}  #}
+
+   {{ include("SalitaOtrosBundle::variables.html.twig") }}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
