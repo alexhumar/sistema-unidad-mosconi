@@ -34,9 +34,9 @@ class BusquedaController extends MyController
    			$repoVacunas = $this->getReposManager()->getVacunasRepo();
    			$vacunas = $repoVacunas->buscarVacuna($busqueda->getPalabra());
    			return $this->render(
-   					'SalitaOtrosBundle:Busqueda:resultado.html.twig',
-   					array('vacunas' => $vacunas)
-   			);
+   						'SalitaOtrosBundle:Busqueda:resultado.html.twig',
+   						array('vacunas' => $vacunas)
+   					);
    		}
     }
     
@@ -54,10 +54,8 @@ class BusquedaController extends MyController
     /*Busqueda de diagnostico (fase POST)*/
     public function buscarDiagnosticoProcessAction()
     {
-    	$session = $this->getSession();
     	$busqueda = new BusquedaDiagnostico();
     	$form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
@@ -65,10 +63,9 @@ class BusquedaController extends MyController
    			$repoDiagnosticos = $this->getReposManager()->getDiagnosticosRepo();
    			$diagnosticos = $repoDiagnosticos->buscarDiagnostico($busqueda->getPalabra());
    			return $this->render(
-   					'SalitaOtrosBundle:BusquedaDiagnostico:resultado.html.twig',
-   					array('diagnosticos' => $diagnosticos/*,'rol' => $rolSeleccionado->getCodigo(),
-   							'nombreRol' => $rolSeleccionado->getNombre()*/)
-   			);
+   						'SalitaOtrosBundle:BusquedaDiagnostico:resultado.html.twig',
+   						array('diagnosticos' => $diagnosticos)
+   					);
    		}
     }
 }
