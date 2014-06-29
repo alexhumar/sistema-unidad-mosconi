@@ -42,11 +42,9 @@ class AplicacionVacunaFormController extends MyController
         {
             $repoPacientes = $this->getReposManager()->getPacientesRepo();           
             $aplicaciones = $repoPacientes->aplicacionesVacuna($session->get('paciente')->getId());
-            $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
             return $this->render(
             			'SalitaPacienteBundle:AplicacionVacuna:list.html.twig',
-            			array('aplicaciones' => $aplicaciones,'rol' => $rolSeleccionado->getCodigo(),
-            				  'nombreRol' => $rolSeleccionado->getNombre())
+            			array('aplicaciones' => $aplicaciones)
             		);
         }
     }    

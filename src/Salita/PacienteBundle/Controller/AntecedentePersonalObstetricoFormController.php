@@ -20,11 +20,9 @@ class AntecedentePersonalObstetricoFormController extends MyController
         	throw $this->createNotFoundException("Antecedente inexistente");
         }
         $form = $this->createForm(new AntecedentePersonalObstetricoType(), $antecedentePersonalObstetrico);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPacienteBundle:AntecedentePersonalObstetricoForm:modif.html.twig',
-           			array('form' => $form->createView(), 'rol' => $rolSeleccionado->getCodigo(), 
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView())
            		);
     }
     
@@ -41,7 +39,6 @@ class AntecedentePersonalObstetricoFormController extends MyController
     	$form = $this->createForm(new AntecedentePersonalObstetricoType(), $antecedentePersonalObstetrico);
     	$request = $this->getRequest();
     	$form->handleRequest($request);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
@@ -55,8 +52,7 @@ class AntecedentePersonalObstetricoFormController extends MyController
     	}
     	return $this->render(
     			'SalitaPacienteBundle:AntecedentePersonalObstetricoForm:mensaje.html.twig',
-    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    				  'nombreRol' => $rolSeleccionado->getNombre())
+    			array('mensaje' => $mensaje)
     			);
     }
 }

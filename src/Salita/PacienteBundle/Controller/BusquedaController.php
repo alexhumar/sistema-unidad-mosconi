@@ -12,14 +12,11 @@ class BusquedaController extends MyController
 	/*Busqueda de paciente (fase GET)*/
     public function buscarAction()
     {
-        $session = $this->getSession();
         $busqueda = new Busqueda();
         $form = $this->createForm(new BusquedaType(), $busqueda);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPacienteBundle:Busqueda:ingresoDatos.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(), 
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView())
            		);
     }
     
@@ -45,12 +42,9 @@ class BusquedaController extends MyController
     				$pacientes = $repoPacientes->buscarPorNombre($busqueda->getPalabra());
     				break;
     		}
-    		$session = $this->getSession();
-    		$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     		return $this->render(
     				'SalitaPacienteBundle:Busqueda:resultado.html.twig',
-    				array('pacientes' => $pacientes,'rol' => $rolSeleccionado->getCodigo(),
-    						'nombreRol' => $rolSeleccionado->getNombre())
+    				array('pacientes' => $pacientes)
     		);
     	}
     }
