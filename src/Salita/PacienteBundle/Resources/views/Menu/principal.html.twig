@@ -5,7 +5,7 @@
       isAuthenticatedXXXX no se comportan como deberian.
       NO SE POR QUE PASA ESO! NO DEBERIA...
     #}
-{#   {% set usuario = app.session.get('usuario') %}
+   {% set usuario = app.session.get('usuario') %}
    {% if not(app.session.get('paciente') is empty) %}
      {% set paciente = app.session.get('paciente') %}
    {% endif %}
@@ -17,9 +17,7 @@
      {% set codigoEspecialidad = especialidad.getCodigo() %}
    {% else %}
      {% set codigoEspecialidad = 'NO_TIENE' %}
-   {% endif %}  #}
-
-   {% include "SalitaOtrosBundle::variables.html.twig" %}
+   {% endif %}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
