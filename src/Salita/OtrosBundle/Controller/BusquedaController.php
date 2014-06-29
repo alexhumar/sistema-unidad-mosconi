@@ -43,14 +43,11 @@ class BusquedaController extends MyController
     /*Busqueda de diagnostico (fase GET)*/
     public function buscarDiagnosticoAction()
     {
-        $session = $this->getSession();
         $busqueda = new BusquedaDiagnostico();
         $form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:BusquedaDiagnostico:ingresoDatos.html.twig',
-           			array('form' => $form->createView()/*,'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre()*/)
+           			array('form' => $form->createView())
            		);
     }
     
@@ -69,8 +66,8 @@ class BusquedaController extends MyController
    			$diagnosticos = $repoDiagnosticos->buscarDiagnostico($busqueda->getPalabra());
    			return $this->render(
    					'SalitaOtrosBundle:BusquedaDiagnostico:resultado.html.twig',
-   					array('diagnosticos' => $diagnosticos,'rol' => $rolSeleccionado->getCodigo(),
-   							'nombreRol' => $rolSeleccionado->getNombre())
+   					array('diagnosticos' => $diagnosticos/*,'rol' => $rolSeleccionado->getCodigo(),
+   							'nombreRol' => $rolSeleccionado->getNombre()*/)
    			);
    		}
     }
