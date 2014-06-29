@@ -13,7 +13,6 @@
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}
 
-   {{ app.session.get('especialidad') }}
    {% if usuario.isObstetraSession(codigoEspecialidad) %}
      Funciona!!
    {% else %}
