@@ -1,27 +1,5 @@
 {% extends "TurnoBundle::base.html.twig" %}
 
-{#
-{% block menu %}
-    <div id="menu">
-        <ul>
-            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
-
-            {% if rol == 'ROLE_ADMINISTRADOR' %}
-                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}    
-
-            {% if rol == 'ROLE_SECRETARIA' %}
-                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}  
-
-            {% if rol == 'ROLE_MEDICO' %}
-                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %} 
-        </ul>
-    </div>
-{% endblock %}
-#}
-
 {% block contenido %}
 	{{ form(form) }}
 	{#<form action="{{ path('alta_turno') }}" method="post" {{ form_enctype(form) }}>

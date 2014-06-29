@@ -14,28 +14,24 @@ class TurnoController extends MyController
 	/*Alta de turno (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $turno = new Turno();
         $form = $this->createForm(new TurnoType(), $turno);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
-        		'SalitaTurnoBundle:TurnoForm:new.html.twig',
-        		array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-        	          'nombreRol' => $rolSeleccionado->getNombre())
+        			'SalitaTurnoBundle:TurnoForm:new.html.twig',
+        			array('form' => $form->createView())
            		);
     }
     
     /*Alta de turno (fase POST)*/
     public function newProcessAction()
     { 	
-    	$session = $this->getSession();
     	$turno = new Turno();
     	$request = $this->getRequest();
     	$form = $this->createForm(new TurnoType(), $turno);
     	$form->handleRequest($request);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
     	{
+    		$session = $this->getSession();
     		$paciente = $session->get('paciente');
     		$medico = $session->get('usuario');
     		/*Da de alta un turno del momento*/
@@ -47,10 +43,9 @@ class TurnoController extends MyController
     		$mensaje = 'Se produjo un error al intentar agregar un turno para el paciente';
     	}
     	return $this->render(
-    			'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    					'nombreRol' => $rolSeleccionado->getNombre())
-    	);
+    				'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
+    				array('mensaje' => $mensaje)
+    			);
     }
     
     /*Alta de turno futuro (fase GET)*/
@@ -63,11 +58,9 @@ class TurnoController extends MyController
     	}
     	$turno = new Turno();
     	$form = $this->createForm(new TurnoType(),$turno);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	return $this->render(
-    					'SalitaTurnoBundle:TurnoForm:newConFecHor.html.twig',
-    					array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-    						  'nombreRol' => $rolSeleccionado->getNombre())
+    				'SalitaTurnoBundle:TurnoForm:newConFecHor.html.twig',
+    				array('form' => $form->createView())
     			);
     }
     
@@ -83,7 +76,6 @@ class TurnoController extends MyController
     	$form = $this->createForm(new TurnoType(),$turno);
     	$request = $this->getRequest();
     	$form->handleRequest($request);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	if ($form->isValid())
     	{
     		$paciente = $session->get('paciente');
@@ -98,10 +90,9 @@ class TurnoController extends MyController
     		$mensaje = 'Se produjo un error al intentar agregar un turno para el paciente';
     	}
     	return $this->render(
-    			'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    			array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    					'nombreRol' => $rolSeleccionado->getNombre())
-    	);
+    				'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
+    				array('mensaje' => $mensaje)
+    			);
     }
 
     /*Seleccionar fecha y hora para un turno (fase GET)*/
@@ -116,11 +107,9 @@ class TurnoController extends MyController
        {            
            $fecHor = new FechaYHoraTurno();
            $form = $this->createForm(new FechaYHoraTurnoType(), $fecHor);
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
            return $this->render(
            				'SalitaTurnoBundle:SeleccionFechaHora:ingresoDatos.html.twig',
-           				array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(), 
-           					  'nombreRol' => $rolSeleccionado->getNombre())
+           				array('form' => $form->createView())
            			);
        }
     }
@@ -149,12 +138,10 @@ class TurnoController extends MyController
     		else 
     		{
     			$mensaje = 'Se produjo un error al las fechas para un turno';
-    			$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     			return $this->render(
-    					'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    					array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-    							'nombreRol' => $rolSeleccionado->getNombre())
-    			);
+    						'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
+    						array('mensaje' => $mensaje)
+    					);
     		}
     	}
     }

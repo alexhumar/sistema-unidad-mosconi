@@ -8,7 +8,13 @@
       <tbody>
         {% for turno in turnos %}
           <div class="turno">
-            <tr><td>{{turno.nombre}} {{turno.apellido}}</td><td>{{turno.motivo}}</td><td>{{turno.medico}}</td><td>{{turno.fecha}} - {{turno.hora}}</td><td><a href="{{path('atencion_turno', { 'idTurno': turno.id }) }}">Atender</a></td></tr>
+            <tr>
+              <td>{{turno.nombre}} {{turno.apellido}}</td>
+              <td>{{turno.motivo}}</td>
+              <td>{{turno.medico}}</td>
+              <td>{{turno.fecha}} - {{turno.hora}}</td>
+              <td><a href="{{path('atencion_turno', { 'idTurno': turno.id }) }}">Atender</a></td>
+            </tr>
           </div>
         {% endfor %}
       </tbody>

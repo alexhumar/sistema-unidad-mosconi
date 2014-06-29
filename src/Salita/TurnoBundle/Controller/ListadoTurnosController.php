@@ -10,13 +10,11 @@ class ListadoTurnosController extends MyController
 
     public function listarAction()
     {
-        $session = $this->getSession();
         $repoTurnos = $this->getReposManager()->getTurnosRepo();
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $turnos = $repoTurnos->turnosDelDia();
         return $this->render(
         			'SalitaTurnoBundle:Listados:turnosDelDia.html.twig',
-        			array('turnos' => $turnos, 'rol' => $rolSeleccionado->getCodigo())
+        			array('turnos' => $turnos)
         		);
     }
 
@@ -25,11 +23,10 @@ class ListadoTurnosController extends MyController
         $session = $this->getSession();
         $usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $repoTurnos = $this->getReposManager()->getTurnosRepo();
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $turnos = $repoTurnos->turnosDelDiaDeEspecialidad($usuario->getEspecialidad());
         return $this->render(
         			'SalitaTurnoBundle:Listados:turnosDelDiaEspecialidad.html.twig',
-        			array('turnos' => $turnos, 'rol' => $rolSeleccionado->getCodigo())
+        			array('turnos' => $turnos)
         		);
     }
 }
