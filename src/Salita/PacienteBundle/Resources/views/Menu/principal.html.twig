@@ -7,7 +7,7 @@
     #}
    {% set usuario = app.session.get('usuario') %}
    {% if not(app.session.get('paciente') is empty) %}
-     {% set paciente = app.session.get('paciente') %}
+     {# {% set paciente = app.session.get('paciente') %} #}
    {% endif %}
    {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
    {% if not(app.session.get('especialidad') is empty) %}
