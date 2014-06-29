@@ -288,7 +288,6 @@ class Usuario extends BaseUser
     
     public function isObstetra()
     {
-    	echo($this->getEspecialidad()->getCodigo());die;
     	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra();
     }
     
