@@ -1,12 +1,11 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
-{% set usuario = app.session.get('usuario') %}
-
 {% block contenido %}
    {# ATENCION: si no lo seteo dentro del block contenido, no funciona. Es decir, la funciones de la forma
       isAuthenticatedXXXX no se comportan como deberian.
       NO SE POR QUE PASA ESO! NO DEBERIA...
     #}
+   {% set usuario = app.session.get('usuario') %}
    {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
    {% set codigoEspecialidad = app.session.get('especialidad').getCodigo() %}
 
