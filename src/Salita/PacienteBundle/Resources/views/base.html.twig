@@ -20,3 +20,20 @@
   <li><a href="{{path('menu_medico')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 {#----------------------------------------------------------------------------------#}
+
+{# Declaracion de variables comunes utilizadas en casi todos los templates #}
+{% block contenido %}
+   {% set usuario = app.session.get('usuario') %}
+   {% if not(app.session.get('paciente') is empty) %}
+     {% set paciente = app.session.get('paciente') %}
+   {% endif %}
+   {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+   {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
+   {% set nombreRolSeleccionado = rolSeleccionado.getNombre() %}
+   {% if not(app.session.get('especialidad') is empty) %}
+     {% set especialidad = app.session.get('especialidad') %}
+     {% set codigoEspecialidad = especialidad.getCodigo() %}
+   {% else %}
+     {% set codigoEspecialidad = 'NO_TIENE' %}
+   {% endif %}
+{% endblock %}
