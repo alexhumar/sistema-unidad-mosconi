@@ -6,14 +6,17 @@
 {% endblock %}
 
 {% block opcionesMenuAdministrador %}
+  {% set nombreRolSeleccionado = app.session('rolSeleccionado').getNombre() %}
   <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuSecretaria %}
+  {% set nombreRolSeleccionado = app.session('rolSeleccionado').getNombre() %}
   <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuMedico %}
+  {% set nombreRolSeleccionado = app.session('rolSeleccionado').getNombre() %}
   <li><a href="{{path('menu_medico')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 {#----------------------------------------------------------------------------------#}
