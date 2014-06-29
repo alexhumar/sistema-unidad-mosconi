@@ -13,31 +13,27 @@ class PlanProcRespFormController extends MyController
 	/*Alta de plan de procreacion responsable (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $plan = new PlanProcResp();
         $form = $this->createForm(new PlanProcRespType(), $plan);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPlanBundle:PlanProcRespForm:new.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView())
            		);
     }
     
     /*Alta de plan de procreacion responsable (fase POST)*/
     public function newProcessAction()
     {
-    	$session = $this->getSession();
     	$plan = new PlanProcResp();
     	$form = $this->createForm(new PlanProcRespType(), $plan);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
+   			$session = $this->getSession();
    			$paciente = $session->get('paciente');
    			$this->getPersistenceManager()->savePlanProcreacionResponsable($plan, $paciente);
-   			$mensaje = 'El plan del paciente se agrego  exitosamente';
+   			$mensaje = 'El plan del paciente se agrego exitosamente';
    		}
    		else
    		{
@@ -45,15 +41,13 @@ class PlanProcRespFormController extends MyController
 		}
 		return $this->render(
 				'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
-				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-						'nombreRol' => $rolSeleccionado->getNombre())
+				array('mensaje' => $mensaje)
 		);
     }
 
     /*Modificacion de plan de procreacion responsable (fase GET)*/
     public function modifAction($idPlan)
-    {
-        $session = $this->getSession();      
+    {    
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
         $plan = $repoPlanes->find($idPlan);
         if(!$plan)
@@ -61,19 +55,15 @@ class PlanProcRespFormController extends MyController
         	throw $this->createNotFoundException("Plan inexistente para el paciente");
         }
         $form = $this->createForm(new ModPlanProcRespType(), $plan);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPlanBundle:PlanProcRespForm:modif.html.twig',
-           			array('form' => $form->createView(),'id' => $idPlan,
-           				  'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView(),'id' => $idPlan)
            		);
     }
     
     /*Modificacion de plan de procreacion responsable (fase POST)*/
     public function modifProcessAction($idPlan)
     {
-    	$session = $this->getSession();
     	$repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
     	$plan = $repoPlanes->find($idPlan);
     	if(!$plan)
@@ -81,7 +71,6 @@ class PlanProcRespFormController extends MyController
     		throw $this->createNotFoundException("Plan inexistente para el paciente");
     	}
     	$form = $this->createForm(new ModPlanProcRespType(), $plan);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
@@ -95,8 +84,7 @@ class PlanProcRespFormController extends MyController
    		}
    		return $this->render(
    				'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-   						'nombreRol' => $rolSeleccionado->getNombre())
+   				array('mensaje' => $mensaje)
    		);
     }
 
@@ -104,12 +92,10 @@ class PlanProcRespFormController extends MyController
     {
         $session = $this->getSession();
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $planes = $repoPlanes->findAllById($session->get('paciente')->getId());
         return $this->render(
         			'SalitaPlanBundle:PlanProcRespForm:listado.html.twig',
-        			array('planes' => $planes,'rol' => $rolSeleccionado->getCodigo(),
-        				  'nombreRol' => $rolSeleccionado->getNombre())
+        			array('planes' => $planes)
         		);
     }
 
@@ -117,12 +103,10 @@ class PlanProcRespFormController extends MyController
     {
         $session = $this->getSession();
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $planes = $repoPlanes->findAllByIdDes($session->get('paciente')->getId());
         return $this->render(
         			'SalitaPlanBundle:PlanProcRespForm:listadoDes.html.twig',
-        			array('planes' => $planes,'rol' => $rolSeleccionado->getCodigo(),
-        				  'nombreRol' => $rolSeleccionado->getNombre())
+        			array('planes' => $planes)
         		);
     }
 
