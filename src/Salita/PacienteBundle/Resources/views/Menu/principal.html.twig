@@ -19,7 +19,7 @@
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}  #}
 
-   {{ include("SalitaOtrosBundle::variables.html.twig") }}
+   {% include "SalitaOtrosBundle::variables.html.twig" %}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
