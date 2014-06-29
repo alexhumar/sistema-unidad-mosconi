@@ -1,5 +1,10 @@
 {% extends "SalitaUsuarioBundle:Menu:menuAdministrador.html.twig" %}
 
+{# 
+   ATENCION: hay que arreglar un problema relacionado con esto. Me logueo con un medico, modifico mis datos
+   y cuando se redirige a la pagina que muestra el mensaje, aparece el menu de administrador!!!
+#}
+
 {% block contenido %}
 	<h4 id="msj">{{ mensaje }}</h4>
 {% endblock %}
