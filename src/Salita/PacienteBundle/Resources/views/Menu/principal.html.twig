@@ -36,7 +36,7 @@
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
    {#  #}
   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra())) %}
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetra())) %}
     <div class="subtituloMenu">
       Antecedentes:
     </div>
@@ -54,7 +54,7 @@
   {% endif %}
   {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and (not usuario.isObstetra()))) %}
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetra()))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
       </div>
