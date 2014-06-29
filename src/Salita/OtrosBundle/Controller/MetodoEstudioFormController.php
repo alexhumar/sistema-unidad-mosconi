@@ -12,13 +12,11 @@ class MetodoEstudioFormController extends MyController
 	/*Alta de metodo de estudio (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $metodo = new MetodoEstudio();
         $form = $this->createForm(new MetodoEstudioType(), $metodo);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:MetodoEstudioForm:new.html.twig',
-           			array('form' => $form->createView()/*,'rol' => $rolSeleccionado->getCodigo()*/)
+           			array('form' => $form->createView())
            		);
     }
     
