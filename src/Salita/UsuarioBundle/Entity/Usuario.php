@@ -273,22 +273,22 @@ class Usuario extends BaseUser
     	return $this->hasRole(Rol::getCodigoRolSecretaria());
     }
     
+    /* En los siguientes tres metodos no pregunto si es medico porque cuando se asigna el rol medico se
+     * pide automaticamente la especialidad, y cuando se le quita el rol medico la especialidad se remueve
+     * automaticamente, asi que van de la mano estas dos cosas */
     public function isClinico()
     {
-    	return ($this->isMedico()) and 
-    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadClinico());
+    	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadClinico();
     }
     
     public function isPediatra()
     {
-    	return ($this->isMedico()) and 
-    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadPediatra());
+    	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadPediatra();
     }
     
     public function isObstetra()
     {
-    	return ($this->isMedico()) and
-    	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
+    	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra();
     }
     
     /* Como en los templates twig no funcionan los metodos isObstetra, isPediatra e isAdministrador (me parece
