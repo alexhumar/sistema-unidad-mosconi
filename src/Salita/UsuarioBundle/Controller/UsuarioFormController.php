@@ -7,6 +7,7 @@ use Salita\UsuarioBundle\Entity\Rol;
 use Salita\UsuarioBundle\Entity\Especialidad;
 use Salita\UsuarioBundle\Form\Type\RolType;
 use Salita\UsuarioBundle\Clases\RolTemporal;
+use Salita\UsuarioBundle\Clases\EspecialidadTemporal;
 use Salita\UsuarioBundle\Form\Type\EspecialidadUsuarioType;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MyController;

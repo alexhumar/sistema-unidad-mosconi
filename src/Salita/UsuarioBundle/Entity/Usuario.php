@@ -164,6 +164,7 @@ class Usuario extends BaseUser
     {
         return $this->matricula;
     }
+    
     /**
      * Get y set especialidad
      *
@@ -173,6 +174,7 @@ class Usuario extends BaseUser
     {
         return $this->especialidad;
     }
+    
     public function setEspecialidad($especialidad)
     {
         $this->especialidad = $especialidad;
@@ -241,7 +243,6 @@ class Usuario extends BaseUser
 
     public function agregarRol($rol)
     {
-        //$this->addRole("'".$rol->getCodigo()."'");
     	$this->addRole($rol->getCodigo());
         $this->addRol($rol);
     }
@@ -286,7 +287,7 @@ class Usuario extends BaseUser
     
     public function isObstetra()
     {
-    	echo(var_dump($this->getEspecialidad()));die;
+    	echo(var_dump($this->getRolesUsuario()));die;
     	return ($this->isMedico()) and
     	       ($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
     }
