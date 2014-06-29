@@ -12,13 +12,11 @@ class BarrioFormController extends MyController
 	/*Alta de barrio (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $barrio = new Barrio();
         $form = $this->createForm(new BarrioType(), $barrio);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:BarrioForm:new.html.twig',
-           			array('form' => $form->createView(),/*'rol' => $rolSeleccionado->getCodigo()*/)
+           			array('form' => $form->createView())
            		);
     }
     
