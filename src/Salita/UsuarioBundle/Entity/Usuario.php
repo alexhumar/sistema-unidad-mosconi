@@ -275,7 +275,7 @@ class Usuario extends BaseUser
     
     /* En los siguientes tres metodos no pregunto si es medico porque cuando se asigna el rol medico se
      * pide automaticamente la especialidad, y cuando se le quita el rol medico la especialidad se remueve
-     * automaticamente, asi que van de la mano estas dos cosas */
+     * automaticamente, asi que van de la mano estas dos cosas. No los uso pero los tengo por si acaso. */
     public function isClinico()
     {
     	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadClinico();
@@ -288,16 +288,32 @@ class Usuario extends BaseUser
     
     public function isObstetra()
     {
-    	echo(var_dump($this->getEspecialidad()));die;
     	return $this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra();
     }
+    
+    /*-------------------------------------------------------------------------------------------------------*/
     
     /* Como en los templates twig no funcionan los metodos isObstetra, isPediatra e isAdministrador (me parece
      * que tiene que ver con que no puede reemplazar los proxies de doctrine con los objetos a partir de una
      * consulta a la bd desde twig.
      * creo estas versiones alternas para 
      *  */
-    //Hacer los metodos
+    public function isClinicoSession($codigoEspecialidad)
+    {
+    	return $codigoEspecialidad == Especialidad::getCodigoEspecialidadClinico();
+    }
+    
+    public function isPediatraSession($codigoEspecialidad)
+    {
+    	return $codigoEspecialidad == Especialidad::getCodigoEspecialidadPediatra();
+    }
+    
+    public function isObstetraSession($codigoEspecialidad)
+    {
+    	return $codigoEspecialidad == Especialidad::getCodigoEspecialidadObstetra();
+    }
+    
+    /*-------------------------------------------------------------------------------------------------------*/
     
     public function isAuthenticatedAdministrador($rolSeleccionado)
     {
