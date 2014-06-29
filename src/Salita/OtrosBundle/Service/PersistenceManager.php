@@ -222,7 +222,7 @@ class PersistenceManager
 		$em->flush();
 	}
 	
-	private function savePaciente($paciente)
+	public function savePaciente($paciente)
 	{
 		$antecedentePersonalObstetrico = new AntecedentePersonalObstetrico();
 		$antecedentePersonalObstetrico->setPaciente($paciente);
