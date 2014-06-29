@@ -18,7 +18,7 @@ class MenuController extends MyController
        }
        else
        {
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session); 
+          /* $rolSeleccionado = ConsultaRol::rolSeleccionado($session); 
            if ($rolSeleccionado->isRoleMedico())
            { 	   
                $especialidad = ConsultaEspecialidad::especialidadSeleccionada($session);
@@ -29,12 +29,8 @@ class MenuController extends MyController
                //$codigoEspecialidad = 'NO_TIENE';
                $codigoEspecialidad = Especialidad::getCodigoNoTieneEspecialidad();
            }
-           //$paciente = $session->get('paciente');
-           return $this->render(
-           			'SalitaPacienteBundle:Menu:principal.html.twig',
-           			array(/*'paciente' => $paciente,*/ /*'rol' =>$rolSeleccionado->getCodigo(), */
-           				  'nombreRol' =>$rolSeleccionado->getNombre(),'especialidad' => $codigoEspecialidad)
-           		);
+           //$paciente = $session->get('paciente');*/
+           return $this->render('SalitaPacienteBundle:Menu:principal.html.twig');
        }
     }
 }
