@@ -13,7 +13,7 @@
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}
 
-   {% if usuario.isObstetraSession(codigoEspecialidad) %}
+   {% if usuario.isObstetra() %}
      Funciona!!
    {% else %}
      No funciona :(
