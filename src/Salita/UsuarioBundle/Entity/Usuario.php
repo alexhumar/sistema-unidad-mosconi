@@ -296,11 +296,7 @@ class Usuario extends BaseUser
      * consulta a la bd desde twig.
      * creo estas versiones alternas para 
      *  */
-    public function isObstetra()
-    {
-    	return ($this->isMedico()) and
-    	($this->getEspecialidad()->getCodigo() == Especialidad::getCodigoEspecialidadObstetra());
-    }
+    //Hacer los metodos
     
     public function isAuthenticatedAdministrador($rolSeleccionado)
     {
