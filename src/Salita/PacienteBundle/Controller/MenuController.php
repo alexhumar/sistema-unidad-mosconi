@@ -30,7 +30,7 @@ class MenuController extends MyController
                $codigoEspecialidad = Especialidad::getCodigoNoTieneEspecialidad();
            }
            $paciente = $session->get('paciente');
-           echo(var_dump($session->get('especialidad')));die;
+           echo(var_dump($session->get('especialidad')->getCodigo()));die;
            return $this->render(
            			'SalitaPacienteBundle:Menu:principal.html.twig',
            			array('paciente' => $paciente, 'rol' =>$rolSeleccionado->getCodigo(), 
