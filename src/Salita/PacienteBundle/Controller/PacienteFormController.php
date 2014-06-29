@@ -14,12 +14,10 @@ class PacienteFormController extends MyController
     {
         $session = $this->getSession();
         $paciente = $session->get('paciente');
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         $form = $this->createForm(new DatosFiliatoriosType(), $paciente);
         return $this->render(
  	      			'SalitaPacienteBundle:PacienteForm:datosFiliatorios.html.twig', 
-    	   			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(), 
-       				      'nombreRol' => $rolSeleccionado->getNombre())
+    	   			array('form' => $form->createView())
            		);
     }
     
@@ -33,7 +31,6 @@ class PacienteFormController extends MyController
     	$form = $this->createForm(new DatosFiliatoriosType(), $paciente);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
-   		$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		if ($form->isValid())
    		{
    			$em = $this->getEntityManager();
@@ -47,33 +44,28 @@ class PacienteFormController extends MyController
    		}
    		return $this->render(
    					'SalitaPacienteBundle:PacienteForm:mensajeModificacion.html.twig',
-   					array('mensaje' => $mensaje,'rol' =>$rolSeleccionado->getCodigo(),
-   						  'nombreRol' =>$rolSeleccionado->getNombre())
+   					array('mensaje' => $mensaje)
    				);
     }
     
     /*Alta de paciente (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $paciente = new Paciente();
         $form = $this->createForm(new DatosFiliatoriosType(), $paciente);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPacienteBundle:PacienteForm:new.html.twig', 
-           			array('form' => $form->createView(), 'rol' => $rolSeleccionado->getCodigo())
+           			array('form' => $form->createView())
            		);
     }
     
     /*Alta de paciente (fase POST)*/
     public function newProcessAction()
     {
-    	$session = $this->getSession();
     	$paciente = new Paciente();
     	$form = $this->createForm(new DatosFiliatoriosType(), $paciente);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
-   		$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->savePaciente($paciente);
@@ -84,8 +76,8 @@ class PacienteFormController extends MyController
    			$mensaje = 'Se produjo un error al intentar cargar el paciente al sistema';
    		}
    		return $this->render(
-   				'SalitaPacienteBundle:PacienteForm:mensajeAlta.html.twig',
-   				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo())
+   				'SalitaPacienteBundle:PacienteForm:mensaje.html.twig',
+   				array('mensaje' => $mensaje)
    		);
     }
 }

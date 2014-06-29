@@ -12,28 +12,24 @@ class EstudioFormController extends MyController
 	/*Alta de estudio (fase GET)*/
     public function newAction()
     {
-        $session = $this->getSession();
         $estudio = new Estudio();
         $form = $this->createForm(new EstudioType(), $estudio);
-        $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaPacienteBundle:EstudioForm:new.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView())
            		);
     }
     
     /*Alta de estudio (fase POST)*/
     public function newProcessAction()
     {
-    	$session = $this->getSession();
     	$estudio = new Estudio();
     	$form = $this->createForm(new EstudioType(), $estudio);
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
    		{
+   			$session = $this->getSession();
    			$paciente = $session->get('paciente');
    			$usuario = $session->get('usuario');
    			$this->getPersistenceManager()->saveEstudio($estudio, $paciente, $usuario);
@@ -45,8 +41,7 @@ class EstudioFormController extends MyController
    		}
    		return $this->render(
    				'SalitaPacienteBundle:EstudioForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje,'rol' => $rolSeleccionado->getCodigo(),
-   						'nombreRol' => $rolSeleccionado->getNombre())
+   				array('mensaje' => $mensaje)
    		);
     }
 }

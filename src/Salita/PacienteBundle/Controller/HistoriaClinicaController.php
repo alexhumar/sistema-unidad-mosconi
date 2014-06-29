@@ -57,7 +57,6 @@ class HistoriaClinicaController extends MyController
        }
        else
        {
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
            /*Consultas*/
@@ -96,13 +95,12 @@ class HistoriaClinicaController extends MyController
            $usuarioGenerador = $session->get('usuario');          
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:generacionHC.html.twig', 
-           			array('paciente' => $paciente,'antecedentePC' => $antecedentePersonalClinico,
+           			array(/*'paciente' => $paciente,*/'antecedentePC' => $antecedentePersonalClinico,
            				  'antecedenteFC' => $antecedenteFamiliarClinico,
            				  'antecedenteFO' => $antecedenteFamiliarObstetrico,
            				  'antecedentePO' => $antecedentePersonalObstetrico,
            				  'consultas' => $consultas, 'estudios' => $estudios, 
-           				  'usuarioGenerador' => $usuarioGenerador, 'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre(), 'aplicaciones' => $aplicaciones)
+           				  'usuarioGenerador' => $usuarioGenerador, 'aplicaciones' => $aplicaciones)
            		);
        }
     }
@@ -119,8 +117,7 @@ class HistoriaClinicaController extends MyController
            if(!$session->has('fechaDesde'))
            {
                return $this->redirect($this->generateUrl('fechas_resumenHC'));
-           }      
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
+           }
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
            $fechaDesde = \DateTime::createFromFormat('d-m-Y', $session->get('fechaDesde'));
@@ -138,9 +135,8 @@ class HistoriaClinicaController extends MyController
            $session->remove('fechaHasta');                  
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig',
-           			array('paciente' => $paciente ,'consultas' => $consultas, 
-           				  'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios, 
-           				  'rol' => $rolSeleccionado->getCodigo(),'nombreRol' => $rolSeleccionado->getNombre())
+           			array(/*'paciente' => $paciente ,*/'consultas' => $consultas, 
+           				  'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios)
            		);
        }
     }
@@ -155,13 +151,11 @@ class HistoriaClinicaController extends MyController
        }
        else
        {
-           $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
            $fechas = new FechasResumenHC();
            $form = $this->createForm(new FechasResumenHCType(), $fechas);
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:ingresoFechas.html.twig', 
-           			array('form' => $form->createView(),'rol' =>  $rolSeleccionado->getCodigo(), 
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView())
            		);
        }
     }

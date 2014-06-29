@@ -13,7 +13,7 @@
   {% endfor %}
 {% endif %}
 
-{% if paciente.sexo == '1' %}
+{% if paciente.isMujer() %}
   {% if estudios|length > 0 %}
     <div class="tituloSeccion">Estudios</div><br>
     {% for estudio in estudios %}

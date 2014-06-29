@@ -27,11 +27,9 @@ class ConsultaFormController extends MyController
            {
                 $consulta = new Consulta();
                 $form = $this->createForm(new ConsultaType(), $consulta);
-                $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
                 return $this->render(
                 			'SalitaPacienteBundle:ConsultaForm:new.html.twig',
-                   			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-                   				  'nombreRol' => $rolSeleccionado->getNombre())
+                   			array('form' => $form->createView())
                    		);
            }
        }

@@ -9,7 +9,7 @@
     {{paciente.barrio}}, {{paciente.localidad}} - {{paciente.partido}}, {{paciente.pais}}</span><br>
   </span>
   <span class="caja2">
-    <span class="aux"> Sexo:</span> <span class="datos">{% if paciente.sexo == 1 %}Femenino{% else %}Masculino{% endif %}</span><br>
+    <span class="aux"> Sexo:</span> <span class="datos">{% if paciente.isMujer() %}Femenino{% else %}Masculino{% endif %}</span><br>
     <span class="aux"> Fecha de nacimiento:</span> <span class="datos">{{paciente.fechaNacimiento|date("d/m/Y")}}</span><br>
     <span class="aux"> Télefono fijo:</span> <span class="datos">{{paciente.telefonoFijo}}</span><br>
   </span>

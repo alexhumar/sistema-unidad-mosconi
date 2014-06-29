@@ -1,24 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{#
-{% block menu %}
-    <div id="menu">
-        <ul>
-            {% if rol == 'ROLE_ADMINISTRADOR' %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
-            {% endif %}    
-
-            {% if rol == 'ROLE_SECRETARIA' %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig' %}
-            {% endif %}  
-
-            {% if rol == 'ROLE_MEDICO' %}
-                {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig' %}
-            {% endif %}       
-        </ul>
-    </div>
-{% endblock %}
-#}
+{# ATENCION: este template no se usa en ningun lado #}
 
 {% block contenido %}
   <h4 id="msj">{{ mensaje }}</h4>
