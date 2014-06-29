@@ -1,27 +1,5 @@
 {% extends "SalitaOtrosBundle::base.html.twig" %}
 
-{#
-{% block menu %}
-    <div id="menu">
-        <ul>
-            {% include 'SalitaPacienteBundle:OpcionesMenu:opciones.html.twig' %}
-
-            {% if rol == 'ROLE_ADMINISTRADOR' %}
-                <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}    
-
-            {% if rol == 'ROLE_SECRETARIA' %}
-                <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %}  
-
-            {% if rol == 'ROLE_MEDICO' %}
-                <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
-            {% endif %} 
-        </ul>
-    </div>
-{% endblock %}
-#}
-
 {% block contenido %}
 	<h1 id="tituloCentro">Resultado de la búsqueda</h1>
 	{% if vacunas|length > 0 %}
