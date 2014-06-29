@@ -144,6 +144,17 @@ class PersistenceManager
 		return $usuario;
 	}
 	
+	public function getRepoPacientFromSessionPacient($paciente, $controller)
+	{
+		$repoPacientes = $this->getReposManager()->getPacientesRepo();
+		$paciente = $repoPacientes->find($paciente->getId());
+		if(!$paciente)
+		{
+			throw $controller->createNotFoundException("Usuario inexistente");
+		}
+		return $paciente;
+	}
+	
 	/*Metodos de PlanBundle*/
 	public function saveEntregaPlanProcreacionResponsable($plan, $entrega)
 	{
