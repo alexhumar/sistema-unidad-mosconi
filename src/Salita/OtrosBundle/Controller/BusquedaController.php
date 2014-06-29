@@ -49,8 +49,8 @@ class BusquedaController extends MyController
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:BusquedaDiagnostico:ingresoDatos.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo(),
-           				  'nombreRol' => $rolSeleccionado->getNombre())
+           			array('form' => $form->createView()/*,'rol' => $rolSeleccionado->getCodigo(),
+           				  'nombreRol' => $rolSeleccionado->getNombre()*/)
            		);
     }
     
