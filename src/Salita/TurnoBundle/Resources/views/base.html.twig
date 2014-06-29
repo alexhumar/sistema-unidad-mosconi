@@ -5,15 +5,17 @@
   {{ include('SalitaPacienteBundle:OpcionesMenu:opciones.html.twig') }}
 {% endblock %}
 
+{{ includes("SalitaOtrosBundle::variables.html.twig") }}
+
 {% block opcionesMenuAdministrador %}
-  <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRol}}</a></li>
+  <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuSecretaria %}
-  <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRol}}</a></li>
+  <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuMedico %}
-  <li><a href="{{path('menu_medico')}}">Menu de {{nombreRol}}</a></li>
+  <li><a href="{{path('menu_medico')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 {#----------------------------------------------------------------------------------#}
