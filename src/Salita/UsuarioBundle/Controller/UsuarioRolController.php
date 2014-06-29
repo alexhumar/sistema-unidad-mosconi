@@ -65,8 +65,8 @@ class UsuarioRolController extends MyController
        switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico():
-           	                   /*Esto lo hago para que Doctrine reemplace el proxy por el objeto real
-           	                    * con los datos traidos de la bd*/
+           	                   /*Esto lo hago para que Doctrine reemplace el proxy Especialidad por el objeto 
+           	                    * real con los datos traidos de la bd*/
            	                   $usuario->getEspecialidad()->getCodigo(); 
            	                   $session->set('especialidad', $usuario->getEspecialidad());
                                return $this->redirect($this->generateUrl('menu_medico'));

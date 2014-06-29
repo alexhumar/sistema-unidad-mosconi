@@ -54,7 +54,7 @@ class UsuarioFormController extends MyController
 						}
 						else
 						{
-							$this->get('persistence_manager')->assignRolAUsuario($usuario, $rol);
+							$this->getPersistenceManager()->assignRolAUsuario($usuario, $rol);
 							/*Se "refresca" el usuario almacenado en la sesion*/
 							$session->set('usuarioSeleccionado',$usuario);
 							$exito = true;
@@ -157,19 +157,18 @@ class UsuarioFormController extends MyController
     public function modifPropioAction()
     {
         $session = $this->getSession();
-    	$rolSeleccionado = ConsultaRol::rolSeleccionado($session);
     	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
     	$form = $this->createForm(new UsuarioType(), $usuario);
     	return $this->render(
     				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
-    				array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
+    				array('form' => $form->createView())
     			);
     }
 
     /*Modificacion de usuario propio (fase POST)*/
     public function modifPropioProcessAction()
     {
-        $session = $this->getSession();
+    	$session = $this->getSession();
     	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
         $form = $this->createForm(new UsuarioType(), $usuario);
         $request = $this->getRequest();
