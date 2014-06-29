@@ -18,7 +18,7 @@ class MetodoEstudioFormController extends MyController
         $rolSeleccionado = ConsultaRol::rolSeleccionado($session);
         return $this->render(
            			'SalitaOtrosBundle:MetodoEstudioForm:new.html.twig',
-           			array('form' => $form->createView(),'rol' => $rolSeleccionado->getCodigo())
+           			array('form' => $form->createView()/*,'rol' => $rolSeleccionado->getCodigo()*/)
            		);
     }
     
