@@ -7,10 +7,12 @@
     #}
    {% set usuario = app.session.get('usuario') %}
    {% if not(app.session.get('paciente') is empty) %}
-     {# {% set paciente = app.session.get('paciente') %} #}
+     {% set paciente = app.session.get('paciente') %}
    {% endif %}
-   {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
+   {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+   {% set codigoRolSeleccionado = app.session.get('rolSeleccionado').getCodigo() %}
    {% if not(app.session.get('especialidad') is empty) %}
+     {% set especialidad = app.session.get('especialidad') %}
      {% set codigoEspecialidad = app.session.get('especialidad').getCodigo() %}
    {% else %}
      {% set codigoEspecialidad = 'NO_TIENE' %}
@@ -29,7 +31,7 @@
       </div>
     </ul>
 
-  {% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
+  {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
     <div class="subtituloMenu">
       Historia Clínica:
     </div>
@@ -42,36 +44,36 @@
   {% endif %}
 
   {# Si el usuario es secretaria o el medico es obstetra y el paciente no es mujer, no debe mostrarse la parte de antecedentes #}
-  {% set muestraAntecedentes = not(usuario.isAuthenticatedSecretaria(rolSeleccionado) 
+  {% set muestraAntecedentes = not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado) 
                      or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
   {% if muestraAntecedentes %}
     <div class="subtituloMenu">
       Antecedentes:
     </div>
     <ul>
-  {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
+  {% if usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
       </div>
   {% endif %}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
       </div>
   {% endif %}
 
-  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
+  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
       </div>
   {% endif %}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-     or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+     or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
       <div>
@@ -81,7 +83,7 @@
 
     <div class="subtituloMenu">
       Turnos:
-    {% if usuario.isAuthenticatedMedico(rolSeleccionado) %}
+    {% if usuario.isAuthenticatedMedico(codigoRolSeleccionado) %}
       </div>
       <ul>
         <div class="opcionMenu">
@@ -97,8 +99,8 @@
     </ul>
     {% endif %}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-          or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+          or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
     <div class="subtituloMenu">
       Estudios:
     </div>
@@ -109,8 +111,8 @@
     </ul>
   {% endif %}
 
-  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) 
+  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) 
         and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
     <div class="subtituloMenu">
       Consultas:
@@ -122,14 +124,14 @@
     </ul>
   {% endif %}
 
-  {% if not(usuario.isAuthenticatedSecretaria(rolSeleccionado)) %}
+  {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
     <div class="subtituloMenu">
       Vacunacion:
     </div>
     <ul>
       <div class="opcionMenu">
-    {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-       or (usuario.isAuthenticatedMedico(rolSeleccionado) 
+    {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+       or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) 
        and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
         <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
     {% endif %}
@@ -138,8 +140,8 @@
     </ul>
   {% endif %}
 
-  {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-     or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad))) %}
+  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
+     or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad))) %}
     <div class="subtituloMenu">
       Proyecto Procreacion Responsable:
     </div>

@@ -32,7 +32,7 @@ class MenuController extends MyController
            //$paciente = $session->get('paciente');
            return $this->render(
            			'SalitaPacienteBundle:Menu:principal.html.twig',
-           			array(/*'paciente' => $paciente,*/ 'rol' =>$rolSeleccionado->getCodigo(), 
+           			array(/*'paciente' => $paciente,*/ /*'rol' =>$rolSeleccionado->getCodigo(), */
            				  'nombreRol' =>$rolSeleccionado->getNombre(),'especialidad' => $codigoEspecialidad)
            		);
        }
