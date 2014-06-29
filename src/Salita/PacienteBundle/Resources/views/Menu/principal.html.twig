@@ -13,12 +13,12 @@
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}
 
-   {{ codigoEspecialidad }}<br/>
+   {# {{ codigoEspecialidad }}<br/>
    {% if usuario.isObstetraSession(codigoEspecialidad) %}
      Funciona!!
    {% else %}
      No funciona :(
-   {% endif %}
+   {% endif %} #}
 
     <div class="tituloMenu">
       <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
@@ -47,8 +47,8 @@
  {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad !='OBSTETRA')) %} #}
    {#  #}
   {% if usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetra())) %}
-    <div class="subtituloMenu">
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
+    <div class="subtituloMenu"> {# Esto tengo que meterlo en un if aparte. #}
       Antecedentes:
     </div>
     <ul>
@@ -58,7 +58,7 @@
   {% endif %}
  {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
   {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
       <div class="opcionMenu">
         <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
       </div>
@@ -100,7 +100,7 @@
 
 {# {% if ((paciente.sexo == '1') and ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA'))) %} #}
   {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-          or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra()))) %}
+          or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
     <div class="subtituloMenu">
       Estudios:
     </div>
@@ -113,7 +113,8 @@
 
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='CLINICO' or especialidad =='PEDIATRA'))) %} #}
   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isClinico() or usuario.isPediatra()))) %}
+        or (usuario.isAuthenticatedMedico(rolSeleccionado) 
+        and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
     <div class="subtituloMenu">
       Consultas:
     </div>
@@ -132,7 +133,8 @@
       <div class="opcionMenu">
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and (especialidad =='PEDIATRA' or especialidad == 'CLINICO'))) %} #}
     {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-       or (usuario.isAuthenticatedMedico(rolSeleccionado) and (usuario.isPediatra() or usuario.isClinico()))) %}
+       or (usuario.isAuthenticatedMedico(rolSeleccionado) 
+       and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
         <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
     {% endif %}
         <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
@@ -142,7 +144,7 @@
 
 {# {% if ((rol == 'ROLE_ADMINISTRADOR') or (rol == 'ROLE_MEDICO' and especialidad =='OBSTETRA')) %} #}
   {% if (usuario.isAuthenticatedAdministrador(rolSeleccionado) 
-     or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetra())) %}
+     or (usuario.isAuthenticatedMedico(rolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad))) %}
     <div class="subtituloMenu">
       Proyecto Procreacion Responsable:
     </div>
