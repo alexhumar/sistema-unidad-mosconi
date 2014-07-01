@@ -27,7 +27,7 @@ security:
         #- { path: ^/menu/administrador, role: ROLE_ADMINISTRADOR }
         #- { path: ^/menu/secretaria, role: ROLE_SECRETARIA }
         #- { path: ^/menu/medico, role: ROLE_MEDICO }
-          { path: ^/menu/principal, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/menu/principal, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/modificacion/antecedentePersonalClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/modificacion/antecedentePersonalObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/modificacion/antecedenteFamiliarClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }     
