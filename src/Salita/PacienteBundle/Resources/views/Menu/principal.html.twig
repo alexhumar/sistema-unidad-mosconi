@@ -5,13 +5,17 @@
       isAuthenticatedXXXX no se comportan como deberian.
       NO SE POR QUE PASA ESO! NO DEBERIA...
     #}
-   {% set usuario = app.session.get('usuario') %}
+
+{#   {% set usuario = app.session.get('usuario') %}
    {% if not(app.session.get('paciente') is empty) %}
      {% set paciente = app.session.get('paciente') %}
-   {% endif %}
+   {% endif %} #}
+
    {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
-   {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
-   {% set nombreRolSeleccionado = rolSeleccionado.getNombre() %}
+   {% set codigoRolSeleccionadoQuotes = rolSeleccionado.getCodigoWithQuotes() %}
+   {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+   {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+   {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
    {% if not(app.session.get('especialidad') is empty) %}
      {% set especialidad = app.session.get('especialidad') %}
      {% set codigoEspecialidad = especialidad.getCodigo() %}
@@ -19,139 +23,32 @@
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}
 
-    <div class="tituloMenu">
-      <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
-    </div>
-    <br> 
-    <div class="subtituloMenu">
-      Datos Filiatorios:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
-      </div>
-    </ul>
+  {{ include('SalitaPacienteBundle:Menu:seccionDatosFiliatorios.html.twig') }}
 
-  {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
-    <div class="subtituloMenu">
-      Historia Clínica:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></li>
-        <li><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></li>
-      </div>
-    </ul>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionHistoriaClinica.html.twig', 
+     { secretariaexpression: secretariaexpression }) }}
 
-  {# Si el usuario es secretaria o el medico es obstetra y el paciente no es mujer, no debe mostrarse la parte de antecedentes #}
-  {% set muestraAntecedentes = not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado) 
-                     or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
-  {% if muestraAntecedentes %}
-    <div class="subtituloMenu">
-      Antecedentes:
-    </div>
-    <ul>
-  {% if usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
-      <div class="opcionMenu">
-        <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
-      </div>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionAntecedentes.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       secretariaexpression: secretariaexpression, codigoEspecialidad: codigoEspecialidad }) }}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-      <div class="opcionMenu">
-        <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
-      </div>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionTurnos.html.twig', 
+     { medicoexpression: medicoexpression })) }}
 
-  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
-      <div class="opcionMenu">
-        <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
-      </div>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionEstudios.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-     or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-      <div class="opcionMenu">
-        <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
-      <div>
-  {% endif %}
-    </ul>
-  {% endif %} {# endif muestraAntecedentes #}
+  {{ include('SalitaPacienteBundle:Menu:seccionConsultas.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
 
-    <div class="subtituloMenu">
-      Turnos:
-    {% if usuario.isAuthenticatedMedico(codigoRolSeleccionado) %}
-      </div>
-      <ul>
-        <div class="opcionMenu">
-          <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
-        </div>
-      </ul>
-    {% else %}
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('alta_turno')}}">Agregar un turno</a></li>
-      </div>
-    </ul>
-    {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionVacunacion.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       secretariaexpression: secretariaexpression, codigoEspecialidad: codigoEspecialidad }) }}
 
-  {% if (paciente.isMujer() and (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-          or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-    <div class="subtituloMenu">
-      Estudios:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('alta_estudio')}}">Registrar un estudio</a></li>
-      </div>
-    </ul>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:Menu:seccionPlanProcreacionResponsable.html.twig', 
+     { adminexpression: adminexpression, medicoexpression: medicoexpression, 
+       codigoEspecialidad: codigoEspecialidad }) }}
 
-  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-        or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) 
-        and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
-    <div class="subtituloMenu">
-      Consultas:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
-      </div>
-    </ul>
-  {% endif %}
-
-  {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
-    <div class="subtituloMenu">
-      Vacunacion:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-    {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-       or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) 
-       and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
-        <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
-    {% endif %}
-        <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
-      </div>
-    </ul>
-  {% endif %}
-
-  {% if (usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) 
-     or (usuario.isAuthenticatedMedico(codigoRolSeleccionado) and usuario.isObstetraSession(codigoEspecialidad))) %}
-    <div class="subtituloMenu">
-      Proyecto Procreacion Responsable:
-    </div>
-    <ul>
-      <div class="opcionMenu">
-        <li><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></li>
-        <li><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></li>
-        <li><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></li>
-      </div>
-    </ul>
-  {% endif %}
 {% endblock %}

@@ -1,0 +1,16 @@
+{# Recibe como parametros: adminexpression, medicoexpression, codigoEspecialidad #}
+
+{# Si el usuario ingreso como administrador o, ingreso como medico y es obstetra... #}
+{% if (is_granted(expression(adminexpression)) 
+   or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad))) %}
+  <div class="subtituloMenu">
+    Proyecto Procreacion Responsable:
+  </div>
+  <ul>
+    <div class="opcionMenu">
+      <li><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></li>
+      <li><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></li>
+      <li><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></li>
+    </div>
+  </ul>
+{% endif %}

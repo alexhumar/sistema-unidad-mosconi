@@ -1,0 +1,14 @@
+{# Recibe como parametros: secretariaexpression #}
+
+{# Si no ingreso como secretaria... #}
+{% if not(is_granted(expression(secretariaexpression))) %}
+  <div class="subtituloMenu">
+    Historia Clínica:
+  </div>
+  <ul>
+    <div class="opcionMenu">
+      <li><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></li>
+      <li><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></li>
+    </div>
+  </ul>
+{% endif %}

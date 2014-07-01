@@ -1,0 +1,14 @@
+{# Recibe como parametros: adminexpression, medicoexpression, codigoEspecialidad #}
+
+{# Si el usuario ingreso como administrador, o como medico y, es clinico o pediatra... #}
+{% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
+      and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
+  <div class="subtituloMenu">
+    Consultas:
+  </div>
+  <ul>
+    <div class="opcionMenu">
+      <li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
+    </div>
+  </ul>
+{% endif %}

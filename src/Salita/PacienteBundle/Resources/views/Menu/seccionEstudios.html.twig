@@ -1,0 +1,16 @@
+{# Recibe como parametros: adminexpression, medicoexpression, codigoEspecialidad #}
+
+{% set paciente = app.session.get('paciente') %}
+
+{# Si el paciente es mujer y, el usuario ingreso como administrador, o ingreso como medico y es obstetra... #}
+{% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
+        or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+  <div class="subtituloMenu">
+    Estudios:
+  </div>
+  <ul>
+    <div class="opcionMenu">
+      <li><a href="{{path('alta_estudio')}}">Registrar un estudio</a></li>
+    </div>
+  </ul>
+{% endif %}

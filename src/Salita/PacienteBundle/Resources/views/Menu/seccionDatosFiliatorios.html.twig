@@ -1,0 +1,14 @@
+{% set paciente = app.session.get('paciente') %}
+
+<div class="tituloMenu">
+  <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
+</div>
+<br> 
+<div class="subtituloMenu">
+  Datos Filiatorios:
+</div>
+<ul>
+  <div class="opcionMenu">
+    <li><a href="{{path('modificacion_datosFiliatorios')}}">Modificar los datos filiatorios</a></li>
+  </div>
+</ul>

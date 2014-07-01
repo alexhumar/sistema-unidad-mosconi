@@ -1,0 +1,18 @@
+{# Recibe como parametros: adminexpression, medicoexpression, secretariaexpression, codigoEspecialidad #}
+
+{# Si el usuario no ingreso como secretaria... #}
+{% if not(is_granted(expression(secretariaexpression))) %}
+  <div class="subtituloMenu">
+    Vacunacion:
+  </div>
+  <ul>
+    <div class="opcionMenu">
+  {# Si el usuario ingreso como administrador o como medico y, es pediatra o es clinico... #}
+  {% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
+     and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
+      <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
+  {% endif %}
+      <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
+    </div>
+  </ul>
+{% endif %}

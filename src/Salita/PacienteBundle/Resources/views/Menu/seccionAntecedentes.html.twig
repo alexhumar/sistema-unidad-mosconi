@@ -1,0 +1,44 @@
+{# Recibe como parametros: adminexpression, secretariaexpression, medicoexpression, codigoEspecialidad #}
+
+{% set paciente = app.session.get('paciente') %}
+{% set usuario = app.session.get('usuario') %}
+
+{# Si el usuario es secretaria o el medico es obstetra y el paciente no es mujer, no debe mostrarse la parte de antecedentes #}
+{% set muestraAntecedentes = not(is_granted(expression(secretariaexpression)) 
+                   or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
+{% if muestraAntecedentes %}
+    <div class="subtituloMenu">
+      Antecedentes:
+    </div>
+    <ul>
+
+  {% if is_granted(expression(adminexpression)) 
+      or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></li>
+      </div>
+  {% endif %}
+
+  {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
+       or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></li>
+      </div>
+  {% endif %}
+
+  {% if (is_granted(expression(adminexpression)) 
+        or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></li>
+      </div>
+  {% endif %}
+
+  {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
+     or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
+      <div class="opcionMenu">
+        <li><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></li>
+      <div>
+  {% endif %}
+
+    </ul>
+{% endif %} {# endif muestraAntecedentes #}
