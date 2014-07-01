@@ -1,0 +1,52 @@
+{# Recibe como parametros: antecedentePO #}
+
+{% set paciente = app.session.get('paciente') %}
+
+{% if paciente.isMujer() %}
+  <div class="tituloSeccion">Antecedentes Personales Obstétricos</div><br>
+  <p>
+    <span class="caja1">
+      <span class="aux"> Cirugía pelviana: </span>
+      <span class="datos">{% if antecedentePO.cirugiaPelviana == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Infertilidad: </span>
+      <span class="datos">{% if antecedentePO.infertilidad == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> VIH: </span>
+      <span class="datos">{% if antecedentePO.vih == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Cardiopatía/Nefropatía: </span>
+      <span class="datos">{% if antecedentePO.cardiopatiaNefropatia == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Condición médica grave:</span>
+      <span class="datos">{% if antecedentePO.condicionMedicaGrave == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Sífilis:</span>
+      <span class="datos">{% if antecedentePO.sifilis == 1 %}Sí{% else %}No{% endif %}</span><br>
+      {% if paciente.isMujer() %} {# Y este if?? Si ya se sabe que es mujer... #}
+        <span class="aux"> Gestas previas:</span>
+        <span class="datos">{{antecedentePO.gestasPrevias}}</span><br>
+        <span class="aux"> Abortos:</span>
+        <span class="datos">{{antecedentePO.abortos}}</span><br>
+      {% endif %}
+    </span>
+    <span class="caja2">
+      <span class="aux"> Tuberculosis:</span>
+      <span class="datos">{% if antecedentePO.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Diabetes:</span>
+      <span class="datos">{% if antecedentePO.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Hipertensión arterial:</span>
+      <span class="datos">{% if antecedentePO.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Drogas:</span>
+      <span class="datos">{% if antecedentePO.drogas == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Tabaquismo:</span>
+      <span class="datos">{% if antecedentePO.tabaquismo == 1 %}Sí{% else %}No{% endif %}</span><br>
+      <span class="aux"> Alcoholismo:</span>
+      <span class="datos">{% if antecedentePO.alcoholismo == 1 %}Sí{% else %}No{% endif %}</span><br>
+      {% if paciente.isMujer() %} {# Y este if?? Si ya se sabe que es mujer... #}
+        <span class="aux"> Cesáreas:</span>
+        <span class="datos">{{antecedentePO.cesareas}}</span><br>
+        <span class="aux"> Partos:</span>
+        <span class="datos">{{antecedentePO.partos}}</span><br>
+      {% endif %}
+      <span class="aux"> Otros:</span>
+      <span class="datos">{% if antecedentePO.otros == null %} - {% else %}{{antecedentePO.otros}}{% endif %}</span><br>
+    </span>
+  </p>
+  <br>
+{% endif %}

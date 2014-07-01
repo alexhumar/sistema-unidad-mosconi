@@ -1,0 +1,16 @@
+{# Recibe como parametros: aplicaciones #}
+
+{% if (aplicaciones|length > 0) %}
+  <div class="tituloSeccion">Aplicaciones de Vacunas</div><br>
+  {% for aplicacion in aplicaciones %}
+    <div class="caja1">
+      <span class="aux"> Vacuna: </span>
+      <span class="datos"> {{aplicacion.nombreVacuna}} </span><br>
+      <span class="aux"> Fecha: </span>
+      <span class="datos"> {{aplicacion.fecha}}</span><br>
+    </div>
+    <br>
+    <h1>____________________________________________________________________</h1>
+    <br>
+  {% endfor %}
+{% endif %}

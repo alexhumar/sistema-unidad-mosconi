@@ -1,96 +1,27 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-  {% set paciente = app.session.get('paciente') %}
 
-  {% include "SalitaPacienteBundle:HistoriaClinica:datosFiliatorios.html.twig" %}
-  <div class="tituloSeccion">Antecedentes Personales Clínicos</div><br>
-  <p>
-    <span class="caja1">
-      <span class="aux"> Medicamentos: </span> <span class="datos">{% if antecedentePC.medicamentos == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Tatuajes: </span> <span class="datos">{% if antecedentePC.tatuajes == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Infectocontagiosas: </span> <span class="datos">{% if antecedentePC.infectoContagiosas == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Traumatismos: </span> <span class="datos">{% if antecedentePC.traumatismos == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Internaciones previas:</span> <span class="datos">{% if antecedentePC.internacionesPrevias == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Tuberculosis:</span> <span class="datos">{% if antecedentePC.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
-    </span>
-   <span class="caja2">
-     <span class="aux"> Diabetes:</span> <span class="datos">{% if antecedentePC.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
-     <span class="aux"> Hipertensión arterial:</span> <span class="datos">{% if antecedentePC.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
-     <span class="aux"> Drogas:</span> <span class="datos">{% if antecedentePC.drogas == 1 %}Sí{% else %}No{% endif %}</span><br>
-     <span class="aux"> Tabaquismo:</span> <span class="datos">{% if antecedentePC.tabaquismo == 1 %}Sí{% else %}No{% endif %}</span><br>
-     <span class="aux"> Alcoholismo:</span> <span class="datos">{% if antecedentePC.alcoholismo == 1 %}Sí{% else %}No{% endif %}</span><br>
-     <span class="aux"> Otros:</span> <span class="datos">{% if antecedentePC.otros == null %} - {% else %}{{antecedentePC.otros}}{% endif %}</span><br>
-   </span>
-  </p>
-  <br>
-  {% if paciente.isMujer() %}
-    <div class="tituloSeccion">Antecedentes Personales Obstétricos</div><br>
-    <p>
-      <span class="caja1">
-        <span class="aux"> Cirugía pelviana: </span> <span class="datos">{% if antecedentePO.cirugiaPelviana == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Infertilidad: </span> <span class="datos">{% if antecedentePO.infertilidad == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> VIH: </span> <span class="datos">{% if antecedentePO.vih == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Cardiopatía/Nefropatía: </span> <span class="datos">{% if antecedentePO.cardiopatiaNefropatia == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Condición médica grave:</span> <span class="datos">{% if antecedentePO.condicionMedicaGrave == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Sífilis:</span> <span class="datos">{% if antecedentePO.sifilis == 1 %}Sí{% else %}No{% endif %}</span><br>
-        {% if paciente.isMujer() %}
-          <span class="aux"> Gestas previas:</span> <span class="datos">{{antecedentePO.gestasPrevias}}</span><br>
-          <span class="aux"> Abortos:</span> <span class="datos">{{antecedentePO.abortos}}</span><br>
-        {% endif %}
-      </span>
-      <span class="caja2">
-        <span class="aux"> Tuberculosis:</span> <span class="datos">{% if antecedentePO.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Diabetes:</span> <span class="datos">{% if antecedentePO.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Hipertensión arterial:</span> <span class="datos">{% if antecedentePO.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Drogas:</span> <span class="datos">{% if antecedentePO.drogas == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Tabaquismo:</span> <span class="datos">{% if antecedentePO.tabaquismo == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Alcoholismo:</span> <span class="datos">{% if antecedentePO.alcoholismo == 1 %}Sí{% else %}No{% endif %}</span><br>
-        {% if paciente.isMujer() %}
-          <span class="aux"> Cesáreas:</span> <span class="datos">{{antecedentePO.cesareas}}</span><br>
-          <span class="aux"> Partos:</span> <span class="datos">{{antecedentePO.partos}}</span><br>
-        {% endif %}
-        <span class="aux"> Otros:</span> <span class="datos">{% if antecedentePO.otros == null %} - {% else %}{{antecedentePO.otros}}{% endif %}</span><br>
-      </span>
-      </p>
-      <br>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionDatosFiliatorios.html.twig') }}
 
-  <div class="tituloSeccion">Antecedentes Familiares Clínicos</div><br>
-  <p>
-    <span class="caja1">
-      <span class="aux"> Cardiovascular menor a 55: </span> <span class="datos">{% if antecedenteFC.cardiovascularMenorA55 == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Asma: </span> <span class="datos">{% if antecedenteFC.asma == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Trastornos mentales: </span> <span class="datos">{% if antecedenteFC.trastornosMentales == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Alergias: </span> <span class="datos">{% if antecedenteFC.alergias == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Adicciones/Tabaquismo:</span> <span class="datos">{% if antecedenteFC.adiccionesTabaquismo == 1 %}Sí{% else %}No{% endif %}</span><br>
-    </span>
-    <span class="caja2">
-      <span class="aux"> Infectocontagiosas: </span> <span class="datos">{% if antecedenteFC.infectoContagiosas == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Tuberculosis:</span> <span class="datos">{% if antecedenteFC.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Diabetes:</span> <span class="datos">{% if antecedenteFC.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Hipertensión arterial:</span> <span class="datos">{% if antecedenteFC.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Otros:</span> <span class="datos">{% if antecedenteFC.otros == null %} - {% else %}{{antecedenteFC.otros}}{% endif %}</span><br>
-    </span>
-  </p>
-  <br>
-  {% if paciente.isMujer() %}
-    <div class="tituloSeccion">Antecedentes Familiares Obstétricos</div><br>
-    <p>
-      <span class="caja1">
-        <span class="aux"> Preeclampsia/Eclampsia: </span> <span class="datos">{% if antecedenteFO.preeclampsiaEclampsia == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Tuberculosis: </span> <span class="datos">{% if antecedenteFO.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
-      </span>
-      <span class="caja2">
-        <span class="aux"> Diabetes:</span> <span class="datos">{% if antecedenteFO.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Hipertensión arterial:</span> <span class="datos">{% if antecedenteFO.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
-        <span class="aux"> Otros:</span> <span class="datos">{% if antecedenteFO.otros == null %} - {% else %}{{antecedenteFO.otros}}{% endif %}</span><br>
-      </span>
-    </p>
-    <br>
-  {% endif %}
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesClinicos.html.twig', 
+     { antecedentePC: antecedentePC }) }}
 
-  {% include "SalitaPacienteBundle:HistoriaClinica:consultas.html.twig" %}
-  {% include "SalitaPacienteBundle:HistoriaClinica:aplicacionesVacunas.html.twig" %}
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesObstetricos.html.twig', 
+     { antecedentePO: antecedentePO }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresClinicos.html.twig', 
+     { antecedenteFC: antecedenteFC }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresObstetricos.html.twig', 
+     { antecedenteFO: antecedenteFO }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
+     { consultas: consultas, estudios: estudios }) }}
+
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAplicacionesVacunas.html.twig', 
+     { aplicaciones: aplicaciones }) }}
+
   <h3>Historia clínica generada por {{usuarioGenerador.nombre}} {{usuarioGenerador.apellido}}</h3>
+
 {% endblock %}

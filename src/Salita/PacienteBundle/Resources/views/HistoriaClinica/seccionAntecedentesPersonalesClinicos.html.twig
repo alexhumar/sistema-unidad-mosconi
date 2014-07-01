@@ -1,0 +1,34 @@
+{# Recibe como parametros: antecedentePC #}
+
+<div class="tituloSeccion">Antecedentes Personales Clínicos</div><br>
+<p>
+  <span class="caja1">
+    <span class="aux"> Medicamentos: </span>
+    <span class="datos">{% if antecedentePC.medicamentos == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <span class="aux"> Tatuajes: </span>
+    <span class="datos">{% if antecedentePC.tatuajes == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <span class="aux"> Infectocontagiosas: </span>
+    <span class="datos">{% if antecedentePC.infectoContagiosas == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <span class="aux"> Traumatismos: </span>
+    <span class="datos">{% if antecedentePC.traumatismos == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <span class="aux"> Internaciones previas:</span>
+    <span class="datos">{% if antecedentePC.internacionesPrevias == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <span class="aux"> Tuberculosis:</span>
+    <span class="datos">{% if antecedentePC.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
+  </span>
+ <span class="caja2">
+   <span class="aux"> Diabetes:</span>
+   <span class="datos">{% if antecedentePC.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
+   <span class="aux"> Hipertensión arterial:</span>
+   <span class="datos">{% if antecedentePC.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
+   <span class="aux"> Drogas:</span>
+   <span class="datos">{% if antecedentePC.drogas == 1 %}Sí{% else %}No{% endif %}</span><br>
+   <span class="aux"> Tabaquismo:</span>
+   <span class="datos">{% if antecedentePC.tabaquismo == 1 %}Sí{% else %}No{% endif %}</span><br>
+   <span class="aux"> Alcoholismo:</span>
+   <span class="datos">{% if antecedentePC.alcoholismo == 1 %}Sí{% else %}No{% endif %}</span><br>
+   <span class="aux"> Otros:</span>
+   <span class="datos">{% if antecedentePC.otros == null %} - {% else %}{{antecedentePC.otros}}{% endif %}</span><br>
+ </span>
+</p>
+<br>
