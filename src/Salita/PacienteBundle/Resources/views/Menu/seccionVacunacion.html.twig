@@ -1,5 +1,7 @@
 {# Recibe como parametros: adminexpression, medicoexpression, secretariaexpression, codigoEspecialidad #}
 
+{% set usuario = app.session.get('usuario') %}
+
 {# Si el usuario no ingreso como secretaria... #}
 {% if not(is_granted(expression(secretariaexpression))) %}
   <div class="subtituloMenu">

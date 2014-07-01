@@ -1,5 +1,7 @@
 {# Recibe como parametros: adminexpression, medicoexpression, codigoEspecialidad #}
 
+{% set usuario = app.session.get('usuario') %}
+
 {# Si el usuario ingreso como administrador o, ingreso como medico y es obstetra... #}
 {% if (is_granted(expression(adminexpression)) 
    or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad))) %}
