@@ -1,5 +1,5 @@
 {% if not(app.session.get('rolSeleccionado') is empty) %}
-	{% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
+	{% set rolSeleccionadoQuotes = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
 {% endif %}
 <!DOCTYPE html>
 <html>
@@ -26,21 +26,21 @@
                     {% block menuIncludes %} {% endblock %}
 
                     {% if rolSeleccionado is defined %}
-                      {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionado ~ ')' %}
-                      {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionado ~ ')' %}
-                      {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionado ~ ')' %}
+                      {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionadoQuotes ~ ')' %}
+                      {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionadoQuotes ~ ')' %}
+                      {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionadoQuotes ~ ')' %}
                       
                       {% if is_granted(expression(adminexpression)) %}
                         {% block opcionesMenuAdministrador %}
-                          {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig') }}
+                          {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
                         {% endblock %}
                       {% elseif is_granted(expression(secretariaexpression)) %}
                         {% block opcionesMenuSecretaria %}
-                          {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig') }}
+                          {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
                         {% endblock %}
                       {% elseif is_granted(expression(medicoexpression)) %}
                         {% block opcionesMenuMedico %}
-                          {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig') }}
+                          {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
                         {% endblock %}
                       {% endif %} 
                     {% endif %}

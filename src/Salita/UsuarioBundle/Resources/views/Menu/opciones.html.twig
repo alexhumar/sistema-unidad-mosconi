@@ -1,0 +1,13 @@
+{% set usuario = app.session.get('usuario') %}
+{% set rolSeleccionado = app.session.get('rolSeleccionado') %}
+{% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
+
+  <li class="current_page_item"><a href="{{path('menu_principal')}}">Principal</a></li>
+  <li><a href="{{path('modif_usuario_propio')}}">Mis Datos</a></li>
+  <li><a href="{{path('menu_paciente')}}">Pacientes</a></li>
+{% if usuario.isAuthenticatedMedico(codigoRolSeleccionado) %}
+  <li><a href="{{path('listado_turnos_especialidad')}}">Turnos del dia</a></li>
+{% else %}
+  <li><a href="{{path('listado_turnos')}}">Turnos del dia</a></li>
+{% endif %}
+  <li><a href="{{path('fos_user_security_logout')}}">Salir</a></li>
