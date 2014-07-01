@@ -24,9 +24,10 @@ security:
         - { path: ^/register/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_ADMIN ] }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/menu/administrador, role: ROLE_ADMINISTRADOR }
-        - { path: ^/menu/secretaria, role: ROLE_SECRETARIA }
-        - { path: ^/menu/medico, role: ROLE_MEDICO }
+        #- { path: ^/menu/administrador, role: ROLE_ADMINISTRADOR }
+        #- { path: ^/menu/secretaria, role: ROLE_SECRETARIA }
+        #- { path: ^/menu/medico, role: ROLE_MEDICO }
+          { path: ^/menu/principal, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/modificacion/antecedentePersonalClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/modificacion/antecedentePersonalObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/modificacion/antecedenteFamiliarClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }     

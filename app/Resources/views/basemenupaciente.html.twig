@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{# Este template pisa el bloque del template base que define el cuerpo del menu, para generar el menu de
+   la seccion de paciente, en base al rol elegido por el usuario. A su vez, servira de base para los templates
+   base propios de cada bundle que generen dicho menu.
+#}
+
+{% block cuerpomenu %}
+  {% if is_granted(expression(adminexpression)) %}
+    {% block opcionesMenuAdministrador %} {% endblock %}
+  {% elseif is_granted(expression(secretariaexpression)) %}
+    {% block opcionesMenuSecretaria %} {% endblock %}
+  {% elseif is_granted(expression(medicoexpression)) %}
+    {% block opcionesMenuMedico %} {% endblock %}
+  {% endif %}
+{% endblock %}
