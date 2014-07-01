@@ -62,12 +62,23 @@ class UsuarioRolController extends MyController
            $session->set('rolSeleccionado', $rolUsuario);
        }
        
-       switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
+       /* Si ingreso al sistema como medico */
+       if (ConsultaRol::rolSeleccionado($session)->getCodigo() == Rol::getCodigoRolMedico())
+       {
+       	   /*Esto lo hago para que Doctrine reemplace el proxy Especialidad por el objeto
+       	    * real con los datos traidos de la bd*/
+       	   $usuario->getEspecialidad()->getCodigo();
+       	   $session->set('especialidad', $usuario->getEspecialidad());
+       }
+       
+       return $this->render('SalitaUsuarioBundle:Menu:principal.html.twig');
+       
+       /*switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
            case Rol::getCodigoRolMedico():
            	                   /*Esto lo hago para que Doctrine reemplace el proxy Especialidad por el objeto 
            	                    * real con los datos traidos de la bd*/
-           	                   $usuario->getEspecialidad()->getCodigo(); 
+           	                   /*$usuario->getEspecialidad()->getCodigo(); 
            	                   $session->set('especialidad', $usuario->getEspecialidad());
                                return $this->redirect($this->generateUrl('menu_medico'));
                                break;
@@ -75,6 +86,6 @@ class UsuarioRolController extends MyController
                                break;
            case Rol::getCodigoRolAdministrador(): return $this->redirect($this->generateUrl('menu_administrador'));
                                break;
-       }
+       }*/
     }
 }
