@@ -25,7 +25,7 @@
                   <ul>
                     {% block menuIncludes %} {% endblock %}
 
-                    {% if rolSeleccionado is defined %}
+                    {% if rolSeleccionadoQuotes is defined %}
                       {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionadoQuotes ~ ')' %}
                       {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionadoQuotes ~ ')' %}
                       {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionadoQuotes ~ ')' %}
