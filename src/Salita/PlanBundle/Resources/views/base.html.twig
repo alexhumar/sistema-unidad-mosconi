@@ -7,16 +7,16 @@
 
 {% block opcionesMenuAdministrador %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_administrador')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuSecretaria %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_secretaria')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 
 {% block opcionesMenuMedico %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_medico')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
 {% endblock %}
 {#----------------------------------------------------------------------------------#}
