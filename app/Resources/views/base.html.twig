@@ -1,5 +1,5 @@
 {% if not(app.session.get('rolSeleccionado') is empty) %}
-	{% set rolSeleccionadoQuotes = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
+	{% set codigoRolSeleccionadoQuotes = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
 {% endif %}
 <!DOCTYPE html>
 <html>
@@ -25,10 +25,10 @@
                   <ul>
                     {% block menuIncludes %} {% endblock %}
 
-                    {% if rolSeleccionadoQuotes is defined %}
-                      {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionadoQuotes ~ ')' %}
-                      {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionadoQuotes ~ ')' %}
-                      {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionadoQuotes ~ ')' %}
+                    {% if codigoRolSeleccionadoQuotes is defined %}
+                      {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+                      {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
+                      {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
                       
                       {% if is_granted(expression(adminexpression)) %}
                         {% block opcionesMenuAdministrador %}
