@@ -7,7 +7,7 @@ use Salita\OtrosBundle\Clases\MyController;
 /* ATENCION: creo que este controller ya no se usa mas */
 class MenuController extends MyController
 {
-    public function administradorAction()
+    /*public function administradorAction()
     {
        return $this->render('SalitaUsuarioBundle:Menu:menuAdministrador.html.twig');
     }
@@ -20,5 +20,10 @@ class MenuController extends MyController
     public function secretariaAction()
     {
        return $this->render('SalitaUsuarioBundle:Menu:menuSecretaria.html.twig');
-    }
+    }*/
+	
+	public function principalAction()
+	{
+		return $this->render('SalitaUsuarioBundle:Menu:principal.html.twig');
+	}
 }

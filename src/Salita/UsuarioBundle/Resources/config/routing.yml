@@ -95,6 +95,13 @@ asignacion_especialidad_process:
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidadProcess }
     methods: [POST]
 
+menu_principal:
+    pattern: /menu/principal
+    defaults: { _controller: SalitaUsuarioBundle:Menu:principal }
+    methods: [GET]
+
+#Estas rutas se dejarian de utilizar luego de implementar el template principal.html.twig que se encarga
+#de generar el menu acorde al rol del usuario.
 menu_secretaria:
     pattern: /menu/secretaria
     defaults: { _controller: SalitaUsuarioBundle:Menu:secretaria }

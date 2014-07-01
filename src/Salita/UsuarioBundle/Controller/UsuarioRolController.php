@@ -71,7 +71,8 @@ class UsuarioRolController extends MyController
        	   $session->set('especialidad', $usuario->getEspecialidad());
        }
        
-       return $this->render('SalitaUsuarioBundle:Menu:principal.html.twig');
+       //return $this->render('SalitaUsuarioBundle:Menu:principal.html.twig');
+       return $this->redirect($this->generateUrl('menu_principal'));
        
        /*switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
        {
