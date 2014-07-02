@@ -30,7 +30,8 @@ class Vacuna
     protected $aplicaciones;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->aplicaciones = new ArrayCollection();
     }
 
@@ -83,5 +84,10 @@ class Vacuna
     public function getAplicaciones()
     {
         return $this->aplicaciones;
+    }
+    
+    public function __toString()
+    {
+    	return $this->getNombre();
     }
 }

@@ -110,6 +110,6 @@ class AplicacionVacuna
 
     public function __toString()
     {
-        return $this->getNombre();
+        return "Aplicacion de vacuna " . $this->getVacuna()->getNombre();
     }
 }
