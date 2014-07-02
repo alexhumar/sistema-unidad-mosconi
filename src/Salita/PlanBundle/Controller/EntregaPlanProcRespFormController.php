@@ -51,7 +51,7 @@ class EntregaPlanProcRespFormController extends MyController
     function listAction($idPlan)
     {
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
-        $entregasplanprocresp = $repoPlanes->encontrarTodosOrdenadosPorFecha($idPlan);
+        $entregasplanprocresp = $repoPlanes->findAllOrderedByFecha($idPlan);
         return $this->render(
         			'SalitaPlanBundle:EntregaPlanProcRespForm:listado.html.twig', 
         			array('entregasplanprocresp' => $entregasplanprocresp)

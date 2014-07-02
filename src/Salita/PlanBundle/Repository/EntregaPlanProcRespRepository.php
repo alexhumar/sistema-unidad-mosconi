@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 
 class EntregaPlanProcRespRepository extends EntityRepository
 {
-    public function encontrarTodosOrdenadosPorFecha($id)
+    public function findAllOrderedByFecha($id)
     {
         $sql = 'SELECT e.fecha as fecha, m.nombre as metodo, pac.nombre as nombrePac, pac.apellido as apellidoPac 
                 FROM SalitaPlanBundle:EntregaPlanProcResp e JOIN e.plan p JOIN p.paciente pac JOIN p.metodoAnticonceptivo m 
