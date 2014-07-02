@@ -28,10 +28,16 @@ class Partido
      * @ORM\OneToMany(targetEntity="Salita\OtrosBundle\Entity\Localidad", mappedBy="partido")
      */
     protected $localidades;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\Paciente", mappedBy="partido")
+     */
+    protected $pacientes;
 
     public function __construct()
     {
-        $this->localidades= new ArrayCollection();
+        $this->localidades = new ArrayCollection();
+        $this->pacientes = new ArrayCollection();
     }
 
 

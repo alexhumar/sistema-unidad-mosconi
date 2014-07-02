@@ -26,7 +26,7 @@ class AplicacionVacuna
     protected $fecha;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Salita\PacienteBundle\Entity\Paciente", inversedBy="aplicaciones")
+     * @ORM\ManyToOne(targetEntity="Salita\PacienteBundle\Entity\Paciente", inversedBy="vacunas")
      * @ORM\JoinColumn(name="idPaciente", referencedColumnName="id")
      */
     protected $paciente;
