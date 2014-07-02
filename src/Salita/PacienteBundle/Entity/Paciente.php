@@ -129,12 +129,12 @@ class Paciente
     /**
      * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\AntecedentePersonal", mappedBy="paciente")
      */
-    private $antecedentePersonal;
+    protected $antecedentePersonal;
 
     /**
      * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\AntecedenteFamiliar", mappedBy="paciente")
      */
-    private $antecedenteFamiliar;
+    protected $antecedenteFamiliar;
 
     /**
      * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\Visita", mappedBy="paciente")
