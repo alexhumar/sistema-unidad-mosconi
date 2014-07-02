@@ -216,7 +216,8 @@ class PersistenceManager
 	
 	public function saveConsulta($consulta, $paciente, $usuario, $diagnostico)
 	{
-		/*Ojo que ni paciente, ni usuario, ni diagnostico vienen del repo... sino de la sesion*/
+		$paciente = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
+		$usuario = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
 		$consulta->setPaciente($paciente);
 		$consulta->setUsuario($usuario);
 		$consulta->setDiagnostico($diagnostico);
@@ -229,7 +230,8 @@ class PersistenceManager
 	
 	public function saveEstudio($estudio, $paciente, $usuario)
 	{
-		/*Ojo que ni paciente, ni usuario, ni diagnostico vienen del repo... sino de la sesion*/
+		$paciente = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
+		$usuario = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
 		$estudio->setPaciente($paciente);
 		$estudio->setUsuario($usuario);
 		$estudio->setFecha(date("d-m-Y"));
