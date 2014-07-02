@@ -241,6 +241,7 @@ class PersistenceManager
 	
 	public function savePaciente($paciente)
 	{
+		/* Todos los persists en este metodo son necesarios */
 		$antecedentePersonalObstetrico = new AntecedentePersonalObstetrico();
 		$antecedentePersonalObstetrico->setPaciente($paciente);
 		$antecedenteFamiliarObstetrico = new AntecedenteFamiliarObstetrico();
