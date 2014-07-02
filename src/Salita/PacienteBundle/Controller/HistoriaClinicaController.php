@@ -59,6 +59,7 @@ class HistoriaClinicaController extends MyController
        {
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
+           $paciente = $this->getReposManager()->getPacientesRepo()->find($idPaciente);
            /*Consultas*/
            $repoConsultas = $this->getReposManager()->getConsultasRepo();
            $consultas = $repoConsultas->obtenerConsultasDePaciente($idPaciente);
@@ -95,7 +96,7 @@ class HistoriaClinicaController extends MyController
            $usuarioGenerador = $session->get('usuario');          
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:generacionHC.html.twig', 
-           			array(/*'paciente' => $paciente,*/'antecedentePC' => $antecedentePersonalClinico,
+           			array('paciente' => $paciente,'antecedentePC' => $antecedentePersonalClinico,
            				  'antecedenteFC' => $antecedenteFamiliarClinico,
            				  'antecedenteFO' => $antecedenteFamiliarObstetrico,
            				  'antecedentePO' => $antecedentePersonalObstetrico,
