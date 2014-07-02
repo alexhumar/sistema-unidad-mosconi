@@ -200,9 +200,8 @@ class PersistenceManager
 	/*Metodos de PacienteBundle*/
 	public function createAplicacionVacuna($paciente, $vacuna)
 	{
-		/*Guarda que tanto paciente como vacuna vienen de la sesion, por lo que no creo que esten 
-		 * "vigilados" por doctrine. Ante un error, probar traerlos de un repo a ambos
-		 * */
+		$paciente = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
+		$vacuna = $this->getReposManager()->getVacunasRepo()->find($vacuna->getId());
 		$aplicacion = new AplicacionVacuna();
 		$aplicacion->setFecha(date("d-m-Y"));
 		$aplicacion->setPaciente($paciente);
