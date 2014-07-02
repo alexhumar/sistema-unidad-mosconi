@@ -14,6 +14,8 @@ class PacienteFormController extends MyController
     {
         $session = $this->getSession();
         $paciente = $session->get('paciente');
+        $repoPacientes = $this->getReposManager()->getPacientesRepo();
+        $paciente = $repoPacientes->find($paciente->getId());
         $form = $this->createForm(new DatosFiliatoriosType(), $paciente);
         return $this->render(
  	      			'SalitaPacienteBundle:PacienteForm:datosFiliatorios.html.twig', 
