@@ -39,17 +39,17 @@ class PlanProcResp
      * @ORM\OneToMany(targetEntity="Salita\PlanBundle\Entity\EntregaPlanProcResp", mappedBy="plan")
      */
     protected $entregas;
-
-    public function __construct()
-    {
-        $this->entregas= new ArrayCollection();
-    }
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="Salita\PlanBundle\Entity\MetodoAnticonceptivo", inversedBy="planesProcResp")
      * @ORM\JoinColumn(name="idMetodoAnticonceptivo", referencedColumnName="id")
      */
     protected $metodoAnticonceptivo;
+    
+    public function __construct()
+    {
+        $this->entregas = new ArrayCollection();
+    }
 
     /**
      * Get idPlanProcResp
