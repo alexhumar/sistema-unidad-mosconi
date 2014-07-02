@@ -9,8 +9,8 @@ class PlanProcRespType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('periodicidad', 'number', array('required' => 'false', 'label' => 'Periodicidad'))
-        		/*->add('metodoAnticonceptivo', 'entity', 
+        $builder->add('periodicidad', /*'number'*/ null , array('required' => 'false', 'label' => 'Periodicidad'))
+        		->add('metodoAnticonceptivo', 'entity', 
         					array('class' => 'SalitaPlanBundle:MetodoAnticonceptivo',
     							  'query_builder' => function(EntityRepository $er) { 
     							                         return $er
@@ -18,7 +18,7 @@ class PlanProcRespType extends AbstractType
     							                                ->orderBy('m.nombre', 'ASC'); 
     							                     },
     						      'property' => 'nombre', 
-    						      'label' => "Metodo Anticonceptivo"))*/
+    						      'label' => "Metodo Anticonceptivo"))
     			->add('guardar', 'submit');
     }
 
