@@ -222,7 +222,7 @@ class PersistenceManager
 		$consulta->setDiagnostico($diagnostico);
 		$consulta->setFecha(date("d-m-Y"));
 		$consulta->setHora(date("H:i:s"));
-		$em = $this->getEntityManager();
+		$em = $this->getReposManager()->getEntityManager();
 		$em->persist($consulta);
 		$em->flush();
 	}
@@ -234,7 +234,7 @@ class PersistenceManager
 		$estudio->setUsuario($usuario);
 		$estudio->setFecha(date("d-m-Y"));
 		$estudio->setHora(date("H:i:s"));
-		$em = $this->getEntityManager();
+		$em = $this->getReposManager()->getEntityManager();
 		$em->persist($estudio);
 		$em->flush();
 	}
