@@ -1,7 +1,5 @@
 {# Recibe como parametros: consultas, estudios #}
 
-{% set paciente = app.session.get('paciente') %}
-
 {% if (consultas|length > 0) %}
   <div class="tituloSeccion">Consultas</div><br>
   {% for consulta in consultas %}

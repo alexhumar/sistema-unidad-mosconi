@@ -1,7 +1,5 @@
 {# Recibe como parametros: antecedentePO #}
 
-{% set paciente = app.session.get('paciente') %}
-
 {% if paciente.isMujer() %}
   <div class="tituloSeccion">Antecedentes Personales Obstétricos</div><br>
   <p>
