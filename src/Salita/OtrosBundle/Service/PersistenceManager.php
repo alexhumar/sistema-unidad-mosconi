@@ -218,6 +218,7 @@ class PersistenceManager
 	{
 		$paciente = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
 		$usuario = $this->getReposManager()->getUsuariosRepo()->find($usuario->getId());
+		$diagnostico = $this->getReposManager()->getDiagnosticosRepo()->find($diagnostico->getId());
 		$consulta->setPaciente($paciente);
 		$consulta->setUsuario($usuario);
 		$consulta->setDiagnostico($diagnostico);
