@@ -182,6 +182,7 @@ class PersistenceManager
 	
 	public function savePlanProcreacionResponsable($plan, $paciente)
 	{
+		$paciente = $this->getReposManager()->getPacientesRepo()->find($paciente->getId());
 		$plan->setPaciente($paciente);
 		$plan->setFinalizado('0');
 		$em = $this->getReposManager()->getEntityManager();
