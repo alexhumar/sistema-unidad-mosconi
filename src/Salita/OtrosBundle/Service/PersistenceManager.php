@@ -167,9 +167,7 @@ class PersistenceManager
 		$entrega->setFecha(date("d-m-Y"));
 		$entrega->setPlan($plan);
 		$em = $this->getReposManager()->getEntityManager();
-		/*Como el plan se obtuvo del repo, esta "seguido" por doctrine. Como la entrega se asocia al plan
-		 * el persist no haria falta ya que la entrega deberia almacenarse gracias a la persistencia en cascada*/
-		//$em->persist($entrega);
+		$em->persist($entrega);
 		$em->flush();
 	}
 	
