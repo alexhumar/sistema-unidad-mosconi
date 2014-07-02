@@ -250,6 +250,10 @@ class PersistenceManager
 		$antecedenteFamiliarClinico = new AntecedenteFamiliarClinico();
 		$antecedenteFamiliarClinico->setPaciente($paciente);
 		$em = $this->getReposManager()->getEntityManager();
+		$em->persist($antecedentePersonalObstetrico);
+		$em->persist($antecedenteFamiliarObstetrico);
+		$em->persist($antecedentePersonalClinico);
+		$em->persist($antecedenteFamiliarClinico);
 		$em->persist($paciente);
 		$em->flush();
 	}
