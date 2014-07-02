@@ -1,8 +1,13 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
+{#
+, { 'action': path('alta_entregaplanprocresp'), 'idPlan': id }
+
+#}
+
 {% block contenido %}
 	¿Confirma el registro de entrega?
-	{{ form(form, { 'action': path('alta_entregaplanprocresp'), 'idPlan': id }) }}
+	{{ form(form) }}
 	{#<form action="{{ path('alta_entregaplanprocresp', { 'idPlan': id }) }}" method="post" {{ form_enctype(form) }}>
     	{{ form_widget(form) }}
     	<input type="submit" />
