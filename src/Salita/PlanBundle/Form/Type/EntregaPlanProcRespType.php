@@ -8,7 +8,7 @@ class EntregaPlanProcRespType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	$builder->add('agregar', 'submit');
+    	$builder->add('confirmar', 'submit');
     }
 
     public function getName()
