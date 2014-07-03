@@ -121,6 +121,7 @@ class HistoriaClinicaController extends MyController
            }
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
+           $paciente = $this->getReposManager()->getPacientesRepo()->find($idPaciente);
            $fechaDesde = \DateTime::createFromFormat('d-m-Y', $session->get('fechaDesde'));
            $fechaHasta = \DateTime::createFromFormat('d-m-Y', $session->get('fechaHasta'));
            $repoEstudios = $this->getReposManager()->getEstudiosRepo();
