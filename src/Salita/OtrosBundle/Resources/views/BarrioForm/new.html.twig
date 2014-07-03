@@ -7,7 +7,7 @@
 
 		form(form, { 'action': path('ruta_deseada'), 'method': GET })
      #}
-    {{ form(form) }}
+    {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
 
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
 		<div class="flash-message">
