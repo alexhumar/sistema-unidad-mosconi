@@ -93,7 +93,8 @@ class HistoriaClinicaController extends MyController
                $antecedentePersonalObstetrico = null;
                $antecedenteFamiliarObstetrico = null;
            }
-           $usuarioGenerador = $session->get('usuario');          
+           $usuarioGenerador = $session->get('usuario');
+           $usuarioGenerador = $this->getReposManager()->getUsuariosRepo()->find($usuarioGenerador->getId());
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:generacionHC.html.twig', 
            			array('paciente' => $paciente,'antecedentePC' => $antecedentePersonalClinico,
@@ -134,7 +135,8 @@ class HistoriaClinicaController extends MyController
            $estudios = $this->ordenarVisitasPorFecha($estudios, 'fecha');
            $session->remove('fechaDesde');
            $session->remove('fechaHasta');
-           $usuarioGenerador = $session->get('usuario');                  
+           $usuarioGenerador = $session->get('usuario');
+           $usuarioGenerador = $this->getReposManager()->getUsuariosRepo()->find($usuarioGenerador->getId());                  
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig',
            			array('paciente' => $paciente ,'consultas' => $consultas, 
