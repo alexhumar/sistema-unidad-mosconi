@@ -7,13 +7,7 @@
 alta_barrio:
     pattern: /alta/barrio
     defaults: { _controller: SalitaOtrosBundle:BarrioForm:new }
-    methods: [GET]
-    
-alta_barrio_process:
-    pattern: /alta/barrio
-    defaults: { _controller: SalitaOtrosBundle:BarrioForm:newProcess }
-    methods: [POST]
-    
+ 
 resultado_operacion:
     pattern: /resultado/operacion
     defaults: { _controller: SalitaOtrosBundle:Mensajes:resultado }

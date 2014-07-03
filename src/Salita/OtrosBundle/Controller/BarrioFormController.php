@@ -10,7 +10,7 @@ class BarrioFormController extends MyController
 {
 
 	/*Alta de barrio (fase GET)*/
-    public function newAction()
+/*    public function newAction()
     {
         $barrio = new Barrio();
         $form = $this->createForm(new BarrioType(), $barrio);
@@ -18,20 +18,25 @@ class BarrioFormController extends MyController
            			'SalitaOtrosBundle:BarrioForm:new.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    } */
     
-    /*Alta de barrio (fase POST)*/
-    public function newProcessAction()
+    /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
+     * el metodo isValid retorna false por lo que se genera el formulario
+    * Por otro lado, si se submittearon datos no validos, isValid retorna false por lo que se
+    * genera nuevamente el form pero ahora con los errores (recordar form_errors) de twig */
+    
+    /*Alta de barrio*/
+    public function newAction()
     {
     	$barrio = new Barrio();
     	$form = $this->createForm(new BarrioType(), $barrio);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
-   		$session = $this->getSession();
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
+   			$session = $this->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
@@ -39,11 +44,16 @@ class BarrioFormController extends MyController
 				: 'resultado_operacion';
    			return $this->redirect($this->generateUrl($nextAction));
    		}
-   		else
+   		return $this->render(
+   				'SalitaOtrosBundle:BarrioForm:new.html.twig',
+   				array('form' => $form->createView())
+   		);
+   		
+   		/*else
    		{
    			$mensaje = 'Se produjo un error al cargar un barrio en el sistema';
    			$session->set('mensaje', $mensaje);
    			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}
+   		}*/
     }
 }
