@@ -12,7 +12,7 @@ class BusquedaController extends MyController
 {
 
 	/*Busqueda de vacuna (fase GET)*/
-    public function buscarAction()
+ /*   public function buscarAction()
     {
         $busqueda = new Busqueda();
         $form = $this->createForm(new BusquedaType(), $busqueda);
@@ -20,10 +20,10 @@ class BusquedaController extends MyController
            			'SalitaOtrosBundle:Busqueda:ingresoDatos.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    } */
     
-    /*Busqueda de vacuna (fase POST)*/
-    public function buscarProcessAction()
+    /*Busqueda de vacuna*/
+    public function buscarAction()
     {
     	$busqueda = new Busqueda();
     	$form = $this->createForm(new BusquedaType(), $busqueda);
@@ -38,10 +38,14 @@ class BusquedaController extends MyController
    						array('vacunas' => $vacunas)
    					);
    		}
+   		return $this->render(
+   				'SalitaOtrosBundle:Busqueda:ingresoDatos.html.twig',
+   				array('form' => $form->createView())
+   		);
     }
     
     /*Busqueda de diagnostico (fase GET)*/
-    public function buscarDiagnosticoAction()
+ /*   public function buscarDiagnosticoAction()
     {
         $busqueda = new BusquedaDiagnostico();
         $form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
@@ -49,10 +53,10 @@ class BusquedaController extends MyController
            			'SalitaOtrosBundle:BusquedaDiagnostico:ingresoDatos.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    } */
     
-    /*Busqueda de diagnostico (fase POST)*/
-    public function buscarDiagnosticoProcessAction()
+    /*Busqueda de diagnostico*/
+    public function buscarDiagnosticoAction()
     {
     	$busqueda = new BusquedaDiagnostico();
     	$form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
@@ -67,5 +71,9 @@ class BusquedaController extends MyController
    						array('diagnosticos' => $diagnosticos)
    					);
    		}
+   		return $this->render(
+   				'SalitaOtrosBundle:BusquedaDiagnostico:ingresoDatos.html.twig',
+   				array('form' => $form->createView())
+   		);
     }
 }

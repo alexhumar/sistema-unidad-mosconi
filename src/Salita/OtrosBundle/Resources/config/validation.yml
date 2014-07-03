@@ -11,6 +11,12 @@ Salita\OtrosBundle\Entity\Barrio:
         localidad:
             - NotNull:
                 message: "Debe ingresar la localidad a la que pertenece el barrio"
+                
+Salita\OtrosBundle\Clases\Busqueda:
+    properties:
+        palabra:
+            - NotBlank:
+                message: "Debe ingresar la palabra de busqueda"
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
     constraints:

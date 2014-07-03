@@ -7,6 +7,14 @@
 alta_barrio:
     pattern: /alta/barrio
     defaults: { _controller: SalitaOtrosBundle:BarrioForm:new }
+    
+busqueda_vacuna:
+    pattern: /busqueda/vacuna
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+    
+busqueda_diagnostico:
+    pattern: /busqueda/diagnostico
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
  
 resultado_operacion:
     pattern: /resultado/operacion
@@ -24,26 +32,6 @@ seleccion_diagnostico:
     defaults: { _controller: SalitaOtrosBundle:Diagnostico:seleccionar }
     requirements:
         idDiagnostico: \d+
-
-busqueda_vacuna:
-    pattern: /busqueda/vacuna
-    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
-    methods: [GET]
-    
-busqueda_vacuna_process:
-    pattern: /busqueda/vacuna
-    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarProcess }
-    methods: [POST]
-
-busqueda_diagnostico:
-    pattern: /busqueda/diagnostico
-    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
-    methods: [GET]
-    
-busqueda_diagnostico_process:
-    pattern: /busqueda/diagnostico
-    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnosticoProcess }
-    methods: [POST]
 
 alta_metodoestudio:
     pattern: /alta/metodoEstudio
