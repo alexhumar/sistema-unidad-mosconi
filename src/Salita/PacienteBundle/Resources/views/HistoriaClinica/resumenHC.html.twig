@@ -7,6 +7,6 @@
   {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
      { consultas: consultas, estudios: estudios }) }}
 
-  <h3>Resumen de Historia clinica generado por {{usuarioGenerador.nombre}} {{usuarioGenerador.apellido}}</h3>
+  <h3>Resumen de Historia clinica generado por {{usuarioGenerador.getNombre()}} {{usuarioGenerador.getApellido()}}</h3>
 
 {% endblock %}

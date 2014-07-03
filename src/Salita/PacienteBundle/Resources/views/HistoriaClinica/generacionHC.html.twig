@@ -22,6 +22,6 @@
   {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAplicacionesVacunas.html.twig', 
      { aplicaciones: aplicaciones }) }}
 
-  <h3>Historia clínica generada por {{usuarioGenerador.nombre}} {{usuarioGenerador.apellido}}</h3>
+  <h3>Historia clínica generada por {{usuarioGenerador.getNombre()}} {{usuarioGenerador.getApellido()}}</h3>
 
 {% endblock %}

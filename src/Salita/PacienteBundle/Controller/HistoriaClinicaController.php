@@ -60,7 +60,6 @@ class HistoriaClinicaController extends MyController
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
            $paciente = $this->getReposManager()->getPacientesRepo()->find($idPaciente);
-           $usuarioGenerador = $session->get('usuario');
            /*Consultas*/
            $repoConsultas = $this->getReposManager()->getConsultasRepo();
            $consultas = $repoConsultas->obtenerConsultasDePaciente($idPaciente);
@@ -123,7 +122,6 @@ class HistoriaClinicaController extends MyController
            $paciente = $session->get('paciente');
            $idPaciente = $paciente->getId();
            $paciente = $this->getReposManager()->getPacientesRepo()->find($idPaciente);
-           $usuarioGenerador = $session->get('usuario');
            $fechaDesde = \DateTime::createFromFormat('d-m-Y', $session->get('fechaDesde'));
            $fechaHasta = \DateTime::createFromFormat('d-m-Y', $session->get('fechaHasta'));
            $repoEstudios = $this->getReposManager()->getEstudiosRepo();
@@ -134,9 +132,9 @@ class HistoriaClinicaController extends MyController
            $consultas = $this->ordenarVisitasPorFecha($consultas, 'fecha');
            $estudios = $this->visitasEntreFechas($estudios, $fechaDesde, $fechaHasta);
            $estudios = $this->ordenarVisitasPorFecha($estudios, 'fecha');
-           $usuarioGenerador = $session->get('usuario');
            $session->remove('fechaDesde');
-           $session->remove('fechaHasta');                  
+           $session->remove('fechaHasta');
+           $usuarioGenerador = $session->get('usuario');                  
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig',
            			array('paciente' => $paciente ,'consultas' => $consultas, 
