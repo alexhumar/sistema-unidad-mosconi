@@ -136,7 +136,7 @@ class HistoriaClinicaController extends MyController
            $session->remove('fechaHasta');                  
            return $this->render(
            			'SalitaPacienteBundle:HistoriaClinica:resumenHC.html.twig',
-           			array(/*'paciente' => $paciente ,*/'consultas' => $consultas, 
+           			array('paciente' => $paciente ,'consultas' => $consultas, 
            				  'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios)
            		);
        }
