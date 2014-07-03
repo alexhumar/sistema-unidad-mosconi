@@ -6,8 +6,13 @@
 		algo asi:
 
 		form(form, { 'action': path('ruta_deseada'), 'method': GET })
+
+        Por otro lado, si quiero deshabilitar las validaciones de html5 para saltar a los mensajes que defini
+        en validation.yml, deberia generar el form de esta manera:
+
+        {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
      #}
-    {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
+    {{ form(form) }}
 
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
 		<div class="flash-message">
