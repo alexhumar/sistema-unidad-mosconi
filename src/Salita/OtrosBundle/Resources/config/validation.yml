@@ -8,6 +8,9 @@ Salita\OtrosBundle\Entity\Barrio:
                 max: 50
                 minMessage: "El nombre no puede contener menos de {{ limit }} letras"
                 maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
+        localidad:
+            - NotNull:
+                message: "Debe ingresar la localidad a la que pertenece el barrio"
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
     constraints:
