@@ -5,7 +5,7 @@ Salita\OtrosBundle\Entity\Barrio:
                 message: "Debe ingresar un nombre de barrio"
             - Length:
                 min: 5
-                max: 50
+                max: 45
                 minMessage: "El nombre no puede contener menos de {{ limit }} letras"
                 maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
 
