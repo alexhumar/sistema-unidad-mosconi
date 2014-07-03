@@ -1,13 +1,13 @@
 Salita\OtrosBundle\Entity\Barrio:
     properties:
         nombre:
+            - NotBlank:
+                message: "Debe ingresar un nombre de barrio"
             - Length:
                 min: 5
                 max: 10
                 minMessage: "El nombre no puede contener menos de {{ limit }} letras"
                 maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
-            - NotBlank:
-                message: "Debe ingresar un nombre de barrio"
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
     constraints:
