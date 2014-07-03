@@ -10,7 +10,7 @@ class MetodoEstudioFormController extends MyController
 {
 	
 	/*Alta de metodo de estudio (fase GET)*/
-    public function newAction()
+ /*   public function newAction()
     {
         $metodo = new MetodoEstudio();
         $form = $this->createForm(new MetodoEstudioType(), $metodo);
@@ -18,12 +18,11 @@ class MetodoEstudioFormController extends MyController
            			'SalitaOtrosBundle:MetodoEstudioForm:new.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    }*/
     
-    /*Alta de metodo de estudio (fase POST)*/
-    public function newProcessAction()
+    /*Alta de metodo de estudio*/
+    public function newAction()
     {
-    	$session = $this->getSession();
     	$metodo = new MetodoEstudio();
     	$form = $this->createForm(new MetodoEstudioType(), $metodo);
     	$request = $this->getRequest();
@@ -32,6 +31,7 @@ class MetodoEstudioFormController extends MyController
    		{
    			$this->getPersistenceManager()->saveMetodoDeEstudio($metodo);
    			$mensaje = 'El metodo de estudio se cargo exitosamente en el sistema';
+   			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
@@ -39,11 +39,9 @@ class MetodoEstudioFormController extends MyController
    				: 'resultado_operacion';
    			return $this->redirect($this->generateUrl($nextAction));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar cargar el metodo de estudio al sistema';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}
+   		return $this->render(
+   				'SalitaOtrosBundle:MetodoEstudioForm:new.html.twig',
+   				array('form' => $form->createView())
+   		);
     }
 }

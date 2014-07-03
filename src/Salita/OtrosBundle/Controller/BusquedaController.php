@@ -11,18 +11,7 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class BusquedaController extends MyController
 {
 
-	/*Busqueda de vacuna (fase GET)*/
- /*   public function buscarAction()
-    {
-        $busqueda = new Busqueda();
-        $form = $this->createForm(new BusquedaType(), $busqueda);
-        return $this->render(
-           			'SalitaOtrosBundle:Busqueda:ingresoDatos.html.twig',
-           			array('form' => $form->createView())
-           		);
-    } */
-    
-    /*Busqueda de vacuna*/
+	/*Busqueda de vacuna*/
     public function buscarAction()
     {
     	$busqueda = new Busqueda();
@@ -43,17 +32,6 @@ class BusquedaController extends MyController
    				array('form' => $form->createView())
    		);
     }
-    
-    /*Busqueda de diagnostico (fase GET)*/
- /*   public function buscarDiagnosticoAction()
-    {
-        $busqueda = new BusquedaDiagnostico();
-        $form = $this->createForm(new BusquedaDiagnosticoType(), $busqueda);
-        return $this->render(
-           			'SalitaOtrosBundle:BusquedaDiagnostico:ingresoDatos.html.twig',
-           			array('form' => $form->createView())
-           		);
-    } */
     
     /*Busqueda de diagnostico*/
     public function buscarDiagnosticoAction()

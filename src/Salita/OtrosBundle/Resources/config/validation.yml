@@ -1,3 +1,11 @@
+#Validaciones de las clases bajo el directorio Clases
+Salita\OtrosBundle\Clases\Busqueda:
+    properties:
+        palabra:
+            - NotBlank:
+                message: "Debe ingresar la palabra de busqueda"
+                
+#Validaciones de las clases bajo el directorio Entity
 Salita\OtrosBundle\Entity\Barrio:
     properties:
         nombre:
@@ -11,12 +19,15 @@ Salita\OtrosBundle\Entity\Barrio:
         localidad:
             - NotNull:
                 message: "Debe ingresar la localidad a la que pertenece el barrio"
-                
-Salita\OtrosBundle\Clases\Busqueda:
+
+Salita\OtrosBundle\Entity\MetodoEstudio:
     properties:
-        palabra:
+        nombre:
             - NotBlank:
-                message: "Debe ingresar la palabra de busqueda"
+                message: "Debe ingresar un nombre para el metodo de estudio"
+            - Length:
+                max: 50
+                maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
     constraints:

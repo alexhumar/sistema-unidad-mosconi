@@ -9,17 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class BarrioFormController extends MyController
 {
 
-	/*Alta de barrio (fase GET)*/
-/*    public function newAction()
-    {
-        $barrio = new Barrio();
-        $form = $this->createForm(new BarrioType(), $barrio);
-        return $this->render(
-           			'SalitaOtrosBundle:BarrioForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    } */
-    
     /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
      * el metodo isValid retorna false por lo que se genera el formulario
     * Por otro lado, si se submittearon datos no validos, isValid retorna false por lo que se
@@ -48,12 +37,5 @@ class BarrioFormController extends MyController
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
    		);
-   		
-   		/*else
-   		{
-   			$mensaje = 'Se produjo un error al cargar un barrio en el sistema';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}*/
     }
 }
