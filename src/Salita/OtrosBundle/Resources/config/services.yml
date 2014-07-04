@@ -4,6 +4,7 @@ parameters:
     dialogs_manager.class: Salita\OtrosBundle\Service\DialogsManager
     queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
     persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
+    salita.otros.controller.barrioform.class: Salita\OtrosBundle\Controller\BarrioFormController
     
 #    salita_otros.example.class: Salita\OtrosBundle\Example
 
@@ -21,7 +22,12 @@ services:
         arguments: [@repos_manager]
     persistence_manager:
         class: %persistence_manager.class%
-        arguments: [@repos_manager]
+        arguments: [@repos_manager]        
+#Seccion donde se definen los controllers como servicios
+    salita.otros.controller.barrioform:
+        class: %salita.otros.controller.barrioform.class%
+        arguments: [@request,@form.factory,@persistence_manager,@session,@http_kernel,@templating,@router]
+
         
         
 #    salita_otros.example:

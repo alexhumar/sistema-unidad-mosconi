@@ -3,11 +3,30 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
-use Salita\OtrosBundle\Clases\MyController;
+//use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BarrioFormController extends MyController
+class BarrioFormController
 {
+	protected $request;
+	protected $formfactory;
+	protected $persistencemanager;
+	protected $session;
+	protected $httpkernel;
+	protected $templating;
+	protected $router;
+	
+	public function _construct($request, $formfactory, $persistencemanager, 
+			                   $session, $httpkernel, $templating, $router)
+	{
+		$this->request = $request;
+		$this->formfactory = $formfactory;
+		$this->persistencemanager = $persistencemanager;
+		$this->session = $session;
+		$this->httpkernel = $httpkernel;
+		$this->templating = $templating;
+		$this->router = $router;
+	}
 
     /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
      * el metodo isValid retorna false por lo que se genera el formulario
@@ -18,22 +37,22 @@ class BarrioFormController extends MyController
     public function newAction()
     {
     	$barrio = new Barrio();
-    	$form = $this->createForm(new BarrioType(), $barrio);
-    	$request = $this->getRequest();
-   		$form->handleRequest($request);
+    	$form = $this->formfactory->create(new BarrioType(), $barrio);
+    	//$request = $this->getRequest();
+   		$form->handleRequest($this->$request);
    		if ($form->isValid())
    		{
-   			$this->getPersistenceManager()->saveBarrio($barrio);
+   			$this->persistencemanager->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
-   			$session = $this->getSession();
+   			$session = $this->session;
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
-   			return $this->redirect($this->generateUrl($nextAction));
+   			return $this->httpkernel->redirect($this->route->generate($nextAction));
    		}
-   		return $this->render(
+   		return $this->templating->renderView(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
    		);

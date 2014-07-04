@@ -6,7 +6,7 @@
 
 alta_barrio:
     pattern: /alta/barrio
-    defaults: { _controller: SalitaOtrosBundle:BarrioForm:new }
+    defaults: { _controller: salita.otros.controller.barrioform:newAction }
     
 alta_metodoestudio:
     pattern: /alta/metodoEstudio
