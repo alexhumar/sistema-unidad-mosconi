@@ -5,7 +5,8 @@ use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
 //use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
-use Salita\OtrosBundle\Service\ServiceProvider as ServiceProvider;
+use Salita\OtrosBundle\Service\ServiceProvider;
+use Symfony\Component\HttpFoundation\Response;
 
 class BarrioFormController
 {
@@ -38,22 +39,28 @@ class BarrioFormController
     /*Alta de barrio*/
     public function newAction()
     {
+    	echo ("Hola1");
     	$barrio = new Barrio();
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
+   		echo ("Hola2");
    		if ($form->isValid())
    		{
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
+   			echo ("Hola3");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
+   			echo ("Hola4");
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
+   			echo ("Hola5");
    			return $this->serviceprovider->getHttpKernel()->redirect($this->serviceprovider->getRouter()->generate($nextAction));
    		}
+   		die;
    		return $this->serviceprovider->getTemplating()->renderView(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
