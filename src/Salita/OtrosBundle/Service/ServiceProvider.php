@@ -1,12 +1,14 @@
 <?php
 namespace Salita\OtrosBundle\Service\ServiceProvider;
 
+use Symfony\Component\DependencyInjection\Container;
+
 class ServiceProvider
 {
 	
 	protected $container;
 	
-	public function __construct($container)
+	public function __construct(Container $container)
 	{
 		$this->container = $container;
 	}
