@@ -5,27 +5,29 @@ use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
 //use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\ConsultaRol;
+use Salita\OtrosBundle\Service\ServiceProvider as ServiceProvider;
 
 class BarrioFormController
 {
-	protected $request;
+	/*protected $request;
 	protected $formfactory;
 	protected $persistencemanager;
 	protected $session;
 	protected $httpkernel;
 	protected $templating;
-	protected $router;
+	protected $router;*/
+	protected $serviceprovider;
 	
-	public function _construct($request, $formfactory, $persistencemanager, 
-			                   $session, $httpkernel, $templating, $router)
+	public function _construct(ServiceProvider $serviceprovider)
 	{
-		$this->request = $request;
+		/*$this->request = $request;
 		$this->formfactory = $formfactory;
 		$this->persistencemanager = $persistencemanager;
 		$this->session = $session;
 		$this->httpkernel = $httpkernel;
 		$this->templating = $templating;
-		$this->router = $router;
+		$this->router = $router;*/
+		$this->serviceprovider = $serviceprovider;
 	}
 
     /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
@@ -37,22 +39,22 @@ class BarrioFormController
     public function newAction()
     {
     	$barrio = new Barrio();
-    	$form = $this->formfactory->create(new BarrioType(), $barrio);
+    	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
-   		$form->handleRequest($this->$request);
+   		$form->handleRequest($this->serviceprovider->getRequest());
    		if ($form->isValid())
    		{
-   			$this->persistencemanager->saveBarrio($barrio);
+   			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
-   			$session = $this->session;
+   			$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
-   			return $this->httpkernel->redirect($this->route->generate($nextAction));
+   			return $this->serviceprovider->getHttpKernel()->redirect($this->serviceprovider->getRouter()->generate($nextAction));
    		}
-   		return $this->templating->renderView(
+   		return $this->serviceprovider->getTemplating()->renderView(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
    		);
