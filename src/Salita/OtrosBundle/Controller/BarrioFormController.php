@@ -41,6 +41,7 @@ class BarrioFormController
     {
     	echo ("Hola1");
     	$barrio = new Barrio();
+    	echo(var_dump($this->serviceprovider));
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
