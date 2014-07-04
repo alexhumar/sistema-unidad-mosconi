@@ -8,22 +8,10 @@ use Salita\OtrosBundle\Clases\MyController;
 class PaisFormController extends MyController
 {
 	/*ATENCION: NO HAY RUTA QUE REFERENCIE ESTE CONTROLADOR.*/
-	
-	/*Alta de pais (fase GET)*/
+    
+    /*Alta de pais*/
     public function newAction()
     {
-        $pais = new Pais();
-        $form = $this->createForm(new PaisType(), $pais);
-        return $this->render(
-           			'SalitaOtrosBundle:PaisForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }
-    
-    /*Alta de pais (fase POST)*/
-    public function newProcessAction()
-    {
-    	$session = $this->getSession();
     	$pais = new Pais();
     	$form = $this->createForm(new PaisType(), $pais);
     	$request = $this->getRequest();
@@ -32,6 +20,7 @@ class PaisFormController extends MyController
    		{
    			$this->getPersistenceManager()->savePais($pais);
    			$mensaje = 'El pais se cargo exitosamente en el sistema';
+   			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
@@ -39,11 +28,9 @@ class PaisFormController extends MyController
    				: 'resultado_operacion';
    			return $this->redirect($this->generateUrl($nextAction));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar cargar un pais en el sistema';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}
+        return $this->render(
+           			'SalitaOtrosBundle:PaisForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
 }

@@ -8,22 +8,10 @@ use Salita\OtrosBundle\Clases\MyController;
 class PartidoFormController extends MyController
 {
 	/*ATENCION: ninguno de los controladores de esta clase tiene rutas asociadas.*/
-	
-	/*Alta de partido (fase GET)*/
+    
+    /*Alta de partido*/
     public function newAction()
     {
-        $partido = new Partido();
-        $form = $this->createForm(new PartidoType(), $partido);
-        return $this->render(
-           			'SalitaOtrosBundle:PartidoForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }
-    
-    /*Alta de partido (fase POST)*/
-    public function newProcessAction()
-    {
-    	$session = $this->getSession();
     	$partido = new Partido();
     	$form = $this->createForm(new PartidoType(), $partido);
     	$request = $this->getRequest();
@@ -32,6 +20,7 @@ class PartidoFormController extends MyController
    		{
    			$this->getPersistenceManager()->savePartido($partido);
    			$mensaje = 'El partido se cargo exitosamente en el sistema';
+   			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
@@ -39,12 +28,10 @@ class PartidoFormController extends MyController
    				: 'resultado_operacion';
    			return $this->redirect($this->generateUrl($nextAction));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar cargar un partido en el sistema';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}
+        return $this->render(
+           			'SalitaOtrosBundle:PartidoForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
       
     function listAction()
@@ -57,24 +44,8 @@ class PartidoFormController extends MyController
         		);
     }
     
-    /*Modificacion de partido (fase GET)*/
+    /*Modificacion de partido*/
     public function modifAction($id)
-    {
-        $repoPartidos = $this->getReposManager()->getPartidosRepo();
-        $partido = $repoPartidos->find($id);
-        if(!$partido)
-        {
-        	throw $this->createNotFoundException("Partido inexistente");
-        }
-        $form = $this->createForm(new PartidoType(), $partido);
-        return $this->render(
-           			'SalitaOtrosBundle:PartidoForm:modif.html.twig',
-           			array('form' => $form->createView(),'id' => $id)
-           		);
-    }
-    
-    /*Modificacion de partido (fase POST)*/
-    public function modifProcessAction($id)
     {
     	$repoPartidos = $this->getReposManager()->getPartidosRepo();
     	$partido = $repoPartidos->find($id);
@@ -89,13 +60,13 @@ class PartidoFormController extends MyController
    		{
    			$this->getPersistenceManager()->updatePartido($partido);
    			$mensaje = 'El partido fue modificado exitosamente';
+   			$session = $this->getSession();
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar modificar el partido seleccionado';
-   		}
-   		$session = $this->getSession();
-   		$session->set('mensaje', $mensaje);
-   		return $this->redirect($this->generateUrl('resultado_operacion'));
+        return $this->render(
+           			'SalitaOtrosBundle:PartidoForm:modif.html.twig',
+           			array('form' => $form->createView(),'id' => $id)
+           		);
     }
 }

@@ -9,17 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class MetodoEstudioFormController extends MyController
 {
 	
-	/*Alta de metodo de estudio (fase GET)*/
- /*   public function newAction()
-    {
-        $metodo = new MetodoEstudio();
-        $form = $this->createForm(new MetodoEstudioType(), $metodo);
-        return $this->render(
-           			'SalitaOtrosBundle:MetodoEstudioForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }*/
-    
     /*Alta de metodo de estudio*/
     public function newAction()
     {

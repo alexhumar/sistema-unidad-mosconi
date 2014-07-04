@@ -12,31 +12,31 @@ alta_metodoestudio:
     pattern: /alta/metodoEstudio
     defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:new }
     
-busqueda_vacuna:
-    pattern: /busqueda/vacuna
-    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
-    
 busqueda_diagnostico:
     pattern: /busqueda/diagnostico
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }
+    
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+    
+busqueda_vacuna:
+    pattern: /busqueda/vacuna
+    defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
  
 resultado_operacion:
     pattern: /resultado/operacion
     defaults: { _controller: SalitaOtrosBundle:Mensajes:resultado }
     methods: [GET]
-
-seleccion_vacuna:
-    pattern: /seleccion/vacuna/{idVacuna}
-    defaults: { _controller: SalitaOtrosBundle:Vacuna:seleccionar }
-    requirements:
-        idVacuna: \d+
-
+    
 seleccion_diagnostico:
     pattern: /seleccion/diagnostico/{idDiagnostico}
     defaults: { _controller: SalitaOtrosBundle:Diagnostico:seleccionar }
     requirements:
         idDiagnostico: \d+
 
-busqueda_paciente:
-    pattern: /busqueda/paciente
-    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+seleccion_vacuna:
+    pattern: /seleccion/vacuna/{idVacuna}
+    defaults: { _controller: SalitaOtrosBundle:Vacuna:seleccionar }
+    requirements:
+        idVacuna: \d+

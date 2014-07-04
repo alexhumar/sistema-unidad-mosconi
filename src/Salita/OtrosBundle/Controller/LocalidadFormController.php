@@ -8,22 +8,10 @@ use Salita\OtrosBundle\Clases\MyController;
 class LocalidadFormController extends MyController
 {	
 	/*ATENCION: NO HAY RUTA QUE REFERENCIE ESTE CONTROLADOR.*/
-
-	/*Alta de localidad (fase GET)*/
+    
+    /*Alta de localidad*/
     public function newAction()
     {
-        $localidad = new Localidad();
-        $form = $this->createForm(new LocalidadType(), $localidad);
-        return $this->render(
-           			'SalitaOtrosBundle:LocalidadForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }
-    
-    /*Alta de localidad (fase POST)*/
-    public function newProcessAction()
-    {
-    	$session = $this->getSession();
     	$localidad = new Localidad();
     	$form = $this->createForm(new LocalidadType(), $localidad);
     	$request = $this->getRequest();
@@ -32,6 +20,7 @@ class LocalidadFormController extends MyController
    		{
    			$this->getPersistenceManager()->saveLocalidad($localidad);
    			$mensaje = 'La localidad se cargo exitosamente en el sistema';
+   			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
@@ -39,11 +28,9 @@ class LocalidadFormController extends MyController
    				: 'resultado_operacion';
    			return $this->redirect($this->generateUrl($nextAction));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al cargar la localidad al sistema';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
-   		}
+        return $this->render(
+           			'SalitaOtrosBundle:LocalidadForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
 }
