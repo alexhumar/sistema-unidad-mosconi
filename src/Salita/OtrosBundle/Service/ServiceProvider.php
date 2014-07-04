@@ -49,6 +49,7 @@ class ServiceProvider
 	
 	public function getFormFactory()
 	{
+		echo("hola-formfactory");
 		return $this->container->get('form.factory');
 	}
 	
