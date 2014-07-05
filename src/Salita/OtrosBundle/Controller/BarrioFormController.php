@@ -9,24 +9,11 @@ use Salita\OtrosBundle\Service\ServiceProvider;
 
 class BarrioFormController
 {
-	/*protected $request;
-	protected $formfactory;
-	protected $persistencemanager;
-	protected $session;
-	protected $httpkernel;
-	protected $templating;
-	protected $router;*/
+	
 	protected $serviceprovider;
 	
 	public function __construct(ServiceProvider $serviceprovider)
 	{
-		/*$this->request = $request;
-		$this->formfactory = $formfactory;
-		$this->persistencemanager = $persistencemanager;
-		$this->session = $session;
-		$this->httpkernel = $httpkernel;
-		$this->templating = $templating;
-		$this->router = $router;*/
 		$this->serviceprovider = $serviceprovider;
 	}
 
@@ -39,6 +26,7 @@ class BarrioFormController
     public function newAction()
     {
     	$barrio = new Barrio();
+    	echo("Hola");
     	echo(var_dump($this->serviceprovider));die;
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
