@@ -3,24 +3,23 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
-//use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
+use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Service\ServiceProvider;
+use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BarrioFormController
+class BarrioFormController //extends MyController
 {
-	
-	protected $serviceprovider;
-	
-	public function __construct($serviceprovider)
-	{
-		$this->serviceprovider = $serviceprovider;
-	}
 
     /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
      * el metodo isValid retorna false por lo que se genera el formulario
     * Por otro lado, si se submittearon datos no validos, isValid retorna false por lo que se
     * genera nuevamente el form pero ahora con los errores (recordar form_errors) de twig */
+	protected $serviceprovider;
+	
+	public function __construct(ServiceProvider $serviceprovider)
+	{
+		$this->serviceprovider = $serviceprovider;
+	}
     
     /*Alta de barrio*/
     public function newAction()
@@ -39,9 +38,10 @@ class BarrioFormController
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
-   			return $this->serviceprovider->getHttpKernel()->redirect($this->serviceprovider->getRouter()->generate($nextAction));
+   			return $this->serviceprovider->getHttpKernel()->redirect($this->serviceprovider
+   					                                                      ->getRouter()
+   					                                                      ->generate($nextAction));
    		}
-   		die;
    		return $this->serviceprovider->getTemplating()->renderView(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())

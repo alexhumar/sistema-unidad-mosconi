@@ -1,5 +1,5 @@
 <?php
-namespace Salita\OtrosBundle\Service\ServiceProvider;
+namespace Salita\OtrosBundle\Service;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -8,22 +8,13 @@ class ServiceProvider
 	
 	protected $container;
 	
-	public function __construct($container)
+	public function __construct(ContainerInterface $container)
 	{
 		$this->container = $container;
 	}
 	
 	/*Clase que define metodos shortcut a servicios comunes a todos mis controllers*/
-	public function getSessionUser()
-	{
-		return $this->getSecurityContext()->getToken()->getUser();
-	}
-	
-	public function getEntityManager()
-	{
-		return $this->getReposManager()->getEntityManager();
-	}
-	
+
 	public function getSecurityContext()
 	{
 		return $this->container->get('security.context');
