@@ -12,7 +12,7 @@ class BarrioFormController
 	
 	protected $serviceprovider;
 	
-	public function __construct(ServiceProvider $serviceprovider)
+	public function __construct($serviceprovider)
 	{
 		$this->serviceprovider = $serviceprovider;
 	}
