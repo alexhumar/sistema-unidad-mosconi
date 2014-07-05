@@ -25,14 +25,16 @@ class BarrioFormController //extends MyController
     public function newAction()
     {
     	$barrio = new Barrio();
-    	echo("hola");
-    	echo(var_dump($this->serviceprovider));die;
+    	echo("hola1");
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
+    	echo("hola2");
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
+   		echo("hola3");
    		if ($form->isValid())
    		{
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
+   			echo("hola4");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
