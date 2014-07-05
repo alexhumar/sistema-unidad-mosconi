@@ -3,17 +3,14 @@ namespace Salita\OtrosBundle\Controller;
 
 use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
-use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Service\ServiceProvider;
 use Salita\OtrosBundle\Clases\ConsultaRol;
 
-class BarrioFormController //extends MyController
+/* Controller definido como servico, como para contar con un ejemplo funcional. Ver ademas los archivos
+ * routing.yml, service.yml y el servicio Salita\OtrosBundle\Service\ServiceProvider */
+class BarrioFormController
 {
 
-    /* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
-     * el metodo isValid retorna false por lo que se genera el formulario
-    * Por otro lado, si se submittearon datos no validos, isValid retorna false por lo que se
-    * genera nuevamente el form pero ahora con los errores (recordar form_errors) de twig */
 	protected $serviceprovider;
 	
 	public function __construct(ServiceProvider $serviceprovider)
@@ -24,16 +21,17 @@ class BarrioFormController //extends MyController
     /*Alta de barrio*/
     public function newAction()
     {
+    	/* Si no se submittearon datos del form al objeto barrio, handleRequest no hace nada y
+    	 * el metodo isValid retorna false por lo que se genera el formulario
+    	* Por otro lado, si se submittearon datos no validos, isValid retorna false por lo que se
+    	* genera nuevamente el form pero ahora con los errores (recordar form_errors) de twig */
     	$barrio = new Barrio();
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
-   		echo("hola3");
    		if ($form->isValid())
    		{
-   			//echo("Hola 3.5");
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
-   			//echo("hola4");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
@@ -45,7 +43,6 @@ class BarrioFormController //extends MyController
    					                                                      ->getRouter()
    					                                                      ->generate($nextAction));
    		}
-   		//echo("Hola5");
    		return $this->serviceprovider->getTemplating()->renderResponse(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
