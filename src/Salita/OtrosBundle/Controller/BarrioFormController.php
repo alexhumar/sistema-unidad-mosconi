@@ -5,6 +5,7 @@ use Salita\OtrosBundle\Form\Type\BarrioType;
 use Salita\OtrosBundle\Entity\Barrio;
 use Salita\OtrosBundle\Service\ServiceProvider;
 use Salita\OtrosBundle\Clases\ConsultaRol;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /* Controller definido como servico, como para contar con un ejemplo funcional. Ver ademas los archivos
  * routing.yml, service.yml y el servicio Salita\OtrosBundle\Service\ServiceProvider */
@@ -31,17 +32,19 @@ class BarrioFormController
    		$form->handleRequest($this->serviceprovider->getRequest());
    		if ($form->isValid())
    		{
+   			echo("Hola1");
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
+   			echo("Hola2");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
+   			echo("Hola3");
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
-   			return $this->serviceprovider->getHttpKernel()->redirect($this->serviceprovider
-   					                                                      ->getRouter()
-   					                                                      ->generate($nextAction));
+   			/*Las redirecciones en servicios se hacen directamente mediante el objeto RedirectResponse*/
+   			return new RedirectResponse($this->serviceprovider->getRouter()->generate($nextAction));
    		}
    		return $this->serviceprovider->getTemplating()->renderResponse(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
