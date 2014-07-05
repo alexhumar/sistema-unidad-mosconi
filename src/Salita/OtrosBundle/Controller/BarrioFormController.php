@@ -28,16 +28,12 @@ class BarrioFormController
     	* genera nuevamente el form pero ahora con los errores (recordar form_errors) de twig */
     	$barrio = new Barrio();
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
-    	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
    		if ($form->isValid())
    		{
-   			echo("Hola1");
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
-   			echo("Hola2");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
-   			echo("Hola3");
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
