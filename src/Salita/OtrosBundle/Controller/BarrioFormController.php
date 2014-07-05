@@ -25,16 +25,15 @@ class BarrioFormController //extends MyController
     public function newAction()
     {
     	$barrio = new Barrio();
-    	echo("hola1");
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
-    	echo("hola2");
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
    		echo("hola3");
    		if ($form->isValid())
    		{
+   			//echo("Hola 3.5");
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
-   			echo("hola4");
+   			//echo("hola4");
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
    			$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
@@ -46,7 +45,8 @@ class BarrioFormController //extends MyController
    					                                                      ->getRouter()
    					                                                      ->generate($nextAction));
    		}
-   		return $this->serviceprovider->getTemplating()->renderView(
+   		//echo("Hola5");
+   		return $this->serviceprovider->getTemplating()->renderResponse(
    				'SalitaOtrosBundle:BarrioForm:new.html.twig',
    				array('form' => $form->createView())
    		);
