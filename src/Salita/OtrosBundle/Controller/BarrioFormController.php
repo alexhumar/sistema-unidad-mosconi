@@ -14,6 +14,7 @@ class BarrioFormController
 	
 	public function __construct(ServiceProvider $serviceprovider)
 	{
+		echo("hola construct"); die;
 		$this->serviceprovider = $serviceprovider;
 	}
 
