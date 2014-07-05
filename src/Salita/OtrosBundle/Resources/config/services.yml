@@ -3,8 +3,8 @@ parameters:
     session_manager.class: Salita\OtrosBundle\Service\SessionManager
     dialogs_manager.class: Salita\OtrosBundle\Service\DialogsManager
     queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
-    persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
     service.provider.class: Salita\OtrosBundle\Service\ServiceProvider
+    persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
     salita.otros.controller.barrioform.class: Salita\OtrosBundle\Controller\BarrioFormController
     
 #    salita_otros.example.class: Salita\OtrosBundle\Example
@@ -27,7 +27,6 @@ services:
     service.provider:
         class: %service.provider.class%
         arguments: [@service_container]       
-#Seccion donde se definen los controllers como servicios
     salita.otros.controller.barrioform:
         class: %salita.otros.controller.barrioform.class%
         arguments: [@service.provider]

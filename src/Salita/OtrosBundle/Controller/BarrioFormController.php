@@ -14,7 +14,6 @@ class BarrioFormController
 	
 	public function __construct(ServiceProvider $serviceprovider)
 	{
-		echo("hola construct"); die;
 		$this->serviceprovider = $serviceprovider;
 	}
 
@@ -27,8 +26,6 @@ class BarrioFormController
     public function newAction()
     {
     	$barrio = new Barrio();
-    	echo("Hola");
-    	echo(var_dump($this->serviceprovider));die;
     	$form = $this->serviceprovider->getFormFactory()->create(new BarrioType(), $barrio);
     	//$request = $this->getRequest();
    		$form->handleRequest($this->serviceprovider->getRequest());
