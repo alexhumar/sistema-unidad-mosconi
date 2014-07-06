@@ -3,7 +3,7 @@
   <li class="current_page_item"><a href="{{path('menu_principal')}}">Principal</a></li>
   <li><a href="{{path('modif_usuario_propio')}}">Mis Datos</a></li>
   <li><a href="{{path('menu_paciente')}}">Pacientes</a></li>
-{# {% if usuario.isAuthenticatedMedico(codigoRolSeleccionado) %} #}
+
 {% if is_granted(expression(medicoexpression)) %}
   <li><a href="{{path('listado_turnos_especialidad')}}">Turnos del dia</a></li>
 {% else %}

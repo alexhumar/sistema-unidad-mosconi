@@ -1,5 +1,8 @@
 {% extends "::base.html.twig" %}
 
 {% block contenido %}
+    {# Si bien en este caso basta con generarlo con form(form), lo dejo asi para tener una muestra de codigo
+       que me indique como se hace en caso de necesitarlo. 
+    #}
 	{{ form(form, {'action': path('modif_usuario', { 'id': id })}) }}
 {% endblock %}

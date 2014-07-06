@@ -1,7 +1,40 @@
-resultado_operacion_usuario:
-    pattern: /resultado/operacion/usuario
-    defaults: { _controller: SalitaUsuarioBundle:Mensajes:resultado }
+asignacion_rol:
+    pattern:  /asignacion/rol
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
     methods: [GET]
+    
+asignacion_rol_process:
+    pattern:  /asignacion/rol
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRolProcess }
+    methods: [POST]
+
+asignacion_especialidad:
+    pattern:  /asignacion/especialidad
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidad }
+    methods: [GET]
+    
+asignacion_especialidad_process:
+    pattern:  /asignacion/especialidad
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidadProcess }
+    methods: [POST]
+    
+del_secretaria:
+    pattern:  /del/secretaria/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delSecretaria }
+    requirements:
+        id: \d+
+
+del_medico:
+    pattern:  /del/medico/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delMedico }
+    requirements:
+        id: \d+
+
+del_administrador:
+    pattern:  /del/administrador/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delAdministrador }
+    requirements:
+        id: \d+
 
 elegir_rol:
     pattern: /elegirRol/usuario
@@ -26,46 +59,19 @@ listado_administrador:
     pattern: /listado/administrador
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listAdministrador }
     methods: [GET]
+    
+menu_principal:
+    pattern: /menu/principal
+    defaults: { _controller: SalitaUsuarioBundle:Menu:principal }
+    methods: [GET]
 
 modif_usuario_propio:
     pattern:  /modificacion/usuariopropio
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropio }
-    methods: [GET]
-    
-modif_usuario_propio_process:
-    pattern:  /modificacion/usuariopropio
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropioProcess }
-    methods: [POST]
     
 modif_usuario:
     pattern:  /modificacion/usuario/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modif }
-    methods: [GET]
-    requirements:
-        id: \d+
-    
-modif_usuario_process:
-    pattern:  /modificacion/usuario/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifProcess }
-    methods: [POST]
-    requirements:
-        id: \d+
-
-del_secretaria:
-    pattern:  /del/secretaria/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delSecretaria }
-    requirements:
-        id: \d+
-
-del_medico:
-    pattern:  /del/medico/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delMedico }
-    requirements:
-        id: \d+
-
-del_administrador:
-    pattern:  /del/administrador/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delAdministrador }
     requirements:
         id: \d+
 
@@ -74,45 +80,8 @@ seleccion_usuario:
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:seleccionar }
     requirements:
         id: \d+
-
-asignacion_rol:
-    pattern:  /asignacion/rol
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
-    methods: [GET]
     
-asignacion_rol_process:
-    pattern:  /asignacion/rol
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRolProcess }
-    methods: [POST]
-
-asignacion_especialidad:
-    pattern:  /asignacion/especialidad
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidad }
-    methods: [GET]
-    
-asignacion_especialidad_process:
-    pattern:  /asignacion/especialidad
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidadProcess }
-    methods: [POST]
-
-menu_principal:
-    pattern: /menu/principal
-    defaults: { _controller: SalitaUsuarioBundle:Menu:principal }
-    methods: [GET]
-
-#Estas rutas se dejarian de utilizar luego de implementar el template principal.html.twig que se encarga
-#de generar el menu acorde al rol del usuario.
-menu_secretaria:
-    pattern: /menu/secretaria
-    defaults: { _controller: SalitaUsuarioBundle:Menu:secretaria }
-    methods: [GET]
-
-menu_medico:
-    pattern: /menu/medico
-    defaults: { _controller: SalitaUsuarioBundle:Menu:medico }
-    methods: [GET]
-
-menu_administrador:
-    pattern: /menu/administrador
-    defaults: { _controller: SalitaUsuarioBundle:Menu:administrador }
+resultado_operacion_usuario:
+    pattern: /resultado/operacion/usuario
+    defaults: { _controller: SalitaUsuarioBundle:Mensajes:resultado }
     methods: [GET]

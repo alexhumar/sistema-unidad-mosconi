@@ -109,11 +109,10 @@ class UsuarioFormController extends MyController
     }
     
     /*Modificacion de algun usuario (fase GET)*/
-    public function modifAction($id)
+ /*   public function modifAction($id)
     {
     	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
     	$usuario = $repoUsuarios->find($id);
-    	/*Si no existe el usuario*/
     	if(!$usuario)
     	{
     		throw $this->createNotFoundException("El usuario no existe");
@@ -123,10 +122,10 @@ class UsuarioFormController extends MyController
     			'SalitaUsuarioBundle:UsuarioForm:modif.html.twig',
     			array('form' => $form->createView(),'id' => $id)
     	);
-    }
+    } */
     
-    /*Modificacion de algun usuario (fase POST)*/
-    public function modifProcessAction($id)
+    /*Modificacion de algun usuario*/
+    public function modifAction($id)
     {
     	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
     	$usuario = $repoUsuarios->find($id);
@@ -138,23 +137,23 @@ class UsuarioFormController extends MyController
     	$form = $this->createForm(new UsuarioType(),$usuario);
     	$request = $this->getRequest();
     	$form->handleRequest($request);
-    	$session = $this->getSession();
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
     		$em->flush();
-    		$mensaje = 'Los datos del usuario fueron modificados exitosamente';	
+    		$mensaje = 'Los datos del usuario fueron modificados exitosamente';
+    		$session = $this->getSession();
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion'));
     	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al intentar modificar los datos del usuario';
-    	}
-    	$session->set('mensaje', $mensaje);
-    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
+    	return $this->render(
+    			'SalitaUsuarioBundle:UsuarioForm:modif.html.twig',
+    			array('form' => $form->createView(),'id' => $id)
+    	);
     }
 
     /*Modificacion de usuario propio (fase GET)*/
-    public function modifPropioAction()
+ /*   public function modifPropioAction()
     {
         $session = $this->getSession();
     	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
@@ -163,10 +162,10 @@ class UsuarioFormController extends MyController
     				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
     				array('form' => $form->createView())
     			);
-    }
+    } */
 
     /*Modificacion de usuario propio (fase POST)*/
-    public function modifPropioProcessAction()
+    public function modifPropioAction()
     {
     	$session = $this->getSession();
     	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
@@ -180,13 +179,13 @@ class UsuarioFormController extends MyController
             /*Se "refresca" el usuario almacenado en la sesion*/
     	    $session->set('usuario', $usuario);
     	    $mensaje = 'Sus datos fueron modificados exitosamente';
+    	    $session->set('mensaje', $mensaje);
+    	    return $this->redirect($this->generateUrl('resultado_operacion'));
     	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al intentar modificar sus datos';
-    	}
-    	$session->set('mensaje', $mensaje);
-    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
+    	return $this->render(
+    				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
+    				array('form' => $form->createView())
+    			);
     }
 
     public function delSecretariaAction($id)
