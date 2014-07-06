@@ -12,7 +12,7 @@ services:
         class: %repos_manager.class%
         arguments: [@doctrine.orm.entity_manager]
     my_session_manager:
-        class: %session_manager.class%
+        class: %my_session_manager.class%
         arguments: [@session]
     dialogs_manager:
         class: %dialogs_manager.class%
