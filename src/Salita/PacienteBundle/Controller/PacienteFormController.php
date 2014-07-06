@@ -7,20 +7,6 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class PacienteFormController extends MyController
 {
-
-	/*Modificacion de datos filiatorios (fase GET)*/
- /*   public function modificarDatosFiliatoriosAction()
-    {
-        $session = $this->getSession();
-        $paciente = $session->get('paciente');
-        $repoPacientes = $this->getReposManager()->getPacientesRepo();
-        $paciente = $repoPacientes->find($paciente->getId());
-        $form = $this->createForm(new DatosFiliatoriosType(), $paciente);
-        return $this->render(
- 	      			'SalitaPacienteBundle:PacienteForm:datosFiliatorios.html.twig', 
-    	   			array('form' => $form->createView())
-           		);
-    }*/
     
     /*Modificacion de datos filiatorios*/
     public function modificarDatosFiliatoriosAction()
@@ -45,17 +31,6 @@ class PacienteFormController extends MyController
    				array('form' => $form->createView())
    		);
     }
-    
-    /*Alta de paciente (fase GET)*/
- /*   public function newAction()
-    {
-        $paciente = new Paciente();
-        $form = $this->createForm(new DatosFiliatoriosType(), $paciente);
-        return $this->render(
-           			'SalitaPacienteBundle:PacienteForm:new.html.twig', 
-           			array('form' => $form->createView())
-           		);
-    } */
     
     /*Alta de paciente*/
     public function newAction()
