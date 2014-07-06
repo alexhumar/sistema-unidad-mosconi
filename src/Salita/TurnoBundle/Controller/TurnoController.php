@@ -92,7 +92,7 @@ class TurnoController extends MyController
     }
 
     /*Seleccionar fecha y hora para un turno (fase GET)*/
-    public function seleccionarFecHorAction()
+ /*   public function seleccionarFecHorAction()
     {
        $session = $this->getSession();
        if(!$session->has('paciente'))
@@ -108,10 +108,10 @@ class TurnoController extends MyController
            				array('form' => $form->createView())
            			);
        }
-    }
+    }*/
     
-    /*Seleccionar fecha y hora para un turno (fase POST)*/
-    public function seleccionarFecHorProcessAction()
+    /*Seleccionar fecha y hora para un turno*/
+    public function seleccionarFecHorAction()
     {
     	$session = $this->getSession();
     	if(!$session->has('paciente'))
@@ -128,15 +128,10 @@ class TurnoController extends MyController
    			$session->set('hora', $fecHor->getHoraCompleta());
    			return $this->redirect($this->generateUrl('alta_turno_futuro'));
    		}
-   		/*Agregado el 03/06/2014. Al dia de la fecha NO FUE PROBADO*/
-   		else 
-   		{
-   			$mensaje = 'Se produjo un error al las fechas para un turno';
-   			return $this->render(
-   						'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-   						array('mensaje' => $mensaje)
-   					);
-   		}
+   		return $this->render(
+           				'SalitaTurnoBundle:SeleccionFechaHora:ingresoDatos.html.twig',
+           				array('form' => $form->createView())
+           			);
     }
     
     public function atencionAction($idTurno)
