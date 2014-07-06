@@ -1,13 +1,5 @@
-{% extends "::base.html.twig" %}
+{% extends "SalitaPlanBundle::base.html.twig" %}
 
 {% block contenido %}
-  {# Este form hay que mejorarlo #}
-{#  <form action="{{ path('modif_plan',{ 'idPlan': id }) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_row(form.periodicidad) }}
-    <div style="overflow:hidden;">     
-    	{{ form_rest(form) }}
-	</div>
-    <input type="submit" />
-  </form> #}
   {{ form(form) }}
 {% endblock %}
