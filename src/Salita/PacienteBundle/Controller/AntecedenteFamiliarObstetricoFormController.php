@@ -9,23 +9,6 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 class AntecedenteFamiliarObstetricoFormController extends MyController
 {
     
-	/*Modificacion de antecedentes familiares obstetricos (fase GET)*/
-    public function modifAction()
-    {      
-        $session = $this->getSession();
-        $repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresObstetricosRepo();
-        $antecedenteFamiliarObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
-        if(!$antecedenteFamiliarObstetrico)
-        {
-        	throw $this->createNotFoundException("Antecedentes inexistentes");
-        }
-        $form = $this->createForm(new AntecedenteFamiliarObstetricoType(), $antecedenteFamiliarObstetrico);
-        return $this->render(
-        			'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig',
-            		array('form' => $form->createView())
-            	);
-    }
-    
     /*Modificacion de antecedentes familiares obstetricos*/
     public function modifAction()
     {
@@ -51,9 +34,5 @@ class AntecedenteFamiliarObstetricoFormController extends MyController
     				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig',
     				array('form' => $form->createView())
     			);
-    	/*return $this->render(
-    				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje)
-    			);*/
     }
 }

@@ -87,9 +87,9 @@ modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }
 
-#modif_antecedenteFamiliarObstetrico:
-#    pattern:  /modificacion/antecedenteFamiliarObstetrico
-#    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif }
+modif_antecedenteFamiliarObstetrico:
+    pattern:  /modificacion/antecedenteFamiliarObstetrico
+    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif }
 
 modif_antecedentePersonalClinico:
     pattern:  /modificacion/antecedentePersonalClinico
