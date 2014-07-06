@@ -26,11 +26,11 @@ class AntecedenteFamiliarObstetricoFormController extends MyController
             	);
     }
     
-    /*Modificacion de antecedentes familiares obstetricos (fase POST)*/
-    public function modifProcessAction()
+    /*Modificacion de antecedentes familiares obstetricos*/
+    public function modifAction()
     {
-    	$session = $this->getSession();
     	$repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresObstetricosRepo();
+    	$session = $this->getSession();
     	$antecedenteFamiliarObstetrico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
     	if(!$antecedenteFamiliarObstetrico)
     	{
@@ -42,17 +42,18 @@ class AntecedenteFamiliarObstetricoFormController extends MyController
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
-    		//$em->persist($antecedenteFamiliarObstetrico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
-    	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
+    		$session->set('mensaje', $mensaje);
+    		return $this->render($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(
+    				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig',
+    				array('form' => $form->createView())
+    			);
+    	/*return $this->render(
     				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:mensaje.html.twig',
     				array('mensaje' => $mensaje)
-    			);
+    			);*/
     }
 }
