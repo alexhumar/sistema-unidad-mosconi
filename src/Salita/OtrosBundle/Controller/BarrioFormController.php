@@ -33,12 +33,14 @@ class BarrioFormController
    		{
    			$this->serviceprovider->getPersistenceManager()->saveBarrio($barrio);
    			$mensaje = 'El barrio se cargo exitosamente en el sistema';
-   			$session = $this->serviceprovider->getSession();
+   			/*$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
-   			$session->set('mensaje', $mensaje);
+   			$session->set('mensaje', $mensaje);*/
+   			$sessionManager = $this->serviceprovider->getSessionManager();
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);
    			/*Las redirecciones en servicios se hacen directamente mediante el objeto RedirectResponse*/
    			return new RedirectResponse($this->serviceprovider->getRouter()->generate($nextAction));
    		}

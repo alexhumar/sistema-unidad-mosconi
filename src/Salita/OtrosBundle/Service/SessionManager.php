@@ -12,6 +12,15 @@ class SessionManager
 		$this->session = $session;
 	}
 	
-	/*Implementar los getters y setters de las diferentes cosas que guardo 
-	 * en la sesion (usuarios, pacientes, etc)*/
+	public function setMensajeResultadoOperacion($nextAction, $mensaje)
+	{
+		if($nextAction = "resultado_operacion")
+		{
+		    $this->session->set('mensaje', $mensaje);
+		}
+		else
+		{
+			$this->session->getFlashBag()->add('mensaje', $mensaje);
+		}
+	}
 }

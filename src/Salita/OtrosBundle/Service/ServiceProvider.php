@@ -13,7 +13,8 @@ class ServiceProvider
 		$this->container = $container;
 	}
 	
-	/*Clase que define metodos shortcut a servicios comunes a todos mis controllers*/
+	/*Clase que define metodos shortcut a servicios comunes a todos mis controllers. Solo la utilizo,
+	 * al 06/07/2014, en el controller de alta de barrio, que esta definido como servicio.*/
 
 	public function getSecurityContext()
 	{
@@ -23,6 +24,11 @@ class ServiceProvider
 	public function getSession()
 	{
 		return $this->container->get('session');
+	}
+	
+	public function getSessionManager()
+	{
+		return $this->container->get('session_manager');
 	}
 	
 	public function getPersistenceManager()
