@@ -31,22 +31,6 @@ class PlanProcRespFormController extends MyController
    					array('form' => $form->createView())
    				);
     }
-
-    /*Modificacion de plan de procreacion responsable (fase GET)*/
- /*   public function modifAction($idPlan)
-    {    
-        $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
-        $plan = $repoPlanes->find($idPlan);
-        if(!$plan)
-        {
-        	throw $this->createNotFoundException("Plan inexistente para el paciente");
-        }
-        $form = $this->createForm(new ModPlanProcRespType(), $plan);
-        return $this->render(
-           			'SalitaPlanBundle:PlanProcRespForm:modif.html.twig',
-           			array('form' => $form->createView(),'id' => $idPlan)
-           		);
-    }*/
     
     /*Modificacion de plan de procreacion responsable*/
     public function modifAction($idPlan)
