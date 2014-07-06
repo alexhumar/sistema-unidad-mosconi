@@ -108,22 +108,6 @@ class UsuarioFormController extends MyController
         		);
     }
     
-    /*Modificacion de algun usuario (fase GET)*/
- /*   public function modifAction($id)
-    {
-    	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
-    	$usuario = $repoUsuarios->find($id);
-    	if(!$usuario)
-    	{
-    		throw $this->createNotFoundException("El usuario no existe");
-    	}
-    	$form = $this->createForm(new UsuarioType(),$usuario);
-    	return $this->render(
-    			'SalitaUsuarioBundle:UsuarioForm:modif.html.twig',
-    			array('form' => $form->createView(),'id' => $id)
-    	);
-    } */
-    
     /*Modificacion de algun usuario*/
     public function modifAction($id)
     {
@@ -151,18 +135,6 @@ class UsuarioFormController extends MyController
     			array('form' => $form->createView(),'id' => $id)
     	);
     }
-
-    /*Modificacion de usuario propio (fase GET)*/
- /*   public function modifPropioAction()
-    {
-        $session = $this->getSession();
-    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
-    	$form = $this->createForm(new UsuarioType(), $usuario);
-    	return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:modifPropio.html.twig',
-    				array('form' => $form->createView())
-    			);
-    } */
 
     /*Modificacion de usuario propio (fase POST)*/
     public function modifPropioAction()
@@ -242,6 +214,19 @@ class UsuarioFormController extends MyController
     }
     
     /*Asignacion de rol a usuario (fase GET)*/
+/*    public function asignarRolAction()
+    {
+    	$repoRoles = $this->getReposManager()->getRolesRepo();
+    	$roles = $repoRoles->findAll();
+    	$rolTemp = new RolTemporal();
+    	$form = $this->createForm(new RolType($roles), $rolTemp);
+    	return $this->render(
+    				'SalitaUsuarioBundle:UsuarioForm:asignacionRol.html.twig',
+    				array('form' => $form->createView())
+    			);
+    }*/
+    
+    /*Asignacion de rol a usuario*/
     public function asignarRolAction()
     {
     	$repoRoles = $this->getReposManager()->getRolesRepo();
@@ -250,25 +235,12 @@ class UsuarioFormController extends MyController
     	/*Crea un formulario con un combo box con los roles existentes para asignar al usuario.
     	 *El rol seleccionado queda cargado en un objeto de clase RolTemporal.*/
     	$form = $this->createForm(new RolType($roles), $rolTemp);
-    	return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:asignacionRol.html.twig',
-    				array('form' => $form->createView())
-    			);
-    }
-    
-    /*Asignacion de rol a usuario (fase POST)*/
-    public function asignarRolProcessAction()
-    {
-    	$repoRoles = $this->getReposManager()->getRolesRepo();
-    	$roles = $repoRoles->findAll();
-    	$rolTemp = new RolTemporal();
-    	$form = $this->createForm(new RolType($roles), $rolTemp);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
-   		$session = $this->getSession();
    		if ($form->isValid())
    		{
    			$rolElegido = $repoRoles->findOneByCodigo($rolTemp->getNombre());
+   			$session = $this->getSession();
    			if (!$session->has('usuarioSeleccionado')) 
    			{
    				return $this->redirect($this->generateUrl('listado_usuario'));
@@ -284,17 +256,17 @@ class UsuarioFormController extends MyController
 				}
 			}
 			$mensaje = $session->get('mensaje_asignacion_rol');
+			$session->set('mensaje', $mensaje);
+			return $this->redirect($this->generateUrl('resultado_operacion'));
     	}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar asignar un rol al usuario';
-   		}
-   		$session->set('mensaje', $mensaje);
-   		return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
+    	return $this->render(
+    				'SalitaUsuarioBundle:UsuarioForm:asignacionRol.html.twig',
+    				array('form' => $form->createView())
+    			);
     }
         
     /*Asignacion de especialidad a usuario medico (fase GET)*/
-    public function asignarEspecialidadAction()
+ /*   public function asignarEspecialidadAction()
     {
     	$session = $this->getSession();
     	if($session->has('usuarioSeleccionado'))
@@ -319,20 +291,17 @@ class UsuarioFormController extends MyController
     		$session->set('mensaje', $mensaje);
     		return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
     	}
-    }
+    }*/
     
-    /*Asignacion de especialidad a usuario medico (fase POST)*/
-    public function asignarEspecialidadProcessAction()
+    /*Asignacion de especialidad a usuario medico*/
+    public function asignarEspecialidadAction()
     {
     	$session = $this->getSession();
-    	if($session->has('usuarioSeleccionado'))
-    	{
-    		$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
-    	}
-    	else
+    	if(!$session->has('usuarioSeleccionado'))
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
+    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
     	if ($usuario->isMedico())
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
@@ -347,7 +316,10 @@ class UsuarioFormController extends MyController
     		}
     		else
     		{
-    			$mensaje = 'Se produjo un error al intentar asignar una especialidad al medico';
+    			return $this->render(
+    					'SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig',
+    					array('form' => $form->createView())
+    			);
     		}
     	}
     	else
@@ -355,12 +327,11 @@ class UsuarioFormController extends MyController
     		$mensaje = 'El usuario no es medico';
     	}
     	$session->set('mensaje', $mensaje);
-    	return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
+    	return $this->redirect($this->generateUrl('resultado_operacion'));
     }
 
     public function seleccionarAction($id)
     {
-        $session = $this->getSession();
         $repoUsuarios = $this->getReposManager()->getUsuariosRepo();
         $usuario = $repoUsuarios->find($id);
         if(!$usuario)
@@ -369,6 +340,7 @@ class UsuarioFormController extends MyController
         }
         /*Usuario seleccionado contiene el usuario al cual se le asignara un rol (y posiblemente especialidad).
          * Se mantiene seteado en la variable de sesion mientras dura el proceso de asignacion de rol.*/
+        $session = $this->getSession();
         $session->set('usuarioSeleccionado', $usuario);
         return $this->redirect($this->generateUrl('asignacion_rol'));
     }

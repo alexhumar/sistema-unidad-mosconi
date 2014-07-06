@@ -1,26 +1,5 @@
 {% extends "::base.html.twig" %}
 
-{#
-{% block menu %}
-    {% set rolSeleccionado = app.session.get('rolSeleccionado').getCodigoWithQuotes() %}
-    {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ rolSeleccionado ~ ')' %}
-    {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ rolSeleccionado ~ ')' %}
-    {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ rolSeleccionado ~ ')' %}
-
-    <div id="menu">
-        <ul>
-            {% if is_granted(expression(adminexpression)) %}
-                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig') }}
-            {% elseif is_granted(expression(secretariaexpression)) %}
-                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesSecretaria.html.twig') }}
-            {% elseif is_granted(expression(medicoexpression)) %}
-                {{ include('SalitaUsuarioBundle:OpcionesMenu:opcionesMedico.html.twig') }}
-            {% endif %} 
-        </ul>
-    </div>
-{% endblock %}
-#}
-
 {% block contenido %}
 	{{ form(form) }}
 	<a href="{{path('fos_user_change_password')}}">Cambiar clave</a>

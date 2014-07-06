@@ -1,22 +1,10 @@
 asignacion_rol:
     pattern:  /asignacion/rol
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
-    methods: [GET]
-    
-asignacion_rol_process:
-    pattern:  /asignacion/rol
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRolProcess }
-    methods: [POST]
 
 asignacion_especialidad:
     pattern:  /asignacion/especialidad
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidad }
-    methods: [GET]
-    
-asignacion_especialidad_process:
-    pattern:  /asignacion/especialidad
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidadProcess }
-    methods: [POST]
     
 del_secretaria:
     pattern:  /del/secretaria/{id}

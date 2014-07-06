@@ -10,11 +10,12 @@ class RegistroFormType extends BaseType
     {
         parent::buildForm($builder, $options);
 
-        //aca se agregan los campos que necesitamos
-        $builder->add('nombre');
-        $builder->add('apellido');
-        $builder->add('telefono');
-        $builder->add('matricula');
+        /* Aca se agregan los campos que necesitamos al formulario de registro/modificacion de usuario */
+        $builder
+            ->add('nombre')
+            ->add('apellido')
+            ->add('telefono')
+            ->add('matricula');
     }
 
     public function getName()
