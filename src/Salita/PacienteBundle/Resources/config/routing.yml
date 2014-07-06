@@ -10,12 +10,6 @@ alta_consulta:
 alta_estudio:
     pattern: /alta/estudio
     defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
-    methods: [GET]
-    
-alta_estudio_process:
-    pattern: /alta/estudio
-    defaults: { _controller: SalitaPacienteBundle:EstudioForm:newProcess }
-    methods: [POST]
 
 alta_paciente:
     pattern: /alta/paciente
