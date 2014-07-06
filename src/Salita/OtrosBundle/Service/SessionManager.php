@@ -17,12 +17,12 @@ class SessionManager
 		if($nextAction = "resultado_operacion")
 		{
 		    $this->session->set('mensaje', $mensaje);
-		    return true;
+		    return "Trabaja con sesion";
 		}
 		else
 		{
 			$this->session->getFlashBag()->add('mensaje', $mensaje);
-			return false;
+			return "Trabaja con flashbag";
 		}
 	}
 }
