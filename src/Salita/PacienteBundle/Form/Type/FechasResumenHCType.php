@@ -55,12 +55,14 @@ class FechasResumenHCType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('diaDesde', 'choice', array('label' => 'Día', 'choices' => $this->getDias()));
-        $builder->add('mesDesde', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()));
-        $builder->add('anioDesde', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()));
-        $builder->add('diaHasta', 'choice', array('label' => 'Día', 'choices' => $this->getDias()));
-        $builder->add('mesHasta', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()));
-        $builder->add('anioHasta', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()));        
+        $builder
+            ->add('diaDesde', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
+            ->add('mesDesde', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
+            ->add('anioDesde', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
+            ->add('diaHasta', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
+            ->add('mesHasta', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
+            ->add('anioHasta', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
+            ->add('generar', 'submit');
     }
 
     public function getName()

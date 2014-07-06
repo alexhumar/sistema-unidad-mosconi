@@ -7,17 +7,6 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class EstudioFormController extends MyController
 {
-	
-	/*Alta de estudio (fase GET)*/
-  /*  public function newAction()
-    {
-        $estudio = new Estudio();
-        $form = $this->createForm(new EstudioType(), $estudio);
-        return $this->render(
-           			'SalitaPacienteBundle:EstudioForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }*/
     
     /*Alta de estudio*/
     public function newAction()

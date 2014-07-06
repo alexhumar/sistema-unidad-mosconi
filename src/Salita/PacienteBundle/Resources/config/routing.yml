@@ -28,12 +28,6 @@ busqueda_paciente:
 fechas_resumenHC:
     pattern: /resumenHC/elegirFechas
     defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechas }
-    methods: [GET]
-    
-fechas_resumenHC_process:
-    pattern: /resumenHC/elegirFechas
-    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechasProcess }
-    methods: [POST]
     
 generar_historiaClinica:
     pattern: /generarHC/paciente
