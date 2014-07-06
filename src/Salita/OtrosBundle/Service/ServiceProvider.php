@@ -28,7 +28,7 @@ class ServiceProvider
 	
 	public function getSessionManager()
 	{
-		return $this->container->get('my_session_manager');
+		return $this->container->get('session_manager');
 	}
 	
 	public function getPersistenceManager()
