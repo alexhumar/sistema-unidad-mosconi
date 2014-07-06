@@ -92,19 +92,17 @@ class TurnoController extends MyController
     {
     	/*Aca le paso el controller para poder tirar la excepcion (ver metodo), pero no me parece lo mas
     	 * correcto hacer eso... revisar*/
-    	$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
-    	/*$session = $this->getSession();
+    	//$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
+    	$session = $this->getSession();
     	$usuario = $session->get('usuario');
-    	if ($usuario->isMedico())
+    	if ($usuario->isAuthenticatedMedico($session->get('rolSeleccionado')))
     	{
     		$nextAction = "listado_turnos_especialidad";
     	}
     	else
     	{
     		$nextAction = "listado_turnos";
-    	}*/
-    	//$nextAction = $this->getRequest()->
-        //return $this->redirect($this->generateUrl($nextAction));
-        return $this->redirect($this->getRequest()->getReferer());
+    	}
+        return $this->redirect($this->generateUrl($nextAction));
     }
 }
