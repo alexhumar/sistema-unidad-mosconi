@@ -66,7 +66,7 @@ class PlanProcRespFormController extends MyController
    			$mensaje = 'El plan del paciente se modifico exitosamente';
    			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_oepracion_plan'));
+   			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
    		return $this->render(
            			'SalitaPlanBundle:PlanProcRespForm:modif.html.twig',
