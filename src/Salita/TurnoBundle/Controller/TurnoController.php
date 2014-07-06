@@ -105,6 +105,6 @@ class TurnoController extends MyController
     	}*/
     	//$nextAction = $this->getRequest()->
         //return $this->redirect($this->generateUrl($nextAction));
-        return $this->redirectReferer();
+        return $this->redirect($this->getRequest()->getReferer());
     }
 }
