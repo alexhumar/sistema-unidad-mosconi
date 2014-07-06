@@ -46,14 +46,6 @@ listadoDes_planprocresp:
 modif_plan:
     pattern:  /modificacion/planprocresp/{idPlan}
     defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modif }
-    methods: [GET]
-    requirements:
-        idPlan: \d+
-        
-modif_plan_process:
-    pattern:  /modificacion/planprocresp/{idPlan}
-    defaults: { _controller: SalitaPlanBundle:PlanProcRespForm:modifProcess }
-    methods: [POST]
     requirements:
         idPlan: \d+
         

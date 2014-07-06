@@ -8,17 +8,6 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class PlanProcRespFormController extends MyController
 {
-
-	/*Alta de plan de procreacion responsable (fase GET)*/
- /*   public function newAction()
-    {
-        $plan = new PlanProcResp();
-        $form = $this->createForm(new PlanProcRespType(), $plan);
-        return $this->render(
-           			'SalitaPlanBundle:PlanProcRespForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }*/
     
     /*Alta de plan de procreacion responsable*/
     public function newAction()
@@ -44,7 +33,7 @@ class PlanProcRespFormController extends MyController
     }
 
     /*Modificacion de plan de procreacion responsable (fase GET)*/
-    public function modifAction($idPlan)
+ /*   public function modifAction($idPlan)
     {    
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
         $plan = $repoPlanes->find($idPlan);
@@ -57,10 +46,10 @@ class PlanProcRespFormController extends MyController
            			'SalitaPlanBundle:PlanProcRespForm:modif.html.twig',
            			array('form' => $form->createView(),'id' => $idPlan)
            		);
-    }
+    }*/
     
-    /*Modificacion de plan de procreacion responsable (fase POST)*/
-    public function modifProcessAction($idPlan)
+    /*Modificacion de plan de procreacion responsable*/
+    public function modifAction($idPlan)
     {
     	$repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
     	$plan = $repoPlanes->find($idPlan);
@@ -75,15 +64,14 @@ class PlanProcRespFormController extends MyController
    		{
    			$this->getPersistenceManager()->updatePlanProcreacionResponsable($plan);
    			$mensaje = 'El plan del paciente se modifico exitosamente';
-   		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar modificar un plan del paciente';
+   			$session = $this->getSession();
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_oepracion_plan'));
    		}
    		return $this->render(
-   				'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje)
-   		);
+           			'SalitaPlanBundle:PlanProcRespForm:modif.html.twig',
+           			array('form' => $form->createView(),'id' => $idPlan)
+           		);
     }
 
     function listAction()
