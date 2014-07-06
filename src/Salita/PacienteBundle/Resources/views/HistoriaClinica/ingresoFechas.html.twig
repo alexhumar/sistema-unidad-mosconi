@@ -1,19 +1,5 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-{#
-<form action="{{ path('fechas_resumenHC') }}" method="post" {{ form_enctype(form) }}>
-  <div id="fechasB">
-    <label> Desde: </label>
-        {{ form_row(form.diaDesde) }} {{ form_row(form.mesDesde) }} {{ form_row(form.anioDesde) }}
-    <br />
-    <label> Hasta: </label>
-        {{ form_row(form.diaHasta) }} {{ form_row(form.mesHasta) }} {{ form_row(form.anioHasta) }}
-    <br />
-    {{ form_rest(form) }}
-    <input type="submit" />
-  </div>
-</form>
-#}
   {{ form(form) }}
 {% endblock %}

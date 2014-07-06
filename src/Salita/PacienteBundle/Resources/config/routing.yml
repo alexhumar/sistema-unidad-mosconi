@@ -52,12 +52,6 @@ menu_paciente:
 modificacion_datosFiliatorios:
     pattern: /modificacion/datosfiliatorios
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatorios }
-    methods: [GET]
-    
-modificacion_datosFiliatorios_process:
-    pattern: /modificacion/datosfiliatorios
-    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatoriosProcess }
-    methods: [POST]
     
 modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico

@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\PacienteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -19,5 +18,4 @@ class BusquedaType extends AbstractType
     {
         return 'busqueda';
     }
-
 }

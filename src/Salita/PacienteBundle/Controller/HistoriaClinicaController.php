@@ -137,25 +137,6 @@ class HistoriaClinicaController extends MyController
        				  'usuarioGenerador' => $usuarioGenerador, 'estudios' => $estudios)
        		);
     }
-
-    /*Eleccion de fechas para el resumen de historia clinica (fase GET)*/
- /*   public function elegirFechasAction()
-    {
-       $session = $this->getSession();
-       if(!$session->has('paciente'))
-       {
-           return $this->redirect($this->generateUrl('busqueda_paciente'));
-       }
-       else
-       {
-           $fechas = new FechasResumenHC();
-           $form = $this->createForm(new FechasResumenHCType(), $fechas);
-           return $this->render(
-           			'SalitaPacienteBundle:HistoriaClinica:ingresoFechas.html.twig', 
-           			array('form' => $form->createView())
-           		);
-       }
-    }*/
     
     /*Eleccion de fechas para el resumen de historia clinica*/
     public function elegirFechasAction()
