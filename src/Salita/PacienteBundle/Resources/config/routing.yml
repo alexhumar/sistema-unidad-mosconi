@@ -1,3 +1,28 @@
+alta_aplicacion_vacuna:
+    pattern: /alta/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:new }
+    methods: [GET]
+    
+alta_consulta:
+    pattern: /alta/consulta
+    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:new }
+    methods: [GET]
+    
+alta_consulta_process:
+    pattern: /alta/consulta
+    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:newProcess }
+    methods: [POST]
+    
+alta_estudio:
+    pattern: /alta/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
+    methods: [GET]
+    
+alta_estudio_process:
+    pattern: /alta/estudio
+    defaults: { _controller: SalitaPacienteBundle:EstudioForm:newProcess }
+    methods: [POST]
+
 alta_paciente:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
@@ -7,6 +32,46 @@ alta_paciente_process:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:newProcess }
     methods: [POST]
+    
+busqueda_paciente:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
+    methods: [GET]
+    
+busqueda_paciente_process:
+    pattern: /busqueda/paciente
+    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscarProcess }
+    methods: [POST]
+    
+fechas_resumenHC:
+    pattern: /resumenHC/elegirFechas
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechas }
+    methods: [GET]
+    
+fechas_resumenHC_process:
+    pattern: /resumenHC/elegirFechas
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechasProcess }
+    methods: [POST]
+    
+generar_historiaClinica:
+    pattern: /generarHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:generar }
+    methods: [GET]
+
+generar_resumenHC:
+    pattern: /generarResumenHC/paciente
+    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:resumen }
+    methods: [GET]
+    
+listado_aplicacion_vacuna:
+    pattern: /listado/aplicacionvacuna
+    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:list }
+    methods: [GET]
+    
+menu_paciente:
+    pattern: /menu/paciente
+    defaults: { _controller: SalitaPacienteBundle:Menu:principal}
+    methods: [GET]
 
 modificacion_datosFiliatorios:
     pattern: /modificacion/datosfiliatorios
@@ -17,37 +82,10 @@ modificacion_datosFiliatorios_process:
     pattern: /modificacion/datosfiliatorios
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatoriosProcess }
     methods: [POST]
-
-busqueda_paciente:
-    pattern: /busqueda/paciente
-    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
-    methods: [GET]
     
-busqueda_paciente_process:
-    pattern: /busqueda/paciente
-    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscarProcess }
-    methods: [POST]
-
-seleccion_paciente:
-    pattern: /seleccion/paciente/{idPaciente}
-    defaults: { _controller: SalitaPacienteBundle:Seleccion:seleccionar}
-    requirements:
-        idPaciente: \d+
-
-menu_paciente:
-    pattern: /menu/paciente
-    defaults: { _controller: SalitaPacienteBundle:Menu:principal}
-    methods: [GET]
-      
 modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }
-    methods: [GET]
-    
-modif_antecedenteFamiliarClinico_process:
-    pattern:  /modificacion/antecedenteFamiliarClinico
-    defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modifProcess }
-    methods: [POST]
 
 modif_antecedenteFamiliarObstetrico:
     pattern:  /modificacion/antecedenteFamiliarObstetrico
@@ -79,57 +117,18 @@ modif_antecedentePersonalObstetrico_process:
     defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalObstetricoForm:modifProcess }
     methods: [POST]
 
-alta_estudio:
-    pattern: /alta/estudio
-    defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
-    methods: [GET]
-    
-alta_estudio_process:
-    pattern: /alta/estudio
-    defaults: { _controller: SalitaPacienteBundle:EstudioForm:newProcess }
-    methods: [POST]
-
-alta_consulta:
-    pattern: /alta/consulta
-    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:new }
-    methods: [GET]
-    
-alta_consulta_process:
-    pattern: /alta/consulta
-    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:newProcess }
-    methods: [POST]
-
-alta_aplicacion_vacuna:
-    pattern: /alta/aplicacionvacuna
-    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:new }
-    methods: [GET]
-
-listado_aplicacion_vacuna:
-    pattern: /listado/aplicacionvacuna
-    defaults: { _controller: SalitaPacienteBundle:AplicacionVacunaForm:list }
-    methods: [GET]
-
 #Esta ruta no esta bien. Lleva al newAction de EstudioFormController. Habria que revisar si se usa la ruta.
 modif_estudio:
     pattern: /modif/estudio
     defaults: { _controller: SalitaPacienteBundle:EstudioForm:new }
 
-generar_historiaClinica:
-    pattern: /generarHC/paciente
-    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:generar }
-    methods: [GET]
-
-generar_resumenHC:
-    pattern: /generarResumenHC/paciente
-    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:resumen }
-    methods: [GET]
-
-fechas_resumenHC:
-    pattern: /resumenHC/elegirFechas
-    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechas }
+resultado_operacion_paciente:
+    pattern: /resultado/operacion/paciente
+    defaults: { _controller: SalitaPacienteBundle:Mensajes:resultado }
     methods: [GET]
     
-fechas_resumenHC_process:
-    pattern: /resumenHC/elegirFechas
-    defaults: { _controller: SalitaPacienteBundle:HistoriaClinica:elegirFechasProcess }
-    methods: [POST]
+seleccion_paciente:
+    pattern: /seleccion/paciente/{idPaciente}
+    defaults: { _controller: SalitaPacienteBundle:Seleccion:seleccionar}
+    requirements:
+        idPaciente: \d+

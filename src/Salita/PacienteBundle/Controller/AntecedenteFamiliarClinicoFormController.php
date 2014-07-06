@@ -4,13 +4,12 @@ namespace Salita\PacienteBundle\Controller;
 use Salita\PacienteBundle\Form\Type\AntecedenteFamiliarClinicoType;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliarClinico;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class AntecedenteFamiliarClinicoFormController extends MyController
 {
 	
 	/*Modificacion de antecedente familiar clinico (fase GET)*/ 
-	public function modifAction()
+/*	public function modifAction()
     {   
         $session = $this->getSession();   
         $repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresClinicosRepo(); 
@@ -24,13 +23,13 @@ class AntecedenteFamiliarClinicoFormController extends MyController
            			'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif.html.twig',
            			array('form' => $form->createView())
            		);
-	}
+	}*/
     
-    /*Modificacion de antecedente familiar clinico (fase POST)*/
-    public function modifProcessAction()
-    {
-    	$session = $this->getSession();  	
+    /*Modificacion de antecedente familiar clinico*/
+    public function modifAction()
+    { 	
     	$repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresClinicosRepo();
+    	$session = $this->getSession();
     	$antecedenteFamiliarClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
     	if(!$antecedenteFamiliarClinico)
     	{
@@ -45,14 +44,20 @@ class AntecedenteFamiliarClinicoFormController extends MyController
     		//$em->persist($antecedenteFamiliarClinico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
-    	else
+    	/*else
     	{
     		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
     	}
     	return $this->render(
     				'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:mensaje.html.twig',
     				array('mensaje' => $mensaje)
-    			);
+    			);*/
+    	return $this->render(
+    			'SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif.html.twig',
+    			array('form' => $form->createView())
+    	);
     }
 }
