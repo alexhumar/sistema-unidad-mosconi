@@ -1,6 +1,6 @@
 parameters:
     repos_manager.class: Salita\OtrosBundle\Service\ReposManager
-    my_session_manager.class: Salita\OtrosBundle\Service\SessionManager
+    session_manager.class: Salita\OtrosBundle\Service\SessionManager
     dialogs_manager.class: Salita\OtrosBundle\Service\DialogsManager
     queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
     service.provider.class: Salita\OtrosBundle\Service\ServiceProvider
@@ -11,8 +11,8 @@ services:
     repos_manager:
         class: %repos_manager.class%
         arguments: [@doctrine.orm.entity_manager]
-    my_session_manager:
-        class: %my_session_manager.class%
+    session_manager:
+        class: %session_manager.class%
         arguments: [@session]
     dialogs_manager:
         class: %dialogs_manager.class%
