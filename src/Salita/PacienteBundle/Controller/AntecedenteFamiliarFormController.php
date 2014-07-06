@@ -5,6 +5,8 @@ use Salita\PacienteBundle\Form\Type\AntecedenteFamiliarType;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliar;
 use Salita\OtrosBundle\Clases\MyController;
 
+/* ATENCION: estos controllers no se referencian en ningun lado. */
+
 class AntecedenteFamiliarFormController extends MyController
 {
 
