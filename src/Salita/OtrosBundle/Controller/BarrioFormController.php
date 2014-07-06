@@ -36,6 +36,7 @@ class BarrioFormController
    			/*$session = $this->serviceprovider->getSession();
    			$session->getFlashBag()->add('mensaje', $mensaje);
    			$session->set('mensaje', $mensaje);*/
+   			echo("hola0");
    			$sessionManager = $this->serviceprovider->getSessionManager();
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
