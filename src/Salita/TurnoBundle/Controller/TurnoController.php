@@ -92,10 +92,12 @@ class TurnoController extends MyController
     {
     	/*Aca le paso el controller para poder tirar la excepcion (ver metodo), pero no me parece lo mas
     	 * correcto hacer eso... revisar*/
-    	//$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
+    	$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
     	$session = $this->getSession();
     	$usuario = $session->get('usuario');
     	$codigoRolSeleccionado = $session->get('rolSeleccionado')->getCodigo();
+    	/* Si el usuario esta autenticado como medico redirecciono al listado de turnos por especialidad.
+    	 * De lo contrario redirecciona al listado de turnos. */
     	if ($usuario->isAuthenticatedMedico($codigoRolSeleccionado))
     	{
     		$nextAction = "listado_turnos_especialidad";
