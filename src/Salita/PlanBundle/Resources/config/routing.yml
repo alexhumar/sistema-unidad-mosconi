@@ -68,3 +68,8 @@ modif_plan_process:
     methods: [POST]
     requirements:
         idPlan: \d+
+        
+resultado_operacion_plan:
+    pattern: /resultado/operacion/plan
+    defaults: { _controller: SalitaPlanBundle:Mensajes:resultado }  
+    methods: [GET]  

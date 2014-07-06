@@ -38,7 +38,7 @@ class EntregaPlanProcRespFormController extends MyController
    			$mensaje = 'La entrega del plan se registro correctamente';
    			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
+   			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
    		return $this->render(
    					'SalitaPlanBundle:EntregaPlanProcRespForm:new.html.twig',
