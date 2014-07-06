@@ -7,12 +7,6 @@ alta_entregaplanprocresp:
 alta_metodoanticonceptivo:
     pattern: /alta/metodoanticonceptivo
     defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:new }
-    methods: [GET]
-    
-alta_metodoanticonceptivo_process:
-    pattern: /alta/metodoanticonceptivo
-    defaults: { _controller: SalitaPlanBundle:MetodoAnticonceptivoForm:newProcess }
-    methods: [POST]
 
 alta_planprocresp:
     pattern: /alta/planprocresp

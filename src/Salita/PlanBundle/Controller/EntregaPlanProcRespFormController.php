@@ -7,19 +7,8 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class EntregaPlanProcRespFormController extends MyController
 {
-	
-	/*Alta de entrega de plan de procreacion responsable (fase GET)*/
- /*   public function newAction($idPlan)
-    {
-        $entrega = new EntregaPlanProcResp();
-        $form = $this->createForm(new EntregaPlanProcRespType(), $entrega);
-        return $this->render(
-           			'SalitaPlanBundle:EntregaPlanProcRespForm:new.html.twig',
-           			array('form' => $form->createView(), 'id' => $idPlan)
-           		);
-    }*/
     
-    /*Alta de entrega de plan de procreacion responsable (fase POST)*/
+    /*Alta de entrega de plan de procreacion responsable*/
     public function newAction($idPlan)
     {
     	$entrega = new EntregaPlanProcResp();
@@ -44,10 +33,6 @@ class EntregaPlanProcRespFormController extends MyController
    					'SalitaPlanBundle:EntregaPlanProcRespForm:new.html.twig',
    					array('form' => $form->createView(), 'id' => $idPlan)
    				);
-   	/*	return $this->render(
-   				'SalitaPlanBundle:EntregaPlanProcRespForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje)
-   		); */
     }
 
     function listAction($idPlan)

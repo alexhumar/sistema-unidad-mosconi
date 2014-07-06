@@ -4,13 +4,12 @@ namespace Salita\PlanBundle\Controller;
 use Salita\PlanBundle\Form\Type\MetodoAnticonceptivoType;
 use Salita\PlanBundle\Entity\MetodoAnticonceptivo;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class MetodoAnticonceptivoFormController extends MyController
 {
 
 	/*Alta de metodo anticonceptivo (fase GET)*/
-    public function newAction()
+ /*   public function newAction()
     {
         $metodo = new MetodoAnticonceptivo();
         $form = $this->createForm(new MetodoAnticonceptivoType(), $metodo);
@@ -18,10 +17,10 @@ class MetodoAnticonceptivoFormController extends MyController
            			'SalitaPlanBundle:MetodoAnticonceptivoForm:new.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    }*/
     
-    /*Alta de metodo anticonceptivo (fase POST)*/
-    public function newProcessAction()
+    /*Alta de metodo anticonceptivo*/
+    public function newAction()
     {
     	$metodo = new MetodoAnticonceptivo();
     	$form = $this->createForm(new MetodoAnticonceptivoType(), $metodo);
@@ -31,14 +30,13 @@ class MetodoAnticonceptivoFormController extends MyController
    		{
    			$this->getPersistenceManager()->saveMetodoAnticonceptivo($metodo);
    			$mensaje = 'El metodo anticonceptivo se cargo exitosamente en el sistema';
-   		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar cargar el metodo anticonceptivo al sistema';
+   			$session = $this->getSession();
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
    		return $this->render(
-   				'SalitaPlanBundle:MetodoAnticonceptivoForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje)
-   		);
+           			'SalitaPlanBundle:MetodoAnticonceptivoForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
 }
