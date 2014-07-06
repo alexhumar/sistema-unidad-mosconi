@@ -95,7 +95,8 @@ class TurnoController extends MyController
     	//$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
     	$session = $this->getSession();
     	$usuario = $session->get('usuario');
-    	if ($usuario->isAuthenticatedMedico($session->get('rolSeleccionado')))
+    	$codigoRolSeleccionado = $session->get('rolSeleccionado')->getCodigo();
+    	if ($usuario->isAuthenticatedMedico($codigoRolSeleccionado))
     	{
     		$nextAction = "listado_turnos_especialidad";
     	}
