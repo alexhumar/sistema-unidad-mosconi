@@ -4,7 +4,6 @@ namespace Salita\PacienteBundle\Controller;
 use Salita\PacienteBundle\Form\Type\AntecedenteFamiliarObstetricoType;
 use Salita\PacienteBundle\Entity\AntecedenteFamiliarObstetrico;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class AntecedenteFamiliarObstetricoFormController extends MyController
 {

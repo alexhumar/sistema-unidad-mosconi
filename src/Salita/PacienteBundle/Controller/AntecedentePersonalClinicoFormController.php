@@ -4,33 +4,15 @@ namespace Salita\PacienteBundle\Controller;
 use Salita\PacienteBundle\Form\Type\AntecedentePersonalClinicoType;
 use Salita\PacienteBundle\Entity\AntecedentePersonalClinico;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class AntecedentePersonalClinicoFormController extends MyController
 {
-
-	/*Modificacion de antecedente personal clinico (fase GET)*/
-    public function modifAction()
-    {        
-        $session = $this->getSession();
-        $repoAntecedentes = $this->getReposManager()->getAntecedentesPersonalesClinicosRepo();
-        $antecedentePersonalClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
-        if(!$antecedentePersonalClinico)
-        {
-        	throw $this->createNotFoundException("Antecedente inexistente");
-        }
-        $form = $this->createForm(new AntecedentePersonalClinicoType(), $antecedentePersonalClinico);
-        return $this->render(
-           			'SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }
     
-    /*Modificacion de antecedente personal clinico (fase POST)*/
-    public function modifProcessAction()
+    /*Modificacion de antecedente personal clinico*/
+    public function modifAction()
     {
-    	$session = $this->getSession();
     	$repoAntecedentes = $this->getReposManager()->getAntecedentesPersonalesClinicosRepo();
+    	$session = $this->getSession();
     	$antecedentePersonalClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
     	if(!$antecedentePersonalClinico)
     	{
@@ -42,17 +24,14 @@ class AntecedentePersonalClinicoFormController extends MyController
     	if ($form->isValid())
     	{
     		$em = $this->getEntityManager();
-    		//$em->persist($antecedentePersonalClinico);
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
-    	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al modificar los antecedentes del paciente';
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(
-    				'SalitaPacienteBundle:AntecedentePersonalClinicoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje)
-    			);
+           			'SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
 }

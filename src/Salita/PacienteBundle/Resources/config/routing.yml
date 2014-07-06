@@ -94,12 +94,6 @@ modif_antecedenteFamiliarObstetrico:
 modif_antecedentePersonalClinico:
     pattern:  /modificacion/antecedentePersonalClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modif }
-    methods: [GET]
-
-modif_antecedentePersonalClinico_process:
-    pattern:  /modificacion/antecedentePersonalClinico
-    defaults: { _controller: SalitaPacienteBundle:AntecedentePersonalClinicoForm:modifProcess }
-    methods: [POST]
     
 modif_antecedentePersonalObstetrico:
     pattern:  /modificacion/antecedentePersonalObstetrico
