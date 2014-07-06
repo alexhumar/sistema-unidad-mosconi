@@ -4,13 +4,12 @@ namespace Salita\PlanBundle\Controller;
 use Salita\PlanBundle\Form\Type\EntregaPlanProcRespType;
 use Salita\PlanBundle\Entity\EntregaPlanProcResp;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class EntregaPlanProcRespFormController extends MyController
 {
 	
 	/*Alta de entrega de plan de procreacion responsable (fase GET)*/
-    public function newAction($idPlan)
+ /*   public function newAction($idPlan)
     {
         $entrega = new EntregaPlanProcResp();
         $form = $this->createForm(new EntregaPlanProcRespType(), $entrega);
@@ -18,10 +17,10 @@ class EntregaPlanProcRespFormController extends MyController
            			'SalitaPlanBundle:EntregaPlanProcRespForm:new.html.twig',
            			array('form' => $form->createView(), 'id' => $idPlan)
            		);
-    }
+    }*/
     
     /*Alta de entrega de plan de procreacion responsable (fase POST)*/
-    public function newProcessAction($idPlan)
+    public function newAction($idPlan)
     {
     	$entrega = new EntregaPlanProcResp();
     	$form = $this->createForm(new EntregaPlanProcRespType(), $entrega);
@@ -37,15 +36,18 @@ class EntregaPlanProcRespFormController extends MyController
    			}
    			$this->getPersistenceManager()->saveEntregaPlanProcreacionResponsable($plan, $entrega);
    			$mensaje = 'La entrega del plan se registro correctamente';
-   		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar registrar una entrega del plan';
+   			$session = $this->getSession();
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
    		return $this->render(
+   					'SalitaPlanBundle:EntregaPlanProcRespForm:new.html.twig',
+   					array('form' => $form->createView(), 'id' => $idPlan)
+   				);
+   	/*	return $this->render(
    				'SalitaPlanBundle:EntregaPlanProcRespForm:mensaje.html.twig',
    				array('mensaje' => $mensaje)
-   		);
+   		); */
     }
 
     function listAction($idPlan)
