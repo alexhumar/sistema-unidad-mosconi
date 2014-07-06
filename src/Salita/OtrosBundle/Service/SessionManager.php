@@ -1,13 +1,13 @@
 <?php
 namespace Salita\OtrosBundle\Service;
 
-use Symfony\Component\HttpFoundation\Session;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class SessionManager
 {
 	protected $session;
 	
-	public function __construct($session)
+	public function __construct(Session $session)
 	{
 		$this->session = $session;
 	}
