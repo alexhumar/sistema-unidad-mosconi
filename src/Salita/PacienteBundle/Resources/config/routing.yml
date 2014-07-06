@@ -36,12 +36,6 @@ alta_paciente_process:
 busqueda_paciente:
     pattern: /busqueda/paciente
     defaults: { _controller: SalitaPacienteBundle:Busqueda:buscar }
-    methods: [GET]
-    
-busqueda_paciente_process:
-    pattern: /busqueda/paciente
-    defaults: { _controller: SalitaPacienteBundle:Busqueda:buscarProcess }
-    methods: [POST]
     
 fechas_resumenHC:
     pattern: /resumenHC/elegirFechas

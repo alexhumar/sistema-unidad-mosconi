@@ -8,20 +8,9 @@ use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class BusquedaController extends MyController
 {
-	
-	/*Busqueda de paciente (fase GET)*/
-    public function buscarAction()
-    {
-        $busqueda = new Busqueda();
-        $form = $this->createForm(new BusquedaType(), $busqueda);
-        return $this->render(
-           			'SalitaPacienteBundle:Busqueda:ingresoDatos.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }
     
-    /*Busqueda de paciente (fase POST)*/
-    public function buscarProcessAction()
+    /*Busqueda de paciente*/
+    public function buscarAction()
     { 	
     	$busqueda = new Busqueda();
     	$form = $this->createForm(new BusquedaType(), $busqueda);
@@ -47,5 +36,9 @@ class BusquedaController extends MyController
     				array('pacientes' => $pacientes)
     		);
     	}
+    	return $this->render(
+    			'SalitaPacienteBundle:Busqueda:ingresoDatos.html.twig',
+    			array('form' => $form->createView())
+    	);
     }
 }
