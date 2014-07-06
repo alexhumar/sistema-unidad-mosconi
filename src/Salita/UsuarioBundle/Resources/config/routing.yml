@@ -1,10 +1,22 @@
-asignacion_rol:
-    pattern:  /asignacion/rol
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
-
 asignacion_especialidad:
     pattern:  /asignacion/especialidad
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarEspecialidad }
+    
+asignacion_rol:
+    pattern:  /asignacion/rol
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:asignarRol }
+    
+del_administrador:
+    pattern:  /del/administrador/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delAdministrador }
+    requirements:
+        id: \d+
+        
+del_medico:
+    pattern:  /del/medico/{id}
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delMedico }
+    requirements:
+        id: \d+
     
 del_secretaria:
     pattern:  /del/secretaria/{id}
@@ -12,56 +24,44 @@ del_secretaria:
     requirements:
         id: \d+
 
-del_medico:
-    pattern:  /del/medico/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delMedico }
-    requirements:
-        id: \d+
-
-del_administrador:
-    pattern:  /del/administrador/{id}
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:delAdministrador }
-    requirements:
-        id: \d+
-
 elegir_rol:
     pattern: /elegirRol/usuario
     defaults: { _controller: SalitaUsuarioBundle:UsuarioRol:elegir }
     
-listado_usuario:
-    pattern: /listado/usuario
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listUsuario }
+listado_administrador:
+    pattern: /listado/administrador
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listAdministrador }
     methods: [GET]
-
-listado_secretaria:
-    pattern: /listado/secretaria
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listSecretaria }
-    methods: [GET]
-
+    
 listado_medico:
     pattern: /listado/medico
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listMedico }
     methods: [GET]
-
-listado_administrador:
-    pattern: /listado/administrador
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listAdministrador }
+    
+listado_secretaria:
+    pattern: /listado/secretaria
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listSecretaria }
+    methods: [GET]
+    
+listado_usuario:
+    pattern: /listado/usuario
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:listUsuario }
     methods: [GET]
     
 menu_principal:
     pattern: /menu/principal
     defaults: { _controller: SalitaUsuarioBundle:Menu:principal }
     methods: [GET]
-
-modif_usuario_propio:
-    pattern:  /modificacion/usuariopropio
-    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropio }
     
 modif_usuario:
     pattern:  /modificacion/usuario/{id}
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modif }
     requirements:
         id: \d+
+        
+modif_usuario_propio:
+    pattern:  /modificacion/usuariopropio
+    defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropio }
 
 seleccion_usuario:
     pattern:  /seleccion/usuario/{id}

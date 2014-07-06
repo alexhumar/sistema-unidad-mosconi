@@ -3,12 +3,10 @@ namespace Salita\UsuarioBundle\Controller;
 
 use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\MisRoles;
+use Salita\OtrosBundle\Clases\ConsultaRol;
 use Salita\UsuarioBundle\Entity\Rol;
 use Salita\UsuarioBundle\Clases\RolTemporal;
 use Salita\UsuarioBundle\Form\Type\RolType;
-use Salita\OtrosBundle\Clases\ConsultaRol;
-/*use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;*/
 
 class UsuarioRolController extends MyController
 {
@@ -28,21 +26,18 @@ class UsuarioRolController extends MyController
            $rolTemp = new RolTemporal();
            $form = $this->createForm(new RolType($roles), $rolTemp);
            $request = $this->getRequest();
-           if ($request->getMethod() == 'POST')
+           $form->handleRequest($request);
+           if ($form->isValid())
            {
-               $form->handleRequest($request);
-               if ($form->isValid())
-               {
-                   $rolSeleccionado = $repoRoles->findOneByCodigo($rolTemp->getNombre());
-                   $session->set('rolSeleccionado', $rolSeleccionado);
-               }
+               $rolSeleccionado = $repoRoles->findOneByCodigo($rolTemp->getNombre());
+               $session->set('rolSeleccionado', $rolSeleccionado);
            }
            else
            {
                return $this->render(
-               			'SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig',
-               			array('form' => $form->createView())
-               		);
+                          'SalitaUsuarioBundle:EleccionRolForm:eleccionRol.html.twig',
+                          array('form' => $form->createView())
+                      );
            }
        }
        else
@@ -70,23 +65,6 @@ class UsuarioRolController extends MyController
        	   $usuario->getEspecialidad()->getCodigo();
        	   $session->set('especialidad', $usuario->getEspecialidad());
        }
-       
-       //return $this->render('SalitaUsuarioBundle:Menu:principal.html.twig');
        return $this->redirect($this->generateUrl('menu_principal'));
-       
-       /*switch (ConsultaRol::rolSeleccionado($session)->getCodigo())
-       {
-           case Rol::getCodigoRolMedico():
-           	                   /*Esto lo hago para que Doctrine reemplace el proxy Especialidad por el objeto 
-           	                    * real con los datos traidos de la bd*/
-           	                   /*$usuario->getEspecialidad()->getCodigo(); 
-           	                   $session->set('especialidad', $usuario->getEspecialidad());
-                               return $this->redirect($this->generateUrl('menu_medico'));
-                               break;
-           case Rol::getCodigoRolSecretaria(): return $this->redirect($this->generateUrl('menu_secretaria'));
-                               break;
-           case Rol::getCodigoRolAdministrador(): return $this->redirect($this->generateUrl('menu_administrador'));
-                               break;
-       }*/
     }
 }

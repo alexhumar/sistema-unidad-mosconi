@@ -213,19 +213,6 @@ class UsuarioFormController extends MyController
         return $this->redirect($this->generateUrl('listado_administrador')); 
     }
     
-    /*Asignacion de rol a usuario (fase GET)*/
-/*    public function asignarRolAction()
-    {
-    	$repoRoles = $this->getReposManager()->getRolesRepo();
-    	$roles = $repoRoles->findAll();
-    	$rolTemp = new RolTemporal();
-    	$form = $this->createForm(new RolType($roles), $rolTemp);
-    	return $this->render(
-    				'SalitaUsuarioBundle:UsuarioForm:asignacionRol.html.twig',
-    				array('form' => $form->createView())
-    			);
-    }*/
-    
     /*Asignacion de rol a usuario*/
     public function asignarRolAction()
     {
@@ -264,34 +251,6 @@ class UsuarioFormController extends MyController
     				array('form' => $form->createView())
     			);
     }
-        
-    /*Asignacion de especialidad a usuario medico (fase GET)*/
- /*   public function asignarEspecialidadAction()
-    {
-    	$session = $this->getSession();
-    	if($session->has('usuarioSeleccionado'))
-    	{
-    		$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
-    	}
-    	else
-    	{
-    		return $this->redirect($this->generateUrl('listado_usuario'));
-    	}
-    	if ($usuario->isMedico())
-    	{
-    		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
-   			return $this->render(
-   						'SalitaUsuarioBundle:UsuarioForm:asignacionEspecialidad.html.twig',
-   						array('form' => $form->createView())
-   					);
-    	}
-    	else
-    	{
-    		$mensaje = 'El usuario no es un medico';
-    		$session->set('mensaje', $mensaje);
-    		return $this->redirect($this->generateUrl('resultado_operacion_usuario'));
-    	}
-    }*/
     
     /*Asignacion de especialidad a usuario medico*/
     public function asignarEspecialidadAction()
