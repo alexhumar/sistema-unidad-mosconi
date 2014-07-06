@@ -14,7 +14,7 @@ class SessionManager
 	
 	public function setMensajeResultadoOperacion($nextAction, $mensaje)
 	{
-		if($nextAction = "resultado_operacion")
+		if($nextAction == "resultado_operacion")
 		{
 		    $this->session->set('mensaje', $mensaje);
 		    return "Trabaja con sesion";
