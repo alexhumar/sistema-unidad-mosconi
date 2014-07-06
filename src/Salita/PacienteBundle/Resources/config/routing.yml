@@ -14,12 +14,6 @@ alta_estudio:
 alta_paciente:
     pattern: /alta/paciente
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:new }
-    methods: [GET]
-    
-alta_paciente_process:
-    pattern: /alta/paciente
-    defaults: { _controller: SalitaPacienteBundle:PacienteForm:newProcess }
-    methods: [POST]
     
 busqueda_paciente:
     pattern: /busqueda/paciente
