@@ -31,8 +31,3 @@ resultado_operacion_turno:
     pattern: /resultado/operacion/turno
     defaults: { _controller: SalitaTurnoBundle:Mensajes:resultado }
     methods: [GET]
-    
-seleccion_fecHor_futuro_process:
-    pattern: /seleccion/fechorturno
-    defaults: { _controller: SalitaTurnoBundle:Turno:seleccionarFecHorProcess }
-    methods: [POST]

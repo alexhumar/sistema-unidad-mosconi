@@ -9,17 +9,6 @@ use Salita\PacienteBundle\Form\Type\FechaYHoraTurnoType;
 
 class TurnoController extends MyController
 {
-
-	/*Alta de turno (fase GET)*/
-  /*  public function newAction()
-    {
-        $turno = new Turno();
-        $form = $this->createForm(new TurnoType(), $turno);
-        return $this->render(
-        			'SalitaTurnoBundle:TurnoForm:new.html.twig',
-        			array('form' => $form->createView())
-           		);
-    }*/
     
     /*Alta de turno*/
     public function newAction()
@@ -44,22 +33,6 @@ class TurnoController extends MyController
         			array('form' => $form->createView())
            		);
     }
-    
-    /*Alta de turno futuro (fase GET)*/
- /*   public function newFuturoAction()
-    {
-    	$session = $this->getSession();
-    	if((!$session->has('fecha')) and (!$session->has('hora')))
-    	{
-    		return $this->redirect($this->generateUrl('seleccion_fecHor_futuro'));
-    	}
-    	$turno = new Turno();
-    	$form = $this->createForm(new TurnoType(),$turno);
-    	return $this->render(
-    				'SalitaTurnoBundle:TurnoForm:newConFecHor.html.twig',
-    				array('form' => $form->createView())
-    			);
-    }*/
     
     /*Alta de turno futuro*/
     public function newFuturoAction()
@@ -90,25 +63,6 @@ class TurnoController extends MyController
     				array('form' => $form->createView())
     			);
     }
-
-    /*Seleccionar fecha y hora para un turno (fase GET)*/
- /*   public function seleccionarFecHorAction()
-    {
-       $session = $this->getSession();
-       if(!$session->has('paciente'))
-       {
-           return $this->redirect($this->generateUrl('busqueda_paciente'));
-       }
-       else
-       {            
-           $fecHor = new FechaYHoraTurno();
-           $form = $this->createForm(new FechaYHoraTurnoType(), $fecHor);
-           return $this->render(
-           				'SalitaTurnoBundle:SeleccionFechaHora:ingresoDatos.html.twig',
-           				array('form' => $form->createView())
-           			);
-       }
-    }*/
     
     /*Seleccionar fecha y hora para un turno*/
     public function seleccionarFecHorAction()
@@ -129,9 +83,9 @@ class TurnoController extends MyController
    			return $this->redirect($this->generateUrl('alta_turno_futuro'));
    		}
    		return $this->render(
-           				'SalitaTurnoBundle:SeleccionFechaHora:ingresoDatos.html.twig',
-           				array('form' => $form->createView())
-           			);
+           			'SalitaTurnoBundle:SeleccionFechaHora:ingresoDatos.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
     
     public function atencionAction($idTurno)
@@ -139,9 +93,6 @@ class TurnoController extends MyController
     	/*Aca le paso el controller para poder tirar la excepcion (ver metodo), pero no me parece lo mas
     	 * correcto hacer eso... revisar*/
     	$this->getPersistenceManager()->setTurnoAtendido($idTurno, $this);
-        //$session = $this->getSession();
-        /*Esto ni idea por que lo hice... atento con eso...*/
-        //$session->set('paciente', $turno->getPaciente());
         return $this->redirect($this->generateUrl('menu_paciente'));   
     }
 }
