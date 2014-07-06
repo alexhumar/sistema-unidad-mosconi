@@ -26,7 +26,6 @@ listado_turnos_especialidad:
 seleccion_fecHor_futuro:
     pattern: /seleccion/fechorturno
     defaults: { _controller: SalitaTurnoBundle:Turno:seleccionarFecHor }
-    methods: [GET]
     
 resultado_operacion_turno:
     pattern: /resultado/operacion/turno
