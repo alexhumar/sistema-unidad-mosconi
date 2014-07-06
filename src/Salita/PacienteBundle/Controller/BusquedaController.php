@@ -4,7 +4,6 @@ namespace Salita\PacienteBundle\Controller;
 use Salita\PacienteBundle\Form\Type\BusquedaType;
 use Salita\PacienteBundle\Clases\Busqueda;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class BusquedaController extends MyController
 {

@@ -1,8 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {% block contenido %}
-<form action="{{ path('modif_estudio',{ 'id': id }) }}" method="post" {{ form_enctype(form) }}>
+{# <form action="{{ path('modif_estudio',{ 'id': id }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <input type="submit" />
 </form>
+#}
+  {{ form(form) }} 
 {% block contenido %}

@@ -4,13 +4,12 @@ namespace Salita\PacienteBundle\Controller;
 use Salita\PacienteBundle\Form\Type\EstudioType;
 use Salita\PacienteBundle\Entity\Estudio;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class EstudioFormController extends MyController
 {
 	
 	/*Alta de estudio (fase GET)*/
-    public function newAction()
+  /*  public function newAction()
     {
         $estudio = new Estudio();
         $form = $this->createForm(new EstudioType(), $estudio);
@@ -18,10 +17,10 @@ class EstudioFormController extends MyController
            			'SalitaPacienteBundle:EstudioForm:new.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    }*/
     
-    /*Alta de estudio (fase POST)*/
-    public function newProcessAction()
+    /*Alta de estudio*/
+    public function newAction()
     {
     	$estudio = new Estudio();
     	$form = $this->createForm(new EstudioType(), $estudio);
@@ -34,14 +33,12 @@ class EstudioFormController extends MyController
    			$usuario = $session->get('usuario');
    			$this->getPersistenceManager()->saveEstudio($estudio, $paciente, $usuario);
    			$mensaje = 'El estudio del paciente se cargo exitosamente en el sistema';
-   		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar cargar un estudio para el paciente';
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
    		}
    		return $this->render(
-   				'SalitaPacienteBundle:EstudioForm:mensaje.html.twig',
-   				array('mensaje' => $mensaje)
-   		);
+           			'SalitaPacienteBundle:EstudioForm:new.html.twig',
+           			array('form' => $form->createView())
+           		);
     }
 }

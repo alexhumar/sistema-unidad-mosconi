@@ -10,12 +10,14 @@ class EstudioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         
-        $builder->add('resultado', 'textarea', array('label' => 'Resultado', 'required' => false));
-        $builder->add('nroProtocolo', 'textarea', array('label' => 'Nro de Protocolo', 'required' => false));
-        $builder->add('metodoEstudio', 'entity', array('class' => 'SalitaOtrosBundle:MetodoEstudio',
-    'query_builder' => function($repository) { return $repository->createQueryBuilder('m')->orderBy('m.id', 'ASC'); },
-    'property' => 'nombre', 'label' => "Metodo de estudio"));
-
+        $builder
+            ->add('resultado', 'textarea', array('label' => 'Resultado', 'required' => false))
+            ->add('nroProtocolo', 'textarea', array('label' => 'Nro de Protocolo', 'required' => false))
+            ->add('metodoEstudio', 'entity', array('class' => 'SalitaOtrosBundle:MetodoEstudio',
+    												   'query_builder' => function($repository) { return $repository->createQueryBuilder('m')->orderBy('m.id', 'ASC'); },
+    												   'property' => 'nombre', 
+                                                       'label' => "Metodo de estudio"))
+            ->add('agregar', 'submit');
     }
     
     public function getName()

@@ -2,7 +2,6 @@
 namespace Salita\PacienteBundle\Controller;
 
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class AplicacionVacunaFormController extends MyController
 {
@@ -25,7 +24,6 @@ class AplicacionVacunaFormController extends MyController
        $session->set('mensaje', $mensaje);
        $session->remove('vacunaSeleccionada');
        return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
-       //return $this->redirect($this->generateUrl('menu_paciente'));
     }
 
     public function listAction()
