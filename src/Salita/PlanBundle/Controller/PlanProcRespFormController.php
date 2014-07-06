@@ -5,13 +5,12 @@ use Salita\PlanBundle\Form\Type\PlanProcRespType;
 use Salita\PlanBundle\Form\Type\ModPlanProcRespType;
 use Salita\PlanBundle\Entity\PlanProcResp;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class PlanProcRespFormController extends MyController
 {
 
 	/*Alta de plan de procreacion responsable (fase GET)*/
-    public function newAction()
+ /*   public function newAction()
     {
         $plan = new PlanProcResp();
         $form = $this->createForm(new PlanProcRespType(), $plan);
@@ -19,10 +18,10 @@ class PlanProcRespFormController extends MyController
            			'SalitaPlanBundle:PlanProcRespForm:new.html.twig',
            			array('form' => $form->createView())
            		);
-    }
+    }*/
     
-    /*Alta de plan de procreacion responsable (fase POST)*/
-    public function newProcessAction()
+    /*Alta de plan de procreacion responsable*/
+    public function newAction()
     {
     	$plan = new PlanProcResp();
     	$form = $this->createForm(new PlanProcRespType(), $plan);
@@ -34,15 +33,14 @@ class PlanProcRespFormController extends MyController
    			$paciente = $session->get('paciente');
    			$this->getPersistenceManager()->savePlanProcreacionResponsable($plan, $paciente);
    			$mensaje = 'El plan del paciente se agrego exitosamente';
+   			$session = $this->getSession();
+   			$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
-   		else
-   		{
-   			$mensaje = 'Se produjo un error al intentar agregar un plan para el paciente';
-		}
-		return $this->render(
-				'SalitaPlanBundle:PlanProcRespForm:mensaje.html.twig',
-				array('mensaje' => $mensaje)
-		);
+   		return $this->render(
+   					'SalitaPlanBundle:PlanProcRespForm:new.html.twig',
+   					array('form' => $form->createView())
+   				);
     }
 
     /*Modificacion de plan de procreacion responsable (fase GET)*/

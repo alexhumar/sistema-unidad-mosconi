@@ -7,17 +7,6 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class MetodoAnticonceptivoFormController extends MyController
 {
-
-	/*Alta de metodo anticonceptivo (fase GET)*/
- /*   public function newAction()
-    {
-        $metodo = new MetodoAnticonceptivo();
-        $form = $this->createForm(new MetodoAnticonceptivoType(), $metodo);
-        return $this->render(
-           			'SalitaPlanBundle:MetodoAnticonceptivoForm:new.html.twig',
-           			array('form' => $form->createView())
-           		);
-    }*/
     
     /*Alta de metodo anticonceptivo*/
     public function newAction()
