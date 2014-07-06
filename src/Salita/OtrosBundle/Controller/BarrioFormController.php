@@ -40,7 +40,9 @@ class BarrioFormController
    			$nextAction = $form->get('guardarynuevo')->isClicked()
 				? 'alta_barrio'
 				: 'resultado_operacion';
+   			echo("Hola1");
    			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);
+   			echo("hola2");
    			/*Las redirecciones en servicios se hacen directamente mediante el objeto RedirectResponse*/
    			return new RedirectResponse($this->serviceprovider->getRouter()->generate($nextAction));
    		}
