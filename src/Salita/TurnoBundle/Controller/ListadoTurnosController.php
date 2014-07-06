@@ -1,9 +1,7 @@
 <?php
 namespace Salita\TurnoBundle\Controller;
 
-//use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Salita\OtrosBundle\Clases\MyController;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class ListadoTurnosController extends MyController
 {

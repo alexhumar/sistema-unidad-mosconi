@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\PacienteBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -88,16 +87,17 @@ class FechaYHoraTurnoType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('dia', 'choice', array('label' => 'Día', 'choices' => $this->getDias()));
-        $builder->add('mes', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()));
-        $builder->add('anio', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()));
-        $builder->add('hora', 'choice', array('label' => 'Hora', 'choices' => $this->getHoras()));
-        $builder->add('minutos', 'choice', array('label' => 'Minuto', 'choices' => $this->getMinutos()));       
+        $builder
+            ->add('dia', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
+            ->add('mes', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
+            ->add('anio', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
+            ->add('hora', 'choice', array('label' => 'Hora', 'choices' => $this->getHoras()))
+            ->add('minutos', 'choice', array('label' => 'Minuto', 'choices' => $this->getMinutos()))
+            ->add('agregar', 'submit');
     }
 
     public function getName()
     {
         return 'fechaYHoraTurno';
     }
-
 }

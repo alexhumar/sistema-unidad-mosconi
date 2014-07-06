@@ -6,13 +6,12 @@ use Salita\TurnoBundle\Entity\Turno;
 use Salita\OtrosBundle\Clases\MyController;
 use Salita\OtrosBundle\Clases\FechaYHoraTurno;
 use Salita\PacienteBundle\Form\Type\FechaYHoraTurnoType;
-use Salita\OtrosBundle\Clases\ConsultaRol;
 
 class TurnoController extends MyController
 {
 
 	/*Alta de turno (fase GET)*/
-    public function newAction()
+  /*  public function newAction()
     {
         $turno = new Turno();
         $form = $this->createForm(new TurnoType(), $turno);
@@ -20,10 +19,10 @@ class TurnoController extends MyController
         			'SalitaTurnoBundle:TurnoForm:new.html.twig',
         			array('form' => $form->createView())
            		);
-    }
+    }*/
     
-    /*Alta de turno (fase POST)*/
-    public function newProcessAction()
+    /*Alta de turno*/
+    public function newAction()
     { 	
     	$turno = new Turno();
     	$request = $this->getRequest();
@@ -37,19 +36,17 @@ class TurnoController extends MyController
     		/*Da de alta un turno del momento*/
 			$this->getPersistenceManager()->saveNowTurno($turno, $medico, $paciente);
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
-    	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al intentar agregar un turno para el paciente';
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion_turno'));
     	}
     	return $this->render(
-    				'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje)
-    			);
+        			'SalitaTurnoBundle:TurnoForm:new.html.twig',
+        			array('form' => $form->createView())
+           		);
     }
     
     /*Alta de turno futuro (fase GET)*/
-    public function newFuturoAction()
+ /*   public function newFuturoAction()
     {
     	$session = $this->getSession();
     	if((!$session->has('fecha')) and (!$session->has('hora')))
@@ -62,10 +59,10 @@ class TurnoController extends MyController
     				'SalitaTurnoBundle:TurnoForm:newConFecHor.html.twig',
     				array('form' => $form->createView())
     			);
-    }
+    }*/
     
-    /*Alta de turno futuro (fase POST)*/
-    public function newFuturoProcessAction()
+    /*Alta de turno futuro*/
+    public function newFuturoAction()
     {
     	$session = $this->getSession();
     	if((!$session->has('fecha')) and (!$session->has('hora')))
@@ -84,14 +81,13 @@ class TurnoController extends MyController
     		$session->remove('fecha');
     		$session->remove('hora'); 		
     		$mensaje = 'El turno para el paciente se agrego exitosamente';
-    	}
-    	else
-    	{
-    		$mensaje = 'Se produjo un error al intentar agregar un turno para el paciente';
+    		$session->set('mensaje', $mensaje);
+    		return $this->redirect($this->generateUrl('resultado_operacion_turno'));
+    		
     	}
     	return $this->render(
-    				'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    				array('mensaje' => $mensaje)
+    				'SalitaTurnoBundle:TurnoForm:newConFecHor.html.twig',
+    				array('form' => $form->createView())
     			);
     }
 
@@ -122,28 +118,25 @@ class TurnoController extends MyController
     	{
     		return $this->redirect($this->generateUrl('busqueda_paciente'));
     	}
-    	else
-    	{
-    		$fecHor = new FechaYHoraTurno();
-    		$form = $this->createForm(new FechaYHoraTurnoType(), $fecHor);
-    		$request = $this->getRequest();
-    		$form->handleRequest($request);
-    		if ($form->isValid())
-    		{
-    			$session->set('fecha', $fecHor->getFecha());
-    			$session->set('hora', $fecHor->getHoraCompleta());
-    			return $this->redirect($this->generateUrl('alta_turno_futuro'));
-    		}
-    		/*Agregado el 03/06/2014. Al dia de la fecha NO FUE PROBADO*/
-    		else 
-    		{
-    			$mensaje = 'Se produjo un error al las fechas para un turno';
-    			return $this->render(
-    						'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
-    						array('mensaje' => $mensaje)
-    					);
-    		}
-    	}
+   		$fecHor = new FechaYHoraTurno();
+   		$form = $this->createForm(new FechaYHoraTurnoType(), $fecHor);
+   		$request = $this->getRequest();
+   		$form->handleRequest($request);
+   		if ($form->isValid())
+   		{
+   			$session->set('fecha', $fecHor->getFecha());
+   			$session->set('hora', $fecHor->getHoraCompleta());
+   			return $this->redirect($this->generateUrl('alta_turno_futuro'));
+   		}
+   		/*Agregado el 03/06/2014. Al dia de la fecha NO FUE PROBADO*/
+   		else 
+   		{
+   			$mensaje = 'Se produjo un error al las fechas para un turno';
+   			return $this->render(
+   						'SalitaTurnoBundle:TurnoForm:mensaje.html.twig',
+   						array('mensaje' => $mensaje)
+   					);
+   		}
     }
     
     public function atencionAction($idTurno)
