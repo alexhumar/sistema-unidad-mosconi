@@ -14,21 +14,18 @@ class AplicacionVacunaFormController extends MyController
        {
            return $this->redirect($this->generateUrl('busqueda_paciente'));
        }
-       else
+       if (!$session->has('vacunaSeleccionada'))
        {
-           if (!$session->has('vacunaSeleccionada'))
-           {
-                return $this->redirect($this->generateUrl('busqueda_vacuna'));
-           }
-           else
-           {    
-                $paciente = $session->get('paciente');
-                $vacuna = $session->get('vacunaSeleccionada');
-                $this->getPersistenceManager()->createAplicacionVacuna($paciente, $vacuna);
-                $session->remove('vacunaSeleccionada');
-           }
-       }
-       return $this->redirect($this->generateUrl('menu_paciente'));
+           return $this->redirect($this->generateUrl('busqueda_vacuna'));
+       }  
+       $paciente = $session->get('paciente');
+       $vacuna = $session->get('vacunaSeleccionada');
+       $this->getPersistenceManager()->createAplicacionVacuna($paciente, $vacuna);
+       $mensaje = "La aplicacion de vacuna fue registrada exitosamente";
+       $session->set('mensaje', $mensaje);
+       $session->remove('vacunaSeleccionada');
+       return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
+       //return $this->redirect($this->generateUrl('menu_paciente'));
     }
 
     public function listAction()
@@ -38,14 +35,11 @@ class AplicacionVacunaFormController extends MyController
         {
             return $this->redirect($this->generateUrl('busqueda_paciente'));
         }
-        else
-        {
-            $repoPacientes = $this->getReposManager()->getPacientesRepo();           
-            $aplicaciones = $repoPacientes->aplicacionesVacuna($session->get('paciente')->getId());
-            return $this->render(
-            			'SalitaPacienteBundle:AplicacionVacuna:list.html.twig',
-            			array('aplicaciones' => $aplicaciones)
-            		);
-        }
+        $repoPacientes = $this->getReposManager()->getPacientesRepo();           
+        $aplicaciones = $repoPacientes->aplicacionesVacuna($session->get('paciente')->getId());
+        return $this->render(
+   	    			'SalitaPacienteBundle:AplicacionVacuna:list.html.twig',
+   	    			array('aplicaciones' => $aplicaciones)
+ 	      		);
     }    
 }

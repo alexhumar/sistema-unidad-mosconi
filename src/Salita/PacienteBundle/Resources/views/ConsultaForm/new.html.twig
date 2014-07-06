@@ -1,8 +1,5 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-<form action="{{ path('alta_consulta') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="submit" />
-</form>
+  {{ form(form) }}
 {% endblock %}

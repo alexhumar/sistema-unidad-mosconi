@@ -6,12 +6,6 @@ alta_aplicacion_vacuna:
 alta_consulta:
     pattern: /alta/consulta
     defaults: { _controller: SalitaPacienteBundle:ConsultaForm:new }
-    methods: [GET]
-    
-alta_consulta_process:
-    pattern: /alta/consulta
-    defaults: { _controller: SalitaPacienteBundle:ConsultaForm:newProcess }
-    methods: [POST]
     
 alta_estudio:
     pattern: /alta/estudio

@@ -32,13 +32,13 @@ class BusquedaController extends MyController
     				break;
     		}
     		return $this->render(
-    				'SalitaPacienteBundle:Busqueda:resultado.html.twig',
-    				array('pacientes' => $pacientes)
-    		);
+    					'SalitaPacienteBundle:Busqueda:resultado.html.twig',
+    					array('pacientes' => $pacientes)
+    				);
     	}
     	return $this->render(
-    			'SalitaPacienteBundle:Busqueda:ingresoDatos.html.twig',
-    			array('form' => $form->createView())
-    	);
+    				'SalitaPacienteBundle:Busqueda:ingresoDatos.html.twig',
+    				array('form' => $form->createView())
+    			);
     }
 }
