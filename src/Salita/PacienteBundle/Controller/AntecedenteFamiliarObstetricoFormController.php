@@ -28,7 +28,7 @@ class AntecedenteFamiliarObstetricoFormController extends MyController
     		$em->flush();
     		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
     		$session->set('mensaje', $mensaje);
-    		return $this->render($this->generateUrl('resultado_operacion_paciente'));
+    		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(
     				'SalitaPacienteBundle:AntecedenteFamiliarObstetricoForm:modif.html.twig',
