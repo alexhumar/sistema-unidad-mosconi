@@ -17,10 +17,12 @@ class SessionManager
 		if($nextAction = "resultado_operacion")
 		{
 		    $this->session->set('mensaje', $mensaje);
+		    return true;
 		}
 		else
 		{
 			$this->session->getFlashBag()->add('mensaje', $mensaje);
+			return false;
 		}
 	}
 }
