@@ -22,7 +22,6 @@ class PlanProcRespFormController extends MyController
    			$paciente = $session->get('paciente');
    			$this->getPersistenceManager()->savePlanProcreacionResponsable($plan, $paciente);
    			$mensaje = 'El plan del paciente se agrego exitosamente';
-   			$session = $this->getSession();
    			$session->set('mensaje', $mensaje);
    			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
@@ -60,8 +59,8 @@ class PlanProcRespFormController extends MyController
 
     function listAction()
     {
-        $session = $this->getSession();
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
+        $session = $this->getSession();
         $planes = $repoPlanes->findAllById($session->get('paciente')->getId());
         return $this->render(
         			'SalitaPlanBundle:PlanProcRespForm:listado.html.twig',
@@ -71,8 +70,8 @@ class PlanProcRespFormController extends MyController
 
     function listDesAction()
     {
-        $session = $this->getSession();
         $repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
+        $session = $this->getSession();
         $planes = $repoPlanes->findAllByIdDes($session->get('paciente')->getId());
         return $this->render(
         			'SalitaPlanBundle:PlanProcRespForm:listadoDes.html.twig',

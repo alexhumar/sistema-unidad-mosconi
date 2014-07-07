@@ -5,6 +5,7 @@ use Salita\OtrosBundle\Clases\MyController;
 
 class MensajesController extends MyController
 {
+	
     /* Debe ser utilizado dentro de PacienteBundle para generar los mensajes cuyo template extienda de
      * PacienteBundle::base.html.twig, para visualizar el menu (nav) de paciente */
     public function resultadoAction()

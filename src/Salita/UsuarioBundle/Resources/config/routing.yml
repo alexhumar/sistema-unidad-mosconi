@@ -68,8 +68,3 @@ seleccion_usuario:
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:seleccionar }
     requirements:
         id: \d+
-    
-resultado_operacion_usuario:
-    pattern: /resultado/operacion/usuario
-    defaults: { _controller: SalitaUsuarioBundle:Mensajes:resultado }
-    methods: [GET]
