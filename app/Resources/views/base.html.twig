@@ -32,19 +32,6 @@
                     
                       {% block cuerpomenu %}
                         {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig', { medicoexpression: medicoexpression }) }}
-                   {#     {% if is_granted(expression(adminexpression)) %}
-                          {% block opcionesMenuAdministrador %}
-                            {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
-                          {% endblock %}
-                        {% elseif is_granted(expression(secretariaexpression)) %}
-                          {% block opcionesMenuSecretaria %}
-                            {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
-                          {% endblock %}
-                        {% elseif is_granted(expression(medicoexpression)) %}
-                          {% block opcionesMenuMedico %}
-                            {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig') }}
-                          {% endblock %}
-                        {% endif %} #}
                       {% endblock %}
  
                     {% endif %}
