@@ -7,6 +7,10 @@ body {
   background-color: #eee;
 }
 
+body {
+  padding-top: 75px;
+}
+
 #wrap {
   min-height: 100%;
   height: auto !important;
