@@ -1,0 +1,12 @@
+body {
+  padding-top: 75px;
+}
+
+.panel {
+  max-width: 380px;
+  margin-left: 25px;
+}
+
+.panel-body {
+  min-height: 130px;
+}
