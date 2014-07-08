@@ -1,12 +1,35 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset( 'css/principal/principal.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
      {% set usuario = app.session.get('usuario') %}
      {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
      {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
 
+     <div class="row">
+
      {% if usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) %}
-     <div class="subtituloMenu">
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">Usuarios</h3>
+           </div>
+           <div class="panel-body">
+             <div><a href="{{path('fos_user_registration_register')}}">Agregar usuario</a></div>
+             <div><a href="{{path('listado_usuario')}}">Administrar roles</a></div>
+             <div><a href="{{path('listado_administrador')}}">Listar administradores</a></div>
+             <div><a href="{{path('listado_medico')}}">Listar medicos</a></div>
+             <div><a href="{{path('listado_secretaria')}}">Listar secretarias</a></div>
+           </div>
+         </div>
+       </div>
+
+  {#   <div class="subtituloMenu">
           Usuarios:
      </div>
 
@@ -25,9 +48,32 @@
      </div>
      <div class="opcionMenu">
           <a href="{{path('listado_secretaria')}}">Listar secretarias</a>
-     </div>
-     {% endif %} {# If usuario es administrador #}
+     </div> #}
+     {% endif %}  {# If usuario es administrador #}
 
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">Pacientes</h3>
+           </div>
+           <div class="panel-body">
+             <div><a href="{{path('alta_paciente')}}">Alta de paciente</a></div>
+           </div>
+         </div>
+       </div>
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">Barrios</h3>
+           </div>
+           <div class="panel-body">
+             <div><a href="{{path('alta_barrio')}}">Alta de barrio</a></div>
+           </div>
+         </div>
+       </div>
+
+{#
      <div class="subtituloMenu">
           Pacientes:
      </div>
@@ -40,9 +86,33 @@
      </div>
      <div class="opcionMenu">
           <a href="{{path('alta_barrio')}}">Alta de barrio</a>
-     </div>
+     </div> #}
 
      {% if not(usuario.isAuthenticatedSecretaria(codigoRolSeleccionado)) %}
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">Estudios Ginecologicos</h3>
+           </div>
+           <div class="panel-body">
+             <div><a href="{{path('alta_metodoestudio')}}">Alta de metodo de estudio ginecologico</a></div>
+           </div>
+         </div>
+       </div>
+
+       <div class="col-sm-4">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h3 class="panel-title">Plan Procreacion Responsable</h3>
+           </div>
+           <div class="panel-body">
+             <div><a href="{{path('alta_metodoanticonceptivo')}}">Alta de metodo anticonceptivo</a></div>
+           </div>
+         </div>
+       </div>
+
+{#
      <div class="subtituloMenu">
           Estudios Ginecologicos:
      </div>
@@ -56,5 +126,8 @@
      <div class="opcionMenu">
           <a href="{{path('alta_metodoanticonceptivo')}}">Alta de metodo anticonceptivo</a>
      </div>
+#}
      {% endif %}
+
+     </div> {# end div class row #}
 {% endblock %}
