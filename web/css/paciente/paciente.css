@@ -1,0 +1,13 @@
+body {
+  padding-top: 35px;
+}
+
+.panel {
+  margin-left: 25px;
+  max-width: 380px;
+  min-height: 115px;
+}
+
+.page-header {
+  text-align: center;
+}

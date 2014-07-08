@@ -4,17 +4,24 @@
 
 {# Si el usuario no ingreso como secretaria... #}
 {% if not(is_granted(expression(secretariaexpression))) %}
-  <div class="subtituloMenu">
+{#  <div class="subtituloMenu">
     Vacunacion:
   </div>
   <ul>
-    <div class="opcionMenu">
+    <div class="opcionMenu"> #}
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Vacunacion</h3>
+      </div>
+      <div class="panel-body">
   {# Si el usuario ingreso como administrador o como medico y, es pediatra o es clinico... #}
   {% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
      and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
-      <li><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></li>
+        <div><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></div>
   {% endif %}
-      <li><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></li>
+        <div><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></div>
+      </div>
     </div>
-  </ul>
+  </div>
 {% endif %}

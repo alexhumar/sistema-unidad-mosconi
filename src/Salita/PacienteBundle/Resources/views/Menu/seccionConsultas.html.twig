@@ -5,7 +5,19 @@
 {# Si el usuario ingreso como administrador, o como medico y, es clinico o pediatra... #}
 {% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
       and (usuario.isClinicoSession(codigoEspecialidad) or usuario.isPediatraSession(codigoEspecialidad)))) %}
-  <div class="subtituloMenu">
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Consultas</h3>
+      </div>
+      <div class="panel-body">
+        <div><a href="{{path('alta_consulta')}}">Registrar una consulta</a></div>
+      </div>
+    </div>
+  </div>  
+
+{#
+<div class="subtituloMenu">
     Consultas:
   </div>
   <ul>
@@ -13,4 +25,5 @@
       <li><a href="{{path('alta_consulta')}}">Registrar una consulta</a></li>
     </div>
   </ul>
+#}
 {% endif %}

@@ -1,19 +1,23 @@
 {# Recibe como parametros: medicoexpression #}
 
+{#
 <div class="subtituloMenu">
   Turnos:
 </div>
+#}
+
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Turnos</h3>
+      </div>
+      <div class="panel-body">
 {# Si ingreso como medico... #}
 {% if is_granted(expression(medicoexpression)) %}
-  <ul>
-    <div class="opcionMenu">
-      <li><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno</a></li>
-    </div>
-  </ul>
+        <div><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno con fecha</a></div>
 {% else %}
-  <ul>
-    <div class="opcionMenu">
-      <li><a href="{{path('alta_turno')}}">Agregar un turno</a></li>
-    </div>
-  </ul>
+        <div><a href="{{path('alta_turno')}}">Agregar un turno inmediato</a></div>
 {% endif %}
+      </div>
+    </div>
+  </div>

@@ -1,5 +1,10 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/principal/principal.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
    {# ATENCION: si no hago los seteos dentro del block contenido, no funcionan los metodos.
       NO SE POR QUE PASA ESTO, DEBE SER UNA CUESTION DE CONTEXTO...
@@ -16,6 +21,12 @@
    {% else %}
      {% set codigoEspecialidad = 'NO_TIENE' %}
    {% endif %}
+   {% set paciente = app.session.get('paciente') %}
+
+   <div class="tituloMenu">
+     <h3>Menu de opciones del paciente {{paciente.nombre}} {{paciente.apellido}}:</h3>
+   </div>
+   <br>
 
   {{ include('SalitaPacienteBundle:Menu:seccionDatosFiliatorios.html.twig') }}
 
