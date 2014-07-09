@@ -1,8 +1,6 @@
 {% extends "::basemenupaciente.html.twig" %}
 
 {# Toda esta parte sobreescribe las opciones del menu definidas en ::base.html.twig #}
-{% block navbarposition %} navbar-right {% endblock %}
-
 {% block menuIncludes %}
   {{ include('SalitaPacienteBundle:OpcionesMenu:opciones.html.twig') }}
 {% endblock %}
