@@ -10,3 +10,11 @@
     </div>
 {% endspaceless %}
 {% endblock form_row %}
+
+{% block form %}
+{% spaceless %}
+    {{ form_start(form, { 'attr': { 'class': 'form-inline', 'role': 'form' } }) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endspaceless %}
+{% endblock form %}
