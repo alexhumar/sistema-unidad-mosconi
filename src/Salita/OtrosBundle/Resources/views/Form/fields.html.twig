@@ -32,7 +32,7 @@
     {% endif %}
     {# Si es un submit le agrega las clases btn, btn-primary #}
     {% if type == 'submit' %}
-      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
+      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary btn-inline')|trim}) %}
     {% endif %}
     <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
 {% endspaceless %}
