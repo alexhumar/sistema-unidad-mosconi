@@ -6,7 +6,7 @@
 	<h3>Ingresar al sistema como</h3>
     <br/>
     {#{{ form(form) }}#}
-    {{ form_start(form, { 'attr': { 'class': 'form-horizontal', 'role': 'form' } }) }}
+    {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-6">
         {{ form_row(form.nombre) }}
