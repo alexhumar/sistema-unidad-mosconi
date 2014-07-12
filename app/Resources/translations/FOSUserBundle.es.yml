@@ -7,8 +7,8 @@ group.flash.created: El grupo ha sido creado
 group.flash.deleted: El grupo ha sido borrado
 
 # Security
-security.login.username: "Nombre de usuario:"
-security.login.password: "Contraseña:"
+security.login.username: "Nombre de usuario"
+security.login.password: "Contraseña"
 security.login.remember_me: Recordar
 security.login.submit: Iniciar sesion
 
@@ -63,25 +63,25 @@ layout.register: Registrar
 layout.logged_in_as: Entrado como %username%
 
 # Form field labels
-fos_user_group_form_name: "Nombre de grupo:"
+fos_user_group_form_name: "Nombre de grupo"
 
-fos_user_profile_form_user_username: "Nombre de usuario:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Actual contraseña:"
+fos_user_profile_form_user_username: "Nombre de usuario"
+fos_user_profile_form_user_email: "Correo electronico"
+fos_user_profile_form_current: "Actual contraseña"
 
-fos_user_registration_form_username: "Nombre de usuario:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Contraseña:"
-fos_user_registration_form_plainPassword_second: "Verificación:"
-fos_user_registration_form_nombre: "Nombre:"
+fos_user_registration_form_username: "Nombre de usuario"
+fos_user_registration_form_email: "Correo electronico"
+fos_user_registration_form_plainPassword_first: "Contraseña"
+fos_user_registration_form_plainPassword_second: "Verificación"
+fos_user_registration_form_nombre: "Nombre"
 fos_user_registration_form_apellido: "Apellido"
 fos_user_registration_form_telefono: "Telefono"
 fos_user_registration_form_matricula: "Matricula"
 
-fos_user_resetting_form_new_first: "Nueva contraseña:"
-fos_user_resetting_form_new_second: "Verificación:"
+fos_user_resetting_form_new_first: "Nueva contraseña"
+fos_user_resetting_form_new_second: "Verificación"
 
-fos_user_change_password_form_new_first: "Nueva contraseña:"
-fos_user_change_password_form_new_second: "Verificación:"
-fos_user_change_password_form_current: "Actual contraseña:"
+fos_user_change_password_form_new_first: "Nueva contraseña"
+fos_user_change_password_form_new_second: "Verificación"
+fos_user_change_password_form_current: "Actual contraseña"
 
