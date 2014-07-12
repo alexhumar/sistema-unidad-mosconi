@@ -9,12 +9,15 @@
         {% set required = false %}
     {% endif %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
-    {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" %}
+    {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
+    {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" or
+       id == "modificacionDatosFiliatorios_fechaNacimiento_month" or
+       id == "modificacionDatosFiliatorios_fechaNacimiento_year" %}
       {% set col = "col-sm-2" %}
     {% else %}
       {% set col = "col-sm-8" %}
     {% endif %}
-    <div class="{{ col }}">
+    <div class="{{ col }}"> {# Fin de la modificacion #}
       <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
           {% if empty_value is not none %}
               <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
