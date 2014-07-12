@@ -9,7 +9,7 @@
         {% set required = false %}
     {% endif %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
-    {% if attr.id == "modificacionDatosFiliatorios_fechaNacimiento_day" %}
+    {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" %}
       {% set col = "col-sm-2" %}
     {% else %}
       {% set col = "col-sm-8" %}
