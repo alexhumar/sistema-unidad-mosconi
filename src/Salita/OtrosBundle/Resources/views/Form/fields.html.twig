@@ -6,6 +6,7 @@
    , { 'attr': { 'class': 'form-control' } }
    #}
 
+{#
 {% block form_row %}
 {% spaceless %}
         {{ form_label(form) }}
@@ -13,6 +14,7 @@
         {{ form_widget(form) }}
 {% endspaceless %}
 {% endblock form_row %}
+#}
 
 
 {% block form %}
