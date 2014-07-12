@@ -1,10 +1,13 @@
 {# Codigo para generar un widget de un form de forma personalizada, con su label y errores incluidos.
-   Se expuso para ser usado globalmente en app/config.yml, bajo la seccion twig. #}
+   Se expuso para ser usado globalmente en app/config.yml, bajo la seccion twig. 
+   
+   , { 'label_attr': { 'class': 'control-label' } }
+   #}
 
 {% block form_row %}
 {% spaceless %}
     <div class="form-group">
-        {{ form_label(form, { 'label_attr': { 'class': 'control-label' } }) }}
+        {{ form_label(form) }}
         {{ form_errors(form) }}
         <div class="col-sm-10">
           {{ form_widget(form, { 'attr': { 'class': 'form-control' } }) }}
@@ -21,3 +24,21 @@
     {{ form_end(form) }}
 {% endspaceless %}
 {% endblock form %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label')|trim}) %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
