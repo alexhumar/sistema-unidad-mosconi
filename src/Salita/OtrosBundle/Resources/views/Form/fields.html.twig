@@ -34,7 +34,11 @@
     {% if type == 'submit' %}
       {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
     {% endif %}
-    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+    <div class="col-sm-offset-2">
+      <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        {{ label|trans({}, translation_domain) }}
+      </button>
+    </div>
 {% endspaceless %}
 {% endblock button_widget %}
 
@@ -42,7 +46,9 @@
 {% spaceless %}
     {% set type = type|default('text') %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <div class="col-sm-6">
+      <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
 {% endspaceless %}
 {% endblock form_widget_simple %}
 
@@ -62,7 +68,11 @@
            de label_attr falla.
          #}
         {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label col-sm-2')|trim}) %}
-        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+        <div class="col-sm-2">
+          <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ label|trans({}, translation_domain) }}
+          </label>
+        </div>
     {% endif %}
 {% endspaceless %}
 {% endblock form_label %}
