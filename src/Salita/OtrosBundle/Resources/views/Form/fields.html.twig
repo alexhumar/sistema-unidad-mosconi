@@ -2,6 +2,8 @@
    Se expuso para ser usado globalmente en app/config.yml, bajo la seccion twig. 
    
    , { 'label_attr': { 'class': 'control-label' } }
+
+   , { 'attr': { 'class': 'form-control' } }
    #}
 
 {% block form_row %}
@@ -9,7 +11,7 @@
     <div class="form-group">
         {{ form_label(form) }}
         {{ form_errors(form) }}
-        {{ form_widget(form, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_widget(form) }}
     </div>
 {% endspaceless %}
 {% endblock form_row %}
@@ -35,6 +37,14 @@
     <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
 {% endspaceless %}
 {% endblock button_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
 
 {% block form_label %}
 {% spaceless %}
