@@ -19,7 +19,7 @@ class MetodoAnticonceptivoFormController extends MyController
    		{
    			$this->getPersistenceManager()->saveMetodoAnticonceptivo($metodo);
    			$nextAction = $form->get('guardarynuevo')->isClicked()
-   			    ? 'alta_barrio'
+   			    ? 'alta_metodoanticonceptivo'
    			    : 'resultado_operacion';
    			$mensaje = 'El metodo anticonceptivo se cargo exitosamente en el sistema';
    			$sessionManager = $this->getSessionManager();
