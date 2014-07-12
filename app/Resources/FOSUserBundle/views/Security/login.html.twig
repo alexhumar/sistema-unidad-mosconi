@@ -15,14 +15,6 @@
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
 
-{% block form %}
-{% spaceless %}
-    {{ form_start(form, { 'attr': { 'class': 'form-signin', 'role': 'form' } }) }}
-        {{ form_widget(form) }}
-    {{ form_end(form) }}
-{% endspaceless %}
-{% endblock form %}
-
 {# ATENCION: este form se genera demasiado a mano. Habria que ver una forma de generarlo elegantemente. #}
 
 <div class="panel panel-primary">
