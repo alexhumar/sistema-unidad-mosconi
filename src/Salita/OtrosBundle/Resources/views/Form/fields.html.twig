@@ -46,7 +46,7 @@
 {% spaceless %}
     {% set type = type|default('text') %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
     </div>
 {% endspaceless %}
@@ -68,7 +68,7 @@
            de label_attr falla.
          #}
         {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label col-sm-2')|trim}) %}
-        <div class="col-sm-2">
+        <div class="col-sm-4">
           <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
             {{ label|trans({}, translation_domain) }}
           </label>
