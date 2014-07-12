@@ -12,7 +12,9 @@
         {{ form_row(form.nombre) }}
       </div>
       <div class="form-group col-sm-6">
-        {{ form_row(form.asignar) }}
+        <div class="col-sm-offset-6">
+          {{ form_row(form.asignar) }}
+        </div>
       </div>
     {{ form_end(form) }}
 {% endblock %}
