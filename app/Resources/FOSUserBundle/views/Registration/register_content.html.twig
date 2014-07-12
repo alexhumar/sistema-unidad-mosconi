@@ -1,4 +1,11 @@
-{{ form(form) }}
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <p class="panel-title">Registro de usuario</p>
+  </div>
+  <div class="panel-body">
+    {{ form(form) }}
+  </div>
+</div>
 {#
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
