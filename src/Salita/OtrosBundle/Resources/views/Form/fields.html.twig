@@ -13,6 +13,7 @@
 {% endspaceless %}
 {% endblock form_row %}
 
+
 {% block form %}
 {% spaceless %}
     {{ form_start(form, { 'attr': { 'class': 'form-horizontal', 'role': 'form' } }) }}
@@ -27,9 +28,6 @@
         {% if not compound %}
             {% set label_attr = label_attr|merge({'for': id}) %}
         {% endif %}
-        {% if required %}
-            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-        {% endif %} 
         {% if label is empty %}
             {% set label = name|humanize %}
         {% endif %}
