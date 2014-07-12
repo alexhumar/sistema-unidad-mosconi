@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/paciente/alta.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
 {% form_theme form _self %}
 
