@@ -1,5 +1,34 @@
 {% extends "::base.html.twig" %}
 
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+        {% set required = false %}
+    {% endif %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% if attr.id == "modificacionDatosFiliatorios_fechaNacimiento_day" %}
+      {% set col = "col-sm-2" %}
+    {% else %}
+      {% set col = "col-sm-8" %}
+    {% endif %}
+    <div class="{{ col }}">
+      <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+          {% if empty_value is not none %}
+              <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+          {% endif %}
+          {% if preferred_choices|length > 0 %}
+              {% set options = preferred_choices %}
+              {{ block('choice_widget_options') }}
+              {% if choices|length > 0 and separator is not none %}
+                  <option disabled="disabled">{{ separator }}</option>
+              {% endif %}
+          {% endif %}
+          {% set options = choices %}
+          {{ block('choice_widget_options') }}
+      </select>
+    </div>
+{% endspaceless %}
+
 {% block contenido %}
  {# {{ form(form) }} #}
 
