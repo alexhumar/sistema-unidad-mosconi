@@ -25,6 +25,16 @@
 {% endspaceless %}
 {% endblock form %}
 
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% if type = 'submit' %}
+      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
+    {% endif %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
 {% block form_label %}
 {% spaceless %}
     {% if label is not sameas(false) %}
