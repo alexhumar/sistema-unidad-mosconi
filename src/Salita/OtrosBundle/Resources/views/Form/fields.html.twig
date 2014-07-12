@@ -30,9 +30,9 @@
     {% if label is empty %}
         {% set label = name|humanize %}
     {% endif %}
-    {# Si es un submit le agrega las clases btn, btn-primary y btn-block #}
+    {# Si es un submit le agrega las clases btn, btn-primary y btn-lg #}
     {% if type == 'submit' %}
-      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary btn-block')|trim}) %}
+      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary btn-lg')|trim}) %}
     {% endif %}
     <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
 {% endspaceless %}
