@@ -8,7 +8,7 @@
 
 {% block form_row %}
 {% spaceless %}
-    <div class="form-group col-sm-8">
+    <div>
         {{ form_label(form) }}
         {{ form_errors(form) }}
         {{ form_widget(form) }}
@@ -62,7 +62,7 @@
         {% if label is empty %}
             {% set label = name|humanize %}
         {% endif %}
-        {# Es la unica forma que encontre de agregar las clases control-label y col-sm-2. Si lo hago a traves
+        {# Es la unica forma que encontre de agregar las clases control-label y col-sm-12. Si lo hago a traves
            de label_attr falla.
          #}
         {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label col-sm-12')|trim}) %}
