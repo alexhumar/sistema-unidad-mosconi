@@ -6,9 +6,7 @@
     <div class="form-group">
         {{ form_label(form) }}
         {{ form_errors(form) }}
-        <div class="col-sm-10">
-          {{ form_widget(form, { 'attr': { 'class': 'form-control' } }) }}
-        </div>
+        {{ form_widget(form, { 'attr': { 'class': 'form-control' } }) }}
     </div>
 {% endspaceless %}
 {% endblock form_row %}
