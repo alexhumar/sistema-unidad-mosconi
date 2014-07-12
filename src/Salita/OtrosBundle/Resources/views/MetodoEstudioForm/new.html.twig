@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/metodoestudio/alta.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
     <h3>Alta de metodo de estudio</h3>
     <br/>
