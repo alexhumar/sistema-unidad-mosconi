@@ -6,16 +6,6 @@
    , { 'attr': { 'class': 'form-control' } }
    #}
 
-{#
-{% block form_row %}
-{% spaceless %}
-        {{ form_label(form) }}
-        {{ form_errors(form) }}
-        {{ form_widget(form) }}
-{% endspaceless %}
-{% endblock form_row %}
-#}
-
 {% block form %}
 {% spaceless %}
     {{ form_start(form, { 'attr': { 'class': 'form-horizontal', 'role': 'form' } }) }}

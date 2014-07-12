@@ -8,8 +8,6 @@
     <title>{% block title %} Unidad Mosconi {% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     {% block stylesheets %}
-    {#  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/miEstilo.css') }}" rel="stylesheet" type="text/css" /> #}
     <style type="text/css"></style>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet"/>
@@ -35,7 +33,6 @@
             </button>
             <a class="navbar-brand" href="#">Unidad mosconi</a>
           </div>
-    {#      {% block menu %} #}
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
             {% block menu %}
@@ -53,7 +50,6 @@
             {% endblock %}
             </ul>
           </div> {# cierre de nav-collapse #}
-     {#     {% endblock %}  #}
         </div>
       </header>
       {% endblock %}
@@ -67,48 +63,6 @@
         <p class="navbar-brand">Facultad de informatica - UNLP</p>
       </div>
     </footer>
-    {% endblock %} 
-
-{#
-        <div id="header-wrapper">
-          <div id="header">
-              <div id="logo">
-                  <h1><a href="#">Unidad Mosconi</a></h1>
-                      <p>Facultad de informatica UNLP</a></p>
-              </div>
-
-              {% block menu %}
-                <div id="menu">
-                  <ul>
-                    {% block menuIncludes %} {% endblock %}
-                   
-                    {% if codigoRolSeleccionadoQuotes is defined %}
-                      {% set adminexpression = 'user and user.isAuthenticatedAdministrador(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
-                      {% set medicoexpression = 'user and user.isAuthenticatedMedico(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
-                      {% set secretariaexpression = 'user and user.isAuthenticatedSecretaria(' ~ codigoRolSeleccionadoQuotes ~ ')' %}
-                    
-                      {% block cuerpomenu %}
-                        {{ include('SalitaUsuarioBundle:Menu:opciones.html.twig', { medicoexpression: medicoexpression }) }}
-                      {% endblock %}
- 
-                    {% endif %}
-                    
-                 </ul>
-                </div>
-              {% endblock %}
-          </div>
-        </div>
-
-#}
-        
-{#        <div id="contenido">
-        <br>
-        {% block contenido %} {% endblock %}
-        <br>
-        </div>  #}
-        
-{#        <div id="footer">
-	     <p>Unidad Mosconi</p>
-        </div> #}
+    {% endblock %}
   </body>
 </html>

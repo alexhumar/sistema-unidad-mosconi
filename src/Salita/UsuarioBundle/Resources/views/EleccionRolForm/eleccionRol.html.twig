@@ -3,6 +3,13 @@
 {% block menu %} {% endblock %}
 
 {% block contenido %}
-	<h3>Ingresar al sistema como:</h3>
-	{{ form(form) }}
+	<h3>Ingresar al sistema como</h3>
+    <br/>
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-6"
+        {{ form_row(form.especialidad) }}
+      </div>
+    {{ form_end(form) }}
 {% endblock %}
