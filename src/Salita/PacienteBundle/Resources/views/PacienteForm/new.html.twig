@@ -2,4 +2,63 @@
 
 {% block contenido %}
   {{ form(form) }}
+
+  {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group col-sm-8">
+      {{ form_row(form.tipoDocumento) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.nroDoc) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.nombre) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.apellido) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.fechaNacimiento) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.sexo) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.telefonoFijo) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.telefonoMovil) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.pais) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.partido) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.localidad) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.barrio) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calle) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.numero) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calleEntre1) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calleEntre2) }}
+    </div>
+
+    <div class="form-group col-sm-8">
+      <div class="col-sm-offset-6">
+        {{ form_row(form.guardar) }}
+      </div>
+    </div>
+{{ form_end(form) }}
 {% endblock %}
