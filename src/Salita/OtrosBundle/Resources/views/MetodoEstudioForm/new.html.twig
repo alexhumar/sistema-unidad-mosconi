@@ -1,10 +1,23 @@
 {% extends "::base.html.twig" %}
 
 {% block contenido %}
-	{{ form(form) }}
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+
+      <div class="form-group col-sm-8">
+        {{ form_row(form.nombre) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.guardar) }}
+          {{ form_row(form.guardarynuevo) }}
+        </div>
+      </div>
+
+    {{ form_end(form) }}
 
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
-		<div class="flash-message">
+		<div class="alert alert-success" role="alert">
 			{{ flashMessage }}
 		</div>
 	{% endfor %}

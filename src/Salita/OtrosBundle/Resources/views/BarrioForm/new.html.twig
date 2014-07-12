@@ -12,7 +12,6 @@
 
         {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
      #}
-  {#  {{ form(form) }} #}
     <h3>Alta de barrio</h3>
     <br/>
     {{ form_start(form) }}
@@ -32,7 +31,7 @@
     {{ form_end(form) }}
 
 	{% for flashMessage in app.session.flashbag.get('mensaje') %}
-		<div class="flash-message">
+		<div class="alert alert-success" role="alert">
 			{{ flashMessage }}
 		</div>
 	{% endfor %}
