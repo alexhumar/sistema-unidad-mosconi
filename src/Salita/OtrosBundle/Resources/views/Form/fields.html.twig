@@ -23,6 +23,14 @@
 {% endspaceless %}
 {% endblock form_start %}
 
+{% block form_row %}
+{% spaceless %}
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+{% endspaceless %}
+{% endblock form_row %}
+
 {% block choice_widget_collapsed %}
 {% spaceless %}
     {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
