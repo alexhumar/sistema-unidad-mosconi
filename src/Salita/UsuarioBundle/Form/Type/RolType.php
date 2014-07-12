@@ -24,7 +24,9 @@ class RolType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre','choice', array('choices' => $this->getRoles(),'required' => true))
+        $builder->add('nombre','choice', array('choices' => $this->getRoles(),
+        		                               'required' => true,
+                                               'label' => 'Rol'))
         		->add('asignar', 'submit');
     }
 
