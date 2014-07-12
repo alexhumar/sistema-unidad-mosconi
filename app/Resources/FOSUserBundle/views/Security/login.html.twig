@@ -15,13 +15,21 @@
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
 
+{% block form %}
+{% spaceless %}
+    {{ form_start(form, { 'attr': { 'class': 'form-signin', 'role': 'form' } }) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endspaceless %}
+{% endblock form %}
+
 {# ATENCION: este form se genera demasiado a mano. Habria que ver una forma de generarlo elegantemente. #}
 
 <div class="panel panel-primary">
   <div class="panel-heading">
     <p class="panel-title">Inicio de sesion</p>
   </div>
-  <div class="panel-body">
+  <div class="panel-body">  
     <form class="form-signin" role="form" action="{{ path("fos_user_security_check") }}" method="post">
       <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
