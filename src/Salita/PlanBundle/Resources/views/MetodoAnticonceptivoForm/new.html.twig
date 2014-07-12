@@ -20,6 +20,11 @@
           {{ form_row(form.guardarynuevo) }}
         </div>
       </div>
-
     {{ form_end(form) }}
+
+	{% for flashMessage in app.session.flashbag.get('mensaje') %}
+		<div class="alert alert-success" role="alert">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
 {% endblock %}
