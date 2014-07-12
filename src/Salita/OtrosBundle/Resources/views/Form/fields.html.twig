@@ -34,13 +34,9 @@
     {% if type == 'submit' %}
       {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
     {% endif %}
-    <div class="form-group col-sm-8">
-      <div class="col-sm-offset-6">
-        <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
-          {{ label|trans({}, translation_domain) }}
-        </button>
-      </div>
-    </div>
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+      {{ label|trans({}, translation_domain) }}
+    </button>
 {% endspaceless %}
 {% endblock button_widget %}
 

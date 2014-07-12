@@ -8,8 +8,11 @@
     {{ form_row(form.apellido) }}
     {{ form_row(form.telefono) }}
     {{ form_row(form.matricula) }}
-
-    {{ form_row(form.registrar) }}
+    <div class="form-group col-sm-8">
+      <div class="col-sm-offset-6">
+        {{ form_row(form.registrar) }}
+      </div>
+    </div>
 
 {{ form_end(form) }}
 {#
