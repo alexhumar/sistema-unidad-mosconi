@@ -15,7 +15,8 @@ class RegistroFormType extends BaseType
             ->add('nombre')
             ->add('apellido')
             ->add('telefono')
-            ->add('matricula');
+            ->add('matricula')
+            ->add('registrar', 'submit');
     }
 
     public function getName()
