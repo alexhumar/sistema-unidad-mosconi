@@ -1,5 +1,8 @@
 {% extends "::base.html.twig" %}
 
+{# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
+{% form theme form _self %}
+
 {% block choice_widget_collapsed %}
 {% spaceless %}
     {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
@@ -28,6 +31,7 @@
       </select>
     </div>
 {% endspaceless %}
+{% endblock choice_widget_collapsed %}
 
 {% block contenido %}
  {# {{ form(form) }} #}
