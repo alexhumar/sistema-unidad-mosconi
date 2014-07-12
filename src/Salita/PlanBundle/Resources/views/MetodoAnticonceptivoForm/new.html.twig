@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/metodoanticonceptivo/alta.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
     <h3>Alta de metodo anticonceptivo</h3>
     <br/>
