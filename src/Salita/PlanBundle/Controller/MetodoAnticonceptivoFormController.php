@@ -18,10 +18,13 @@ class MetodoAnticonceptivoFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->saveMetodoAnticonceptivo($metodo);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   			    ? 'alta_barrio'
+   			    : 'resultado_operacion';
    			$mensaje = 'El metodo anticonceptivo se cargo exitosamente en el sistema';
-   			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion'));
+   			$sessionManager = $this->getSessionManager();
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		return $this->render(
            			'SalitaPlanBundle:MetodoAnticonceptivoForm:new.html.twig',
