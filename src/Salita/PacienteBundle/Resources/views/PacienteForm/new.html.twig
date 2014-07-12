@@ -11,8 +11,9 @@
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
     {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
     {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" or
-       id == "modificacionDatosFiliatorios_fechaNacimiento_month" or
-       id == "modificacionDatosFiliatorios_fechaNacimiento_year" %}
+       id == "modificacionDatosFiliatorios_fechaNacimiento_month" %}
+      {% set col = "col-sm-3" %}
+    {% elseif id == "modificacionDatosFiliatorios_fechaNacimiento_year" %}
       {% set col = "col-sm-2" %}
     {% else %}
       {% set col = "col-sm-8" %}
