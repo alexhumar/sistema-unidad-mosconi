@@ -25,9 +25,9 @@
 
 {% block form_row %}
 {% spaceless %}
-        {{ form_label(form) }}
-        {{ form_errors(form) }}
-        {{ form_widget(form) }}
+    {{ form_label(form) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
 {% endspaceless %}
 {% endblock form_row %}
 
@@ -55,6 +55,12 @@
     </div>
 {% endspaceless %}
 {% endblock choice_widget_collapsed %}
+
+{% block button_row %}
+{% spaceless %}
+      {{ form_widget(form) }}
+{% endspaceless %}
+{% endblock button_row %}
 
 {% block button_widget %}
 {% spaceless %}
