@@ -25,15 +25,17 @@
 {% endspaceless %}
 {% endblock form %}
 
-{% block form_widget_simple %}
+{% block button_widget %}
 {% spaceless %}
-    {% set type = type|default('text') %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
     {% if type == 'submit' %}
       {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-primary')|trim}) %}
     {% endif %}
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
 {% endspaceless %}
-{% endblock form_widget_simple %}
+{% endblock button_widget %}
 
 {% block form_label %}
 {% spaceless %}
