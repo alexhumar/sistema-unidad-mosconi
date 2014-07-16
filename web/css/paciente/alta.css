@@ -1,7 +1,13 @@
 @CHARSET "UTF-8";
 
-body 
+html, body
 {
   /* Lo hago para que se vea todo el form de alta de paciente */
-  min-height: 160%;
+  /*min-height: 160%;*/
+  height: 100%;
+}
+
+#wrap
+{
+  min-height: 100%;
 }
