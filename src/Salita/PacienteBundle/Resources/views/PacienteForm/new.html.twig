@@ -8,6 +8,12 @@
 {# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
 {% form_theme form _self %}
 
+{# IMPORTANTE: sobreescribo tanto button_widget como form_widget_simple para asignarle a los inputs y 
+               controles la clase input-sm y btn-sm respectivamente, para achicarlos y que el min-height de
+               #wrap sea lo mas bajo posible. Si lo pongo al 100%, no se ve parte del form porque ocupa mas
+               que el alto de la pantalla y no puedo hacer que se vea entero y de la misma manera en una 
+               pantalla full hd y en una 1366x768.
+ #}
 {% block button_widget %}
 {% spaceless %}
     {% if label is empty %}
