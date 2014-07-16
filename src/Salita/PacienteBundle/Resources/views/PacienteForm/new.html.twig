@@ -8,37 +8,6 @@
 {# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
 {% form_theme form _self %}
 
-{# IMPORTANTE: sobreescribo tanto button_widget como form_widget_simple para asignarle a los inputs y 
-               controles la clase input-sm y btn-sm respectivamente, para achicarlos y que el min-height de
-               #wrap sea lo mas bajo posible. Si lo pongo al 100%, no se ve parte del form porque ocupa mas
-               que el alto de la pantalla y no puedo hacer que se vea entero y de la misma manera en una 
-               pantalla full hd y en una 1366x768.
- #}
-{% block button_widget %}
-{% spaceless %}
-    {% if label is empty %}
-        {% set label = name|humanize %}
-    {% endif %}
-    {# Si es un submit le agrega las clases btn, btn-primary #}
-    {% if type == 'submit' %}
-      {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn-sm btn-primary')|trim}) %}
-    {% endif %}
-    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
-      {{ label|trans({}, translation_domain) }}
-    </button>
-{% endspaceless %}
-{% endblock button_widget %}
-
-{% block form_widget_simple %}
-{% spaceless %}
-    {% set type = type|default('text') %}
-    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control input-sm')|trim}) %}
-    <div class="col-sm-8">
-      <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
-    </div>
-{% endspaceless %}
-{% endblock form_widget_simple %}
-
 {% block choice_widget_collapsed %}
 {% spaceless %}
     {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
