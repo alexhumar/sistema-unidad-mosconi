@@ -7,6 +7,16 @@
 
 #}
 {% block contenido %}
+    <h3>Registro de entrega (plan procreacion responsable)</h3>
+    <br/>
 	¿Confirma el registro de entrega?
-	{{ form(form) }}
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-1">
+        <div class="col-sm-offset-1">
+          {{ form_row(form.confirmar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
+	{# {{ form(form) }} #}
 {% endblock %}

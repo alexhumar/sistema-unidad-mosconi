@@ -9,12 +9,11 @@ class BusquedaDiagnosticoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('palabra', null, array('label' => 'Diagnostico'))
-        		->add('guardar', 'submit');
+        		->add('buscar', 'submit', array('label' => 'Buscar diagnostico'));
     }
 
     public function getName()
     {
         return 'busquedaDiagnostico';
     }
-
 }
