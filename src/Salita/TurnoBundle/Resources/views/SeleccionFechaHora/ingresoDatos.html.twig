@@ -3,5 +3,30 @@
 {# Falta modificar el form para hacerlo lindo!! #}
 
 {% block contenido %}
-  {{ form(form) }}
+  {# {{ form(form) }} #}
+    <h3>Selección de fecha y hora para el turno</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-8">
+        {{ form_row(form.dia) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.mes) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.anio) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.hora) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.minutos) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.seleccionar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
 {% endblock %}

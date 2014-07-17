@@ -93,7 +93,7 @@ class FechaYHoraTurnoType extends AbstractType
             ->add('anio', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
             ->add('hora', 'choice', array('label' => 'Hora', 'choices' => $this->getHoras()))
             ->add('minutos', 'choice', array('label' => 'Minuto', 'choices' => $this->getMinutos()))
-            ->add('agregar', 'submit');
+            ->add('seleccionar', 'submit', array('label' => 'Proceder a la carga de turno'));
     }
 
     public function getName()
