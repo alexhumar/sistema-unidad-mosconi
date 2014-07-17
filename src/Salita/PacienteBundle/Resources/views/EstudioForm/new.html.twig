@@ -1,5 +1,32 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/estudio/alta.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
-  {{ form(form) }}
+  {# {{ form(form) }} #}
+    <h3>Alta de estudio</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+
+      <div class="form-group col-sm-8">
+        {{ form_row(form.resultado) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.nroProtocolo) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.metodoEstudio) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.agregar) }}
+        </div>
+      </div>
+
+    {{ form_end(form) }}
+{% endblock %}
 {% endblock %}
