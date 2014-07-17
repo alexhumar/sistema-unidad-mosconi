@@ -11,7 +11,7 @@ class TurnoType extends AbstractType
         $builder->add('especialidad')
         		->add('medicoPreferido', null , array('label' => 'Medico Preferido'))
         		->add('motivo')
-        		->add('guardar', 'submit');
+        		->add('guardar', 'submit', array('label' => 'Guardar turno'));
     }
 
     public function getName()
