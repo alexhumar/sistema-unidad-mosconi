@@ -14,7 +14,8 @@ class SessionManager
 	
 	public function setMensajeResultadoOperacion($nextAction, $mensaje)
 	{
-		if($nextAction == "resultado_operacion")
+		/* Si $nextAction contiene el substring "resultado_operacion" */
+		if(strpos($nextAction, "resultado_operacion") !== false)
 		{
 		    $this->session->set('mensaje', $mensaje);
 		}

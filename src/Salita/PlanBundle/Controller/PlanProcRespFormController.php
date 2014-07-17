@@ -21,9 +21,14 @@ class PlanProcRespFormController extends MyController
    			$session = $this->getSession();
    			$paciente = $session->get('paciente');
    			$this->getPersistenceManager()->savePlanProcreacionResponsable($plan, $paciente);
+   			$nextAction = $form->get('guardarynuevo')->isClicked()
+   			    ? 'alta_planprocresp'
+   			    : 'resultado_operacion_plan';
+   			$sessionManager = $this->getSessionManager();
    			$mensaje = 'El plan del paciente se agrego exitosamente';
-   			$session->set('mensaje', $mensaje);
-   			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);		
+   			//$session->set('mensaje', $mensaje);
+   			return $this->redirect($this->generateUrl($nextAction));
    		}
    		return $this->render(
    					'SalitaPlanBundle:PlanProcRespForm:new.html.twig',

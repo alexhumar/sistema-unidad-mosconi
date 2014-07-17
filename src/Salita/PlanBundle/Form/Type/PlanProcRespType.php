@@ -19,7 +19,8 @@ class PlanProcRespType extends AbstractType
     							                     },
     						      'property' => 'nombre', 
     						      'label' => "Metodo Anticonceptivo"))
-    			->add('guardar', 'submit');
+    			->add('guardar', 'submit')
+                ->add('guardarynuevo', 'submit', array('label' => 'Guardar y nuevo'));
     }
 
     public function getName()
