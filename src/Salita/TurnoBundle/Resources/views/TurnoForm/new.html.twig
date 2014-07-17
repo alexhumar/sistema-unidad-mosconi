@@ -1,5 +1,24 @@
 {% extends "SalitaTurnoBundle::base.html.twig" %}
 
 {% block contenido %}
-	{{ form(form) }}
+	{# {{ form(form) }} #}
+    <h3>Alta de turno inmediato</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-8">
+        {{ form_row(form.especialidad) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.medicoPreferido) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.motivo) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.guardar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
 {% endblock %}
