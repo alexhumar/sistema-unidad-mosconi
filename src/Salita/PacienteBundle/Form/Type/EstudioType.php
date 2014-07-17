@@ -17,7 +17,7 @@ class EstudioType extends AbstractType
     												   'query_builder' => function($repository) { return $repository->createQueryBuilder('m')->orderBy('m.id', 'ASC'); },
     												   'property' => 'nombre', 
                                                        'label' => "Metodo de estudio"))
-            ->add('agregar', 'submit');
+            ->add('agregar', 'submit', array('label' => 'Agregar estudio'));
     }
     
     public function getName()

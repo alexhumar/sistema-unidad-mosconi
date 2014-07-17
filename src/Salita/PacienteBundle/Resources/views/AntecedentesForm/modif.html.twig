@@ -1,5 +1,9 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
+{# ESTE ES UN CASO ESPECIAL... sirve para todos los antecedentes. Necesito, o dividir los templates o ver si
+   en este caso puedo definir los bloques aca (como excepcion) con los divs correspondientes para cada row.
+ #}
+
 {% block contenido %}
   {{ form(form) }}
 {% endblock %}
