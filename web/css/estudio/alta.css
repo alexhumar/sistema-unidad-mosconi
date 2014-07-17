@@ -9,3 +9,8 @@
   width: 560px;
   height: 45px;
 }
+
+/* Para que se alineen los textarea con el select */
+.col-sm-8 {
+  padding-left: 0;
+}
