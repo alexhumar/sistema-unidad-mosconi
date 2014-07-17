@@ -13,7 +13,7 @@ use Salita\UsuarioBundle\Entity\Rol;
 /**
  * @ORM\Entity(repositoryClass="Salita\UsuarioBundle\Repository\UsuarioRepository")
  * @ORM\Table(name="usuario")
- * 
+ * n
  */
 
 class Usuario extends BaseUser

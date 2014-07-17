@@ -3,5 +3,18 @@
 {% block menu %} {% endblock %}
 
 {% block contenido %}
-	{{ form(form) }}
+ {#	{{ form(form) }} #}
+	<h3>Asignacion de especialidad</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-6">
+        {{ form_row(form.especialidad) }}
+      </div>
+      <div class="form-group col-sm-1">
+        <div class="col-sm-offset-1">
+          {{ form_row(form.asignar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
 {% endblock %}

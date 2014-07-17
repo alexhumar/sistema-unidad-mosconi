@@ -4,5 +4,32 @@
     {# Si bien en este caso basta con generarlo con form(form), lo dejo asi para tener una muestra de codigo
        que me indique como se hace en caso de necesitarlo. 
     #}
-	{{ form(form, {'action': path('modif_usuario', { 'id': id })}) }}
+	{# {{ form(form, {'action': path('modif_usuario', { 'id': id })}) }} #}
+    {% set usuario = app.session.get('usuario') %}
+
+	<h3>Modificacion de usuario {{ usuario.getApellido }}, {{ usuario.getNombre }}</h3>
+	</br
+	{{ form_start(form) }}
+	    {{ form_errors(form) }}
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.nombre) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.apellido) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.email) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.telefono) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.matricula) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      <div class="col-sm-offset-6">
+	        {{ form_row(form.modificar) }}
+	      </div>
+	    </div>
+	{{ form_end(form) }}
 {% endblock %}

@@ -1,6 +1,32 @@
 {% extends "::base.html.twig" %}
 
 {% block contenido %}
-	{{ form(form) }}
+	<h3>Modificacion de mis datos</h3>
+	</br
+	{{ form_start(form) }}
+	    {{ form_errors(form) }}
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.nombre) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.apellido) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.email) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.telefono) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      {{ form_row(form.matricula) }}
+	    </div>
+	    <div class="form-group col-sm-8">
+	      <div class="col-sm-offset-6">
+	        {{ form_row(form.modificar) }}
+	      </div>
+	    </div>
+	{{ form_end(form) }}
+
+    <br/>
 	<a href="{{path('fos_user_change_password')}}">Cambiar clave</a>
 {% endblock %}

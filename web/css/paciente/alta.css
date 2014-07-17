@@ -2,6 +2,6 @@
 
 html,body
 {
-  /* Lo hago para que se vea todo el form de alta de paciente */
+  /* Lo hago para que se vea todo el form de alta de paciente, sea cual sea el area de pantalla */
   min-height: 1000px;
 }
