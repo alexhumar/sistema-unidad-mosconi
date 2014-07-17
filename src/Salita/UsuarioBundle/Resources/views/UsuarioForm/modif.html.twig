@@ -5,9 +5,8 @@
        que me indique como se hace en caso de necesitarlo. 
     #}
 	{# {{ form(form, {'action': path('modif_usuario', { 'id': id })}) }} #}
-    {% set usuario = app.session.get('usuario') %}
 
-	<h3>Modificacion de usuario {{ usuario.getApellido }}, {{ usuario.getNombre }}</h3>
+	<h3>Modificacion de usuario {{ form.vars.value.apellido }}, {{ form.vars.value.nombre }}</h3>
 	</br
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
