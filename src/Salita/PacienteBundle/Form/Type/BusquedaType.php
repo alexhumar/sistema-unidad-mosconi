@@ -11,7 +11,7 @@ class BusquedaType extends AbstractType
         $builder
             ->add('palabra','text')
             ->add('criterio','choice',array('choices' => array('DNI' => 'DNI', 'Nombre' => 'Nombre', 'Apellido' => 'Apellido'),'required'  => true,))
-            ->add('buscar', 'submit');
+            ->add('buscar', 'submit', array('label' => 'Buscar paciente'));
     }
 
     public function getName()

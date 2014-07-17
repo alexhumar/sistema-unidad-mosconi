@@ -1,5 +1,21 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-  {{ form(form) }}
+  {# {{ form(form) }} #}
+    <h3>Búsqueda de paciente</h3>
+    <br/>
+    {{ form_start(form) }}
+      {{ form_errors(form) }}
+      <div class="form-group col-sm-8">
+        {{ form_row(form.palabra) }}
+      </div>
+      <div class="form-group col-sm-8">
+        {{ form_row(form.criterio) }}
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="col-sm-offset-6">
+          {{ form_row(form.buscar) }}
+        </div>
+      </div>
+    {{ form_end(form) }}
 {% endblock %}
