@@ -22,6 +22,8 @@ class PacienteFormController extends MyController
    		{
    			$em = $this->getEntityManager();
    			$em->flush();
+   			/* Actualiza el paciente guardado en la sesion */
+   			$session->set('paciente', $paciente);
    			$mensaje = 'La modificacion de los datos del paciente se realizó con exito';
    			$session->set('mensaje', $mensaje);
    			return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
