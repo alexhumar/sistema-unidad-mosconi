@@ -1,5 +1,116 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/paciente/alta.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
+{% form_theme form _self %}
+
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    {% if required and empty_value is none and not empty_value_in_choices and not multiple %}
+        {% set required = false %}
+    {% endif %}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control input-sm')|trim}) %}
+    {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
+    {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" or
+       id == "modificacionDatosFiliatorios_fechaNacimiento_month" %}
+      {% set col = "col-sm-3" %}
+    {% elseif id == "modificacionDatosFiliatorios_fechaNacimiento_year" %}
+      {% set col = "col-sm-2" %}
+    {% else %}
+      {% set col = "col-sm-8" %}
+    {% endif %}
+    <div class="{{ col }}"> {# Fin de la modificacion #}
+      <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+          {% if empty_value is not none %}
+              <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ empty_value|trans({}, translation_domain) }}</option>
+          {% endif %}
+          {% if preferred_choices|length > 0 %}
+              {% set options = preferred_choices %}
+              {{ block('choice_widget_options') }}
+              {% if choices|length > 0 and separator is not none %}
+                  <option disabled="disabled">{{ separator }}</option>
+              {% endif %}
+          {% endif %}
+          {% set options = choices %}
+          {{ block('choice_widget_options') }}
+      </select>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block contenido %}
+
+  <h3>Modificacion de datos filiatorios de paciente</h3>
+  <br/>
+
+  {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group col-sm-8">
+      {{ form_row(form.tipoDocumento) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.nroDoc) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.nombre) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.apellido) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.fechaNacimiento) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.sexo) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.telefonoFijo) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.telefonoMovil) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.pais) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.partido) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.localidad) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.barrio) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calle) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.numero) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calleEntre1) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.calleEntre2) }}
+    </div>
+
+    <div class="form-group col-sm-8">
+      <div class="col-sm-offset-6">
+        {{ form_label(form.guardar, 'Modificar datos filiatorios') }}
+        {{ form_widget(form.guardar) }}
+        {{ form_errors(form.guardar) }}
+      </div>
+    </div>
+{{ form_end(form) }}
+{% endblock %}
+
+{#
 {% block contenido %}
   {{ form(form) }}
 {% endblock %}
+#}
