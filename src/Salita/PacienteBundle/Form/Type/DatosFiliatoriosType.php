@@ -25,7 +25,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
             ->add('calleEntre2', null, array('label' => 'y calle'))
-            ->add('guardar', 'submit', array('label' => 'Registrar paciente'));
+            ->add('guardar', 'submit', array('label' => 'Registrar/modificar datos filiatorios'));
     }
 
     public function getName()
