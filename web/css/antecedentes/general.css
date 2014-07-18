@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
-#wrap {
-  min-height: 640px;
+.form-group {
+	/* Modifica el margin bottom original para que se ajuste, minimamente, a la pantalla de la notebook */
+	margin-bottom: 11px;
 }
