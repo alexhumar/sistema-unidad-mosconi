@@ -1,9 +1,5 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
-{# ESTE ES UN CASO ESPECIAL... sirve para todos los antecedentes. Necesito, o dividir los templates o ver si
-   en este caso puedo definir los bloques aca (como excepcion) con los divs correspondientes para cada row.
- #}
-
 {% block contenido %}
   <h3>Modificacion de antecedente familiar clinico</h3>
   <br/>
@@ -11,20 +7,39 @@
   {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.cardiovascularMenorA55) }}
-    {{ form_row(form.asma) }}
-    {{ form_row(form.trastornosMentales) }}
-    {{ form_row(form.alergias) }}
-    {{ form_row(form.adiccionesTabaquismo) }}
-    {{ form_row(form.infectoContagiosas) }}
-    {{ form_row(form.tuberculosis) }}
-    {{ form_row(form.diabetes) }}
-    {{ form_row(form.hipertensionArterial) }}
-    {{ form_row(form.otros) }}
-
-    {{ form_row(form.modificar) }}
-
+    <div class="form-group col-sm-8">
+      {{ form_row(form.cardiovascularMenorA55) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.asma) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.trastornosMentales) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.alergias) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.adiccionesTabaquismo) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.infectoContagiosas) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.tuberculosis) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.diabetes) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.hipertensionArterial) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.otros) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.modificar) }}
+    </div>
   {{ form_end(form) }}
-
-  {{ form(form) }}
+ {# {{ form(form) }} #}
 {% endblock %}
