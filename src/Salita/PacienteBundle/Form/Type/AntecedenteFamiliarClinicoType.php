@@ -20,7 +20,7 @@ class AntecedenteFamiliarClinicoType extends AbstractType
             ->add('diabetes', 'checkbox', array('label' => 'Diabetes', 'required' => false))
             ->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial', 'required' => false))
             ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false))
-            ->add('modificar', submit);
+            ->add('modificar', submit, array('label' => 'Modificar antecedentes familiares clinicos'));
     }
     
     public function getName()
