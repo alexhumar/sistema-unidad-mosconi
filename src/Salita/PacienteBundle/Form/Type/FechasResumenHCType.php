@@ -62,12 +62,11 @@ class FechasResumenHCType extends AbstractType
             ->add('diaHasta', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
             ->add('mesHasta', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
             ->add('anioHasta', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
-            ->add('generar', 'submit');
+            ->add('generar', 'submit', array('label' => 'Generar resumen de historia clinica'));
     }
 
     public function getName()
     {
         return 'fechasResumenHC';
     }
-
 }
