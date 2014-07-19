@@ -4,5 +4,3 @@ Salita\PlanBundle\Entity\MetodoAnticonceptivo:
     properties:
         nombre:
             - NotBlank: ~
-
-

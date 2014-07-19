@@ -1,0 +1,8 @@
+#Validaciones de las clases bajo el directorio Entity
+Salita\TurnoBundle\Entity\Turno:
+    properties:
+        especialidad:
+            - NotNull: ~
+        motivo:
+            - NotBlank:
+                message: "El motivo del turno"
