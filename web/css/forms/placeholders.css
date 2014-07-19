@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+::-webkit-input-placeholder {
+  color: #eee;
+  font-style: italic;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #eee;
+  font-style: italic;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: #eee;
+  font-style: italic;
+}
+
+:-ms-input-placeholder {  
+  color: #eee;
+  font-style: italic;  
+}
