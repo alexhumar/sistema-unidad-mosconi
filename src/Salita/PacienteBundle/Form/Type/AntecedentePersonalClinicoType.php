@@ -1,7 +1,6 @@
 <?php
 namespace Salita\PacienteBundle\Form\Type;
 
-//use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class AntecedentePersonalClinicoType extends AntecedentePersonalType//AbstractType
@@ -16,15 +15,6 @@ class AntecedentePersonalClinicoType extends AntecedentePersonalType//AbstractTy
             ->add('infectoContagiosas', 'checkbox', array('label' => 'Infectocontagiosas', 'required' => false))
             ->add('traumatismos', 'checkbox', array('label' => 'Traumatismos', 'required' => false))
             ->add('internacionesPrevias', 'checkbox', array('label' => 'Internaciones previas', 'required' => false))
-
-            /*->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis', 'required' => false))
-            ->add('diabetes', 'checkbox', array('label' => 'Diabetes', 'required' => false))
-            ->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial', 'required' => false))
-            ->add('drogas', 'checkbox', array('label' => 'Drogas', 'required' => false))
-            ->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo', 'required' => false))
-            ->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo', 'required' => false))
-            ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false))*/
-
             ->add('modificar', 'submit', array('label' => 'Modificar antecedentes personales clinicos'));
     }
     
