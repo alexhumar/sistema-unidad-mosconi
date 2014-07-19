@@ -30,7 +30,7 @@ class AntecedenteFamiliarObstetricoFormController extends MyController
     		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(
-    				'SalitaPacienteBundle:AntecedentesForm:modif.html.twig',
+    				'SalitaPacienteBundle:AntecedentesForm:modifFamiliarObstetrico.html.twig',
     				array('form' => $form->createView())
     			);
     }
