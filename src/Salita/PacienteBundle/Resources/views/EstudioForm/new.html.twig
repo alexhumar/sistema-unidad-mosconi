@@ -12,10 +12,10 @@
       {{ form_errors(form) }}
 
       <div class="form-group col-sm-8">
-        {{ form_row(form.resultado) }}
+        {{ form_row(form.resultado, { 'attr': { 'placeholder': 'Resultado del estudio' } }) }}
       </div>
       <div class="form-group col-sm-8">
-        {{ form_row(form.nroProtocolo) }}
+        {{ form_row(form.nroProtocolo, { 'attr': { 'placeholder': 'Número de protocolo' } }) }}
       </div>
       <div class="form-group col-sm-8">
         {{ form_row(form.metodoEstudio) }}
