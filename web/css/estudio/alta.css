@@ -1,11 +1,6 @@
 @CHARSET "UTF-8";
 
-#estudio_resultado {
-  width: 560px;
-  height: 45px;
-}
-
-#estudio_nroProtocolo {
+#estudio_resultado, #estudio_nroProtocolo {
   width: 560px;
   height: 45px;
 }
