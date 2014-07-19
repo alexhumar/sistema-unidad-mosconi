@@ -2,7 +2,7 @@
 
 .form-group {
 	/* Modifica el margin bottom original para que se ajuste, minimamente, a la pantalla de la notebook */
-	margin-bottom: 11px;
+	margin-bottom: 6px;
 }
 
 #antecedenteFamiliarObstetrico_otros, #antecedenteFamiliarClinico_otros, #antecedentePersonalObstetrico_otros,
