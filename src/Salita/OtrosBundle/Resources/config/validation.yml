@@ -7,6 +7,8 @@ Salita\OtrosBundle\Clases\Busqueda:
                 
 #Validaciones de las clases bajo el directorio Entity
 Salita\OtrosBundle\Entity\Barrio:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
     properties:
         nombre:
             - NotBlank:
@@ -21,6 +23,8 @@ Salita\OtrosBundle\Entity\Barrio:
                 message: "Debe ingresar la localidad a la que pertenece el barrio"
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
     properties:
         nombre:
             - NotBlank:
@@ -28,10 +32,3 @@ Salita\OtrosBundle\Entity\MetodoEstudio:
             - Length:
                 max: 50
                 maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
-
-Salita\OtrosBundle\Entity\MetodoEstudio:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
-    properties:
-        nombre:
-            - NotBlank: ~
