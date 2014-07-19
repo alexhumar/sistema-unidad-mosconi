@@ -47,3 +47,26 @@ Salita\PacienteBundle\Entity\Paciente:
             - NotNull: ~
         sexo:
             - NotNull: ~
+            
+Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico
+    properties:
+        gestasPrevias:
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: La cantidad de gestas previas no puede contener letras.
+        abortos:
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: La cantidad de abortos no puede contener letras.
+        cesareas:
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: La cantidad de cesáreas no puede contener letras.        
+        partos:
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: La cantidad de partos no puede contener letras.            
