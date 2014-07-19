@@ -20,6 +20,7 @@ class AntecedentePersonalObstetricoType extends AbstractType
             ->add('cesareas', 'number', array('label' => 'Cesáreas', 'required' => false))
             ->add('partos', 'number', array('label' => 'Partos', 'required' => false))
             ->add('sifilis', 'checkbox', array('label' => 'Sífilis', 'required' => false))
+            
             ->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis', 'required' => false))
             ->add('diabetes', 'checkbox', array('label' => 'Diabetes', 'required' => false))
             ->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial', 'required' => false))
@@ -27,6 +28,7 @@ class AntecedentePersonalObstetricoType extends AbstractType
             ->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo', 'required' => false))
             ->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo', 'required' => false))
             ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false))
+            
             ->add('modificar', 'submit', array('label' => 'Modificar antecedentes personales obstetricos'));
     }
     
