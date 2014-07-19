@@ -1,7 +1,13 @@
 Salita\PacienteBundle\Entity\Paciente:
     properties:
+        tipoDocumento:
+            - NotNull: ~
         nroDoc:
             - NotBlank: ~
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: El numero de documento no puede contener letras.
         nombre:
             - NotBlank: ~
             - Regex:
@@ -13,7 +19,7 @@ Salita\PacienteBundle\Entity\Paciente:
             - Regex:
                 pattern: "/\d/"
                 match:   false
-                message: Tu apellido no puede contener numeros.
+                message: El apellido no puede contener numeros.
         telefonoFijo:
             - Regex:
                 pattern: "/^([0-9])*$/"
@@ -30,3 +36,11 @@ Salita\PacienteBundle\Entity\Paciente:
         numero:
             - NotBlank:
                 message: Complete este campo por favor.
+        pais:
+            - NotNull: ~
+        barrio:
+            - NotNull: ~
+        localidad:
+            - NotNull: ~
+        partido:
+            - NotNull: ~
