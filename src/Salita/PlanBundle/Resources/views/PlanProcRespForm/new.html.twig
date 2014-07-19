@@ -6,7 +6,7 @@
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-8">
-        {{ form_row(form.periodicidad) }}
+        {{ form_row(form.periodicidad, { 'attr': { 'placeholder': 'Periodicidad de entrega (valor numérico)' } }) }}
       </div>
       <div class="form-group col-sm-8">
         {{ form_row(form.metodoAnticonceptivo) }}

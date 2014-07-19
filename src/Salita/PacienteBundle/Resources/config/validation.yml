@@ -79,3 +79,10 @@ Salita\PacienteBundle\Entity\Estudio:
         nroProtocolo:
             - NotBlank:
                 message: Complete este campo por favor.
+                
+#Validaciones de las clases bajo el directorio Clases
+Salita\PacienteBundle\Clases\Busqueda:
+    properties:
+        palabra:
+            - NotBlank:
+                message: Complete este campo por favor.

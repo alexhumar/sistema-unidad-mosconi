@@ -3,4 +3,15 @@ Salita\PlanBundle\Entity\MetodoAnticonceptivo:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
     properties:
         nombre:
-            - NotBlank: ~
+            - NotBlank:
+                message: Complete este campo por favor.
+            
+Salita\PlanBundle\Entity\PlanProcResp:
+    properties:
+        periodicidad:
+            - NotBlank:
+                message: Complete este campo por favor.
+            - Regex:
+                pattern: "/^([0-9])*$/"
+                match:   true
+                message: La periodicidad debe ser un valor numérico.
