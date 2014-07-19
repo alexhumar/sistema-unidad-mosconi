@@ -9,10 +9,10 @@
         {{ form_row(form.especialidad) }}
       </div>
       <div class="form-group col-sm-8">
-        {{ form_row(form.medicoPreferido) }}
+        {{ form_row(form.medicoPreferido, { 'attr': { 'placeholder': 'Medico preferido por el paciente (opcional)' } }) }}
       </div>
       <div class="form-group col-sm-8">
-        {{ form_row(form.motivo) }}
+        {{ form_row(form.motivo, { 'attr': { 'placeholder': 'Motivo que origino el turno' } }) }}
       </div>
       <div class="form-group col-sm-8">
         <div class="col-sm-offset-6">
