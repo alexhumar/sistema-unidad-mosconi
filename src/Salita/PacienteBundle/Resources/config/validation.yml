@@ -48,7 +48,7 @@ Salita\PacienteBundle\Entity\Paciente:
         sexo:
             - NotNull: ~
             
-Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico
+Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico:
     properties:
         gestasPrevias:
             - Regex:
