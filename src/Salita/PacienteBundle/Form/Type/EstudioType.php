@@ -11,8 +11,8 @@ class EstudioType extends AbstractType
     {
         
         $builder
-            ->add('resultado', 'textarea', array('label' => 'Resultado', 'required' => false))
-            ->add('nroProtocolo', 'textarea', array('label' => 'Nro de Protocolo', 'required' => false))
+            ->add('resultado', 'textarea', array('label' => 'Resultado', 'required' => true))
+            ->add('nroProtocolo', 'textarea', array('label' => 'Nro de Protocolo', 'required' => true))
             ->add('metodoEstudio', 'entity', array('class' => 'SalitaOtrosBundle:MetodoEstudio',
     												   'query_builder' => function($repository) { return $repository->createQueryBuilder('m')->orderBy('m.id', 'ASC'); },
     												   'property' => 'nombre', 
