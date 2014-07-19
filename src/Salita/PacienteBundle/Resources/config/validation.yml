@@ -54,7 +54,7 @@ Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico:
             - Regex:
                 pattern: "/^([0-9])*$/"
                 match:   true
-                message: La cantidad de gestas previas no puede contener letras.
+                message: "La cantidad de gestas previas no puede contener letras."
         abortos:
             - Regex:
                 pattern: "/^([0-9])*$/"
