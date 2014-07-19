@@ -1,7 +1,8 @@
 <?php
 namespace Salita\PacienteBundle\Controller;
 
-use Salita\PacienteBundle\Form\Type\DatosFiliatoriosType;
+use Salita\PacienteBundle\Form\Type\DatosFiliatoriosModificacionType;
+use Salita\PacienteBundle\Form\Type\DatosFiliatoriosRegistroType;
 use Salita\PacienteBundle\Entity\Paciente;
 use Salita\OtrosBundle\Clases\MyController;
 
@@ -15,7 +16,7 @@ class PacienteFormController extends MyController
     	$paciente = $session->get('paciente');
     	$repoPacientes = $this->getReposManager()->getPacientesRepo();
     	$paciente = $repoPacientes->find($paciente->getId());
-    	$form = $this->createForm(new DatosFiliatoriosType(), $paciente);
+    	$form = $this->createForm(new DatosFiliatoriosModificacionType(), $paciente);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())
@@ -38,7 +39,7 @@ class PacienteFormController extends MyController
     public function newAction()
     {
     	$paciente = new Paciente();
-    	$form = $this->createForm(new DatosFiliatoriosType(), $paciente);
+    	$form = $this->createForm(new DatosFiliatoriosRegistroType(), $paciente);
     	$request = $this->getRequest();
    		$form->handleRequest($request);
    		if ($form->isValid())

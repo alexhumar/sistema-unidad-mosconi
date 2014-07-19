@@ -1,7 +1,6 @@
 <?php
 namespace Salita\PacienteBundle\Form\Type;
 
-//use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class AntecedenteFamiliarClinicoType extends AntecedenteFamiliarType
@@ -17,12 +16,6 @@ class AntecedenteFamiliarClinicoType extends AntecedenteFamiliarType
             ->add('alergias', 'checkbox', array('label' => 'Alergias', 'required' => false))
             ->add('adiccionesTabaquismo', 'checkbox', array('label' => 'Adicciones/Tabaquismo', 'required' => false))
             ->add('infectoContagiosas', 'checkbox', array('label' => 'Infectocontagiosas', 'required' => false))
-            
-           /* ->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis', 'required' => false))
-            ->add('diabetes', 'checkbox', array('label' => 'Diabetes', 'required' => false))
-            ->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial', 'required' => false))
-            ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false))*/
-            
             ->add('modificar', submit, array('label' => 'Modificar antecedentes familiares clinicos'));
     }
     
