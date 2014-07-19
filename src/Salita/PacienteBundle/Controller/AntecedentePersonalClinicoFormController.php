@@ -30,7 +30,7 @@ class AntecedentePersonalClinicoFormController extends MyController
     		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(
-           			'SalitaPacienteBundle:AntecedentesForm:modif.html.twig',
+           			'SalitaPacienteBundle:AntecedentesForm:modifPersonalClinico.html.twig',
            			array('form' => $form->createView())
            		);
     }

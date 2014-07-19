@@ -21,7 +21,7 @@ class AntecedentePersonalClinicoType extends AbstractType
             ->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo', 'required' => false))
             ->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo', 'required' => false))
             ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false))
-            ->add('modificar', 'submit');
+            ->add('modificar', 'submit', array('label' => 'Modificar antecedentes personales clinicos'));
     }
     
     public function getName()
