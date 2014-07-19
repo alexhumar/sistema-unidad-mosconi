@@ -3,7 +3,7 @@ namespace Salita\PacienteBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
-class AntecedentePersonalClinicoType extends AntecedentePersonalType//AbstractType
+class AntecedentePersonalClinicoType extends AntecedentePersonalType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
