@@ -7,10 +7,6 @@
 {% set muestraAntecedentes = not(is_granted(expression(secretariaexpression)) 
                    or (usuario.isObstetraSession(codigoEspecialidad) and not(paciente.isMujer()))) %}
 {% if muestraAntecedentes %}
-{#    <div class="subtituloMenu">
-      Antecedentes:
-    </div>
-    <ul> #}
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -20,30 +16,22 @@
 
   {% if is_granted(expression(adminexpression)) 
       or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
-    {#  <div class="opcionMenu"> #}
         <div><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></div>
-    {#  </div> #}
   {% endif %}
 
   {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
        or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-    {#  <div class="opcionMenu"> #}
         <div><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></div>
-    {#  </div> #}
   {% endif %}
 
   {% if (is_granted(expression(adminexpression)) 
         or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
-    {#  <div class="opcionMenu"> #}
         <div><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></div>
-    {#  </div> #}
   {% endif %}
 
   {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
      or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-    {#  <div class="opcionMenu"> #}
         <div><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></div>
-    {#  <div> #}
   {% endif %}
       </div>
     </div>

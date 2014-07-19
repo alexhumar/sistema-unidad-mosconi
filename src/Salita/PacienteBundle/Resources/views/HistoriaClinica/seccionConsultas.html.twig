@@ -20,7 +20,6 @@
 {% endif %}
 
 {% if paciente.isMujer() and (estudios|length > 0) %}
-{#  {% if estudios|length > 0 %} #}
   <div class="tituloSeccion">Estudios</div><br>
   {% for estudio in estudios %}
     <div class="caja1">
@@ -37,5 +36,4 @@
     <h1>____________________________________________________________________</h1>
     <br>
   {% endfor %}
-{#  {% endif %} #}
 {% endif %}

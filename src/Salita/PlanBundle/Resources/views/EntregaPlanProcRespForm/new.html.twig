@@ -1,11 +1,5 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
-{#
-
-  Al final esto no hacia falta...
-, { 'action': path('alta_entregaplanprocresp'), 'idPlan': id }
-
-#}
 {% block contenido %}
     <h3>Registro de entrega (plan procreacion responsable)</h3>
     <br/>
@@ -18,5 +12,4 @@
         </div>
       </div>
     {{ form_end(form) }}
-	{# {{ form(form) }} #}
 {% endblock %}
