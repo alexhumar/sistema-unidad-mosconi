@@ -1,3 +1,4 @@
+#Validaciones de las clases bajo el directorio Entity
 Salita\PacienteBundle\Entity\Paciente:
     properties:
         tipoDocumento:
@@ -43,4 +44,6 @@ Salita\PacienteBundle\Entity\Paciente:
         localidad:
             - NotNull: ~
         partido:
+            - NotNull: ~
+        sexo:
             - NotNull: ~
