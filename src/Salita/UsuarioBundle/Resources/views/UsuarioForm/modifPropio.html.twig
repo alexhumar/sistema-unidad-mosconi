@@ -6,19 +6,19 @@
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
 	    <div class="form-group col-sm-8">
-	      {{ form_row(form.nombre) }}
+	      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo del usuario' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">
-	      {{ form_row(form.apellido) }}
+	      {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido del usuario' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">
-	      {{ form_row(form.email) }}
+	      {{ form_row(form.email, { 'attr': { 'placeholder': 'Correo electrónico del usuario' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">
-	      {{ form_row(form.telefono) }}
+	      {{ form_row(form.telefono, { 'attr': { 'placeholder': 'Teléfono del usuario' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">
-	      {{ form_row(form.matricula) }}
+	      {{ form_row(form.matricula, { 'attr': { 'placeholder': 'Matrícula del usuario (en caso de ser médico)' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">
 	      <div class="col-sm-offset-6">

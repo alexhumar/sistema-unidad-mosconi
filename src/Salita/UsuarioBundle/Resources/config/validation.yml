@@ -4,3 +4,12 @@ Salita\UsuarioBundle\Entity\Usuario:
         especialidad:
             - NotNull:
                 message: "Debe ingresar la especialidad que posee el medico"
+        nombre:
+            - NotBlank:
+                message: Complete este campo por favor.
+        apellido:
+            - NotBlank:
+                message: Complete este campo por favor.
+        telefono:
+            - NotBlank:
+                message: Complete este campo por favor.

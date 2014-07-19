@@ -9,10 +9,10 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-              ->add('nombre')
-              ->add('apellido')
-              ->add('email')
-              ->add('telefono')
+              ->add('nombre', null, array('required' => true))
+              ->add('apellido', null, array('required' => true))
+              ->add('email', null, array('required' => true))
+              ->add('telefono', null, array('required' => true))
               ->add('matricula')
               ->add('modificar', 'submit');
     }
