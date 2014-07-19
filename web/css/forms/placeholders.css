@@ -1,26 +1,19 @@
 @CHARSET "UTF-8";
 
+/*color: #eee;  ATENCION: no me toma los colores, ningun navegador*/
+
 ::-webkit-input-placeholder {
-  color: red;
   font-style: italic;
-  opacity: 1;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  /*color: #eee;*/
-  color: red;
   font-style: italic;
-  opacity: 1;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-  color: red;
+::-moz-placeholder { /* Firefox 19+ */
   font-style: italic;
-  opacity: 1;
 }
 
-:-ms-input-placeholder {  
-  color: red;
+:-ms-input-placeholder {
   font-style: italic;
-  opacity: 1;  
 }
