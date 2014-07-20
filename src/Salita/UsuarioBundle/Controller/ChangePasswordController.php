@@ -14,7 +14,7 @@ class ChangePasswordController extends BaseController
     {
     	echo("hola");
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) /*|| !$user instanceof UserInterface*/) {
         	echo("hola.1");
             throw new AccessDeniedException('This user does not have access to this section.');
         }
