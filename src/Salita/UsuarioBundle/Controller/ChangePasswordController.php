@@ -22,7 +22,7 @@ class ChangePasswordController extends BaseController
 
         $process = $formHandler->process($user);
         if ($process) {
-            $this->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
+            $this->container->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
             $action = 'resultado_operacion_usuario';
             return new RedirectResponse($this->getRedirectionUrl($action));
         }
