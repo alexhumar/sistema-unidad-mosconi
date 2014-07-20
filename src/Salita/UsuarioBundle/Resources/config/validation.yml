@@ -1,9 +1,9 @@
 #Validaciones de las clases bajo el directorio Entity
 Salita\UsuarioBundle\Entity\Usuario:
     properties:
-#       especialidad:
-#           - NotNull:
-#                message: "Debe ingresar la especialidad que posee el medico"
+#        especialidad:
+#            - NotNull:
+#                message: Ingrese la especialidad del médico.
         nombre:
             - NotBlank:
                 message: Complete este campo por favor.

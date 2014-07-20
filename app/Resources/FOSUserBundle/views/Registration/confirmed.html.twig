@@ -1,5 +1,10 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/mensaje.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {#
 {% block menu %}
     <div id="menu">
@@ -13,5 +18,8 @@
 {# Me parece que no se usa esto #}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+    <div class="alert alert-success" role="alert">
+      {# esto estaba entre tags <p> #}
+	  {{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}
+    </div>
 {% endblock fos_user_content %}
