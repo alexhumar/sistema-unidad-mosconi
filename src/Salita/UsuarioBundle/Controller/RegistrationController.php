@@ -1,5 +1,6 @@
 <?php
 namespace Salita\UsuarioBundle\Controller;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Salita\UsuarioBundle\Entity\Usuario as Usuario;

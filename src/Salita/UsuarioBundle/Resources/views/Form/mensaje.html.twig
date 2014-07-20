@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/mensaje.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block contenido %}
+    <div class="alert alert-success" role="alert">
+	  {{ mensaje }}
+    </div>
+{% endblock %}

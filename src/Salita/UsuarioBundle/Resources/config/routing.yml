@@ -62,6 +62,11 @@ modif_usuario:
 modif_usuario_propio:
     pattern:  /modificacion/usuariopropio
     defaults: { _controller: SalitaUsuarioBundle:UsuarioForm:modifPropio }
+    
+resultado_operacion_usuario:
+    pattern: /resultado/operacion/usuario
+    defaults: { _controller: SalitausuarioBundle:Mensajes:resultado }
+    methods: [GET]
 
 seleccion_usuario:
     pattern:  /seleccion/usuario/{id}
