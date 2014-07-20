@@ -1,5 +1,4 @@
 <?php
-
 namespace Salita\OtrosBundle\Service;
 
 use Salita\OtrosBundle\Service\ReposManager;

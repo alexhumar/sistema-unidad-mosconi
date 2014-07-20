@@ -5,6 +5,7 @@ parameters:
     queries_manager.class: Salita\OtrosBundle\Service\QueriesManager
     service.provider.class: Salita\OtrosBundle\Service\ServiceProvider
     persistence_manager.class: Salita\OtrosBundle\Service\PersistenceManager
+    roles_manager.class: Salita\OtrosBundle\Service\RolesManager
     salita.otros.controller.barrioform.class: Salita\OtrosBundle\Controller\BarrioFormController
 
 services:
@@ -22,6 +23,8 @@ services:
     persistence_manager:
         class: %persistence_manager.class%
         arguments: [@repos_manager]
+    roles_manager:
+        class: %roles_manager.class%
     service.provider:
         class: %service.provider.class%
         arguments: [@service_container]       

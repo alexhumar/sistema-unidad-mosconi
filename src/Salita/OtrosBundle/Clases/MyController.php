@@ -36,6 +36,11 @@ class MyController extends Controller
 		return $this->get('repos_manager');
 	}
 	
+	protected function getRolesManager()
+	{
+		return $this->get('roles_manager');
+	}    
+	
 	protected function getEntityManager()
 	{
 		return $this->getReposManager()->getEntityManager();
