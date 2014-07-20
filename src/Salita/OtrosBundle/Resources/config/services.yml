@@ -25,6 +25,7 @@ services:
         arguments: [@repos_manager]
     roles_manager:
         class: %roles_manager.class%
+        arguments: [@persistence_manager]
     service.provider:
         class: %service.provider.class%
         arguments: [@service_container]       

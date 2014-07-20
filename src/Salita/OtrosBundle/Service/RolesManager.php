@@ -1,8 +1,16 @@
 <?php
 namespace Salita\OtrosBundle\Service;
 
+use Salita\OtrosBundle\Service\PersistenceManager;
+
 class RolesManager
 {
+	protected $persistencemanager;
+	
+	public function __construct(PersistenceManager $persistencemanager)
+	{
+		$this->persistencemanager = $persistencemanager;
+	}
 	
 	/*Esta funcion encapsula la logica de negocio relacionada a la asignacion de rol a un usuario.
 	 * Retona en un boolean si la operacion fue exitosa o no, y almacena en la sesion el string especificando
@@ -42,7 +50,7 @@ class RolesManager
 						}
 						else
 						{
-							$this->getPersistenceManager()->assignRolAUsuario($usuario, $rol);
+							$this->persistencemanager->assignRolAUsuario($usuario, $rol);
 							/*Se "refresca" el usuario almacenado en la sesion*/
 							$session->set('usuarioSeleccionado',$usuario);
 							$exito = true;
