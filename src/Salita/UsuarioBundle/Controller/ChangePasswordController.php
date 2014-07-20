@@ -12,23 +12,21 @@ class ChangePasswordController extends BaseController
      */
     public function changePasswordAction()
     {
-    	echo("hola");
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) /*|| !$user instanceof UserInterface*/) {
-        	echo("hola.1");
+        if (!is_object($user)) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        echo("hola2");
         $form = $this->container->get('fos_user.change_password.form');
         $formHandler = $this->container->get('fos_user.change_password.form.handler');
-        echo("hola3");
         $process = $formHandler->process($user);
         if ($process) {
+        	echo("hola");
             $this->container->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
+            echo("hola1");
             $action = 'resultado_operacion_usuario';
+            echo("hola2");
             return new RedirectResponse($this->getRedirectionUrl($action));
         }
-        echo("hola4");
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
             array('form' => $form->createView())
