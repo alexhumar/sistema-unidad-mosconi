@@ -5,21 +5,8 @@
   <link href="{{ asset('css/mensaje.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-{#
-{% block menu %}
-    <div id="menu">
-        <ul>
-            {% include 'SalitaUsuarioBundle:OpcionesMenu:opcionesAdministrador.html.twig' %}
-        </ul>
-    </div>
-{% endblock %}
-#}
-
-{# Me parece que no se usa esto #}
-
 {% block fos_user_content %}
     <div class="alert alert-success" role="alert">
-      {# esto estaba entre tags <p> #}
 	  {{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}
     </div>
 {% endblock fos_user_content %}
