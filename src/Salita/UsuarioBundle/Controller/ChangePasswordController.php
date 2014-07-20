@@ -23,9 +23,9 @@ class ChangePasswordController extends BaseController
         	echo("hola");
             $this->container->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
             echo("hola1");
-            $action = 'resultado_operacion_usuario';
+            $nextAction = 'resultado_operacion_usuario';
             echo("hola2");
-            return new RedirectResponse($this->getRedirectionUrl($action));
+            return new RedirectResponse(/*$this->getRedirectionUrl($action)*/$this->container->get('router')->generate($nextAction));
         }
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
