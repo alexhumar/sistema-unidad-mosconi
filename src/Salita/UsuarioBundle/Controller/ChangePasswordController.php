@@ -21,6 +21,7 @@ class ChangePasswordController extends BaseController
         $formHandler = $this->container->get('fos_user.change_password.form.handler');
 
         $process = $formHandler->process($user);
+        echo("hola");
         if ($process) {
             $this->container->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
             $action = 'resultado_operacion_usuario';
