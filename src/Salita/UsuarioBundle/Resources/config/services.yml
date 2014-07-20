@@ -4,3 +4,8 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: salita_usuario_registro }
+    salita_usuario.cambio_password.form.type:
+        class: Salita\UsuarioBundle\Form\Type\CambioPasswordFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: salita_usuario_cambio_password }

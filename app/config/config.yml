@@ -69,3 +69,6 @@ fos_user:
     registration:
         form:
             type: salita_usuario_registro
+    change_password:
+        form:
+            type: salita_usuario_cambio_password

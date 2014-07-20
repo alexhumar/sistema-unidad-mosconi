@@ -2,28 +2,24 @@
 namespace Salita\UsuarioBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use FOS\UserBundle\Form\Type\ChangePasswordFormType as BaseType;
 
 /* ATENCION: form type creado como servicio para extender el original de FosUserBundle. Ver services.yml de
  * UsuarioBundle y el config.yml general */
 
-class RegistroFormType extends BaseType
+class CambioPasswordFormType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
-        /* Aca se agregan los campos que necesitamos al formulario de registro/modificacion de usuario */
+        /* Aca se agregan los campos que necesitamos al formulario de cambio de contraseña */
         $builder
-            ->add('nombre')
-            ->add('apellido')
-            ->add('telefono')
-            ->add('matricula')
-            ->add('registrar', 'submit', array('label' => 'Registrar usuario')); 
+            ->add('cambiarPassword', 'submit', array('label' => 'Actualizar contraseña')); 
     }
 
     public function getName()
     {
-        return 'salita_usuario_registro';
+        return 'salita_usuario_cambio_password';
     }
 }
