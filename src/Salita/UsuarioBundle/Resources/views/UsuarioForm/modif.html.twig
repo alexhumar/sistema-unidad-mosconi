@@ -8,7 +8,7 @@
 
 	<h3>Modificacion de usuario {{ form.vars.value.apellido }}, {{ form.vars.value.nombre }}</h3>
 	</br
-	{{ form_start(form, {'action': path('modif_usuario', { 'id': id })}) }}
+	{{ form_start(form) }}
 	    {{ form_errors(form) }}
 	    <div class="form-group col-sm-8">
 	      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo del usuario' } }) }}
