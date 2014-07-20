@@ -31,7 +31,7 @@ class ChangePasswordController extends BaseController
         echo("hola4");
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'))
+            array('form' => $form->createView())
         );
     }
 }
