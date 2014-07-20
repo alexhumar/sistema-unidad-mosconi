@@ -7,7 +7,8 @@
 	{# {{ form(form, {'action': path('modif_usuario', { 'id': id })}) }} #}
 
 	<h3>Modificacion de usuario {{ form.vars.value.apellido }}, {{ form.vars.value.nombre }}</h3>
-	</br
+	</br>
+
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
 	    <div class="form-group col-sm-8">

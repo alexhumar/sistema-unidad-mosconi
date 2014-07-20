@@ -1,6 +1,13 @@
-{# Voy a tener que generar asi cada form para poder customizar el atributo col-sm, que es diferente para cada
+{# 
+   Voy a tener que generar asi cada form para poder customizar el atributo col-sm, que es diferente para cada
    form.
  #}
+
+{# 
+   IMPORTANTE: notar el uso de first y second en plainPassword. Esto se debe a que en el RegistrationFormType
+   de FosUserBundle, plainPassword se genera como repeated. Es por eso que para acceder individualmente a cada
+   input que se genera se utiliza el nombre del campo seguido de first o second.
+#}
 <h3>Registro de usuario</h3>
 </br>
 
@@ -13,7 +20,10 @@
       {{ form_row(form.username, { 'attr': { 'placeholder': 'Nombre de usuario para la cuenta' } }) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.plainPassword, { 'attr': { 'placeholder': 'Contraseña' } }) }}
+      {{ form_row(form.plainPassword.first, { 'attr': { 'placeholder': 'Ingrese la contraseña' } }) }}
+    </div>
+    <div class="form-group col-sm-8">
+      {{ form_row(form.plainPassword.second, { 'attr': { 'placeholder': 'Repita la contraseña' } }) }}
     </div>
     <div class="form-group col-sm-8">
       {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo' } }) }}
@@ -33,11 +43,3 @@
       </div>
     </div>
 {{ form_end(form) }}
-{#
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
-</form>
-#}
