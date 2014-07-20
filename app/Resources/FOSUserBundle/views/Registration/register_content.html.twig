@@ -6,25 +6,25 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
     <div class="form-group col-sm-8">
-      {{ form_row(form.email, { 'attr': { 'placeholder': 'Correo electronico del usuario' } }) }}
+      {{ form_row(form.email) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.username, { 'attr': { 'placeholder': 'Nombre de usuario para la cuenta' } }) }}
+      {{ form_row(form.username) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.plainPassword, { 'attr': { 'placeholder': 'Contraseña' } }) }}
+      {{ form_row(form.plainPassword) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo' } }) }}
+      {{ form_row(form.nombre) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido' } }) }}
+      {{ form_row(form.apellido) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.telefono, { 'attr': { 'placeholder': 'Telefono' } }) }}
+      {{ form_row(form.telefono) }}
     </div>
     <div class="form-group col-sm-8">
-      {{ form_row(form.matricula, { 'attr': { 'placeholder': 'Matricula (en caso de ser medico)' } }) }}
+      {{ form_row(form.matricula) }}
     </div>
     <div class="form-group col-sm-8">
       <div class="col-sm-offset-6">
