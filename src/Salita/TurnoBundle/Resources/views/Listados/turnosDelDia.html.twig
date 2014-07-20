@@ -6,7 +6,8 @@
   {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
   {% set autenticadoComoAdministrador = usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) %}
 
-  <h1 id="tituloCentro">Turnos del día</h1>
+  <h3>Turnos del día</h3>
+  </br>
   {% if turnos|length > 0 %}
     <table id="tabla">
       <thead><tr><th>Nombre y Apellido</th><th>Motivo</th><th>Especialidad</th><th>Profesional</th><th>Fecha y hora</th></tr></thead>
