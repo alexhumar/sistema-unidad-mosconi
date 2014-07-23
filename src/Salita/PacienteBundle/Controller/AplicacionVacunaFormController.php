@@ -33,8 +33,8 @@ class AplicacionVacunaFormController extends MyController
         {
             return $this->redirect($this->generateUrl('busqueda_paciente'));
         }
-        $repoPacientes = $this->getReposManager()->getPacientesRepo();           
-        $aplicaciones = $repoPacientes->aplicacionesVacuna($session->get('paciente')->getId());
+        $repoAplicacionesVacunas = $this->getReposManager()->getAplicacionesVacunasRepo();           
+        $aplicaciones = $repoAplicacionesVacunas->aplicacionesVacuna($session->get('paciente')->getId());
         return $this->render(
    	    			'SalitaPacienteBundle:AplicacionVacuna:list.html.twig',
    	    			array('aplicaciones' => $aplicaciones)

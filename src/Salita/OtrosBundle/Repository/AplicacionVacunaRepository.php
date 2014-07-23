@@ -27,4 +27,27 @@ class AplicacionVacunaRepository extends EntityRepository
     	         ->getQuery()
     	         ->getResult();
     }
+    
+    public function aplicacionesVacuna($idPaciente)
+    {
+    	/*$sql = 'SELECT a.fecha as fecha, v.nombre as nombre
+                FROM SalitaOtrosBundle:AplicacionVacuna a JOIN a.vacuna v
+                WHERE a.paciente = :id_paciente
+                ORDER BY a.fecha ASC';
+    	return $this->getEntityManager()
+    	->createQuery($sql)
+    	->setParameter('id_paciente', $idPaciente)
+    	->getResult();*/
+    	
+    	/* Utilizado para el listado de aplicaciones de vacuna para un paciente */
+    	return $this
+    	         ->createQueryBuilder('av')
+    	         ->select('av.fecha as fecha, v.nombre as nombre')
+    	         ->join('av.vacuna', 'v')
+    	         ->where('av.paciente = :id_paciente')
+    	         ->setParameter('id_paciente', $idPaciente)
+    	         ->orderBy('av.fecha', 'ASC')
+    	         ->getQuery()
+    	         ->getResult();
+    }
 }

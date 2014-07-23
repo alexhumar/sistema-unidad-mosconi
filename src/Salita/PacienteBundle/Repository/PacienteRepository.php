@@ -64,19 +64,6 @@ class PacienteRepository extends EntityRepository
                  ->getResult();
     }
 
-    public function aplicacionesVacuna($idPaciente)
-    {
-    	/*ATENCION: esto debe ir en AplicacionesVacunaRepository */
-        $sql = 'SELECT a.fecha as fecha, v.nombre as nombre 
-                FROM SalitaOtrosBundle:AplicacionVacuna a JOIN a.vacuna v 
-                WHERE a.paciente = :id_paciente 
-                ORDER BY a.fecha ASC';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('id_paciente', $idPaciente)
-            ->getResult();
-    }
-
     public function buscarDatosFiliatorios($idPaciente)
     {
         /*$sql = 'SELECT p 
