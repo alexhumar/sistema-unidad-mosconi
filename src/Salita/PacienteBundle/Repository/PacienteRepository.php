@@ -20,7 +20,7 @@ class PacienteRepository extends EntityRepository
                  ->where('p.nombre LIKE :nombre')
                  ->setParameter('nombre', $nombreAux)
                  ->orderBy('p.nombre', 'ASC')
-                 ->getQuery()
+                 ->getQuer()
                  ->getResult();
     }
 
