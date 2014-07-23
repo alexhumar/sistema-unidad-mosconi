@@ -8,13 +8,7 @@ class RolRepository extends EntityRepository
 {
     public function findOneByCodigo($codigo)
     {     
-        /*$sql = 'SELECT r 
-                FROM SalitaUsuarioBundle:Rol r 
-                WHERE r.codigo = :codigo';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('codigo', $codigo)
-            ->getSingleResult();*/
+        /* Recupera el rol correspondiente al codigo */
     	return $this
     	         ->createQueryBuilder('r')
     	         ->where('r.codigo = :codigo')
@@ -25,14 +19,7 @@ class RolRepository extends EntityRepository
 
     public function rolesAdministradorYMedico()
     {
-        /*$sql = 'SELECT r 
-                FROM SalitaUsuarioBundle:Rol r 
-                WHERE r.codigo = :codigo_admin OR r.codigo = :codigo_medico';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('codigo_admin', Rol::getCodigoRolAdministrador())
-            ->setParameter('codigo_medico', Rol::getCodigoRolMedico())
-            ->getResult();*/
+        /* Recupera los roles administrador y medico */
     	return $this
     	         ->createQueryBuilder('r')
     	         ->where('r.codigo = :codigo_admin OR r.codigo = :codigo_medico')

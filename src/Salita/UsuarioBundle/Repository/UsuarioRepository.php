@@ -8,12 +8,7 @@ class UsuarioRepository extends EntityRepository
 {
     public function encontrarUsuariosOrdenadosPorNombre()
     {
-        /*$sql = 'SELECT p 
-                FROM SalitaUsuarioBundle:Usuario p 
-                ORDER BY p.nombre ASC';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->getResult();*/
+        /* Recupera los usuarios ordenados por nombre */
     	return $this
     	         ->createQueryBuilder('u')
     	         ->orderBy('u.nombre', 'ASC')
@@ -23,6 +18,8 @@ class UsuarioRepository extends EntityRepository
     
     private function encontrarUsuariosRolOrdenadosPorNombre($codigoRol)
     {
+    	/* Recupera los usuarios ordenados por nombre cuyo rol se corresponde con el codigo recibido 
+    	   como parametro*/
     	return $this
     	         ->createQueryBuilder('u')
     	         ->join('u.rol', 'r')
@@ -35,38 +32,19 @@ class UsuarioRepository extends EntityRepository
 
     public function encontrarMedicosOrdenadosPorNombre()
     {
-        /*$sql = 'SELECT m 
-                FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
-                WHERE r.codigo = :codigo_rol ORDER BY m.nombre ASC';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('codigo_rol', Rol::getCodigoRolMedico())
-            ->getResult();*/
+        /* Recupera los medicos ordenados por nombre */
     	return $this->encontrarUsuariosRolOrdenadosPorNombre(Rol::getCodigoRolMedico());
     }
 
     public function encontrarSecretariasOrdenadasPorNombre()
     {
-        /*$sql = 'SELECT m 
-                FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
-                WHERE r.codigo = :codigo_rol 
-                ORDER BY m.nombre ASC';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('codigo_rol', Rol::getCodigoRolSecretaria())
-            ->getResult();*/
+        /* Recupera las secretarias ordenadas por nombre */
     	return $this->encontrarUsuariosRolOrdenadosPorNombre(Rol::getCodigoRolSecretaria());
     }
 
     public function encontrarAdministradoresOrdenadosPorNombre()
     {
-        /*$sql = 'SELECT m 
-                FROM SalitaUsuarioBundle:Usuario m JOIN m.rol r 
-                WHERE r.codigo = :codigo_rol ORDER BY m.nombre ASC';
-        return $this->getEntityManager()
-            ->createQuery($sql)
-            ->setParameter('codigo_rol', Rol::getCodigoRolAdministrador())
-            ->getResult();*/
+        /* Recupera los administradores ordenado por nombre*/
     	return $this->encontrarUsuariosRolOrdenadosPorNombre(Rol::getCodigoRolAdministrador());
     }
 }
