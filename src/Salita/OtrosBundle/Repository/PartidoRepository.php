@@ -7,11 +7,16 @@ class PartidoRepository extends EntityRepository
 {
     public function encontrarTodosOrdenadosPorNombre()
     {
-        $sql = 'SELECT p 
+        /*$sql = 'SELECT p 
                 FROM SalitaOtrosBundle:Partido p 
                 ORDER BY p.nombre ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
-            ->getResult();
+            ->getResult();*/
+    	return $this
+    	         ->createQueryBuilder('p')
+    	         ->orderBy('p.nombre', 'ASC')
+    	         ->getQuery()
+    	         ->getResult();
     }
 }
