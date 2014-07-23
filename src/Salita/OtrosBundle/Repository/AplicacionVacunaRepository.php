@@ -18,9 +18,9 @@ class AplicacionVacunaRepository extends EntityRepository
     	/* Utilizado en la historia clinica de paciente*/
     	return $this
     	         ->createQueryBuilder('av')
-    	         ->select('v.nombre as nombreVacuna, a.fecha as fecha')
     	         ->join('av.paciente', 'p')
     	         ->join('av.vacuna', 'v')
+    	         ->select('v.nombre as nombreVacuna, a.fecha as fecha')
     	         ->where('p.id = :id_paciente')
     	         ->setParameter('id_paciente', $idPaciente)
     	         ->orderBy('v.nombre')
