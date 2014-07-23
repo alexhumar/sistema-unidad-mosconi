@@ -20,38 +20,53 @@ class PacienteRepository extends EntityRepository
                  ->where('p.nombre LIKE :nombre')
                  ->setParameter('nombre', $nombreAux)
                  ->orderBy('p.nombre', 'ASC')
-                 ->getQuer()
+                 ->getQuery()
                  ->getResult();
     }
 
     public function buscarPorApellido($apellido)
     {
         $apellidoAux = "%".$apellido."%";
-        $sql = 'SELECT p 
+        /*$sql = 'SELECT p 
                 FROM SalitaPacienteBundle:Paciente p 
                 WHERE p.apellido LIKE :apellido 
                 ORDER BY p.apellido ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
             ->setParameter('apellido', $apellidoAux)
-            ->getResult();
+            ->getResult();*/
+        return $this
+                 ->createQueryBuilder('p')
+                 ->where('p.apellido LIKE :apellido')
+                 ->setParameter('apellido', $apellidoAux)
+                 ->orderBy('p.apellido', 'ASC')
+                 ->getQuery()
+                 ->getResult();             
     }
 
     public function buscarPorDNI($dni)
     {
         $dniAux = "%".$dni."%";
-        $sql = 'SELECT p 
+        /*$sql = 'SELECT p 
                 FROM SalitaPacienteBundle:Paciente p 
                 WHERE p.nroDoc LIKE :dni 
                 ORDER BY p.apellido ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
             ->setParameter('dni', $dniAux)
-            ->getResult();
+            ->getResult();*/
+        return $this
+                 ->createQueryBuilder('p')
+                 ->where('p.nroDoc LIKE :dni')
+                 ->setParameter('dni', $dniAux)
+                 ->orderBy('p.apellido', 'ASC')
+                 ->getQuery()
+                 ->getResult();
     }
 
     public function aplicacionesVacuna($idPaciente)
     {
+    	/*ATENCION: esto debe ir en AplicacionesVacunaRepository */
         $sql = 'SELECT a.fecha as fecha, v.nombre as nombre 
                 FROM SalitaOtrosBundle:AplicacionVacuna a JOIN a.vacuna v 
                 WHERE a.paciente = :id_paciente 
@@ -64,12 +79,18 @@ class PacienteRepository extends EntityRepository
 
     public function buscarDatosFiliatorios($idPaciente)
     {
-        $sql = 'SELECT p 
+        /*$sql = 'SELECT p 
                 FROM SalitaPacienteBundle:Paciente p 
                 WHERE p.id = :id_paciente';
         return $this->getEntityManager()
             ->createQuery($sql)
             ->setParameter('id_paciente', $idPaciente)
-            ->getResult();
+            ->getResult();*/
+    	return $this
+    	         ->createQueryBuilder('p')
+    	         ->where('p.id = :id_paciente')
+    	         ->setParameter('id_paciente', $idPaciente)
+    	         ->getQuery()
+    	         ->getResult();
     }
 }
