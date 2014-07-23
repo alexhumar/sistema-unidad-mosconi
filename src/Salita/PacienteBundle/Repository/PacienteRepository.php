@@ -8,13 +8,20 @@ class PacienteRepository extends EntityRepository
     public function buscarPorNombre($nombre)
     {
         $nombreAux = "%".$nombre."%";
-        $sql = 'SELECT p 
+        /*$sql = 'SELECT p 
                 FROM SalitaPacienteBundle:Paciente p 
                 WHERE p.nombre LIKE :nombre ORDER BY p.nombre ASC';
         return $this->getEntityManager()
             ->createQuery($sql)
             ->setParameter('nombre', $nombreAux)
-            ->getResult();
+            ->getResult();*/
+        return $this
+                 ->createQueryBuilder('p')
+                 ->where('p.nombre LIKE :nombre')
+                 ->setParameter('nombre', $nombreAux)
+                 ->orderBy('p.nombre', 'ASC')
+                 ->getQuery()
+                 ->getResult();
     }
 
     public function buscarPorApellido($apellido)
