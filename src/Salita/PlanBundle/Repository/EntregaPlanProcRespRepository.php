@@ -26,7 +26,7 @@ class EntregaPlanProcRespRepository extends EntityRepository
     	         ->join('p.metodoAnticonceptivo m')
     	         ->where('p.id = :id_plan')
     	         ->setParameter('id_plan', $id)
-    	         ->orderBy('e.fecha', 'DESC')
+    	         ->orderBy('eppr.fecha', 'DESC')
     	         ->getQuery()
     	         ->getResult();
     }
