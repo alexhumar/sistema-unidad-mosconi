@@ -80,6 +80,6 @@ class PlanProcRespRepository extends EntityRepository
     	         ->where('ppr.id = :id_plan')
     	         ->setParameter('id_plan', $id)
     	         ->getQuery()
-    	         ->execut();
+    	         ->execute();
     }
 }
