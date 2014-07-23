@@ -47,7 +47,7 @@ class AplicacionVacunaRepository extends EntityRepository
     	         ->where('av.paciente = :id_paciente')
     	         ->setParameter('id_paciente', $idPaciente)
     	         ->orderBy('av.fecha', 'ASC')
-    	         ->getQuery()
+    	         ->getQuey()
     	         ->getResult();
     }
 }
