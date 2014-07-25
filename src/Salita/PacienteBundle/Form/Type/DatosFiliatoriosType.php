@@ -13,6 +13,8 @@ class DatosFiliatoriosType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	$factory = $builder->getFormFactory();
+    	
         $builder
             ->add('tipoDocumento', null, array('label' => 'Tipo de documento'))
             ->add('nroDoc', null, array('label' => 'Numero de documento'))
