@@ -43,7 +43,7 @@ class DatosFiliatoriosType extends AbstractType
         			->orderBy('partido.nombre');
         		},
         ));
-        echo ("Hola");
+        
         $refreshLocalidad =
         function ($form, $partido) use ($factory)
         {
@@ -54,14 +54,14 @@ class DatosFiliatoriosType extends AbstractType
         			'query_builder' =>
         			function (EntityRepository $repository) use ($partido)
         			{   /* Es el repositorio de la entidad Localidad */
+        				echo ("Hola");
         				$qb = $repository->localidadesDePartidoQueryBuilder($partido);
         				return $qb;
         			}
         	)));
         };
         
-        //$factory = $builder->getFormFactory();
-        
+        echo ("Hola2");
         $refreshBarrio =
         function($form, $localidad) use ($factory)
         {
@@ -72,6 +72,7 @@ class DatosFiliatoriosType extends AbstractType
         			'query_builder' =>
         			function (EntityRepository $repository) use ($localidad)
         			{
+        				echo ("Hola3");
         				$qb = $repository->barriosDeLocalidadQueryBuilder($localidad);
         				return $qb;
         			}
