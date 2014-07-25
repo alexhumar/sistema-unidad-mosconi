@@ -25,9 +25,9 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoFijo', null, array('label' => 'Telefono Fijo'))
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
-            /*->add('partido') 
+            ->add('partido') 
             ->add('localidad')
-            ->add('barrio')*/
+            ->add('barrio')
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
