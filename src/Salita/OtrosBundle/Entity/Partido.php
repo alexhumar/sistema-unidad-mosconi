@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Salita\OtrosBundle\Repository\PartidoRepository")
  * @ORM\Table(name="partido")
  */
-
 class Partido
 {
     /**
@@ -39,7 +38,6 @@ class Partido
         $this->localidades = new ArrayCollection();
         $this->pacientes = new ArrayCollection();
     }
-
 
     /**
      * Get idPartido

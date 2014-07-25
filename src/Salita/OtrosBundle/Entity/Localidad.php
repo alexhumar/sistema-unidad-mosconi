@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Salita\OtrosBundle\Repository\LocalidadRepository")
  * @ORM\Table(name="localidad")
  */
-
 class Localidad
 {
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -33,19 +33,18 @@ class Localidad
      * @ORM\OneToMany(targetEntity="Salita\OtrosBundle\Entity\Barrio", mappedBy="localidad")
      */
     protected $barrios;
-
-    public function __construct()
-    {
-        $this->pacientes= new ArrayCollection();
-        $this->barrios= new ArrayCollection();
-    }
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="Partido", inversedBy="localidades")
      * @ORM\JoinColumn(name="idPartido", referencedColumnName="id")
      */
     protected $partido;
-
+    
+    public function __construct()
+    {
+    	$this->pacientes= new ArrayCollection();
+    	$this->barrios= new ArrayCollection();
+    }
 
     /**
      * Get idLocalidad
