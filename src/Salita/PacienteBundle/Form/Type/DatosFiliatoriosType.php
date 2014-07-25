@@ -65,7 +65,6 @@ class DatosFiliatoriosType extends AbstractType
         $refreshBarrio =
         function($form, $localidad) use ($factory)
         {
-        	echo ("Hola2");
         	$form->add($factory->createNamed('entity', 'barrio', null, array(
         			'class' => 'SalitaOtrosBundle:Barrio',
         			'property' => 'nombre',
@@ -78,7 +77,7 @@ class DatosFiliatoriosType extends AbstractType
         			}
         	)));
         };
-        echo ("Hola3");
+
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad, $refreshBarrio) {
         	$form = $event->getForm();
         	$data = $event->getData();
@@ -93,7 +92,7 @@ class DatosFiliatoriosType extends AbstractType
         		$refreshBarrio($form, $data->getLocalidad());
         	}
         });
-        
+        	echo ("Hola3");
         	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad, $refreshBarrio) {
         		$form = $event->getForm();
         		$data = $event->getData();
@@ -105,7 +104,7 @@ class DatosFiliatoriosType extends AbstractType
         			$refreshBarrio($form, $data['localidad']);
         		}
         	});
-        
+        		echo ("Hola4");
     }
 
     public function getName()
