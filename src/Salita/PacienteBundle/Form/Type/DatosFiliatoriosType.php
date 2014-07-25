@@ -92,7 +92,7 @@ class DatosFiliatoriosType extends AbstractType
         		$refreshBarrio($form, $data->getLocalidad());
         	}
         });
-        	echo ("Hola3");
+        
         	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad, $refreshBarrio) {
         		$form = $event->getForm();
         		$data = $event->getData();
@@ -104,7 +104,13 @@ class DatosFiliatoriosType extends AbstractType
         			$refreshBarrio($form, $data['localidad']);
         		}
         	});
-        		echo ("Hola4");
+    }
+    
+    public function getDefaultOptions(array $options)
+    {
+    	return array(
+    		'data_class' => 'Salita\PacienteBundle\Entity\Paciente'  			
+    	);
     }
 
     public function getName()
