@@ -43,7 +43,7 @@ class DatosFiliatoriosType extends AbstractType
         			->orderBy('partido.nombre');
         		},
         ));
-        
+        echo ("Hola");
         $refreshLocalidad =
         function ($form, $partido) use ($factory)
         {
