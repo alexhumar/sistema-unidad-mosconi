@@ -1,6 +1,6 @@
 {# Carga dinamica de localidades en base al partido seleccionado #}
 <script>
-  var localidadesLoader = function(){
+    localidadesLoader = function(){
 		$.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
@@ -16,7 +16,7 @@
 				});
 		    }
 
-  var barriosLoader = function(){
+     barriosLoader = function(){
 		$.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
