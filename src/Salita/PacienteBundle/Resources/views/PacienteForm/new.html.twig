@@ -8,6 +8,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
+       $(document).ready(function(){
 		$('#registroDatosFiliatorios_partido').change(function(){
 		    $.ajax({
 		       type: "GET",
@@ -23,6 +24,7 @@
 			      }
 				});
 		    });
+        });
     </script>
 {% endblock %}
 
