@@ -9,6 +9,8 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Event\DataEvent;
 use Doctrine\ORM\EntityRepository;
 
+use Salita\PacienteBundle\Entity\Paciente;
+
 class DatosFiliatoriosType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -85,7 +87,7 @@ class DatosFiliatoriosType extends AbstractType
     		$refreshLocalidad($form, null);
     		//$refreshBarrio($form, null);
     	}
-        echo(var_dump($data));
+    	
     	if ($data instanceof Paciente) {
     		$refreshLocalidad($form, $data->getPartido());
     		//$refreshBarrio($form, $data->getLocalidad());
