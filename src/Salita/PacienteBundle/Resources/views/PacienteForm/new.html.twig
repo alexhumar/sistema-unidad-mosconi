@@ -15,11 +15,12 @@
 			   data: "data=" + $(this).val(),
 		       url:"{{ path('localidades_de_partido') }}",
 		       success: function(msg){
+                  $('#registroDatosFiliatorios_localidad option:gt(0)').remove();
 				  if(msg != '') {
-				      $('#registroDatosFiliatorios_localidad').html(msg);
+				      $('#registroDatosFiliatorios_localidad').append(msg);
 				      }
 				      else {
-			   	          $('#registroDatosFiliatorios_localidad').html('<em>Sin resultados</em>');
+			   	          $('#registroDatosFiliatorios_localidad').append('<em>Sin resultados</em>');
 				      }
 			      }
 				});
