@@ -33,4 +33,17 @@ class LocalidadRepository extends EntityRepository
 		}
 		return $qb;
 	}
+	
+	public function localidadesDePartido($idPartido)
+	{
+		return $this
+		         ->createQueryBuilder('localidad')
+		         ->select('localidad')
+		         ->join('localidad.partido', 'partido')
+		         ->where('partido.id = :id_partido')
+		         ->setParameter('id_partido', $idPartido)
+		         ->orderBy('localidad.nombre')
+		         ->getQuery()
+		         ->getResult();
+	}
 }

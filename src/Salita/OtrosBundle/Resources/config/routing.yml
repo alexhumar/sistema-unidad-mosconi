@@ -23,6 +23,11 @@ busqueda_paciente:
 busqueda_vacuna:
     pattern: /busqueda/vacuna
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+    
+localidades_de_partido:
+    pattern: /localidades/de/partido
+    defaults: { _controller: SalitaOtrosBundle:Ajax:localidadesDePartido }
+    methods: [GET]
  
 resultado_operacion:
     pattern: /resultado/operacion

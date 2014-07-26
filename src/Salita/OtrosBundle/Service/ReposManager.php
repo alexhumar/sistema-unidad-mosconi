@@ -97,6 +97,16 @@ class ReposManager
 		return $this->getEntityManager()->getRepository('SalitaOtrosBundle:Partido');
 	}
 	
+	public function getBarriosRepo()
+	{
+		return $this->getEntityManager()->getRepository('SalitaOtrosBundle:Barrio');
+	}
+	
+	public function getLocalidadesRepo()
+	{
+		return $this->getEntityManager()->getRepository('SalitaOtrosBundle:Localidad');
+	}
+	
 	public function getVacunasRepo()
 	{
 		return $this->getEntityManager()->getRepository('SalitaOtrosBundle:Vacuna');
