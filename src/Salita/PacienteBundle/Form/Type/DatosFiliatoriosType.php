@@ -27,7 +27,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            ->add('localidad', 'choice', array('choices' => array()))
+            //->add('localidad', 'choice', array('choices' => array()))
             ->add('barrio', 'choice', array('choices' => array()))
             ->add('calle')
             ->add('numero')
@@ -79,7 +79,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	)));
 		    };*/
     
-	    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
+	    /*$builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
 	    	$form = $event->getForm();
 	    	$data = $event->getData();
 	    
@@ -92,9 +92,9 @@ class DatosFiliatoriosType extends AbstractType
 	    		$refreshLocalidad($form, $data->getPartido());
 	    		//$refreshBarrio($form, $data->getLocalidad());
 	    	}
-	    });
+	    });*/
 	    
-	    /*	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
+	    $builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    		$form = $event->getForm();
 	    		$data = $event->getData();
 	    
@@ -104,7 +104,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		//if (array_key_exists('localidad', $data)) {
 	    		//	$refreshBarrio($form, $data['localidad']);
 	    		//}
-	    	});*/
+	    	});
     }
     
     public function getDefaultOptions(array $options)
