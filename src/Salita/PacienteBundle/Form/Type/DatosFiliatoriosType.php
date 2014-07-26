@@ -79,7 +79,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	)));
 		    };
     
-	    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
+	    /*$builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
 	    	$form = $event->getForm();
 	    	$data = $event->getData();
 	    
@@ -92,7 +92,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		$refreshLocalidad($form, $data->getPartido());
 	    		//$refreshBarrio($form, $data->getLocalidad());
 	    	}
-	    });
+	    });*/
 	    
 	    $builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    		$form = $event->getForm();
