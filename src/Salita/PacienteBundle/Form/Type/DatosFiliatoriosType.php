@@ -47,7 +47,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		},
 	    ));
     
-	   /* $refreshLocalidad =
+	    $refreshLocalidad =
 		    function ($form, $partido) use ($factory)
 		    {
 		    	$form->add($factory->createNamed('entity', 'localidad', null, array(
@@ -56,12 +56,12 @@ class DatosFiliatoriosType extends AbstractType
 		    			'label' => 'Localidad',
 		    			'query_builder' =>
 		    			function (EntityRepository $repository) use ($partido)
-		    			{   /* Es el repositorio de la entidad Localidad 
+		    			{   /* Es el repositorio de la entidad Localidad */ 
 		    				$qb = $repository->localidadesDePartidoQueryBuilder($partido);
 		    				return $qb;
 		    			}
 		    	)));
-		    };*/
+		    };
     
 	    /*$refreshBarrio =
 		    function($form, $localidad) use ($factory)
@@ -79,7 +79,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	)));
 		    };*/
     
-	    /*$builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
+	    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    	$form = $event->getForm();
 	    	$data = $event->getData();
 	    
@@ -94,7 +94,7 @@ class DatosFiliatoriosType extends AbstractType
 	    	}
 	    });
 	    
-	    	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
+	    /*	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
 	    		$form = $event->getForm();
 	    		$data = $event->getData();
 	    
