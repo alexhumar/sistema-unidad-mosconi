@@ -27,8 +27,8 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            ->add('localidad')
-            ->add('barrio', 'choice', array('choices' => array()))
+            ->add('localidad', 'choice', array('choices' => array()))
+            ->add('barrio'/*, 'choice', array('choices' => array())*/)
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -63,7 +63,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	)));
 		    };
     
-	    /*$refreshBarrio =
+	    $refreshBarrio =
 		    function($form, $localidad) use ($factory)
 		    {
 		    	$form->add($factory->createNamed('entity', 'barrio', null, array(
@@ -77,9 +77,9 @@ class DatosFiliatoriosType extends AbstractType
 		    				return $qb;
 		    			}
 		    	)));
-		    };*/
+		    };
     
-	    /*$builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
+	    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    	$form = $event->getForm();
 	    	$data = $event->getData();
 	    
@@ -92,7 +92,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		$refreshLocalidad($form, $data->getPartido());
 	    		//$refreshBarrio($form, $data->getLocalidad());
 	    	}
-	    });*/
+	    });
 	    
 	    $builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    		$form = $event->getForm();
