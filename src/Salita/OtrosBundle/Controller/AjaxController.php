@@ -15,9 +15,9 @@ class AjaxController extends MyController
 
     public function localidadesDePartidoAction()
     {
-    	$repoPartidos = $this->getReposManager()->getPartidosRepo();
+    	$repoLocalidades = $this->getReposManager()->getLocalidadesRepo();
     	$idPartido = $this->getRequest()->query->get('data');
-    	$localidades = $repoPartidos->localidadesDePartido($idPartido);
+    	$localidades = $repoLocalidades->localidadesDePartido($idPartido);
     	$html = '';
     	foreach ($localidades as $localidad)
     	{
