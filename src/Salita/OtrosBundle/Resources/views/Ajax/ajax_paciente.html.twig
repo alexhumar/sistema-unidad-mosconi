@@ -2,38 +2,40 @@
 <script>
   $(document).ready(function(){
     function localidadesLoader(){
-		$.ajax({
+        $.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
 		   url:"{{ path('localidades_de_partido') }}",
 		   success: function(msg){
-			  if(msg != '') {
-		  $("#registroDatosFiliatorios_localidad").html(msg);
-		  }
-		  else {
-		      $("#registroDatosFiliatorios_localidad").html('<em>Sin resultados</em>');
-				      }
-			      }
-				});
+			            if(msg != '') {
+		                    $("#registroDatosFiliatorios_localidad").html(msg);
+		                }
+		                else {
+		                    $("#registroDatosFiliatorios_localidad").html('<em>Sin resultados</em>');
+				        }
+			        }
+		   });
     }
 
     function barriosLoader(){
-		$.ajax({
+        $.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
 		   url:"{{ path('barrios_de_localidad') }}",
 		   success: function(msg){
-			  if(msg != '') {
-		  $("#registroDatosFiliatorios_barrio").html(msg);
-		  }
-		  else {
-		      $("#registroDatosFiliatorios_barrio").html('<em>Sin resultados</em>');
-				      }
-			      }
-				});
+			            if(msg != '') {
+		                    $("#registroDatosFiliatorios_barrio").html(msg);
+		                }
+		                else {
+		                    $("#registroDatosFiliatorios_barrio").html('<em>Sin resultados</em>');
+				        }
+			        }
+		});
     }
 
 	$("#registroDatosFiliatorios_partido").change(localidadesLoader);
+    $("#registroDatosFiliatorios_partido").input(localidadesLoader);
 	$("#registroDatosFiliatorios_localidad").change(barriosLoader);
+	$("#registroDatosFiliatorios_localidad").input(barriosLoader);
   });
 </script>
