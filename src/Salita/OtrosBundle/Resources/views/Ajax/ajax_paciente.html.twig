@@ -1,7 +1,5 @@
-/**
- * Carga dinamica de localidades en base al partido seleccionado
- */
-
+{# Carga dinamica de localidades en base al partido seleccionado #}
+<script>
 $(document).ready(function(){
 	$("#registroDatosFiliatorios_partido").change(function(){
 		$.ajax({
@@ -35,3 +33,4 @@ $(document).ready(function(){
 				});
 		    });
 	});
+</script>
