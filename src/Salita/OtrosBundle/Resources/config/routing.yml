@@ -12,6 +12,11 @@ alta_metodoestudio:
     pattern: /alta/metodoEstudio
     defaults: { _controller: SalitaOtrosBundle:MetodoEstudioForm:new }
     
+barrios_de_localidad:
+    pattern: /barrios/de/localidad
+    defaults: { _controller: SalitaOtrosBundle:Ajax:barriosDeLocalidad }
+    methods: [GET]
+    
 busqueda_diagnostico:
     pattern: /busqueda/diagnostico
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscarDiagnostico }

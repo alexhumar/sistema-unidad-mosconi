@@ -18,15 +18,32 @@ class AjaxController extends MyController
     	$repoLocalidades = $this->getReposManager()->getLocalidadesRepo();
     	$idPartido = $this->getRequest()->query->get('data');
     	$localidades = $repoLocalidades->localidadesDePartido($idPartido);
-    	$html = '';
+    	/*$html = '';
     	foreach ($localidades as $localidad)
     	{
     		$html = $html . sprintf("<option value=\"%d\">%s</option>", $localidad->getId(), $localidad->getNombre());
-    	}
+    	}*/
     	return $this->render(
 	           		'SalitaOtrosBundle:Ajax:localidadesDePartido.html.twig',
     			    array('localidades' => $localidades)
     			);
+    	//return new Response($html);
+    }
+    
+    public function barriosDeLocalidadAction()
+    {
+    	$repoBarrios = $this->getReposManager()->getBarriosRepo();
+    	$idLocalidad = $this->getRequest()->query->get('data');
+    	$barrios = $repoBarrios->barriosDeLocalidad($idLocalidad);
+    	/*$html = '';
+    	foreach ($barrios as $barrio)
+    	{
+    		$html = $html . sprintf("<option value=\"%d\">%s</option>", $localidad->getId(), $localidad->getNombre());
+    	}*/
+    	return $this->render(
+    			'SalitaOtrosBundle:Ajax:barriosDeLocalidad.html.twig',
+    			array('barrios' => $barrios)
+    	);
     	//return new Response($html);
     }
 }

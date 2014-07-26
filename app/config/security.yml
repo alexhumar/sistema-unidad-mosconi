@@ -46,6 +46,7 @@ security:
         - { path: ^/alta/consulta, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/alta/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/localidades/de/partido, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/barrios/de/localidad, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/asignacion/rol, role: ROLE_ADMINISTRADOR }
         - { path: ^/alta/barrio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/alta/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
