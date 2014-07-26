@@ -17,21 +17,16 @@ class AjaxController extends MyController
     {
     	$repoLocalidades = $this->getReposManager()->getLocalidadesRepo();
     	$idPartido = $this->getRequest()->query->get('data');
-    	$idPartido = 2;
     	$localidades = $repoLocalidades->localidadesDePartido($idPartido);
-    	echo ("Hola1");
     	$html = '';
-    	echo ("Hola2");
     	foreach ($localidades as $localidad)
     	{
-    		echo ("Hola3");
     		$html = $html . sprintf("<option value=\"%d\">%s</option>", $localidad->getId(), $localidad->getNombre());
     	}
     	/*return $this->render(
 	           		'SalitaOtrosBundle:Ajax:localidadesDePartido.html.twig',
     			    array('localidades' => $localidades)
     			);*/
-    	echo ("Hola4");
     	return new Response($html);
     }
 }
