@@ -1,6 +1,7 @@
 {# Carga dinamica de localidades en base al partido seleccionado #}
 <script>
   $(document).ready(function(){
+
     function localidadesLoader(){
         $.ajax({
 		   type: "GET",
@@ -34,8 +35,8 @@
     }
 
 	$("#registroDatosFiliatorios_partido").change(localidadesLoader);
-    $("#registroDatosFiliatorios_partido").input(localidadesLoader);
+    $("#registroDatosFiliatorios_partido").click(localidadesLoader);
 	$("#registroDatosFiliatorios_localidad").change(barriosLoader);
-	$("#registroDatosFiliatorios_localidad").input(barriosLoader);
+	$("#registroDatosFiliatorios_localidad").click(barriosLoader);
   });
 </script>
