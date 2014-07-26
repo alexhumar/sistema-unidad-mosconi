@@ -23,10 +23,10 @@ class AjaxController extends MyController
     	{
     		$html = $html . sprintf("<option value=\"%d\">%s</option>", $localidad->getId(), $localidad->getNombre());
     	}
-    	/*return $this->render(
+    	return $this->render(
 	           		'SalitaOtrosBundle:Ajax:localidadesDePartido.html.twig',
     			    array('localidades' => $localidades)
-    			);*/
-    	return new Response($html);
+    			);
+    	//return new Response($html);
     }
 }
