@@ -1,7 +1,6 @@
 {# Carga dinamica de localidades en base al partido seleccionado #}
 <script>
-$(document).ready(function(){
-	$("#registroDatosFiliatorios_partido").change(function(){
+  var localidadesLoader = function(){
 		$.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
@@ -15,9 +14,9 @@ $(document).ready(function(){
 				      }
 			      }
 				});
-		    });
-	
-	$("#registroDatosFiliatorios_localidad").change(function(){
+		    }
+
+  var barriosLoader = function(){
 		$.ajax({
 		   type: "GET",
 		   data: "data=" + $(this).val(),
@@ -31,6 +30,10 @@ $(document).ready(function(){
 				      }
 			      }
 				});
-		    });
-	});
+		    }
+
+  $(document).ready(function(){
+	$("#registroDatosFiliatorios_partido").change(localidadesLoader();
+	$("#registroDatosFiliatorios_localidad").change(barriosLoader();
+  });
 </script>
