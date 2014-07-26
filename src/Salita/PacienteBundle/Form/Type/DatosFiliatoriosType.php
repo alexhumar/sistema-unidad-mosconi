@@ -51,7 +51,7 @@ class DatosFiliatoriosType extends AbstractType
 		    function ($form, $partido) use ($factory)
 		    {
 		    	$form->add($factory->createNamed('entity', 'localidad', null, array(
-		    			'class' => 'Salita\OtrosBundle\EntityLocalidad',
+		    			'class' => 'Salita\OtrosBundle\Entity\Localidad',
 		    			'property' => 'nombre',
 		    			'label' => 'Localidad',
 		    			'query_builder' =>
