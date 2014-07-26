@@ -32,10 +32,14 @@ class AjaxController extends MyController
     
     public function barriosDeLocalidadAction()
     {
+    	echo("Hola1");
     	$repoBarrios = $this->getReposManager()->getBarriosRepo();
+    	echo("Hola2");
     	$idLocalidad = $this->getRequest()->query->get('data');
     	$barrios = $repoBarrios->barriosDeLocalidad($idLocalidad);
+    	echo("Hola3");
     	$idLocalidad = 1;
+    	echo("Hola4");
     	/*$html = '';
     	foreach ($barrios as $barrio)
     	{
