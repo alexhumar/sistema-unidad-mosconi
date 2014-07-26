@@ -10,6 +10,7 @@ use Symfony\Component\Form\Event\DataEvent;
 use Doctrine\ORM\EntityRepository;
 
 use Salita\PacienteBundle\Entity\Paciente;
+use Salita\OtrosBundle\Entity\Partido;
 
 class DatosFiliatoriosType extends AbstractType
 {
@@ -57,8 +58,29 @@ class DatosFiliatoriosType extends AbstractType
 		    			'query_builder' =>
 		    			function (EntityRepository $repository) use ($partido)
 		    			{   /* Es el repositorio de la entidad Localidad */ 
-		    				$qb = $repository->localidadesDePartidoQueryBuilder($partido);
-		    				return $qb;
+		    				$qb = $repository
+		        					->createQueryBuilder('localidad')
+		        					->select('localidad')
+		        					->join('localidad.partido', 'partido')
+		        					->orderBy('localidad.nombre');
+									if ($partido instanceof Partido)
+									{
+										$qb = $qb
+			        							->where('partido = :partido')
+			        							->setParameter('partido', $partido);
+									}
+									elseif (is_numeric($partido))
+									{
+										$qb = $qb
+			        							->where('partido.id = :id_partido')
+			        							->setParameter('id_partido', $partido);
+									}
+									else
+									{
+										$qb = $qb
+			        							->where('partido.id = 1');
+									}
+									return $qb;
 		    			}
 		    	)));
 		    };
@@ -79,7 +101,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	)));
 		    };
     
-	    /*$builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio) {
+	    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    	$form = $event->getForm();
 	    	$data = $event->getData();
 	    
@@ -92,7 +114,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		$refreshLocalidad($form, $data->getPartido());
 	    		//$refreshBarrio($form, $data->getLocalidad());
 	    	}
-	    });*/
+	    });
 	    
 	    $builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
 	    		$form = $event->getForm();
