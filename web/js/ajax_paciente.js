@@ -9,10 +9,10 @@ $('#registroDatosFiliatorios_partido').change(function(){
        url:"{{ path('localidades_de_partido') }}",
        success: function(msg){
 		  if(msg != '') {
-		      $(#registroDatosFiliatorios_localidad).html(msg).show();
+		      $('#registroDatosFiliatorios_localidad').html(msg).show();
 		      }
 		      else {
-	   	          $(#registroDatosFiliatorios_localidad).html('<em>Sin resultados</em>');
+	   	          $('#registroDatosFiliatorios_localidad').html('<em>Sin resultados</em>');
 		      }
 	      }
 		});
