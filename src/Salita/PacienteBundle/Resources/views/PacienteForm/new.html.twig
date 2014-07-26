@@ -7,7 +7,23 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/ajax_paciente.js') }}"></script>
+    <script>
+		$('#registroDatosFiliatorios_partido').change(function(){
+		    $.ajax({
+		       type: "GET",
+			   data: "data=" + $(this).val(),
+		       url:"{{ path('localidades_de_partido') }}",
+		       success: function(msg){
+				  if(msg != '') {
+				      $(#registroDatosFiliatorios_localidad).html(msg).show();
+				      }
+				      else {
+			   	          $(#registroDatosFiliatorios_localidad).html('<em>Sin resultados</em>');
+				      }
+			      }
+				});
+		    });
+    </script>
 {% endblock %}
 
 {# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
