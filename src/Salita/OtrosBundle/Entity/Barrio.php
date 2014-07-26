@@ -27,18 +27,17 @@ class Barrio
      * @ORM\OneToMany(targetEntity="Salita\PacienteBundle\Entity\Paciente", mappedBy="barrio")
      */
     protected $pacientes;
-
-    public function __construct()
-    {
-        $this->pacientes= new ArrayCollection();
-    }
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="Salita\OtrosBundle\Entity\Localidad", inversedBy="barrios")
      * @ORM\JoinColumn(name="idLocalidad", referencedColumnName="id")
      */
     protected $localidad;
 
+    public function __construct()
+    {
+        $this->pacientes= new ArrayCollection();
+    }
 
     /**
      * Get idBarrio

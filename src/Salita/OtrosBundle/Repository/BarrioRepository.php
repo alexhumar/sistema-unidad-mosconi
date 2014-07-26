@@ -37,13 +37,13 @@ class BarrioRepository extends EntityRepository
 	public function barriosDeLocalidad($idLocalidad)
 	{
 		return $this
-		    ->createQueryBuilder('barrio')
-			->select('barrio')
-			->join('barrio.localidad', 'localidad')
-			->where('localidad.id = :id_localidad')
-			->setParameter('id_localidad', $idLocalidad)
-			->orderBy('barrio.nombre')
-			->getQuery()
-			->getResult();
+		    	->createQueryBuilder('barrio')
+				->select('barrio')
+				->join('barrio.localidad', 'localidad')
+				->where('localidad.id = :id_localidad')
+				->setParameter('id_localidad', $idLocalidad)
+				->orderBy('barrio.nombre')
+				->getQuery()
+				->getResult();
 	}
 }

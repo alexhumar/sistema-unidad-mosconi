@@ -36,9 +36,10 @@ class AjaxController extends MyController
     	$repoBarrios = $this->getReposManager()->getBarriosRepo();
     	echo("Hola2");
     	$idLocalidad = $this->getRequest()->query->get('data');
+    	$idLocalidad = 1;
     	$barrios = $repoBarrios->barriosDeLocalidad($idLocalidad);
     	echo("Hola3");
-    	$idLocalidad = 1;
+    	
     	echo("Hola4");
     	echo(var_dump($barrios));
     	/*$html = '';
