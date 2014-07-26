@@ -18,6 +18,7 @@ class AjaxController extends MyController
     {
     	$repoPartidos = $this->getReposManager()->getPartidosRepo();
     	$idPartido = $this->getRequest()->query->get('data');
+    	echo("Hola");
     	$localidades = $repoPartidos->localidadesDePartido($idPartido);
     	$html = '';
     	foreach ($localidades as $localidad)
