@@ -61,7 +61,7 @@ class DatosFiliatoriosType extends AbstractType
     	)));
     };
     
-    $refreshBarrio =
+    /*$refreshBarrio =
     function($form, $localidad) use ($factory)
     {
     	$form->add($factory->createNamed('entity', 'barrio', null, array(
@@ -75,9 +75,9 @@ class DatosFiliatoriosType extends AbstractType
     				return $qb;
     			}
     	)));
-    };
+    };*/
     
-    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad, $refreshBarrio) {
+    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
     	$form = $event->getForm();
     	$data = $event->getData();
     
@@ -92,7 +92,7 @@ class DatosFiliatoriosType extends AbstractType
     	}
     });
     
-    	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad, $refreshBarrio) {
+    	$builder->addEventListener(FormEvents::PRE_BIND, function (DataEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
     		$form = $event->getForm();
     		$data = $event->getData();
     
