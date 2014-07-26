@@ -40,6 +40,7 @@ class AjaxController extends MyController
     	echo("Hola3");
     	$idLocalidad = 1;
     	echo("Hola4");
+    	echo(var_dump($barrios));
     	/*$html = '';
     	foreach ($barrios as $barrio)
     	{
