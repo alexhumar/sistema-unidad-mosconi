@@ -13,12 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 class AjaxController extends MyController
 {
 
-	/*Busqueda de vacuna*/
     public function localidadesDePartidoAction()
     {
     	$repoPartidos = $this->getReposManager()->getPartidosRepo();
     	$idPartido = $this->getRequest()->query->get('data');
-    	echo("Hola");
     	$localidades = $repoPartidos->localidadesDePartido($idPartido);
     	$html = '';
     	foreach ($localidades as $localidad)
