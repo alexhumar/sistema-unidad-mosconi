@@ -14,6 +14,7 @@ use Doctrine\ORM\EntityRepository;
 
 use Salita\PacienteBundle\Entity\Paciente;
 use Salita\OtrosBundle\Entity\Partido;
+use Salita\OtrosBundle\Entity\Localidad;
 
 class DatosFiliatoriosType extends AbstractType
 {
@@ -49,11 +50,22 @@ class DatosFiliatoriosType extends AbstractType
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
 		    {
-		    	$localidaes = null === $partido ? array() : $partido->getLocalidades();	    	
+		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
 		    			   'empty_value' => '',
-		    			   'choices' => $localidaes
+		    			   'choices' => $localidades
+		    	));
+		    };
+		    
+		$refreshBarrio = 
+		    function (FormInterface $form, Localidad $localidad = null)
+		    {
+		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
+		    	$form->add('barrio', 'entity', array(
+		    		       'class' => 'SalitaOtrosBundle:Barrio',
+		    			   'empty_value' => '',
+		    			   'choices' => $barrios
 		    	));
 		    };
     
@@ -64,6 +76,8 @@ class DatosFiliatoriosType extends AbstractType
 	    	            $form = $event->getForm();
 	    	            $data = $event->getData();
 	    		        $refreshLocalidad($form, $data->getPartido());
+	    		        //Esto debe estar re mal
+	    		        $refreshBarrio($form, $data->getPartido());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
@@ -79,6 +93,20 @@ class DatosFiliatoriosType extends AbstractType
 	    		     * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshLocalidad($form->getParent(), $partido);
 	    	});
+	    
+	    $builder->get('localidad')->addEventListener(
+	    		FormEvents::POST_SUBMIT,
+	    		function (FormEvent $event) use ($refreshBarrio/*, $refreshBarrio*/) {
+	    			$form = $event->getForm();
+	    
+	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
+	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
+	    			$partido = $event->getForm()->getData();
+	    				
+	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
+	    			 * callback (estaba en el cookbook), no me cierra del todo */
+	    			$refreshBarrio($form->getParent(), $partido);
+	    		});
     }
     
     public function getDefaultOptions(array $options)
