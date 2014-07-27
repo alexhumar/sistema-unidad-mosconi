@@ -77,7 +77,7 @@ class DatosFiliatoriosType extends AbstractType
 	    	            $data = $event->getData();
 	    		        $refreshLocalidad($form, $data->getPartido());
 	    		        //Esto debe estar re mal
-	    		        $refreshBarrio($form, $data->getPartido());
+	    		        $refreshBarrio($form, null);
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
