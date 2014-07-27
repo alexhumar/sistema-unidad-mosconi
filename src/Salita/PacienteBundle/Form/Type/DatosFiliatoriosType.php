@@ -32,7 +32,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('pais')
             /*->add('partido') */
             ->add('localidad', 'choice', array('choices' => array()))
-            ->add('barrio'/*, 'choice', array('choices' => array())*/)
+            ->add('barrio', 'choice', array('choices' => array()))
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
