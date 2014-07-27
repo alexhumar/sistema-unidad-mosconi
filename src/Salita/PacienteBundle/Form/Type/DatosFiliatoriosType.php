@@ -89,6 +89,8 @@ class DatosFiliatoriosType extends AbstractType
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    		    $partido = $event->getForm()->getData();
 	    		    
+	    		    echo (var_dump($event->getForm()->getData()));die;
+	    		    
 	    		    /* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    		     * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshLocalidad($form->getParent(), $partido);
@@ -103,7 +105,6 @@ class DatosFiliatoriosType extends AbstractType
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    			$localidad = $event->getForm()->getData();
 	    			
-	    			echo (var_dump($event->getForm()->getData()));die;
 	    				
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
