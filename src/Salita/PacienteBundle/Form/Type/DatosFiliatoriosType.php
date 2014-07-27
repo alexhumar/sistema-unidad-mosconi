@@ -77,12 +77,12 @@ class DatosFiliatoriosType extends AbstractType
 	    	            $data = $event->getData();
 	    		        $refreshLocalidad($form, $data->getPartido());
 	    		        //Esto debe estar re mal
-	    		        $refreshBarrio($form, $data->getPartido());
+	    		        $refreshBarrio($form, null);
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
 	    		FormEvents::POST_SUBMIT, 
-	    		function (FormEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
+	    		function (FormEvent $event) use ($refreshLocalidad) {
 	    			$form = $event->getForm();
 	    			
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
@@ -96,12 +96,14 @@ class DatosFiliatoriosType extends AbstractType
 	    
 	    $builder->get('localidad')->addEventListener(
 	    		FormEvents::POST_SUBMIT,
-	    		function (FormEvent $event) use ($refreshBarrio/*, $refreshBarrio*/) {
+	    		function (FormEvent $event) use ($refreshBarrio) {
 	    			$form = $event->getForm();
 	    
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    			$localidad = $event->getForm()->getData();
+	    			
+	    			echo (var_dump($event->getForm()->getData()));die;
 	    				
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
