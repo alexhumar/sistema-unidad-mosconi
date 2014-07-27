@@ -72,7 +72,7 @@ class DatosFiliatoriosType extends AbstractType
 	    $builder
 	        ->addEventListener(
 	        		FormEvents::PRE_SET_DATA, 
-	        		function (FormEvent $event) use ($refreshLocalidad/*, $refreshBarrio*/) {
+	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    	            $form = $event->getForm();
 	    	            $data = $event->getData();
 	    		        $refreshLocalidad($form, $data->getPartido());
