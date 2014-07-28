@@ -71,7 +71,7 @@ class DatosFiliatoriosType extends AbstractType
     
 	    $builder
 	        ->addEventListener(
-	        		FormEvents::PRE_SET_DATA, 
+	        		FormEvents::POST_SET_DATA, 
 	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
