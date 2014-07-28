@@ -62,12 +62,6 @@ class DatosFiliatoriosType extends AbstractType
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
-		    	if (null != $localidad)
-		    	{
-		    		echo(var_dump($barrios));
-		    	}
-		    	else 
-		    	{echo(var_dump($barrios));}
 		    	$form->add('barrio', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Barrio',
 		    			   'empty_value' => 'Selecciona un barrio',
@@ -108,7 +102,7 @@ class DatosFiliatoriosType extends AbstractType
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    			$localidad = $event->getForm()->getData();
-	    
+	                echo(var_dump($localidad));die;
 	    			 
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
