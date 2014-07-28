@@ -61,8 +61,7 @@ class DatosFiliatoriosType extends AbstractType
 	        		'class' => 'SalitaOtrosBundle:Barrio',
 	        		'property' => 'nombre',
 	        		'label' => 'barrio',
-	        		'empty_value' => '',
-	        		'choices' => array()
+	        		'empty_value' => ''
 	        ));
     
 	    $refreshLocalidad =
