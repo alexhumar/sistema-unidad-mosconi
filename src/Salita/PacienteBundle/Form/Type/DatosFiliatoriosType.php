@@ -32,7 +32,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            ->add('localidad', 'choice', array('choices' => array()))
+            //->add('localidad', 'choice', array('choices' => array()))
             ->add('barrio', 'choice', array('choices' => array()))
             ->add('calle')
             ->add('numero')
@@ -46,6 +46,15 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => ''
 	    ));
+	        
+	    $builder
+	        ->add('localidad', 'entity', array(
+	        	  'class' => 'SalitaOtrosBundle:Localidad',
+	        	  'property' => 'nombre',
+	        	  'label' => 'Localidad',
+	        	  'empty_value' => '',
+	        	  'choices' => array()
+	        ));
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
@@ -74,10 +83,10 @@ class DatosFiliatoriosType extends AbstractType
 	        		FormEvents::PRE_SET_DATA, 
 	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    	            $form = $event->getForm();
-	    	            $data = $event->getData();
-	    		        $refreshLocalidad($form, $data->getPartido());
+	    	            $paciente = $event->getData();
+	    		        $refreshLocalidad($form, $paciente->getPartido());
 	    		        //Esto debe estar re mal
-	    		        $refreshBarrio($form, null);
+	    		        $refreshBarrio($form, $paciente->getLocalidad());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
@@ -89,13 +98,12 @@ class DatosFiliatoriosType extends AbstractType
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    		    $partido = $event->getForm()->getData();
 	    		    
-	    		    echo (var_dump($event->getForm()->getData()));die;
-	    		    
 	    		    /* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    		     * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshLocalidad($form->getParent(), $partido);
 	    	});
 	    
+	    //ATENCION: no me esta agregando esto como event listener... verificar.
 	    $builder->get('localidad')->addEventListener(
 	    		FormEvents::POST_SUBMIT,
 	    		function (FormEvent $event) use ($refreshBarrio) {
