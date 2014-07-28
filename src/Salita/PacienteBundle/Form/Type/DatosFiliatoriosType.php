@@ -66,6 +66,8 @@ class DatosFiliatoriosType extends AbstractType
 		    	{
 		    		echo(var_dump($barrios));
 		    	}
+		    	else 
+		    	{echo(var_dump($barrios));}
 		    	$form->add('barrio', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Barrio',
 		    			   'empty_value' => 'Selecciona un barrio',
@@ -84,7 +86,7 @@ class DatosFiliatoriosType extends AbstractType
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
-	    		FormEvents::PRE_SUBMIT,
+	    		FormEvents::POST_SUBMIT,
 	    		function (FormEvent $event) use ($refreshLocalidad) {
 	    			$form = $event->getForm();
 	    
@@ -112,8 +114,6 @@ class DatosFiliatoriosType extends AbstractType
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshBarrio($form->getParent(), $localidad);
 	    		});
-	    
-
     }
     
     public function getDefaultOptions(array $options)
