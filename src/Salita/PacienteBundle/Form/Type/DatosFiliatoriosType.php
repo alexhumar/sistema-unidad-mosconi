@@ -125,7 +125,6 @@ class DatosFiliatoriosType extends AbstractType
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshBarrio($form->getParent(), $localidad);
 	    		});
-	    echo(var_dump($builder->get('localidad')));die;
     }
     
     public function getDefaultOptions(array $options)
