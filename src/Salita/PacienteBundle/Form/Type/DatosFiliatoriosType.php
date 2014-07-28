@@ -44,7 +44,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'class' => 'SalitaOtrosBundle:Partido',
 	    		  'property' => 'nombre',
 	    		  'label' => 'Partido',
-	    		  'empty_value' => 'Selecciona un partido'
+	    		  'empty_value' => false
 	    ));
     
 	    $refreshLocalidad =
