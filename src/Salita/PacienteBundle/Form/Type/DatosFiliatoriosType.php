@@ -32,8 +32,8 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            //->add('localidad', 'choice', array('choices' => array()))
-            //->add('barrio', 'choice', array('choices' => array()))
+            ->add('localidad')
+            ->add('barrio')
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -46,23 +46,6 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => ''
 	    ));
-	        
-	    $builder
-	        ->add('localidad', 'entity', array(
-	        	  'class' => 'SalitaOtrosBundle:Localidad',
-	        	  'property' => 'nombre',
-	        	  'label' => 'Localidad',
-	        	  'empty_value' => '',
-	        	  'choices' => array()
-	        ));
-	        
-	    $builder
-	        ->add('barrio', 'entity', array(
-	        		'class' => 'SalitaOtrosBundle:Barrio',
-	        		'property' => 'nombre',
-	        		'label' => 'barrio',
-	        		'empty_value' => ''
-	        ));
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
