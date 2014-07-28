@@ -88,7 +88,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		FormEvents::PRE_SUBMIT,
 	    		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    			$form = $event->getForm();
-	    			$paciente = $event->getData();
+	    			$paciente = $form->getData();
 	    			$refreshLocalidad($form, $paciente->getPartido());
 	    			$refreshBarrio($form, $paciente->getLocalidad());
 	    		});
