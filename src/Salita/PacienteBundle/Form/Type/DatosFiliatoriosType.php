@@ -56,10 +56,10 @@ class DatosFiliatoriosType extends AbstractType
 	        ));
 	        
 	    $builder
-	        ->add('localidad', 'entity', array(
-	        		'class' => 'SalitaOtrosBundle:Localidad',
+	        ->add('barrio', 'entity', array(
+	        		'class' => 'SalitaOtrosBundle:Barrio',
 	        		'property' => 'nombre',
-	        		'label' => 'Localidad',
+	        		'label' => 'Barrio',
 	        		'empty_value' => 'Selecciona un barrio'
 	        ));
     
