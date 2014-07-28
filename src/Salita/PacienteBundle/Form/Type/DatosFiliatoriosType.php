@@ -32,8 +32,8 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            //->add('localidad')
-            //->add('barrio')
+            ->add('localidad')
+            ->add('barrio')
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -46,22 +46,6 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => 'Selecciona un partido'
 	    ));
-	        
-	    $builder
-	        ->add('localidad', 'entity', array(
-	        		'class' => 'SalitaOtrosBundle:Localidad',
-	        		'property' => 'nombre',
-	        		'label' => 'Localidad',
-	        		'empty_value' => 'Selecciona una localidad'
-	        ));
-	        
-	    $builder
-	        ->add('barrio', 'entity', array(
-	        		'class' => 'SalitaOtrosBundle:Barrio',
-	        		'property' => 'nombre',
-	        		'label' => 'Barrio',
-	        		'empty_value' => 'Selecciona un barrio'
-	        ));
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
@@ -69,7 +53,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
-		    			   'empty_value' => '',
+		    			   'empty_value' => 'Selecciona una localidad',
 		    			   'choices' => $localidades
 		    	));
 		    };
@@ -84,7 +68,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	}
 		    	$form->add('barrio', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Barrio',
-		    			   'empty_value' => '',
+		    			   'empty_value' => 'Selecciona un barrio',
 		    			   'choices' => $barrios
 		    	));
 		    };
