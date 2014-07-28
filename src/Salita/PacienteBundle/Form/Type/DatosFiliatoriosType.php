@@ -47,7 +47,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'empty_value' => false
 	    ));
     
-	    $refreshLocalidad =
+	    $setLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
@@ -58,7 +58,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    };
 		    
-		$refreshBarrio = 
+		$setBarrio = 
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
@@ -69,14 +69,14 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    };
 		    
-		    $setLocalidad =
+		    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();
 		    	$form->get('localidad')->setData($localidades);
 		    };
 		    
-		    $setBarrio =
+		    $refreshBarrio =
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
