@@ -53,7 +53,6 @@ class DatosFiliatoriosType extends AbstractType
 	        	  'property' => 'nombre',
 	        	  'label' => 'Localidad',
 	        	  'empty_value' => '',
-	        	  'choices' => array()
 	        ));
     
 	    $refreshLocalidad =
@@ -85,7 +84,6 @@ class DatosFiliatoriosType extends AbstractType
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
 	    		        $refreshLocalidad($form, $paciente->getPartido());
-	    		        //Esto debe estar re mal
 	    		        $refreshBarrio($form, $paciente->getLocalidad());
 	        });
 	    
