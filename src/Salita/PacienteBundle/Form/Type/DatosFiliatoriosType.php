@@ -70,7 +70,7 @@ class DatosFiliatoriosType extends AbstractType
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
-		    	if (null !== $localidad)
+		    	if (null != $localidad)
 		    	{
 		    		echo(var_dump($barrios));
 		    	}
