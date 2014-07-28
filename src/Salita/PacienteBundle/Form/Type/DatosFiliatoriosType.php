@@ -33,7 +33,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('pais')
             /*->add('partido') */
             //->add('localidad')
-            ->add('barrio')
+            //->add('barrio')
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -44,7 +44,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'class' => 'SalitaOtrosBundle:Partido',
 	    		  'property' => 'nombre',
 	    		  'label' => 'Partido',
-	    		  'empty_value' => ''
+	    		  'empty_value' => 'Selecciona un partido'
 	    ));
 	        
 	    $builder
@@ -52,7 +52,15 @@ class DatosFiliatoriosType extends AbstractType
 	        		'class' => 'SalitaOtrosBundle:Localidad',
 	        		'property' => 'nombre',
 	        		'label' => 'Localidad',
-	        		'empty_value' => ''
+	        		'empty_value' => 'Selecciona una localidad'
+	        ));
+	        
+	    $builder
+	        ->add('localidad', 'entity', array(
+	        		'class' => 'SalitaOtrosBundle:Localidad',
+	        		'property' => 'nombre',
+	        		'label' => 'Localidad',
+	        		'empty_value' => 'Selecciona un barrio'
 	        ));
     
 	    $refreshLocalidad =
