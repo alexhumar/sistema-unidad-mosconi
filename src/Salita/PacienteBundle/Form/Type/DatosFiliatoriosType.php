@@ -71,7 +71,7 @@ class DatosFiliatoriosType extends AbstractType
 
 	    $builder
 	        ->addEventListener(
-	        		FormEvents::PRE_SUBMIT, //POST_SET_DATA, 
+	        		FormEvents::PRE_SET_DATA, //PRE_SUBMIT, //POST_SET_DATA, 
 	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
@@ -102,7 +102,6 @@ class DatosFiliatoriosType extends AbstractType
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
 	    			$localidad = $event->getForm()->getData();
-	                echo("Hola" . var_dump($localidad));die;
 	    			 
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
