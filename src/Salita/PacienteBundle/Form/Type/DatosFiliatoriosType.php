@@ -100,6 +100,9 @@ class DatosFiliatoriosType extends AbstractType
 	    		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    			$form = $event->getForm();
 	    			$paciente = $event->getData();
+	    			echo(var_dump($paciente->getPartido()));
+	    			echo(var_dump($paciente->getLocalidad()));
+	    			die;
 	    			$refreshLocalidad($form, $paciente->getPartido());
 	    			$refreshBarrio($form, $paciente->getLocalidad());
 	    		});
