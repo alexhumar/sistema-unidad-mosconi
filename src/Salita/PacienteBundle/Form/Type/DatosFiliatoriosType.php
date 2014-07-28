@@ -32,7 +32,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            ->add('localidad')
+            //->add('localidad')
             ->add('barrio')
             ->add('calle')
             ->add('numero')
@@ -46,6 +46,14 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => ''
 	    ));
+	        
+	    $builder
+	        ->add('localidad', 'entity', array(
+	        		'class' => 'SalitaOtrosBundle:Localidad',
+	        		'property' => 'nombre',
+	        		'label' => 'Localidad',
+	        		'empty_value' => ''
+	        ));
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
