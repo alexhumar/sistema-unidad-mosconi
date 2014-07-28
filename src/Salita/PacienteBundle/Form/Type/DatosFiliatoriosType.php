@@ -33,7 +33,7 @@ class DatosFiliatoriosType extends AbstractType
             ->add('pais')
             /*->add('partido') */
             //->add('localidad', 'choice', array('choices' => array()))
-            ->add('barrio', 'choice', array('choices' => array()))
+            //->add('barrio', 'choice', array('choices' => array()))
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -47,13 +47,13 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'empty_value' => ''
 	    ));
 	        
-	    $builder
+	    /*$builder
 	        ->add('localidad', 'entity', array(
 	        	  'class' => 'SalitaOtrosBundle:Localidad',
 	        	  'property' => 'nombre',
 	        	  'label' => 'Localidad',
 	        	  'empty_value' => '',
-	        ));
+	        ));*/
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)// use ($factory)
