@@ -83,35 +83,17 @@ class DatosFiliatoriosType extends AbstractType
 	    		        $refreshBarrio($form, $paciente->getLocalidad());
 	        });
 	    
-	    $builder->get('partido')->addEventListener(
-	    		FormEvents::POST_SUBMIT, 
-	    		function (FormEvent $event) use ($refreshLocalidad) {
-	    			$form = $event->getForm();
-	    			
-	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
-	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
-	    		    $partido = $event->getForm()->getData();
-	    		    
-	    		    /* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
-	    		     * callback (estaba en el cookbook), no me cierra del todo */
-	    			$refreshLocalidad($form->getParent(), $partido);
-	    	});
-	    
-	    //ATENCION: no me esta agregando esto como event listener... verificar.
-	    $builder->get('localidad')->addEventListener(
+	    $builder
+	        ->addEventListener(
 	    		FormEvents::POST_SUBMIT,
-	    		function (FormEvent $event) use ($refreshBarrio) {
+	    		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    			$form = $event->getForm();
-	    
-	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
-	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
-	    			$localidad = $event->getForm()->getData();
-	    			
-	    				
-	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
-	    			 * callback (estaba en el cookbook), no me cierra del todo */
-	    			$refreshBarrio($form->getParent(), $localidad);
+	    			$paciente = $event->getData();
+	    			$refreshLocalidad($form, $paciente->getPartido());
+	    			$refreshBarrio($form, $paciente->getLocalidad());
 	    		});
+	    
+
     }
     
     public function getDefaultOptions(array $options)
