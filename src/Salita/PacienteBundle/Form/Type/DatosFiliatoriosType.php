@@ -95,7 +95,7 @@ class DatosFiliatoriosType extends AbstractType
 	     
 	    //ATENCION: no me esta agregando esto como event listener... verificar.
 	    $builder->get('localidad')->addEventListener(
-	    		FormEvents::PRE_SUBMIT,
+	    		FormEvents::POST_SUBMIT,
 	    		function (FormEvent $event) use ($refreshBarrio) {
 	    			$form = $event->getForm();
 	    			 
