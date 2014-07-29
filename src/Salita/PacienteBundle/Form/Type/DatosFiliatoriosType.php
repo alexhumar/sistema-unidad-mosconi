@@ -100,7 +100,7 @@ class DatosFiliatoriosType extends AbstractType
 	    
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
-	    			$partido = $form->getData();
+	    			$partido = $event->getForm()->getData();
 	    				
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
