@@ -88,6 +88,22 @@ class Partido
     {
         return $this->localidades;
     }
+    
+    /* Metodo especial para usar en DatosFiliatoriosType */
+    public function getBarrios()
+    {
+    	$barrios = new ArrayCollection();
+    	foreach($this->getLocalidades() as $localidad)
+    	{
+    		$iterator = $localidad->getBarrios()->getIterator();
+    		while($iterator->valid())
+    		{
+    			$barrios->add($iterator->current());
+    		}
+    	}
+    	
+    	return $barrios;
+    }
 
     public function __toString()
     {

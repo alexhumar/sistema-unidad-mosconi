@@ -46,28 +46,26 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => false
 	    ));
-	        
-	    $builder
-	        ->add('localidad', 'entity', array(
-	        		'class' => 'SalitaOtrosBundle:Localidad',
-	        		'property' => 'nombre',
-	        		'label' => 'Localidad',
-	        		'empty_value' => 'Selecciona una localidad'
-	        ));
     
-	    $refreshLocalidad =
+	    $formModifier =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
-		    	/*$form->add('localidad', 'entity', array(
+		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
 		    			   'empty_value' => 'Selecciona una localidad',
 		    			   'choices' => $localidades
-		    	));*/
-		    	$form->get('localidad')->setData($localidades);
+		    	));
+		    	
+		    	$barrios = null === $partido ? array() : $partido->getBarrios();
+		    	$form->add('barrio', 'entity', array(
+		    			'class' => 'SalitaOtrosBundle:Barrio',
+		    			'empty_value' => 'Selecciona un barrio',
+		    			'choices' => $barrios
+		    	));
 		    };
 		    
-		$refreshBarrio = 
+	/*	$refreshBarrio = 
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
@@ -76,46 +74,48 @@ class DatosFiliatoriosType extends AbstractType
 		    			   'empty_value' => 'Selecciona un barrio',
 		    			   'choices' => $barrios
 		    	));
-		    };
+		    }; */
 
 	    $builder
 	        ->addEventListener(
 	        		FormEvents::PRE_SET_DATA,
-	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
+	        		function (FormEvent $event) use ($formModifier/*$refreshLocalidad, $refreshBarrio*/) {
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
-	    		        $refreshLocalidad($form, $paciente->getPartido());
-	    		        $refreshBarrio($form, $paciente->getLocalidad());
+	    		        //$refreshLocalidad($form, $paciente->getPartido());
+	    		        //$refreshBarrio($form, $paciente->getLocalidad());
+	    		        $formModifier($form, $paciente->getPartido());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
-	    		FormEvents::PRE_SUBMIT,
-	    		function (FormEvent $event) use ($refreshLocalidad) {
+	    		FormEvents::POST_SUBMIT,
+	    		function (FormEvent $event) use ($formModifier/*$refreshLocalidad*/) {
 	    			$form = $event->getForm();
 	    
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
-	    			$partido = $event->getForm()->getData();
+	    			$partido = $form->getData();
 	    				
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
-	    			$refreshLocalidad($form->getParent(), $partido);
+	    			//$refreshLocalidad($form->getParent(), $partido);
+	    			$formModifier($form->getParent(), $partido);
 	    		});
 	    
 	    //ATENCION: no me esta agregando esto como event listener... verificar.
-	    $builder->get('localidad')->addEventListener(
+	   /* $builder->get('localidad')->addEventListener(
 	    		FormEvents::POST_SUBMIT,
 	    		function (FormEvent $event) use ($refreshBarrio) {
 	    			$form = $event->getForm();
 	    			 
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
-	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
+	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. 
 	    			$localidad = $event->getForm()->getData();
 	    			 
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
-	    			 * callback (estaba en el cookbook), no me cierra del todo */
+	    			 * callback (estaba en el cookbook), no me cierra del todo 
 	    			$refreshBarrio($form->getParent(), $localidad);
-	    		});
+	    		});*/
     }
     
     public function getDefaultOptions(array $options)
