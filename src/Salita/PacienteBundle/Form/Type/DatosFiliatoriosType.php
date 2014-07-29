@@ -50,19 +50,27 @@ class DatosFiliatoriosType extends AbstractType
 	    $formModifier =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
-		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
+		    	$idPartido = null == $partido ? null : $partido->getId();
+		    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
 		    			   'empty_value' => 'Selecciona una localidad',
-		    			   'choices' => $localidades
+		    			   'query_builder' =>
+		    			             function(EntityRepository $er) use ($idPartido)
+		    			             {
+		    			                 return $er->localidadesDePartidoQueryBuilder($idPartido);
+		    			             }
 		    	));
 		    	
-		    	$idPartido = null === $partido ? null : $partido->getId();
+		    	echo(var_dump($idPartido));
+		    	
+		    	//$idPartido = null == $partido ? null : $partido->getId();
+		    	
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
 		    			'empty_value' => 'Selecciona un barrio',
 		    			'query_builder' => 
-		    			          function (EntityRepository $er) use ($idPartido)
+		    			          function(EntityRepository $er) use ($idPartido)
 		    			          {
 		    			              return $er->barriosDePartidoQueryBuilder($idPartido);
 		    			          }
