@@ -89,7 +89,7 @@ class DatosFiliatoriosType extends AbstractType
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
-	    		FormEvents::POST_SUBMIT,
+	    		FormEvents::PRE_SUBMIT,
 	    		function (FormEvent $event) use ($refreshLocalidad) {
 	    			$form = $event->getForm();
 	    
