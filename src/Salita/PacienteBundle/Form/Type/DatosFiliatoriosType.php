@@ -58,7 +58,11 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    	
 		    	$barrios = null === $partido ? array() : $partido->getBarrios();
-		    	
+		    	if($partido != null )
+		    	{
+		    		echo(var_dump($partido->getBarrios()));
+		    		die;
+		    	}
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
 		    			'empty_value' => 'Selecciona un barrio',
