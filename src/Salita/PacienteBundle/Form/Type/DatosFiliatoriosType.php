@@ -62,7 +62,6 @@ class DatosFiliatoriosType extends AbstractType
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
-		    	echo(var_dump($barrios));die;
 		    	$form->add('barrio', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Barrio',
 		    			   'empty_value' => 'Selecciona un barrio',
