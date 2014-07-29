@@ -73,7 +73,7 @@ class DatosFiliatoriosType extends AbstractType
 		    function (FormInterface $form, Partido $partido = null)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();
-		    	$form->get['localidad']->setData($localidades);
+		    	$form['localidad']->setData($localidades);
 		    };
 		    
 		    $refreshBarrio =
