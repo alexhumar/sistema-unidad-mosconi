@@ -29,7 +29,7 @@ class LocalidadRepository extends EntityRepository
 		else
 		{
 			$qb = $qb
-			        ->where('partido.id is null');
+			        ->where('partido.id = 1');
 		}
 		return $qb;
 	}
