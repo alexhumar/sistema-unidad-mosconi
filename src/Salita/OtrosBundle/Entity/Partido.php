@@ -92,22 +92,16 @@ class Partido
     /* Metodo especial para usar en DatosFiliatoriosType */
     public function getBarrios()
     {
-    	echo("Hola 1");
     	$barrios = new ArrayCollection();
-    	echo("Hola 2");
     	foreach($this->getLocalidades() as $localidad)
     	{
-    		echo("Hola 3");
     		$iterator = $localidad->getBarrios()->getIterator();
-    		echo("Hola 3");
     		while($iterator->valid())
     		{
-    			echo("Hola 4");
     			$barrios->add($iterator->current());
-    			echo("Hola 5");
     		}
     	}
-    	
+    	echo(var_dump($barrios));die;
     	return $barrios;
     }
 
