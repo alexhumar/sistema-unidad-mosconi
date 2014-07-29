@@ -90,7 +90,7 @@ class Partido
     }
     
     /* Metodo especial para usar en DatosFiliatoriosType */
-    public function getBarrios()
+  /*  public function getBarrios()
     {
     	$barrios = new ArrayCollection();
     	foreach($this->getLocalidades() as $localidad)
@@ -101,9 +101,8 @@ class Partido
     			$barrios->add($iterator->current());
     		}
     	}
-    	echo(var_dump($barrios));die;
     	return $barrios;
-    }
+    }*/
 
     public function __toString()
     {

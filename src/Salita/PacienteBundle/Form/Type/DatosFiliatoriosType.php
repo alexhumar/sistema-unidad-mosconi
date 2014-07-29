@@ -56,11 +56,16 @@ class DatosFiliatoriosType extends AbstractType
 		    			   'empty_value' => 'Selecciona una localidad',
 		    			   'choices' => $localidades
 		    	));
-		    	$barrios = null === $partido ? array() : $partido->getBarrios();
+		    	
+		    	$idPartido = null === $partido ? null : $partido->getId();
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
 		    			'empty_value' => 'Selecciona un barrio',
-		    			'choices' => $barrios
+		    			'query_builder' => 
+		    			          function (EntityRepository $er) use ($idPartido)
+		    			          {
+		    			              return $er->barriosDePartidoQueryBuilder($idPartido);
+		    			          }
 		    	));
 		    };
 		    
