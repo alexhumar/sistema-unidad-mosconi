@@ -47,8 +47,8 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'empty_value' => false
 	    ));
     
-	    $refreshLocalidad =
-		    function (FormInterface $form, Partido $partido = null)// use ($factory)
+	    $setLocalidad =
+		    function (FormInterface $form, Partido $partido = null)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
 		    	$form->add('localidad', 'entity', array(
@@ -58,10 +58,11 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    };
 		    
-		$refreshBarrio = 
+		$setBarrio = 
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
+		    	echo(var_dump($barrios));die;
 		    	$form->add('barrio', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Barrio',
 		    			   'empty_value' => 'Selecciona un barrio',
@@ -71,16 +72,16 @@ class DatosFiliatoriosType extends AbstractType
 
 	    $builder
 	        ->addEventListener(
-	        		FormEvents::PRE_SET_DATA, //PRE_SUBMIT, //POST_SET_DATA, 
-	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
+	        		FormEvents::PRE_SUBMIT, //PRE_SET_DATA,
+	        		function (FormEvent $event) use ($setLocalidad, $setBarrio) {
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
-	    		        $refreshLocalidad($form, $paciente->getPartido());
-	    		        $refreshBarrio($form, $paciente->getLocalidad());
+	    		        $setLocalidad($form, $paciente->getPartido());
+	    		        $setBarrio($form, $paciente->getLocalidad());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
-	    		FormEvents::PRE_SUBMIT,
+	    		FormEvents::POST_SUBMIT,
 	    		function (FormEvent $event) use ($refreshLocalidad) {
 	    			$form = $event->getForm();
 	    
