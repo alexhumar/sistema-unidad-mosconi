@@ -90,19 +90,25 @@ class Partido
     }
     
     /* Metodo especial para usar en DatosFiliatoriosType */
-  /*  public function getBarrios()
+    public function getBarrios()
     {
-    	$barrios = new ArrayCollection();
-    	foreach($this->getLocalidades() as $localidad)
+    	$barriosPartido = new ArrayCollection();
+    	$localidades = $this->getLocalidades();
+    	foreach($localidades as $localidad)
     	{
-    		$iterator = $localidad->getBarrios()->getIterator();
+    		/*$iterator = $localidad->getBarrios()->getIterator();
     		while($iterator->valid())
     		{
     			$barrios->add($iterator->current());
-    		}
+    		}*/
+    		
+    		$barriosLocalidad = $localidad->getBarrios();
+    		$barriosPartido = new ArrayCollection(
+    				               array_merge($barriosPartido->toArray(), $barriosLocalidad->toArray())
+                              );
     	}
-    	return $barrios;
-    }*/
+    	return $barriosPartido;
+    }
 
     public function __toString()
     {

@@ -44,44 +44,25 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'class' => 'SalitaOtrosBundle:Partido',
 	    		  'property' => 'nombre',
 	    		  'label' => 'Partido',
-	    		  'empty_value' => false,
-	        	  'preferred_choices' => array('1')
+	    		  'empty_value' => false
 	    ));
     
 	    $formModifier =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
-		    	if($partido == null)
-		    	{
-		    		$idPartido = null;
-		    	}
-		    	else
-		    	{
-		    		$idPartido = $partido->getId();
-		    	}
-		    	
+		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
-		    			   'empty_value' => false,
-		    			   'query_builder' =>
-		    			             function(EntityRepository $er) use ($idPartido)
-		    			             {
-		    			                 return $er->localidadesDePartidoQueryBuilder($idPartido);
-		    			             }
+		    			   'empty_value' => 'Selecciona una localidad',
+		    			   'choices' => $localidades
 		    	));
 		    	
-		    	echo(var_dump($idPartido));
-		    	
-		    	//$idPartido = null == $partido ? null : $partido->getId();
+		    	$barrios = null === $partido ? array() : $partido->getBarrios();
 		    	
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
-		    			'empty_value' => false,
-		    			'query_builder' => 
-		    			          function(EntityRepository $er) use ($idPartido)
-		    			          {
-		    			              return $er->barriosDePartidoQueryBuilder($idPartido);
-		    			          }
+		    			'empty_value' => 'Selecciona un barrio',
+		    			'choices' => $barrios
 		    	));
 		    };
 		    
