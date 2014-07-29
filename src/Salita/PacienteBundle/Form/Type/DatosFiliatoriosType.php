@@ -60,7 +60,8 @@ class DatosFiliatoriosType extends AbstractType
 		    	$barrios = null === $partido ? array() : $partido->getBarrios();
 		    	if($partido != null )
 		    	{
-		    		echo(var_dump($partido->getBarrios()));
+		    		foreach($partido->getBarrios() as $barrio){
+		    		echo($barrio->getNombre());}
 		    		die;
 		    	}
 		    	$form->add('barrio', 'entity', array(
