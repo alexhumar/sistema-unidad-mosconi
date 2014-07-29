@@ -59,7 +59,7 @@ class BarrioRepository extends EntityRepository
 		else
 		{
 			$qb = $qb
-			        ->where('partido.id = null');
+			        ->where('partido.id is null');
 		}
 		return $qb;
 	}
