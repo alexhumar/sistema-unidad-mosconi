@@ -46,16 +46,25 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'label' => 'Partido',
 	    		  'empty_value' => false
 	    ));
+	        
+	    $builder
+	        ->add('localidad', 'entity', array(
+	        		'class' => 'SalitaOtrosBundle:Localidad',
+	        		'property' => 'nombre',
+	        		'label' => 'Localidad',
+	        		'empty_value' => 'Selecciona una localidad'
+	        ));
     
 	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
-		    	$form->add('localidad', 'entity', array(
+		    	/*$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
 		    			   'empty_value' => 'Selecciona una localidad',
 		    			   'choices' => $localidades
-		    	));
+		    	));*/
+		    	$form->get('localidad')->setData($localidades);
 		    };
 		    
 		$refreshBarrio = 
@@ -91,7 +100,7 @@ class DatosFiliatoriosType extends AbstractType
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshLocalidad($form->getParent(), $partido);
-	    		}, 1);
+	    		});
 	    
 	    //ATENCION: no me esta agregando esto como event listener... verificar.
 	    $builder->get('localidad')->addEventListener(
@@ -106,7 +115,7 @@ class DatosFiliatoriosType extends AbstractType
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
 	    			$refreshBarrio($form->getParent(), $localidad);
-	    		}, 0);
+	    		});
     }
     
     public function getDefaultOptions(array $options)
