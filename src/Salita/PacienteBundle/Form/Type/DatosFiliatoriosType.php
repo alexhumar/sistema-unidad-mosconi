@@ -47,7 +47,7 @@ class DatosFiliatoriosType extends AbstractType
 	    		  'empty_value' => false
 	    ));
     
-	    $setLocalidad =
+	    $refreshLocalidad =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
@@ -58,7 +58,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    };
 		    
-		$setBarrio = 
+		$refreshBarrio = 
 		    function (FormInterface $form, Localidad $localidad = null)
 		    {
 		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
@@ -68,33 +68,19 @@ class DatosFiliatoriosType extends AbstractType
 		    			   'choices' => $barrios
 		    	));
 		    };
- 
-		    $refreshLocalidad =
-		    function (FormInterface $form, Partido $partido = null)
-		    {
-		    	$localidades = null === $partido ? array() : $partido->getLocalidades();
-		    	$form['localidad']->setData($localidades);
-		    };
-		    
-		    $refreshBarrio =
-		    function (FormInterface $form, Localidad $localidad = null)
-		    {
-		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
-		    	$form['barrio']->setData($barrios);
-		    };
 
 	    $builder
 	        ->addEventListener(
 	        		FormEvents::PRE_SET_DATA,
-	        		function (FormEvent $event) use ($setLocalidad, $setBarrio) {
+	        		function (FormEvent $event) use ($refreshLocalidad, $refreshBarrio) {
 	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
-	    		        $setLocalidad($form, $paciente->getPartido());
-	    		        $setBarrio($form, $paciente->getLocalidad());
+	    		        $refreshLocalidad($form, $paciente->getPartido());
+	    		        $refreshBarrio($form, $paciente->getLocalidad());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
-	    		FormEvents::POST_SET_DATA,//PRE_SUBMIT,
+	    		FormEvents::PRE_SUBMIT,
 	    		function (FormEvent $event) use ($refreshLocalidad) {
 	    			$form = $event->getForm();
 	    
@@ -109,7 +95,7 @@ class DatosFiliatoriosType extends AbstractType
 	     
 	    //ATENCION: no me esta agregando esto como event listener... verificar.
 	    $builder->get('localidad')->addEventListener(
-	    		FormEvents::POST_SET_DATA,//PRE_SUBMIT,
+	    		FormEvents::PRE_SUBMIT,
 	    		function (FormEvent $event) use ($refreshBarrio) {
 	    			$form = $event->getForm();
 	    			 
