@@ -50,7 +50,14 @@ class DatosFiliatoriosType extends AbstractType
 	    $formModifier =
 		    function (FormInterface $form, Partido $partido = null)
 		    {
-		    	$idPartido = null == $partido ? null : $partido->getId();
+		    	if(partido == null)
+		    	{
+		    		$idPartido = null;
+		    	}
+		    	else
+		    	{
+		    		$idPartido = $partido->getId();
+		    	}
 		    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
