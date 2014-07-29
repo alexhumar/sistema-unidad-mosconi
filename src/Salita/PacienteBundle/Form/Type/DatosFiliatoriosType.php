@@ -61,7 +61,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
-		    			   'empty_value' => 'Selecciona una localidad',
+		    			   'empty_value' => false,
 		    			   'query_builder' =>
 		    			             function(EntityRepository $er) use ($idPartido)
 		    			             {
@@ -75,7 +75,7 @@ class DatosFiliatoriosType extends AbstractType
 		    	
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
-		    			'empty_value' => 'Selecciona un barrio',
+		    			'empty_value' => false,
 		    			'query_builder' => 
 		    			          function(EntityRepository $er) use ($idPartido)
 		    			          {
