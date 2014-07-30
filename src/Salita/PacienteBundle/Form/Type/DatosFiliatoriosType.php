@@ -32,8 +32,8 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
             /*->add('partido') */
-            ->add('localidad')
-            ->add('barrio')
+            /*->add('localidad')
+            ->add('barrio')*/
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -86,11 +86,10 @@ class DatosFiliatoriosType extends AbstractType
 	        ->addEventListener(
 	        		FormEvents::PRE_SET_DATA,
 	        		function (FormEvent $event) use ($formModifier/*$refreshLocalidad, $refreshBarrio*/) {
-	    	            $form = $event->getForm();
 	    	            $paciente = $event->getData();
 	    		        //$refreshLocalidad($form, $paciente->getPartido());
 	    		        //$refreshBarrio($form, $paciente->getLocalidad());
-	    		        $formModifier($form, $paciente->getPartido());
+	    		        $formModifier($event->getForm(), $paciente->getPartido());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
