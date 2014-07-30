@@ -31,9 +31,6 @@ class DatosFiliatoriosType extends AbstractType
             ->add('telefonoFijo', null, array('label' => 'Telefono Fijo'))
             ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
             ->add('pais')
-            /*->add('partido') */
-            /*->add('localidad')
-            ->add('barrio')*/
             ->add('calle')
             ->add('numero')
             ->add('calleEntre1', null, array('label' => 'Entre calle'))
@@ -58,43 +55,24 @@ class DatosFiliatoriosType extends AbstractType
 		    	));
 		    	
 		    	$barrios = null === $partido ? array() : $partido->getBarrios();
-		    	/*if($partido != null )
-		    	{
-		    		foreach($partido->getBarrios() as $barrio){
-		    		echo($barrio->getNombre());}
-		    		die;
-		    	}*/
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
 		    			'empty_value' => 'Selecciona un barrio',
 		    			'choices' => $barrios
 		    	));
 		    };
-		    
-	/*	$refreshBarrio = 
-		    function (FormInterface $form, Localidad $localidad = null)
-		    {
-		    	$barrios = null === $localidad ? array() : $localidad->getBarrios();
-		    	$form->add('barrio', 'entity', array(
-		    		       'class' => 'SalitaOtrosBundle:Barrio',
-		    			   'empty_value' => 'Selecciona un barrio',
-		    			   'choices' => $barrios
-		    	));
-		    }; */
 
 	    $builder
 	        ->addEventListener(
 	        		FormEvents::PRE_SET_DATA,
-	        		function (FormEvent $event) use ($formModifier/*$refreshLocalidad, $refreshBarrio*/) {
+	        		function (FormEvent $event) use ($formModifier) {
 	    	            $paciente = $event->getData();
-	    		        //$refreshLocalidad($form, $paciente->getPartido());
-	    		        //$refreshBarrio($form, $paciente->getLocalidad());
 	    		        $formModifier($event->getForm(), $paciente->getPartido());
 	        });
 	    
 	    $builder->get('partido')->addEventListener(
 	    		FormEvents::POST_SUBMIT,
-	    		function (FormEvent $event) use ($formModifier/*$refreshLocalidad*/) {
+	    		function (FormEvent $event) use ($formModifier) {
 	    
 	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
 	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. */
@@ -102,24 +80,8 @@ class DatosFiliatoriosType extends AbstractType
 	    				
 	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
 	    			 * callback (estaba en el cookbook), no me cierra del todo */
-	    			//$refreshLocalidad($form->getParent(), $partido);
 	    			$formModifier($event->getForm()->getParent(), $partido);
 	    		});
-	    
-	    //ATENCION: no me esta agregando esto como event listener... verificar.
-	   /* $builder->get('localidad')->addEventListener(
-	    		FormEvents::POST_SUBMIT,
-	    		function (FormEvent $event) use ($refreshBarrio) {
-	    			$form = $event->getForm();
-	    			 
-	    			/* Es importante capturarlo de esta manera ya que $event->getData() retorna la client data
-	    			 * (o sea, el ID). Esto estaba en el cookbook. Lo anoto para que quede. 
-	    			$localidad = $event->getForm()->getData();
-	    			 
-	    			/* Como el listener se agrego al hijo, tenemos que pasarlo el form padre a las funciones
-	    			 * callback (estaba en el cookbook), no me cierra del todo 
-	    			$refreshBarrio($form->getParent(), $localidad);
-	    		});*/
     }
     
     public function getDefaultOptions(array $options)
