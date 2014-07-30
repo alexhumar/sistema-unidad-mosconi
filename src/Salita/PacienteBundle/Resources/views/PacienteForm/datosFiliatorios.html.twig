@@ -5,6 +5,11 @@
   <link href="{{ asset('css/paciente/alta.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ include('SalitaOtrosBundle:Ajax:ajax_paciente.html.twig') }}
+{% endblock %}
+
 {# Para hacer customizaciones en la renderizacion de widgets que solo sean utilizadas en este template #}
 {% form_theme form _self %}
 

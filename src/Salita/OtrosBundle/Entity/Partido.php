@@ -96,12 +96,6 @@ class Partido
     	$localidades = $this->getLocalidades();
     	foreach($localidades as $localidad)
     	{
-    		/*$iterator = $localidad->getBarrios()->getIterator();
-    		while($iterator->valid())
-    		{
-    			$barrios->add($iterator->current());
-    		}*/
-    		
     		$barriosLocalidad = $localidad->getBarrios();
     		$barriosPartido = new ArrayCollection(
     				               array_merge($barriosPartido->toArray(), $barriosLocalidad->toArray())

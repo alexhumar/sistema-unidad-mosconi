@@ -7,7 +7,7 @@ use Salita\OtrosBundle\Entity\Partido;
 
 class BarrioRepository extends EntityRepository
 {
-	/* Retorna un query builder utilizado en DatosFiliatoriosType */
+	/* Retorna un query builder que iba a ser utilizado en DatosFiliatoriosType. Lo dejo porque esta bueno */
 	public function barriosDeLocalidadQueryBuilder($localidad)
 	{
 		$qb = $this
@@ -35,7 +35,7 @@ class BarrioRepository extends EntityRepository
 		return $qb;
 	}
 	
-	/* Retorna un query builder utilizado en DatosFiliatoriosType */
+	/* Retorna un query builder que iba a ser utilizado en DatosFiliatoriosType. Lo dejo porque esta bueno */
 	public function barriosDePartidoQueryBuilder($partido)
 	{
 		$qb = $this
