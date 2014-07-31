@@ -19,12 +19,12 @@
         {% set required = false %}
     {% endif %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control input-sm')|trim}) %}
-    {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
+    {# Modificacion para que achique independientemente los selects correspondientes al dia, mes y año #}
     {% if id == "registroDatosFiliatorios_fechaNacimiento_day" or
        id == "registroDatosFiliatorios_fechaNacimiento_month" %}
       {% set col = "col-sm-2" %}
     {% elseif id == "registroDatosFiliatorios_fechaNacimiento_year" %}
-      {% set col = "col-sm-3" %}
+      {% set col = "col-sm-2" %}
     {% else %}
       {% set col = "col-sm-5" %}
     {% endif %}
