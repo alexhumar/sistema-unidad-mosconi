@@ -56,6 +56,14 @@
 {% endspaceless %}
 {% endblock choice_widget_collapsed %}
 
+{% block textarea_widget %}
+{% spaceless %}
+    <div class="col-sm-6">
+      <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </div>
+{% endspaceless %}
+{% endblock textarea_widget %}
+
 {% block button_row %}
 {% spaceless %}
       {{ form_widget(form) }}
