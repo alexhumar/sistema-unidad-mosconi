@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+/* Modifica un poco el tamaño de los carteles de error */
+.alert {
+  margin-bottom: 0px;
+  padding: 6px;
+}
