@@ -3,6 +3,7 @@
 {% block stylesheets %}
   {{ parent() }}
   <link href="{{ asset('css/consulta/alta.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block contenido %}
@@ -10,7 +11,6 @@
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}
-
       <div class="form-group col-sm-12">
         {{ form_row(form.otrasAnotaciones, { 'attr': { 'placeholder': 'Anotaciones asociadas a la consulta' } }) }}
       </div>
@@ -19,6 +19,5 @@
           {{ form_row(form.agregar) }}
         </div>
       </div>
-
     {{ form_end(form) }}
 {% endblock %}
