@@ -3,6 +3,7 @@
 {% block stylesheets %}
   {{ parent() }}
   <link href="{{ asset('css/paciente/alta.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block javascripts %}
@@ -19,14 +20,14 @@
         {% set required = false %}
     {% endif %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control input-sm')|trim}) %}
-    {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
+    {# Modificacion para que achique independientemente los selects correspondientes al dia, mes y año #}
     {% if id == "modificacionDatosFiliatorios_fechaNacimiento_day" or
        id == "modificacionDatosFiliatorios_fechaNacimiento_month" %}
-      {% set col = "col-sm-3" %}
+      {% set col = "col-sm-2" %}
     {% elseif id == "modificacionDatosFiliatorios_fechaNacimiento_year" %}
       {% set col = "col-sm-2" %}
     {% else %}
-      {% set col = "col-sm-8" %}
+      {% set col = "col-sm-6" %}
     {% endif %}
     <div class="{{ col }}"> {# Fin de la modificacion #}
       <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
@@ -55,52 +56,52 @@
   {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.tipoDocumento) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.nroDoc) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.nombre) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.apellido) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.fechaNacimiento) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.sexo) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.telefonoFijo) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.telefonoMovil) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.pais) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.partido) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.localidad) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.barrio) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calle) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.numero) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calleEntre1) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calleEntre2) }}
     </div>
 
