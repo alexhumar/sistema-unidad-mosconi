@@ -22,11 +22,11 @@
     {# Modificacion para que achique los selects correspondientes al dia, mes y año #}
     {% if id == "registroDatosFiliatorios_fechaNacimiento_day" or
        id == "registroDatosFiliatorios_fechaNacimiento_month" %}
-      {% set col = "col-sm-3" %}
-    {% elseif id == "registroDatosFiliatorios_fechaNacimiento_year" %}
       {% set col = "col-sm-2" %}
+    {% elseif id == "registroDatosFiliatorios_fechaNacimiento_year" %}
+      {% set col = "col-sm-3" %}
     {% else %}
-      {% set col = "col-sm-8" %}
+      {% set col = "col-sm-12" %}
     {% endif %}
     <div class="{{ col }}"> {# Fin de la modificacion #}
       <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
@@ -55,52 +55,52 @@
   {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.tipoDocumento) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.nroDoc, { 'attr': { 'placeholder': 'Numero de documento' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre del paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido del paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.fechaNacimiento) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.sexo) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.telefonoFijo, { 'attr': { 'placeholder': 'Numero de telefono fijo del paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.telefonoMovil, { 'attr': { 'placeholder': 'Numero de telefono celular del paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.pais, { 'attr': { 'placeholder': 'Pais de origen del paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.partido, { 'attr': { 'placeholder': 'Partido donde reside el paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.localidad, { 'attr': { 'placeholder': 'Localidad donde reside el paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.barrio, { 'attr': { 'placeholder': 'Barrio donde reside el paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calle, { 'attr': { 'placeholder': 'Calle donde reside el paciente' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.numero, { 'attr': { 'placeholder': 'Numero de la direccion' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calleEntre1, { 'attr': { 'placeholder': 'Entre calle' } }) }}
     </div>
-    <div class="form-group col-sm-8">
+    <div class="form-group col-sm-12">
       {{ form_row(form.calleEntre2, { 'attr': { 'placeholder': 'Y calle' } }) }}
     </div>
 
