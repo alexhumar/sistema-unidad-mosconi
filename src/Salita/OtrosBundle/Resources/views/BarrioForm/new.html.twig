@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
 	{# 	Invocando a la funcion form sin argumentos mas que el form, twig asume que el metodo es POST y que
 		el action del form es la misma URL que lo renderizó. Para cambiar estos parametros habria que hacer
@@ -16,14 +21,14 @@
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}
-      <div class="form-group col-sm-8">
+      <div class="form-group col-sm-12">
         {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre del barrio' } }) }}
       </div>
-      <div class="form-group col-sm-8">
+      <div class="form-group col-sm-12">
         {{ form_row(form.localidad) }}
       </div>
-      <div class="form-group col-sm-8">
-        <div class="col-sm-offset-6">
+      <div class="form-group col-sm-6">
+        <div class="col-sm-offset-7">
           {{ form_row(form.guardar) }}
           {{ form_row(form.guardarynuevo) }}
         </div>
