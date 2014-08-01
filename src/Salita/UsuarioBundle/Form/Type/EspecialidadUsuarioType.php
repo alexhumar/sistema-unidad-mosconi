@@ -9,7 +9,7 @@ class EspecialidadUsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('especialidad', null, array('required' => true))
-        		->add('asignar', 'submit');
+        		->add('asignar', 'submit', array('label' => 'Asignar especialidad'));
     }
 
     public function getName()
