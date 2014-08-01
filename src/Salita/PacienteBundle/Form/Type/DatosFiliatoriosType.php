@@ -6,9 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
-//use Salita\PacienteBundle\Entity\Paciente;
 use Salita\OtrosBundle\Entity\Partido;
-//use Salita\OtrosBundle\Entity\Localidad;
 
 class DatosFiliatoriosType extends AbstractType
 {
