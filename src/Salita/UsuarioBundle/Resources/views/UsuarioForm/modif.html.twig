@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
     {# Si bien en este caso basta con generarlo con form(form), lo dejo asi para tener una muestra de codigo
        que me indique como se hace en caso de necesitarlo. 
@@ -11,19 +16,19 @@
 
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.email, { 'attr': { 'placeholder': 'Correo electrónico del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.telefono, { 'attr': { 'placeholder': 'Teléfono del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.matricula, { 'attr': { 'placeholder': 'Matrícula del usuario (en caso de ser médico)' } }) }}
 	    </div>
 	    <div class="form-group col-sm-8">

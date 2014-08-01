@@ -1,24 +1,29 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block contenido %}
 	<h3>Modificacion de mis datos</h3>
 	</br>
 
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.email, { 'attr': { 'placeholder': 'Correo electrónico del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.telefono, { 'attr': { 'placeholder': 'Teléfono del usuario' } }) }}
 	    </div>
-	    <div class="form-group col-sm-8">
+	    <div class="form-group col-sm-12">
 	      {{ form_row(form.matricula, { 'attr': { 'placeholder': 'Matrícula del usuario (en caso de ser médico)' } }) }}
 	    </div>
         <div class="form-group col-sm-8">
