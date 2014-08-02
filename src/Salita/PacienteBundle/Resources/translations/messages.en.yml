@@ -66,7 +66,30 @@ pacientebundle.HistoriaClinica.antecedentesFamiliaresClinicos.titulo: Clinical f
 pacientebundle.HistoriaClinica.antecedentesFamiliaresObstetricos.titulo: Obstetric family history
 pacientebundle.HistoriaClinica.antecedentesPersonalesClinicos.titulo: Clinical personal history
 pacientebundle.HistoriaClinica.antecedentesPersonalesObstetricos.titulo: Personal obstetric history
-
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.titulo: Vaccine applications
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloVacuna: Vaccine
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloFecha: Date
+pacientebundle.HistoriaClinica.seccionConsultas.titulo: Consultations
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloFecHor: Date and time
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloDiag: Diagnosis
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloAnot: Annotations
+pacientebundle.HistoriaClinica.seccionConsultas.otros.NA: N/A
+pacientebundle.HistoriaClinica.seccionConsultas.medico: Doctor
+pacientebundle.HistoriaClinica.seccionEstudios.titulo: Studies
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloFecHor: Date and time
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloMetodo: Method
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloResultado: Result
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloMedico: Doctor
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.titulo: Pacient data
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloNombre: Full name
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDoc: Type and no. document
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMovil: Mobile phone
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDomicilio: Domicile
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloSexo: Gender
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem: Female
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas: Male
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Birthday
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telephone
 
 pacientebundle.HistoriaClinica.general.si: Yes
 pacientebundle.HistoriaClinica.general.no: No

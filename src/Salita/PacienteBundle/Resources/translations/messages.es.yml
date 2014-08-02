@@ -66,7 +66,30 @@ pacientebundle.HistoriaClinica.antecedentesFamiliaresClinicos.titulo: Antecedent
 pacientebundle.HistoriaClinica.antecedentesFamiliaresObstetricos.titulo: Antecedentes Familiares Obstétricos
 pacientebundle.HistoriaClinica.antecedentesPersonalesClinicos.titulo: Antecedentes Personales Clínicos
 pacientebundle.HistoriaClinica.antecedentesPersonalesObstetricos.titulo: Antecedentes Personales Obstétricos
-
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.titulo: Aplicaciones de Vacunas
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloVacuna: Vacuna
+pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloFecha: Fecha
+pacientebundle.HistoriaClinica.seccionConsultas.titulo: Consultas
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloFecHor: Fecha y hora
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloDiag: Diagnotisco
+pacientebundle.HistoriaClinica.seccionConsultas.subtituloAnot: Anotaciones
+pacientebundle.HistoriaClinica.seccionConsultas.otros.NA: N/A
+pacientebundle.HistoriaClinica.seccionConsultas.medico: Médico
+pacientebundle.HistoriaClinica.seccionEstudios.titulo: Estudios
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloFecHor: Fecha y hora
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloMetodo: Método
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloResultado: Resultado
+pacientebundle.HistoriaClinica.seccionEstudios.subtituloMedico: Médico
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.titulo: Datos Filiatorios
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloNombre: Nombre completo
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDoc: Tipo y nro. de documento
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMovil: Télefono móvil
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDomicilio: Domicilio
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloSexo: Sexo
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem: Femenino
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas: Masculino
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Fecha de nacimiento
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telefono fijo
 
 pacientebundle.HistoriaClinica.general.si: Si
 pacientebundle.HistoriaClinica.general.no: No

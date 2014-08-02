@@ -2,16 +2,44 @@
 
 {% if (consultas|length > 0) %}
   <div class="row">
-  <div class="tituloSeccion">Consultas</div><br>
+  <div class="tituloSeccion">
+      {% trans %}
+          pacientebundle.HistoriaClinica.seccionConsultas.titulo
+      {% endtrans %}
+  </div><br>
   {% for consulta in consultas %}
     <div class="col-sm-4">
-      <span class="aux"> Fecha y hora: </span>
+      <span class="aux">
+          {% trans %}
+              pacientebundle.HistoriaClinica.seccionConsultas.subtituloFecHor
+          {% endtrans %}
+      </span>
       <span class="datos"> {{consulta.fecha|date("d/m/Y")}}, {{consulta.hora}} </span></br>
-      <span class="aux"> Diagnotisco: </span>
+      <span class="aux">
+          {% trans %}
+              pacientebundle.HistoriaClinica.seccionConsultas.subtituloDiag
+          {% endtrans %}
+      </span>
       <span class="datos"> {{consulta.diagnostico}}</span><br>
-      <span class="aux"> Anotaciones: </span>
-      <span class="datos"> {% if consulta.otrasAnotaciones == null %} - {% else %} {{consulta.otrasAnotaciones}} {% endif %} </span><br>
-      <span class="aux"> Médico: </span>
+      <span class="aux">
+          {% trans %}
+              pacientebundle.HistoriaClinica.seccionConsultas.subtituloAnot
+          {% endtrans %}
+      </span>
+      <span class="datos">
+          {% if consulta.otrasAnotaciones == null %}
+              {% trans %}
+                  pacientebundle.HistoriaClinica.seccionConsultas.otros.NA
+              {% endtrans %}
+          {% else %}
+              {{consulta.otrasAnotaciones}} 
+          {% endif %}
+      </span><br>
+      <span class="aux">
+          {% trans %}
+              pacientebundle.HistoriaClinica.seccionConsultas.medico
+          {% endtrans %}
+      </span>
       <span class="datos"> {{consulta.nombreUsuario}} {{consulta.apellidoUsuario}} </span><br>
       </br>
     </div>
@@ -21,19 +49,39 @@
 
 {% if paciente.isMujer() and (estudios|length > 0) %}
   <div class="row">
-  <div class="tituloSeccion">Estudios</div><br>
-  {% for estudio in estudios %}
-    <div class="col-sm-4">
-      <span class="aux"> Fecha y hora: </span>
-      <span class="datos"> {{estudio.fecha|date("d/m/Y")}}, {{estudio.hora}} </span><br>
-      <span class="aux"> Método: </span>
-      <span class="datos"> {{estudio.metodoEstudio}}</span><br>
-      <span class="aux"> Resultado: </span>
-      <span class="datos"> {{estudio.resultado}} </span><br>
-      <span class="aux"> Médico: </span>
-      <span class="datos"> {{estudio.nombreUsuario}} {{estudio.apellidoUsuario}} </span><br>
-      </br>
-    </div>
-  {% endfor %}
+	  <div class="tituloSeccion">
+	      {% trans %}
+	          pacientebundle.HistoriaClinica.seccionEstudios.titulo
+	      {% endtrans %}
+	  </div><br>
+	  {% for estudio in estudios %}
+	    <div class="col-sm-4">
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionEstudios.subtituloFecHor
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{estudio.fecha|date("d/m/Y")}}, {{estudio.hora}} </span><br>
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionEstudios.subtituloMetodo
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{estudio.metodoEstudio}}</span><br>
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionEstudios.subtituloResultado
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{estudio.resultado}} </span><br>
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionEstudios.subtituloMedico
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{estudio.nombreUsuario}} {{estudio.apellidoUsuario}} </span><br>
+	      </br>
+	    </div>
+	  {% endfor %}
   </div>
 {% endif %}

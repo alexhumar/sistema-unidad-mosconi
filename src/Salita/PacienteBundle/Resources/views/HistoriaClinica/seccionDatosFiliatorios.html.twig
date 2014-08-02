@@ -1,21 +1,66 @@
 <p><h1 id="pac">{{paciente.apellido}}, {{paciente.nombre}}</h1></p>
-<div class="tituloSeccion">Datos Filiatorios</div><br>
+<div class="tituloSeccion">
+    {% trans %}
+        pacientebundle.HistoriaClinica.seccionDatosFiliatorios.titulo
+    {% endtrans %}
+</div><br>
 <div class="row">
   <div class="col-sm-6">
-    <span class="aux"> Nombre completo:</span> <span class="datos">{{paciente.nombre}} {{paciente.apellido}}</span><br>
-    <span class="aux"> Tipo y nro. de documento:</span> 
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloNombre
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {{paciente.nombre}} {{paciente.apellido}}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDoc
+        {% endtrans %}
+    </span> 
     <span class="datos">{{paciente.tipoDocumento}} - {{paciente.nroDoc}}</span><br>
-    <span class="aux"> Télefono móvil:</span> 
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMovil
+        {% endtrans %}
+    </span> 
     <span class="datos">{{paciente.telefonoMovil}}</span><br>
-    <span class="aux"> Domicilio:</span>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDomicilio
+        {% endtrans %}
+    </span>
     <span class="datos">{{paciente.calle}} Nº {{paciente.numero}} e/ {{paciente.calleEntre1}} y {{paciente.calleEntre2}}, {{paciente.barrio}}, {{paciente.localidad}} - {{paciente.partido}}, {{paciente.pais}}</span><br>
   </div>
   <div class="col-sm-6">
-    <span class="aux"> Sexo:</span>
-    <span class="datos">{% if paciente.isMujer() %}Femenino{% else %}Masculino{% endif %}</span><br>
-    <span class="aux"> Fecha de nacimiento:</span>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloSexo
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {% if paciente.isMujer() %}
+            {% trans %}
+                pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem
+            {% endtrans %}
+        {% else %}
+            {% trans %}
+                pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas
+            {% endtrans %}
+        {% endif %}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac
+        {% endtrans %}
+    </span>
     <span class="datos">{{paciente.fechaNacimiento|date("d/m/Y")}}</span><br>
-    <span class="aux"> Télefono fijo:</span>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo
+        {% endtrans %}
+    </span>
     <span class="datos">{{paciente.telefonoFijo}}</span><br>
   </div>
 </div>

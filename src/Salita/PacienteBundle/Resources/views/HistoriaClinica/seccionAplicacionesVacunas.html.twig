@@ -2,15 +2,27 @@
 
 {% if (aplicaciones|length > 0) %}
   <div class="row">
-  <div class="tituloSeccion">Aplicaciones de Vacunas</div><br>
-  {% for aplicacion in aplicaciones %}
-    <div class="col-sm-4">
-      <span class="aux"> Vacuna: </span>
-      <span class="datos"> {{aplicacion.nombreVacuna}} </span><br>
-      <span class="aux"> Fecha: </span>
-      <span class="datos"> {{aplicacion.fecha}}</span><br>
-      </br>
-    </div>
-  {% endfor %}
+	  <div class="tituloSeccion">
+	      {% trans %}
+	          pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.titulo
+	      {% endtrans %}
+	  </div><br>
+	  {% for aplicacion in aplicaciones %}
+	    <div class="col-sm-4">
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloVacuna
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{aplicacion.nombreVacuna}} </span><br>
+	      <span class="aux">
+	          {% trans %}
+	              pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloFecha
+	          {% endtrans %}
+	      </span>
+	      <span class="datos"> {{aplicacion.fecha}}</span><br>
+	      </br>
+	    </div>
+	  {% endfor %}
   </div>
 {% endif %}
