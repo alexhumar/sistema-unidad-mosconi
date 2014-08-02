@@ -19,10 +19,11 @@ class PartidoFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->savePartido($partido);
-   			$mensaje = 'El partido se cargo exitosamente en el sistema';
+   			$mensaje = $this->getDialogsManager()->cargaPartidoExitoMsg();
+   			$translator = $this->getTranslator();
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
-   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$session->set('mensaje', $translator->trans($mensaje));
+   			$session->getFlashBag()->add('mensaje', $translator->trans($mensaje));
    			$nextAction = $form->get('guardarynuevo')->isClicked()
    				? 'alta_partido'
    				: 'resultado_operacion';
@@ -49,9 +50,11 @@ class PartidoFormController extends MyController
     {
     	$repoPartidos = $this->getReposManager()->getPartidosRepo();
     	$partido = $repoPartidos->find($id);
+    	$translator = $this->getTranslator();
     	if(!$partido)
     	{
-    		throw $this->createNotFoundException("Partido inexistente");
+    		$mensaje = $this->getDialogsManager()->getPartidoInexistenteMsg();
+    		throw $this->createNotFoundException($translator->trans($mensaje));
     	}
     	$form = $this->createForm(new PartidoType(), $partido);
     	$request = $this->getRequest();
@@ -59,9 +62,9 @@ class PartidoFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->updatePartido($partido);
-   			$mensaje = 'El partido fue modificado exitosamente';
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
+   			$mensaje = $this->getDialogsManager()->modificacionPartidoExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
         return $this->render(

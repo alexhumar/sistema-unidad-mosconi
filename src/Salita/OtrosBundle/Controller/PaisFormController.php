@@ -19,10 +19,11 @@ class PaisFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->savePais($pais);
-   			$mensaje = 'El pais se cargo exitosamente en el sistema';
+   			$mensaje = $this->getDialogsManager()->cargaPaisExitoMsg();
+   			$translator = $this->getTranslator();
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
-   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$session->set('mensaje', $translator->trans($mensaje));
+   			$session->getFlashBag()->add('mensaje', $translator->trans($mensaje));
    			$nextAction = $form->get('guardarynuevo')->isClicked()
    				? 'alta_pais'
    				: 'resultado_operacion';

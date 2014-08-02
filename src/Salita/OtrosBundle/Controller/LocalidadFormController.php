@@ -19,10 +19,11 @@ class LocalidadFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->saveLocalidad($localidad);
-   			$mensaje = 'La localidad se cargo exitosamente en el sistema';
+   			$mensaje = $this->getDialogsManager()->cargaLocalidadExitoMsg();
+   			$translator = $this->getTranslator();
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
-   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$session->set('mensaje', $translator->trans($mensaje));
+   			$session->getFlashBag()->add('mensaje', $translator->trans($mensaje));
    			$nextAction = $form->get('guardarynuevo')->isClicked()
    				? 'alta_localidad'
    				: 'resultado_operacion';

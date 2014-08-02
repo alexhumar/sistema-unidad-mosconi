@@ -36,8 +36,9 @@ class BarrioFormController
 				? 'alta_barrio'
 				: 'resultado_operacion';
    			$sessionManager = $this->serviceprovider->getSessionManager();
-   			$mensaje = 'El barrio se cargo exitosamente en el sistema';
-   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);
+   			$translator = $this->serviceprovider->getTranslator();
+   			$mensaje = $this->serviceprovider->getDialogsManager()->cargaBarrioExitoMsg();
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $translator->trans($mensaje));
    			/*Las redirecciones en servicios se hacen directamente mediante el objeto RedirectResponse*/
    			return new RedirectResponse($this->serviceprovider->getRouter()->generate($nextAction));
    		}

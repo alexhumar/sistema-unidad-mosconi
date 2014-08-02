@@ -39,7 +39,17 @@ class MyController extends Controller
 	protected function getRolesManager()
 	{
 		return $this->get('roles_manager');
-	}    
+	}
+	
+	protected function getDialogsManager()
+	{
+		return $this->get('dialogs_manager');
+	}
+	
+	protected function getTranslator()
+	{
+		return $this->get('translator');
+	}
 	
 	protected function getEntityManager()
 	{

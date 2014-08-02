@@ -12,7 +12,9 @@ class VacunaController extends MyController
        $vacuna = $repoVacunas->find($idVacuna);
        if(!$vacuna)
        {
-           throw $this->createNotFoundException("Vacuna inexistente");
+       	   $translator = $this->getTranslator();
+       	   $mensaje = $this->getDialogsManager()->getVacunaInexistenteMsg();
+           throw $this->createNotFoundException($translator->trans($mensaje));
        }
        $session = $this->getSession();
        $session->set('vacunaSeleccionada', $vacuna);

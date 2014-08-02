@@ -19,10 +19,11 @@ class MetodoEstudioFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->saveMetodoDeEstudio($metodo);
-   			$mensaje = 'El metodo de estudio se cargo exitosamente en el sistema';
+   			$mensaje = $this->getDialogsManager()->cargaMetodoEstudioExitoMsg();
+   			$translator = $this->getTranslator();
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
-   			$session->getFlashBag()->add('mensaje', $mensaje);
+   			$session->set('mensaje', $translator->trans($mensaje));
+   			$session->getFlashBag()->add('mensaje', $translator->trans($mensaje));
    			$nextAction = $form->get('guardarynuevo')->isClicked()
    				? 'alta_metodoestudio'
    				: 'resultado_operacion';

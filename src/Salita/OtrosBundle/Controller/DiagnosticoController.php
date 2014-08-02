@@ -10,9 +10,11 @@ class DiagnosticoController extends MyController
     {
        $repoDiagnosticos = $this->getReposManager()->getDiagnosticosRepo();
        $diagnostico = $repoDiagnosticos->find($idDiagnostico);
+       $translator = $this->getTranslator();
+       $mensaje = $this->getDialogsManager()->getDiagnosticoInexistenteMsg();
        if(!$diagnostico)
        {
-       		throw $this->createNotFoundException("Diagnostico inexistente");
+       		throw $this->createNotFoundException($translator->trans($mensaje));
        }
        $session = $this->getSession();
        $session->set('diagnosticoSeleccionado', $diagnostico); 

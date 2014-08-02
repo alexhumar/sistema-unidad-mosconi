@@ -17,12 +17,15 @@
 
         {{ form(form, { 'attr': { 'novalidate': 'novalidate' }}) }}
      #}
-    <h3>Alta de barrio</h3>
+    
+    {% set nombrePlaceholder = 'otrosbundle.barrioform.new.nombrePlaceholder' | trans %}
+    
+    <h3>{% trans %}otrosbundle.barrioform.new.titulo{% endtrans %}</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
-        {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre del barrio' } }) }}
+        {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder }}) }}
       </div>
       <div class="form-group col-sm-12">
         {{ form_row(form.localidad) }}

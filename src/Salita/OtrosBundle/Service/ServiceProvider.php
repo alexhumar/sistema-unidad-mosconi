@@ -65,4 +65,14 @@ class ServiceProvider
 	{
 		return $this->container->get('router');
 	}
+	
+	public function getTranslator()
+	{
+		return $this->container->get('translator');
+	}
+	
+	public function getDialogsManager()
+	{
+		return $this->container->get('dialogs_manager');
+	}
 }
