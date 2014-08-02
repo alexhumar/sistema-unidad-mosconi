@@ -1,23 +1,32 @@
 {% extends "SalitaOtrosBundle::base.html.twig" %}
 
 {% block contenido %}
-	<h3>Resultado de la búsqueda</h3>
+	<h3>{% trans %}otrosbundle.busqueda.resultado.titulo{% endtrans %}</h3>
     </br>
 	{% if vacunas|length > 0 %}
 		<table>
-			<thead><tr><th>Vacuna</th><th></th></tr></thead>
+			<thead>
+			    <tr>
+			        <th>{% trans %}otrosbundle.busqueda.resultado.tituloTabla{% endtrans %}</th>
+			        <th></th>
+			    </tr>
+			</thead>
 			<tbody>
 				{% for vacuna in vacunas %}
    					<div class="vacuna">
       					<tr>
 							<td>{{vacuna.nombre}}</td>
-							<td><a href="{{ path('seleccion_vacuna', { 'idVacuna': vacuna.id }) }}">Seleccionar</a></td>
+							<td>
+							    <a href="{{ path('seleccion_vacuna', { 'idVacuna': vacuna.id }) }}">
+							        {% trans %}otrosbundle.busqueda.resultado.linkSeleccionar{% endtrans %}
+							    </a>
+							</td>
 						</tr>
    					</div>
 				{% endfor %}
 			</tbody>
 		</table>
 	{% else %}
-		<h4 id="nota">- No se han encontrado resultados -</h4>
+		<h4 id="nota">{% trans %}general.noresultfound.message{% endtrans %}</h4>
 	{% endif %}
 {% endblock %}

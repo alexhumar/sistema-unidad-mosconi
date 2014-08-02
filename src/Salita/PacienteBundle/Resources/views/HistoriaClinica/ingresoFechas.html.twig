@@ -1,7 +1,7 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-    <h3>Selección de fechas para el resumen de historia clínica</h3>
+    <h3>{% trans %}pacientebundle.HistoriaClinica.ingresoFechas.titulo{% endtrans %}</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}

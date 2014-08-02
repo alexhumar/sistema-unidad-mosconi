@@ -25,8 +25,9 @@ class PacienteFormController extends MyController
    			$em->flush();
    			/* Actualiza el paciente guardado en la sesion */
    			$session->set('paciente', $paciente);
-   			$mensaje = 'La modificacion de los datos del paciente se realizó con exito';
-   			$session->set('mensaje', $mensaje);
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->modificacionDatosPacienteExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
    		}
    		return $this->render(
@@ -45,9 +46,10 @@ class PacienteFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->savePaciente($paciente);
-   			$mensaje = 'El paciente se cargo exitosamente en el sistema';
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->cargaPacienteExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion'));
    		}
    		return $this->render(

@@ -21,8 +21,9 @@ class EstudioFormController extends MyController
    			$paciente = $session->get('paciente');
    			$usuario = $session->get('usuario');
    			$this->getPersistenceManager()->saveEstudio($estudio, $paciente, $usuario);
-   			$mensaje = 'El estudio del paciente se cargo exitosamente en el sistema';
-   			$session->set('mensaje', $mensaje);
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->cargaEstudioExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
    		}
    		return $this->render(

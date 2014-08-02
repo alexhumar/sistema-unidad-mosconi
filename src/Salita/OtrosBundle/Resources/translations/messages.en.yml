@@ -1,0 +1,25 @@
+#messages.es.yml
+otrosbundle.barrioForm.new.exito: The neighborhood was loaded successfully into the system
+otrosbundle.localidadForm.new.exito: The place was loaded successfully into the system
+otrosbundle.metodoEstudioForm.new.exito: The method of study was loaded successfully into the system
+otrosbundle.paisForm.new.exito: The country was loaded successfully into the system
+otrosbundle.partidoForm.new.exito: The place was loaded successfully into the system
+otrosbundle.partidoForm.modif.exito: The place was modified successfully
+otrosbundle.notFoundException.diagnostico: Diagnosis nonexistent
+otrosbundle.notFoundException.partido: Place nonexistent
+otrosbundle.notFoundException.vacuna: Vaccine nonexistent
+otrosbundle.barrioForm.new.nombrePlaceholder: Enter the name of the neighborhood
+otrosbundle.barrioForm.new.titulo: Loading neighborhood
+otrosbundle.busqueda.ingresoDatos.titulo: Search vaccine
+otrosbundle.busqueda.ingresoDatos.palabraPlaceholder: Enter the name (or part) of the vaccine
+otrosbundle.busqueda.resultado.titulo: Search results vaccine
+otrosbundle.busqueda.resultado.linkSeleccionar: Select
+otrosbundle.busqueda.resultado.tituloTabla: Vaccine
+otrosbundle.busquedaDiagnostico.ingresoDatos.titulo: Search diagnostic
+otrosbundle.busquedaDiagnostico.ingresoDatos.palabraPlaceholder: Enter the name (or part) of diagnosis
+otrosbundle.busquedaDiagnostico.resultado.titulo: Your search for diagnostic
+otrosbundle.busquedaDiagnostico.resultado.linkSeleccionar: Select
+otrosbundle.busquedaDiagnostico.resultado.tituloTabla: Diagnostic
+otrosbundle.metodoEstudioForm.new.titulo: Adding method study
+otrosbundle.metodoEstudioForm.new.nombrePlaceholder: Name of the method of study
+general.noresultfound.message: - No results found -

@@ -1,22 +1,70 @@
 {# Recibe como parametros: antecedenteFO #}
 
 {% if paciente.isMujer() %}
-  <div class="tituloSeccion">Antecedentes Familiares Obstétricos</div><br>
-  <p>
-    <span class="caja1">
-      <span class="aux"> Preeclampsia/Eclampsia: </span>
-      <span class="datos">{% if antecedenteFO.preeclampsiaEclampsia == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Tuberculosis: </span>
-      <span class="datos">{% if antecedenteFO.tuberculosis == 1 %}Sí{% else %}No{% endif %}</span><br>
+    <div class="tituloSeccion">
+        {% trans %}
+            pacientebundle.HistoriaClinica.antecedentesFamiliaresObstetricos.titulo
+        {% endtrans %}
+    </div><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionAntecedentes.preecec
+        {% endtrans %}
     </span>
-    <span class="caja2">
-      <span class="aux"> Diabetes:</span>
-      <span class="datos">{% if antecedenteFO.diabetes == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Hipertensión arterial:</span>
-      <span class="datos">{% if antecedenteFO.hipertensionArterial == 1 %}Sí{% else %}No{% endif %}</span><br>
-      <span class="aux"> Otros:</span>
-      <span class="datos">{% if antecedenteFO.otros == null %} - {% else %}{{antecedenteFO.otros}}{% endif %}</span><br>
+    <span class="datos">
+        {% if antecedenteFO.preeclampsiaEclampsia == 1 %}
+            <span class="si">{% trans %}pacientebundle.HistoriaClinica.general.si{% endtrans %}</span>
+        {% else %}
+            <span class="no">{% trans %}pacientebundle.HistoriaClinica.general.no{% endtrans %}</span>
+        {% endif %}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionAntecedentes.tuberc
+        {% endtrans %}
     </span>
-  </p>
-  <br>
+    <span class="datos">
+        {% if antecedenteFO.tuberculosis == 1 %}
+            <span class="si">{% trans %}pacientebundle.HistoriaClinica.general.si{% endtrans %}</span>
+        {% else %}
+            <span class="no">{% trans %}pacientebundle.HistoriaClinica.general.no{% endtrans %}</span>
+        {% endif %}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionAntecedentes.diabetes
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {% if antecedenteFO.diabetes == 1 %}
+            <span class="si">{% trans %}pacientebundle.HistoriaClinica.general.si{% endtrans %}</span>
+        {% else %}
+            <span class="no">{% trans %}pacientebundle.HistoriaClinica.general.no{% endtrans %}</span>
+        {% endif %}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionAntecedentes.hiart
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {% if antecedenteFO.hipertensionArterial == 1 %}
+            <span class="si">{% trans %}pacientebundle.HistoriaClinica.general.si{% endtrans %}</span>
+        {% else %}
+            <span class="no">{% trans %}pacientebundle.HistoriaClinica.general.no{% endtrans %}</span>
+        {% endif %}
+    </span><br>
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionAntecedentes.otros
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {% if antecedenteFO.otros == null %}
+            {% trans %}pacientebundle.HistoriaClinica.seccionAntecedentes.otros.NA{% endtrans %}
+        {% else %}
+            {{antecedenteFO.otros}}
+        {% endif %}
+    </span><br>
+    <br>
 {% endif %}

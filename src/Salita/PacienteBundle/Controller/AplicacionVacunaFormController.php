@@ -20,8 +20,9 @@ class AplicacionVacunaFormController extends MyController
        $paciente = $session->get('paciente');
        $vacuna = $session->get('vacunaSeleccionada');
        $this->getPersistenceManager()->createAplicacionVacuna($paciente, $vacuna);
-       $mensaje = "La aplicacion de vacuna fue registrada exitosamente";
-       $session->set('mensaje', $mensaje);
+       $translator = $this->getTranslator();
+       $mensaje = $this->getDialogsManager()->cargaAplicacionVacunaExitoMsg();
+       $session->set('mensaje', $translator->trans($mensaje));
        $session->remove('vacunaSeleccionada');
        return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     }

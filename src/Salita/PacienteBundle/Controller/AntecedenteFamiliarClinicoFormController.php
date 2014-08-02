@@ -14,9 +14,11 @@ class AntecedenteFamiliarClinicoFormController extends MyController
     	$repoAntecedentes = $this->getReposManager()->getAntecedentesFamiliaresClinicosRepo();
     	$session = $this->getSession();
     	$antecedenteFamiliarClinico = $repoAntecedentes->buscarAntecedenteDePaciente($session->get('paciente')->getId());
+        $translator = $this->getTranslator();
     	if(!$antecedenteFamiliarClinico)
     	{
-    		throw $this->createNotFoundException("Antecedentes inexistentes");
+    		$mensaje = $this->getDialogsManager()->getAntecedentesInexistentesMsg();
+    		throw $this->createNotFoundException($translator->trans($mensaje));
     	}
     	$form = $this->createForm(new AntecedenteFamiliarClinicoType(), $antecedenteFamiliarClinico);
     	$request = $this->getRequest();
@@ -25,8 +27,8 @@ class AntecedenteFamiliarClinicoFormController extends MyController
     	{
     		$em = $this->getEntityManager();
     		$em->flush();
-    		$mensaje = 'Los antecedentes del paciente se modificaron exitosamente';
-    		$session->set('mensaje', $mensaje);
+    		$mensaje = $this->getDiaglogsManager()->modificacionAntecedentesExitoMsg();
+    		$session->set('mensaje', $translator->trans($mensaje));
     		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
     	return $this->render(

@@ -31,8 +31,9 @@ class ConsultaFormController extends MyController
    			$diagnostico = $session->get('diagnosticoSeleccionado');
    			$this->getPersistenceManager()->saveConsulta($consulta, $paciente, $usuario, $diagnostico);
    			$session->remove('diagnosticoSeleccionado');
-   			$mensaje = "La consulta fue ingresada exitosamente";
-   			$session->set('mensaje', $mensaje);
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->cargaConsultaExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
    		}
    		return $this->render(

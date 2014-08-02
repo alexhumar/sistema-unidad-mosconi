@@ -1,0 +1,25 @@
+#messages.es.yml
+otrosbundle.barrioForm.new.exito: El barrio se cargo exitosamente en el sistema
+otrosbundle.localidadForm.new.exito: La localidad se cargo exitosamente en el sistema
+otrosbundle.metodoEstudioForm.new.exito: El metodo de estudio se cargo exitosamente en el sistema
+otrosbundle.paisForm.new.exito: El pais se cargo exitosamente en el sistema
+otrosbundle.partidoForm.new.exito: El partido se cargo exitosamente en el sistema
+otrosbundle.partidoForm.modif.exito: El partido fue modificado exitosamente
+otrosbundle.notFoundException.diagnostico: Diagnostico inexistente
+otrosbundle.notFoundException.partido: Partido inexistente
+otrosbundle.notFoundException.vacuna: Vacuna inexistente
+otrosbundle.barrioForm.new.nombrePlaceholder: Ingrese el nombre del barrio
+otrosbundle.barrioForm.new.titulo: Alta de barrio
+otrosbundle.busqueda.ingresoDatos.titulo: Busqueda de vacuna
+otrosbundle.busqueda.ingresoDatos.palabraPlaceholder: Nombre (o parte) de la vacuna
+otrosbundle.busqueda.resultado.titulo: Resultado de la busqueda de vacunas
+otrosbundle.busqueda.resultado.linkSeleccionar: Seleccionar
+otrosbundle.busqueda.resultado.tituloTabla: Vacuna
+otrosbundle.busquedaDiagnostico.ingresoDatos.titulo: Busqueda de diagnostico
+otrosbundle.busquedaDiagnostico.ingresoDatos.palabraPlaceholder: Nombre (o parte) del diagnostico
+otrosbundle.busquedaDiagnostico.resultado.titulo: Resultado de la busqueda de diagnostico
+otrosbundle.busquedaDiagnostico.resultado.linkSeleccionar: Seleccionar
+otrosbundle.busquedaDiagnostico.resultado.tituloTabla: Diagnostico
+otrosbundle.metodoEstudioForm.new.titulo: Alta de metodo de estudio
+otrosbundle.metodoEstudioForm.new.nombrePlaceholder: Nombre del metodo de estudio
+general.noresultfound.message: - No se han encontrado resultados -

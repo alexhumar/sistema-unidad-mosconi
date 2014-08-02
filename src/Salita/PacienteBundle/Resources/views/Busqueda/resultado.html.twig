@@ -1,19 +1,31 @@
 {% extends "SalitaPacienteBundle::base.html.twig" %}
 
 {% block contenido %}
-  <h3>Resultado de la búsqueda de paciente</h3>
+  <h3>{% trans %}pacientebundle.busqueda.resultado.titulo{% endtrans %}</h3>
   {% if pacientes|length > 0 %}
     <table>
-      <thead><tr><th>Nombre y apellido</th><th></th></tr></thead>
+      <thead>
+          <tr>
+              <th>{% trans %}pacientebundle.busqueda.resultado.tituloTabla{% endtrans %}</th>
+              <th></th>
+          </tr>
+      </thead>
       <tbody>
         {% for paciente in pacientes %}
           <div class="paciente">
-            <tr><td>{{paciente.nombre}} {{paciente.apellido}}</td><td><a href="{{ path('seleccion_paciente', { 'idPaciente': paciente.id }) }}">Seleccionar</a></td></tr>
+            <tr>
+                <td>{{paciente.nombre}} {{paciente.apellido}}</td>
+                <td>
+                    <a href="{{ path('seleccion_paciente', { 'idPaciente': paciente.id }) }}">
+                        {% trans %}pacientebundle.busqueda.resultado.linkSeleccionar{% endtrans %}
+                    </a>
+                </td>
+            </tr>
           </div>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">- No se han encontrado resultados -</h4>
+    <h4 id="nota">{% trans %}pacientebundle.general.noresultfound.message{% endtrans %}</h4>
   {% endif %}
 {% endblock %}

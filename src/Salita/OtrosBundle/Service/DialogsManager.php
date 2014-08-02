@@ -5,51 +5,88 @@ namespace Salita\OtrosBundle\Service;
 class DialogsManager
 {
 	/*Mensajes de OtrosBundle*/
+	
 	public function cargaBarrioExitoMsg()
 	{
-		return 'El barrio se cargo exitosamente en el sistema';
+		return 'otrosbundle.barrioForm.new.exito';
 	}
 	
 	public function cargaLocalidadExitoMsg()
 	{
-		return 'La localidad se cargo exitosamente en el sistema';
+		return 'otrosbundle.localidadForm.new.exito';
 	}
 	
 	public function cargaMetodoEstudioExitoMsg()
 	{
-		return 'El metodo de estudio se cargo exitosamente en el sistema';
+		return 'otrosbundle.metodoEstudioForm.new.exito';
 	}
 	
 	public function cargaPaisExitoMsg()
 	{
-		return 'El pais se cargo exitosamente en el sistema';
+		return 'otrosbundle.paisForm.new.exito';
 	}
 	
 	public function cargaPartidoExitoMsg()
 	{
-		return 'El partido se cargo exitosamente en el sistema';
+		return 'otrosbundle.partidoForm.new.exito';
 	}
 
 	public function modificacionPartidoExitoMsg()
 	{
-		return 'El partido fue modificado exitosamente';
+		return 'otrosbundle.partidoForm.modif.exito';
 	}
 	
 	public function getDiagnosticoInexistenteMsg()
 	{
-		return 'Diagnostico inexistente';
+		return 'otrosbundle.notFoundException.diagnostico';
 	}
 	
 	public function getPartidoInexistenteMsg()
 	{
-		return 	'Partido inexistente';
+		return 	'otrosbundle.notFoundException.partido';
 	}
 	
 	public function getVacunaInexistenteMsg()
 	{
-		return 	'Vacuna inexistente';
+		return 	'otrosbundle.notFoundException.vacuna';
 	}
 	
+	/*Mensajes de PacienteBundle*/
+	
+	public function getAntecedentesInexistentesMsg()
+	{
+		return 	'pacientebundle.notFoundException.antecedentes';
+	}
+	
+    public function modificacionAntecedentesExitoMsg()
+	{
+		return 'pacientebundle.antecedentes.modif.exito';
+	}
+	
+	public function cargaAplicacionVacunaExitoMsg()
+	{
+		return 'pacientebundle.aplicacionVacuna.new.exito';
+	}
+	
+	public function cargaConsultaExitoMsg()
+	{
+		return 'pacientebundle.consulta.new.exito';
+	}
+	
+	public function cargaEstudioExitoMsg()
+	{
+		return 'pacientebundle.estudio.new.exito';
+	}
+	
+	public function modificacionDatosPacienteExitoMsg()
+	{
+		return 'pacientebundle.paciente.modif.exito';
+	}
+	
+	public function cargaPacienteExitoMsg()
+	{
+		return 'pacientebundle.paciente.new.exito';
+	}
 	
 	
 }

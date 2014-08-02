@@ -7,12 +7,14 @@
 {% endblock %}
 
 {% block contenido %}
-    <h3>Alta de anotaciones de consulta</h3>
+    {% set oaPlaceholder = 'pacientebundle.consultaForm.new.oaPlaceholder' | trans %}
+
+    <h3>{% trans %}pacientebundle.consultaForm.new.titulo{% endtrans %}</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
-        {{ form_row(form.otrasAnotaciones, { 'attr': { 'placeholder': 'Anotaciones asociadas a la consulta' } }) }}
+        {{ form_row(form.otrasAnotaciones, { 'attr': { 'placeholder': oaPlaceholder } }) }}
       </div>
       <div class="form-group col-sm-8">
         <div class="col-sm-offset-6">

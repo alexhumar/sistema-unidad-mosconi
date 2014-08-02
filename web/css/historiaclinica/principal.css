@@ -1,0 +1,31 @@
+.tituloSeccion {
+    text-transform: uppercase;
+    text-decoration: underline;
+    margin: 10px;
+}
+ .aux {
+    font-weight: bold;
+ }
+
+/* Esto es para que se muestre el h3 que dice: Historia clinica generada por... */
+#wrap {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 70px;
+}
+
+.generadaPor {
+  padding-left:10px;
+}
+
+.datos {
+  text-align: right;
+}
+
+.si {
+  color: red;
+}
+
+.no {
+  color: green;
+}

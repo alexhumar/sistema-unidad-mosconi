@@ -6,12 +6,14 @@
 {% endblock %}
 
 {% block contenido %}
-	<h3>Búsqueda de diagnóstico</h3>
+    {% set palabraPlaceholder = 'otrosbundle.busquedaDiagnostico.ingresoDatos.palabraPlaceholder' | trans %}
+
+	<h3>{% trans %}otrosbundle.busquedaDiagnostico.ingresoDatos.titulo{% endtrans %}</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
-        {{ form_row(form.palabra) }}
+        {{ form_row(form.palabra, { 'attr': { 'placeholder': palabraPlaceholder } }) }}
       </div>
       <div class="form-group col-sm-8">
         <div class="col-sm-offset-6">

@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block contenido %}
-  <h3>Modificacion de antecedente personal clínico</h3>
+  {% set otrosPlaceholder = 'pacientebundle.modifantecedente.otrosPlaceholder' | trans %}
+
+  <h3>{% trans %}pacientebundle.modifPersonalClinico.modif.titulo{% endtrans %}</h3>
   <br/>
   {{ form_start(form) }}
     {{ form_errors(form) }}
@@ -44,7 +46,7 @@
       {{ form_row(form.alcoholismo) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.otros, { 'attr': { 'placeholder': 'Observaciones varias (opcional)' } }) }}
+      {{ form_row(form.otros, { 'attr': { 'placeholder': otrosPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-8">
       <div class="col-sm-offset-5">

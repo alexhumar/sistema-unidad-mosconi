@@ -1,0 +1,75 @@
+#messages.es.yml
+pacientebundle.antecedentes.modif.exito: Los antecedentes del paciente se modificaron exitosamente
+pacientebundle.aplicacionVacuna.new.exito: La aplicacion de vacuna fue registrada exitosamente
+pacientebundle.consulta.new.exito: La consulta fue ingresada exitosamente
+pacientebundle.estudio.new.exito: El estudio del paciente se cargo exitosamente en el sistema
+pacientebundle.paciente.modif.exito: La modificacion de los datos del paciente se realizó con exito
+pacientebundle.paciente.new.exito: El paciente se cargo exitosamente en el sistema
+pacientebundle.notFoundException.antecedentes: Antecedentes inexistentes
+
+pacientebundle.modifFamiliarClinico.modif.titulo: Modificacion de antecedente familiar clinico
+pacientebundle.modifFamiliarObstetrico.modif.titulo: Modificacion de antecedente familiar obstetrico
+pacientebundle.modifPersonalClinico.modif.titulo: Modificacion de antecedente personal clínico
+pacientebundle.modifPersonalObstetrico.modif.titulo: Modificacion de antecedente personal obstetrico
+pacientebundle.modifantecedente.otrosPlaceholder: Observaciones varias (opcional)
+pacientebundle.modifPersonalObstetrico.gpPlaceholder: Cantidad de gestas previas
+pacientebundle.modifPersonalObstetrico.caPlaceholder: Cantidad de abortos
+pacientebundle.modifPersonalObstetrico.ccPlaceholder: Cantidad de cesareas
+pacientebundle.modifPersonalObstetrico.cpPlaceholder: Cantidad de partos
+pacientebundle.aplicacionVacuna.list.titulo: Aplicaciones de vacuna
+pacientebundle.aplicacionVacuna.list.tituloTablaVacuna: Vacuna
+pacientebundle.aplicacionVacuna.list.tituloTablaFecha: Fecha
+pacientebundle.busqueda.ingresoDatos.titulo: Busqueda de paciente
+pacientebundle.busqueda.ingresoDatos.palabraPlaceholder: Palabra de busqueda
+pacientebundle.busqueda.resultado.titulo: Resultado de la busqueda de paciente
+pacientebundle.busqueda.resultado.tituloTabla: Nombre y apellido
+pacientebundle.busqueda.resultado.linkSeleccionar: Seleccionar
+pacientebundle.consultaForm.new.oaPlaceholder: Anotaciones asociadas a la consulta
+pacientebundle.consultaForm.new.titulo: Alta de anotaciones de consulta
+pacientebundle.estudioForm.new.titulo: Alta de estudio
+pacientebundle.estudioForm.new.rePlaceholder: Resultado del estudio
+pacientebundle.estudioForm.new.npPlaceholder: Numero de protocolo
+
+pacientebundle.HistoriaClinica.generacionHC.footer: Historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
+pacientebundle.HistoriaClinica.resumenHC.footer: Resumen de historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
+pacientebundle.HistoriaClinica.ingresoFechas.titulo: Seleccion de fechas para el resumen de historia clinica
+pacientebundle.HistoriaClinica.seccionAntecedentes.cvm55: Cardiovascular menor a 55
+pacientebundle.HistoriaClinica.seccionAntecedentes.asma: Asma
+pacientebundle.HistoriaClinica.seccionAntecedentes.tm: Trastornos mentales
+pacientebundle.HistoriaClinica.seccionAntecedentes.alergias: Alergias
+pacientebundle.HistoriaClinica.seccionAntecedentes.adtab: Adicciones/Tabaquismo
+pacientebundle.HistoriaClinica.seccionAntecedentes.infectoc: Infectocontagiosas
+pacientebundle.HistoriaClinica.seccionAntecedentes.tuberc: Tuberculosis
+pacientebundle.HistoriaClinica.seccionAntecedentes.diabetes: Diabetes
+pacientebundle.HistoriaClinica.seccionAntecedentes.hiart: Hipertensión arterial
+pacientebundle.HistoriaClinica.seccionAntecedentes.otros: Otros
+pacientebundle.HistoriaClinica.seccionAntecedentes.otros.NA: N/A
+pacientebundle.HistoriaClinica.seccionAntecedentes.preecec: Preeclampsia/Eclampsia
+pacientebundle.HistoriaClinica.seccionAntecedentes.meds: Medicamentos
+pacientebundle.HistoriaClinica.seccionAntecedentes.tatuajes: Tatuajes
+pacientebundle.HistoriaClinica.seccionAntecedentes.traumat: Traumatismos
+pacientebundle.HistoriaClinica.seccionAntecedentes.intprev: Internaciones previas
+pacientebundle.HistoriaClinica.seccionAntecedentes.drogas: Drogas
+pacientebundle.HistoriaClinica.seccionAntecedentes.tabaq: Tabaquismo
+pacientebundle.HistoriaClinica.seccionAntecedentes.alcoh: Alcoholismo
+pacientebundle.HistoriaClinica.seccionAntecedentes.cirpelv: Cirugía pelviana
+pacientebundle.HistoriaClinica.seccionAntecedentes.infert: Infertilidad
+pacientebundle.HistoriaClinica.seccionAntecedentes.vih: VIH
+pacientebundle.HistoriaClinica.seccionAntecedentes.cardnefr: Cardiopatía/Nefropatía
+pacientebundle.HistoriaClinica.seccionAntecedentes.condmedgr: Condición médica grave
+pacientebundle.HistoriaClinica.seccionAntecedentes.sifilis: Sífilis
+pacientebundle.HistoriaClinica.seccionAntecedentes.gprev: Gestas previas
+pacientebundle.HistoriaClinica.seccionAntecedentes.abortos: Abortos
+pacientebundle.HistoriaClinica.seccionAntecedentes.cesar: Cesáreas
+pacientebundle.HistoriaClinica.seccionAntecedentes.partos: Partos
+pacientebundle.HistoriaClinica.antecedentesFamiliaresClinicos.titulo: Antecedentes Familiares Clínicos
+pacientebundle.HistoriaClinica.antecedentesFamiliaresObstetricos.titulo: Antecedentes Familiares Obstétricos
+pacientebundle.HistoriaClinica.antecedentesPersonalesClinicos.titulo: Antecedentes Personales Clínicos
+pacientebundle.HistoriaClinica.antecedentesPersonalesObstetricos.titulo: Antecedentes Personales Obstétricos
+
+
+pacientebundle.HistoriaClinica.general.si: Si
+pacientebundle.HistoriaClinica.general.no: No
+
+pacientebundle.aplicacionvacuna.noresultfound.message: No hay aplicaciones de vacunas
+pacientebundle.general.noresultfound.message: No se han encontrado resultados

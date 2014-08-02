@@ -2,9 +2,14 @@
 
 {% block contenido %}
   {% if aplicaciones|length > 0 %}
-    <h3>Aplicaciones de vacuna</h3>
+    <h3>{% trans %}pacientebundle.aplicacionVacuna.list.titulo{% endtrans %}</h3>
     <table>
-      <thead><tr><th>Vacuna</th><th>Fecha</th></tr></thead>
+      <thead>
+          <tr>
+              <th>{% trans %}pacientebundle.aplicacionVacuna.list.tituloTablaVacuna{% endtrans %}</th>
+              <th>{% trans %}pacientebundle.aplicacionVacuna.list.tituloTablaFecha{% endtrans %}</th>
+          </tr>
+      </thead>
       <tbody>
         {% for aplicacion in aplicaciones %}
           <div class="aplicacionVacuna">  
@@ -14,6 +19,6 @@
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">- No hay aplicaciones de vacunas -</h4>
+    <h4 id="nota">{% trans %}pacientebundle.aplicacionvacuna.noresultfound.message{% endtrans %}</h4>
   {% endif %}
 {% endblock %}
