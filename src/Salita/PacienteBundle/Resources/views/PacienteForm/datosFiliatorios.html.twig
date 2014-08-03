@@ -49,24 +49,39 @@
 {% endblock choice_widget_collapsed %}
 
 {% block contenido %}
-
-  <h3>Modificacion de datos filiatorios de paciente</h3>
+  <h3>
+      {% trans %}
+          pacientebundle.PacienteForm.datosFiliatorios.titulo
+      {% endtrans %}
+  </h3>
   <br/>
+  {% set nroDocPlaceholder = 'pacientebundle.PacienteForm.form.nroDocPlaceholder' | trans %}
+  {% set nombrePlaceholder = 'pacientebundle.PacienteForm.form.nombrePlaceholder' | trans %}
+  {% set apellidoPlaceholder = 'pacientebundle.PacienteForm.form.apellidoPlaceholder' | trans %}
+  {% set telFijoPlaceholder = 'pacientebundle.PacienteForm.form.telFijoPlaceholder' | trans %}
+  {% set telMovilPlaceholder = 'pacientebundle.PacienteForm.form.telMovilPlaceholder' | trans %}
+  {% set paisPlaceholder = 'pacientebundle.PacienteForm.form.paisPlaceholder' | trans %}
+  {% set partidoPlaceholder = 'pacientebundle.PacienteForm.form.partidoPlaceholder' | trans %}
+  {% set localidadPlaceholder = 'pacientebundle.PacienteForm.form.localidadPlaceholder' | trans %}
+  {% set barrioPlaceholder = 'pacientebundle.PacienteForm.form.barrioPlaceholder' | trans %}
+  {% set callePlaceholder = 'pacientebundle.PacienteForm.form.callePlaceholder' | trans %}
+  {% set numeroCallePlaceholder = 'pacientebundle.PacienteForm.form.numeroCallePlaceholder' | trans %}
+  {% set calleEntre1Placeholder = 'pacientebundle.PacienteForm.form.calleEntre1Placeholder' | trans %}
+  {% set calleEntre2Placeholder = 'pacientebundle.PacienteForm.form.calleEntre2Placeholder' | trans %}
 
   {{ form_start(form) }}
     {{ form_errors(form) }}
-
     <div class="form-group col-sm-12">
       {{ form_row(form.tipoDocumento) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.nroDoc) }}
+      {{ form_row(form.nroDoc, { 'attr': { 'placeholder': nroDocPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.nombre) }}
+      {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.apellido) }}
+      {{ form_row(form.apellido, { 'attr': { 'placeholder': apellidoPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
       {{ form_row(form.fechaNacimiento) }}
@@ -75,36 +90,35 @@
       {{ form_row(form.sexo) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.telefonoFijo) }}
+      {{ form_row(form.telefonoFijo, { 'attr': { 'placeholder': telFijoPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.telefonoMovil) }}
+      {{ form_row(form.telefonoMovil, { 'attr': { 'placeholder': telMovilPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.pais) }}
+      {{ form_row(form.pais, { 'attr': { 'placeholder': paisPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.partido) }}
+      {{ form_row(form.partido, { 'attr': { 'placeholder': partidoPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.localidad) }}
+      {{ form_row(form.localidad, { 'attr': { 'placeholder': localidadPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.barrio) }}
+      {{ form_row(form.barrio, { 'attr': { 'placeholder': barrioPlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.calle) }}
+      {{ form_row(form.calle, { 'attr': { 'placeholder': callePlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.numero) }}
+      {{ form_row(form.numero, { 'attr': { 'placeholder': numeroCallePlaceholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.calleEntre1) }}
+      {{ form_row(form.calleEntre1, { 'attr': { 'placeholder': calleEntre1Placeholder } }) }}
     </div>
     <div class="form-group col-sm-12">
-      {{ form_row(form.calleEntre2) }}
+      {{ form_row(form.calleEntre2, { 'attr': { 'placeholder': calleEntre2Placeholder } }) }}
     </div>
-
     <div class="form-group col-sm-8">
       <div class="col-sm-offset-6">
         {{ form_row(form.guardar) }}

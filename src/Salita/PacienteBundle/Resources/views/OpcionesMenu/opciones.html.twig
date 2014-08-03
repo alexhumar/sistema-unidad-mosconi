@@ -1,2 +1,14 @@
-<li class="current_page_item"><a href="{{path('menu_paciente')}}">Principal</a></li>
-<li><a href="{{path('busqueda_paciente')}}">Cambiar paciente</a></li>
+<li class="current_page_item">
+    <a href="{{path('menu_paciente')}}">
+        {% trans %}
+            pacientebundle.OpcionesMenu.principal
+        {% endtrans %}
+    </a>
+</li>
+<li>
+    <a href="{{path('busqueda_paciente')}}">
+        {% trans %}
+            pacientebundle.OpcionesMenu.cambiarPaciente
+        {% endtrans %}
+    </a>
+</li>

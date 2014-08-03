@@ -8,10 +8,20 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Consultas</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionConsultas.panelConsultas.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
-        <div><a href="{{path('alta_consulta')}}">Registrar una consulta</a></div>
+        <div>
+            <a href="{{path('alta_consulta')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionConsultas.panelConsultas.regCons
+                {% endtrans %}
+            </a>
+        </div>
       </div>
     </div>
   </div>  

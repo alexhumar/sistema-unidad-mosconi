@@ -5,11 +5,27 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Historia Clínica</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
-        <div><a href="{{path('generar_historiaClinica')}}">Generar historia clinica</a></div>
-        <div><a href="{{path('fechas_resumenHC')}}">Generar resumen de historia clinica</a></div>
+        <div>
+            <a href="{{path('generar_historiaClinica')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genHC
+                {% endtrans %}
+            </a>
+        </div>
+        <div>
+            <a href="{{path('fechas_resumenHC')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genResHC
+                {% endtrans %}
+            </a>
+        </div>
       </div>
     </div>
   </div>

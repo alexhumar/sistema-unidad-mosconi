@@ -10,28 +10,56 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Antecedentes</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
 
   {% if is_granted(expression(adminexpression)) 
       or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad))) %}
-        <div><a href="{{path('modif_antecedentePersonalClinico')}}">Modificar los antecedentes personales clinicos</a></div>
+        <div>
+            <a href="{{path('modif_antecedentePersonalClinico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersClin
+                {% endtrans %}
+            </a>
+        </div>
   {% endif %}
 
   {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
        or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-        <div><a href="{{path('modif_antecedentePersonalObstetrico')}}">Modificar los antecedentes personales obstetricos</a></div>
+        <div>
+            <a href="{{path('modif_antecedentePersonalObstetrico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersObs
+                {% endtrans %}
+            </a>
+        </div>
   {% endif %}
 
   {% if (is_granted(expression(adminexpression)) 
         or (is_granted(expression(medicoexpression)) and not(usuario.isObstetraSession(codigoEspecialidad)))) %}
-        <div><a href="{{path('modif_antecedenteFamiliarClinico')}}">Modificar los antecedentes familiares clinicos</a></div>
+        <div>
+            <a href="{{path('modif_antecedenteFamiliarClinico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamClin
+                {% endtrans %}
+            </a>
+        </div>
   {% endif %}
 
   {% if (paciente.isMujer() and (is_granted(expression(adminexpression)) 
      or (is_granted(expression(medicoexpression)) and usuario.isObstetraSession(codigoEspecialidad)))) %}
-        <div><a href="{{path('modif_antecedenteFamiliarObstetrico')}}">Modificar los antecedentes familiares obstetricos</a></div>
+        <div>
+            <a href="{{path('modif_antecedenteFamiliarObstetrico')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamObs
+                {% endtrans %}
+            </a>
+        </div>
   {% endif %}
       </div>
     </div>

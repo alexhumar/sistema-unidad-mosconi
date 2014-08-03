@@ -6,6 +6,7 @@ pacientebundle.estudio.new.exito: El estudio del paciente se cargo exitosamente 
 pacientebundle.paciente.modif.exito: La modificacion de los datos del paciente se realizó con exito
 pacientebundle.paciente.new.exito: El paciente se cargo exitosamente en el sistema
 pacientebundle.notFoundException.antecedentes: Antecedentes inexistentes
+
 pacientebundle.modifFamiliarClinico.modif.titulo: Modificacion de antecedente familiar clinico
 pacientebundle.modifFamiliarObstetrico.modif.titulo: Modificacion de antecedente familiar obstetrico
 pacientebundle.modifPersonalClinico.modif.titulo: Modificacion de antecedente personal clínico
@@ -28,6 +29,7 @@ pacientebundle.consultaForm.new.titulo: Alta de anotaciones de consulta
 pacientebundle.estudioForm.new.titulo: Alta de estudio
 pacientebundle.estudioForm.new.rePlaceholder: Resultado del estudio
 pacientebundle.estudioForm.new.npPlaceholder: Numero de protocolo
+
 pacientebundle.HistoriaClinica.generacionHC.footer: Historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
 pacientebundle.HistoriaClinica.resumenHC.footer: Resumen de historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
 pacientebundle.HistoriaClinica.ingresoFechas.titulo: Seleccion de fechas para el resumen de historia clinica
@@ -90,6 +92,7 @@ pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Fecha de
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telefono fijo
 pacientebundle.HistoriaClinica.general.si: Si
 pacientebundle.HistoriaClinica.general.no: No
+
 pacientebundle.Menu.principal.titulo: "Menu de opciones del paciente %apePaciente%, %nomPaciente%"
 pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.titulo: Antecedentes
 pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersClin: Modificar los antecedentes personales clinicos
@@ -117,6 +120,7 @@ pacientebundle.Menu.seccionVacunacion.panelVacunacion.registrar: Registrar la ap
 pacientebundle.Menu.seccionVacunacion.panelVacunacion.listado: Listado de aplicaciones de vacuna
 pacientebundle.PacienteForm.datosFiliatorios.titulo: Modificacion de datos filiatorios de paciente
 pacientebundle.PacienteForm.new.titulo: Registro de paciente
+
 pacientebundle.PacienteForm.form.nroDocPlaceholder: Numero de documento
 pacientebundle.PacienteForm.form.nombrePlaceholder: Nombre del paciente
 pacientebundle.PacienteForm.form.apellidoPlaceholder: Apellido del paciente
@@ -130,9 +134,12 @@ pacientebundle.PacienteForm.form.callePlaceholder: Calle donde reside el pacient
 pacientebundle.PacienteForm.form.numeroCallePlaceholder: Numero de la direccion
 pacientebundle.PacienteForm.form.calleEntre1Placeholder: Entre calle
 pacientebundle.PacienteForm.form.calleEntre2Placeholder: Y calle
+
 pacientebundle.OpcionesMenu.principal: Principal
 pacientebundle.OpcionesMenu.cambiarPaciente: Cambiar paciente
+
 pacientebundle.aplicacionvacuna.noresultfound.message: "- No hay aplicaciones de vacunas -"
 pacientebundle.general.noresultfound.message: "- No se han encontrado resultados- "
+
 #MUESTRA DE TRADUCCION EN UN FORM TYPE. VOY A TENER QUE PONERLE LABEL A TODO
 form.barrioType.guardarYNuevo: Guardar y nuevo

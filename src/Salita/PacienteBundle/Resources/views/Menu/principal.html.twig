@@ -24,7 +24,11 @@
    {% set paciente = app.session.get('paciente') %}
 
    <div class="tituloMenu">
-     <h3>Menu de opciones del paciente {{paciente.apellido}}, {{paciente.nombre}}</h3>
+     <h3>
+         {% trans with { '%nomPaciente%': paciente.nombre, '%apePaciente%': paciente.apellido } %}
+             pacientebundle.Menu.principal.titulo
+         {% endtrans %}
+     </h3>
    </div>
    <br>
 

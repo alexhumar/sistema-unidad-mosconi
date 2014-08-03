@@ -7,15 +7,31 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Vacunacion</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionVacunacion.panelVacunacion.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
   {# Si el usuario ingreso como administrador o como medico y, es pediatra o es clinico... #}
   {% if (is_granted(expression(adminexpression)) or (is_granted(expression(medicoexpression)) 
      and (usuario.isPediatraSession(codigoEspecialidad) or usuario.isClinicoSession(codigoEspecialidad)))) %}
-        <div><a href="{{path('alta_aplicacion_vacuna')}}">Registrar la aplicacion de una vacuna</a></div>
+        <div>
+            <a href="{{path('alta_aplicacion_vacuna')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionVacunacion.panelVacunacion.registrar
+                {% endtrans %}
+            </a>
+        </div>
   {% endif %}
-        <div><a href="{{path('listado_aplicacion_vacuna')}}">Listado de aplicaciones de vacuna</a></div>
+        <div>
+            <a href="{{path('listado_aplicacion_vacuna')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionVacunacion.panelVacunacion.listado
+                {% endtrans %}
+            </a>
+        </div>
       </div>
     </div>
   </div>

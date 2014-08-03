@@ -9,12 +9,34 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Proyecto Procreacion Responsable</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
-        <div><a href="{{path('alta_planprocresp')}}">Agregar un plan</a></div>
-        <div><a href="{{path('listado_planprocresp')}}">Listado de planes habilitados</a></div>
-        <div><a href="{{path('listadoDes_planprocresp')}}">Listado de planes deshabilitados</a></div>
+        <div>
+            <a href="{{path('alta_planprocresp')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.agregar
+                {% endtrans %}
+            </a>
+        </div>
+        <div>
+            <a href="{{path('listado_planprocresp')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listHab
+                {% endtrans %}
+            </a>
+        </div>
+        <div>
+            <a href="{{path('listadoDes_planprocresp')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listDes
+                {% endtrans %}
+            </a>
+        </div>
       </div>
     </div>
   </div>

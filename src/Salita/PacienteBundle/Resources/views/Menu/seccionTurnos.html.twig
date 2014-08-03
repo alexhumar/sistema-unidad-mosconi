@@ -3,14 +3,30 @@
   <div class="col-sm-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Turnos</h3>
+        <h3 class="panel-title">
+            {% trans %}
+                pacientebundle.Menu.seccionTurnos.panelTurnos.titulo
+            {% endtrans %}
+        </h3>
       </div>
       <div class="panel-body">
 {# Si ingreso como medico... #}
 {% if is_granted(expression(medicoexpression)) %}
-        <div><a href="{{path('seleccion_fecHor_futuro')}}">Agregar un turno con fecha</a></div>
+        <div>
+            <a href="{{path('seleccion_fecHor_futuro')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionTurnos.panelTurnos.agregarConFec
+                {% endtrans %}
+            </a>
+        </div>
 {% else %}
-        <div><a href="{{path('alta_turno')}}">Agregar un turno inmediato</a></div>
+        <div>
+            <a href="{{path('alta_turno')}}">
+                {% trans %}
+                    pacientebundle.Menu.seccionTurnos.panelTurnos.agregarInmediato
+                {% endtrans %}
+            </a>
+        </div>
 {% endif %}
       </div>
     </div>
