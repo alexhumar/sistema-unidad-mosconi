@@ -1,23 +1,60 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
 {% block contenido %}
-  <h3>Planes deshabilitados</h3>
+  <h3>
+      {% trans %}
+          planbundle.PlanProcRespForm.listadoDes.titulo
+      {% endtrans %}
+  </h3>
   </br>
   {% if planes|length > 0 %}
     <table>
-      <thead><tr><th>Plan</th><th>Periodicidad</th><th></th><th></th></tr></thead>
+      <thead>
+          <tr>
+              <th>
+                  {% trans %}
+                      planbundle.PlanProcRespForm.listadoDes.tituloTablaPlan
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      planbundle.PlanProcRespForm.listadoDes.tituloTablaPeriod
+                  {% endtrans %}
+              </th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
       <tbody>
         {% for planprocresp in planes %}
           <div id="planDes">
-            <tr><td>{{planprocresp.nombre}}</td>
-            <td>{{planprocresp.periodicidad}}</td>
-            <td><a href="{{ path('habilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">Habilitar</a></td>
-            <td><a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Listar entregas</a></td></tr>
+            <tr>
+                <td>{{planprocresp.nombre}}</td>
+                <td>{{planprocresp.periodicidad}}</td>
+                <td>
+                    <a href="{{ path('habilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">
+                        {% trans %}
+                            planbundle.PlanProcRespForm.listadoDes.linkTablaHab
+                        {% endtrans %}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">
+                        {% trans %}
+                            planbundle.PlanProcRespForm.listadoDes.linkTablaListEnt
+                        {% endtrans %}
+                    </a>
+                </td>
+            </tr>
           </div>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">- No hay planes deshabilitados -</h4>
+    <h4 id="nota">
+        {% trans %}
+            planbundle.PlanProcRespForm.noresultfound.deshab.message
+        {% endtrans %}
+    </h4>
   {% endif %}
 {% endblock %}

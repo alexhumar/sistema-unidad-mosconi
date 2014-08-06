@@ -1,0 +1,29 @@
+#messages.en.yml
+turnobundle.turnopaciente.new.exito: The shift to the patient was successfully added
+turnobundle.Listados.turnosDelDia.titulo: Today shifts
+turnobundle.Listados.turnosDelDia.tituloTablaNomAp: Name and surname
+turnobundle.Listados.turnosDelDia.tituloTablaMotivo: Reason
+turnobundle.Listados.turnosDelDia.tituloTablaEspecialidad: Specialty
+turnobundle.Listados.turnosDelDia.tituloTablaProfesional: Professional
+turnobundle.Listados.turnosDelDia.tituloTablaFecHor: Date and time
+turnobundle.Listados.turnosDelDia.linkTablaFecHor: Serve
+turnobundle.Listados.turnosDelDiaEsp.titulo: Today shifts
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaNomAp: Name and surname
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaMotivo: Reason
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaProfesional: Professional
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaFecHor: Date and time
+turnobundle.Listados.turnosDelDiaEsp.linkTablaFecHor: Serve
+turnobundle.SeleccionFechaHora.ingresoDatos.titulo: Selecting date and time for the shift
+turnobundle.TurnoForm.new.titulo: Add immediately turn
+turnobundle.TurnoForm.new.medicoPreferidoPlaceholder: Preferred by the patient doctor (optional)
+turnobundle.TurnoForm.new.motivoPlaceholder: Reason that originated shift
+turnobundle.TurnoForm.newConFecHor.titulo: Add future shift
+turnobundle.TurnoForm.newConFecHor.medicoPreferidoPlaceholder: Preferred by the patient doctor (optional)
+turnobundle.TurnoForm.newConFecHor.motivoPlaceholder: Reason that originated shift
+turnobundle.general.noresultfound.message: "- No shifts -"
+turnobundle.base.linkMenu: Menu of %nombreRol%
+#Traducciones asociadas a los form types
+form.turnoType.label.especialidad: Specialty
+form.turnoType.label.medicoPreferido: Preferred doctor
+form.turnoType.label.motivo: Cause
+form.turnoType.boton.guardar: Save shift

@@ -10,7 +10,7 @@ class DatosFiliatoriosRegistroType extends DatosFiliatoriosType
     	parent::buildForm($builder, $options);
     	
         $builder
-            ->add('guardar', 'submit', array('label' => 'Registrar paciente'));
+            ->add('guardar', 'submit', array('label' => 'form.datosFiliatoriosRegistroType.boton.guardar'));
     }
 
     public function getName()

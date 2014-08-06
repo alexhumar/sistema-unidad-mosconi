@@ -61,10 +61,12 @@ class UsuarioFormController extends MyController
     {
     	$repoUsuarios = $this->getReposManager()->getUsuariosRepo();
     	$usuario = $repoUsuarios->find($id);
+    	$translator = $this->getTranslator();
     	/*Si no existe el usuario*/
     	if(!$usuario)
     	{
-    		throw $this->createNotFoundException("El usuario no existe");
+    		$mensaje = $this->getDialogsManager()->getUsuarioInexistenteMsg();
+    		throw $this->createNotFoundException($translator->trans($mensaje));
     	}
     	$form = $this->createForm(new UsuarioType(),$usuario);
     	$request = $this->getRequest();
@@ -73,9 +75,9 @@ class UsuarioFormController extends MyController
     	{
     		$em = $this->getEntityManager();
     		$em->flush();
-    		$mensaje = 'Los datos del usuario fueron modificados exitosamente';
+    		$mensaje = $this->getDialogsManager()->modifUsuarioExitoMsg();
     		$session = $this->getSession();
-    		$session->set('mensaje', $mensaje);
+    		$session->set('mensaje', $translator->trans($mensaje));
     		return $this->redirect($this->generateUrl('resultado_operacion'));
     	}
     	return $this->render(
@@ -98,8 +100,9 @@ class UsuarioFormController extends MyController
             $em->flush();
             /*Se "refresca" el usuario almacenado en la sesion*/
     	    $session->set('usuario', $usuario);
-    	    $mensaje = 'Sus datos fueron modificados exitosamente';
-    	    $session->set('mensaje', $mensaje);
+    	    $mensaje = $this->getDialogsManager()->modifUsuarioPropioExitoMsg();
+    	    $translator = $this->getTranslator();
+    	    $session->set('mensaje', $translator->trans($mensaje));
     	    return $this->redirect($this->generateUrl('resultado_operacion'));
     	}
     	return $this->render(
@@ -115,7 +118,9 @@ class UsuarioFormController extends MyController
         /*Si no existe el usuario*/
         if (!$usuario)
         {
-        	throw $this->createNotFoundException("El usuario no existe");
+        	$translator = $this->getTranslator();
+        	$mensaje = $this->getDialogsManager()->getUsuarioInexistenteMsg();
+        	throw $this->createNotFoundException($translator->trans($mensaje));
         }
         $this->getPersistenceManager()->removeUsuario($usuario);
         return $this->redirect($this->generateUrl('listado_secretaria'));
@@ -129,7 +134,9 @@ class UsuarioFormController extends MyController
         /*Si no existe el usuario*/
         if(!$usuario)
         {
-        	throw $this->createNotFoundException("El usuario no existe");
+        	$translator = $this->getTranslator();
+        	$mensaje = $this->getDialogsManager()->getUsuarioInexistenteMsg();
+        	throw $this->createNotFoundException($translator->trans($mensaje));
         }
         /*Si el usuario solamente es medico, lo deshabilita*/
         if(!$usuario->isAdministrador())
@@ -149,7 +156,9 @@ class UsuarioFormController extends MyController
         $usuario = $repoUsuarios->find($id);
         if(!$usuario)
         {
-        	throw $this->createNotFoundException("El usuario no existe");
+        	$translator = $this->getTranslator();
+        	$mensaje = $this->getDialogsManager()->getUsuarioInexistenteMsg();
+        	throw $this->createNotFoundException($translator->trans($mensaje));
         }
         /*Si el usuario es solamente administrador*/
         if(!$usuario->isMedico())
@@ -219,7 +228,7 @@ class UsuarioFormController extends MyController
     			$em = $this->getEntityManager();
     			$em->flush();
     			$session->remove('usuarioSeleccionado');
-    			$mensaje = 'La especialidad fue asignada exitosamente al medico';	
+    			$mensaje = $this->getDialogsManager()->asignacionEspecialidadExitoMsg();	
     		}
     		else
     		{
@@ -231,9 +240,10 @@ class UsuarioFormController extends MyController
     	}
     	else
     	{
-    		$mensaje = 'El usuario no es medico';
+    		$mensaje = $this->getDialogsManager()->usuarioNoMedicoErrorMsg();
     	}
-    	$session->set('mensaje', $mensaje);
+    	$translator = $this->getTranslator();
+    	$session->set('mensaje', $translator->trans($mensaje));
     	return $this->redirect($this->generateUrl('resultado_operacion'));
     }
 
@@ -243,7 +253,9 @@ class UsuarioFormController extends MyController
         $usuario = $repoUsuarios->find($id);
         if(!$usuario)
         {
-        	throw $this->createNotFoundException("El usuario no existe");
+        	$translator = $this->getTranslator();
+        	$mensaje = $this->getDialogsManager()->getUsuarioInexistenteMsg();
+        	throw $this->createNotFoundException($translator->trans($mensaje));
         }
         /*Usuario seleccionado contiene el usuario al cual se le asignara un rol (y posiblemente especialidad).
          * Se mantiene seteado en la variable de sesion mientras dura el proceso de asignacion de rol.*/

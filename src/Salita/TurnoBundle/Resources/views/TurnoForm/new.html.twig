@@ -6,18 +6,25 @@
 {% endblock %}
 
 {% block contenido %}
-    <h3>Alta de turno inmediato</h3>
+    <h3>
+        {% trans %}
+            turnobundle.TurnoForm.new.titulo
+        {% endtrans %}
+    </h3>
     <br/>
+    {% set medicoPreferidoPlaceholder = 'turnobundle.TurnoForm.new.medicoPreferidoPlaceholder' | trans %}
+    {% set motivoPlaceholder = 'turnobundle.TurnoForm.new.motivoPlaceholder' | trans %}
+    
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
         {{ form_row(form.especialidad) }}
       </div>
       <div class="form-group col-sm-12">
-        {{ form_row(form.medicoPreferido, { 'attr': { 'placeholder': 'Medico preferido por el paciente (opcional)' } }) }}
+        {{ form_row(form.medicoPreferido, { 'attr': { 'placeholder': medicoPreferidoPlaceholder } }) }}
       </div>
       <div class="form-group col-sm-12">
-        {{ form_row(form.motivo, { 'attr': { 'placeholder': 'Motivo que origino el turno' } }) }}
+        {{ form_row(form.motivo, { 'attr': { 'placeholder': motivoPlaceholder } }) }}
       </div>
       <div class="form-group col-sm-8">
         <div class="col-sm-offset-6">

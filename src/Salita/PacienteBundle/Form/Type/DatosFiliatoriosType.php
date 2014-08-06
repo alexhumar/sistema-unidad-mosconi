@@ -14,25 +14,29 @@ class DatosFiliatoriosType extends AbstractType
     {
     	
         $builder
-            ->add('tipoDocumento', null, array('label' => 'Tipo de documento'))
-            ->add('nroDoc', null, array('label' => 'Numero de documento'))
-            ->add('nombre')
-            ->add('apellido')
-            ->add('fechaNacimiento', 'date', array('label' => 'Fecha de Nacimiento', 'years' => range(date("Y"), date("Y")-90)))
-            ->add('sexo', 'choice', array('choices' => array(0 => 'Masculino', 1 => 'Femenino'),'required'  => true,))
-            ->add('telefonoFijo', null, array('label' => 'Telefono Fijo'))
-            ->add('telefonoMovil', null, array('label' => 'Telefono Movil'))
-            ->add('pais')
-            ->add('calle')
-            ->add('numero')
-            ->add('calleEntre1', null, array('label' => 'Entre calle'))
-            ->add('calleEntre2', null, array('label' => 'y calle'));
+            ->add('tipoDocumento', null, array('label' => 'form.datosFiliatoriosType.label.tipoDocumento'))
+            ->add('nroDoc', null, array('label' => 'form.datosFiliatoriosType.label.nroDoc'))
+            ->add('nombre', null, array('label' => 'form.datosFiliatoriosType.label.nombre'))
+            ->add('apellido', null, array('label' => 'form.datosFiliatoriosType.label.apellido'))
+            ->add('fechaNacimiento', 'date', array('label' => 'form.datosFiliatoriosType.label.fecNac', 'years' => range(date("Y"), date("Y")-90)))
+            ->add('sexo', 'choice', array('label' => 'form.datosFiliatoriosType.label.sexo', 
+            		                      'choices' => array(
+            		                      		       0 => 'form.datosFiliatoriosType.choice.masculino', 
+            		                      		       1 => 'form.datosFiliatoriosType.choice.femenino'),
+            		                      'required'  => true,))
+            ->add('telefonoFijo', null, array('label' => 'form.datosFiliatoriosType.label.telFijo'))
+            ->add('telefonoMovil', null, array('label' => 'form.datosFiliatoriosType.label.telMovil'))
+            ->add('pais', null, array('label' => 'form.datosFiliatoriosType.label.pais'))
+            ->add('calle', null, array('label' => 'form.datosFiliatoriosType.label.calle'))
+            ->add('numero', null, array('label' => 'form.datosFiliatoriosType.label.numero'))
+            ->add('calleEntre1', null, array('label' => 'form.datosFiliatoriosType.label.calleEntre1'))
+            ->add('calleEntre2', null, array('label' => 'form.datosFiliatoriosType.label.calleEntre2'));
 	    
 	    $builder
 	        ->add('partido', 'entity', array(
 	    		  'class' => 'SalitaOtrosBundle:Partido',
 	    		  'property' => 'nombre',
-	    		  'label' => 'Partido',
+	    		  'label' => 'form.datosFiliatoriosType.label.partido',
 	    		  'empty_value' => false
 	    ));
     
@@ -42,14 +46,16 @@ class DatosFiliatoriosType extends AbstractType
 		    	$localidades = null === $partido ? array() : $partido->getLocalidades();	    	
 		    	$form->add('localidad', 'entity', array(
 		    		       'class' => 'SalitaOtrosBundle:Localidad',
-		    			   'empty_value' => 'Selecciona una localidad',
+		    			   'empty_value' => 'form.datosFiliatoriosType.widget.localidad.emptyValue',
+		    			   'label' => 'form.datosFiliatoriosType.label.localidad',
 		    			   'choices' => $localidades
 		    	));
 		    	
 		    	$barrios = null === $partido ? array() : $partido->getBarrios();
 		    	$form->add('barrio', 'entity', array(
 		    			'class' => 'SalitaOtrosBundle:Barrio',
-		    			'empty_value' => 'Selecciona un barrio',
+		    			'empty_value' => 'form.datosFiliatoriosType.widget.barrio.emptyValue',
+		    			'label' => 'form.datosFiliatoriosType.label.barrio',
 		    			'choices' => $barrios
 		    	));
 		    };

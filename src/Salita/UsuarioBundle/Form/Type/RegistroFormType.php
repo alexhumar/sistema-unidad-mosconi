@@ -15,11 +15,11 @@ class RegistroFormType extends BaseType
 
         /* Aca se agregan los campos que necesitamos al formulario de registro/modificacion de usuario */
         $builder
-            ->add('nombre')
-            ->add('apellido')
-            ->add('telefono')
-            ->add('matricula')
-            ->add('registrar', 'submit', array('label' => 'Registrar usuario')); 
+            ->add('nombre', null, array('label' => 'form.registroFormType.label.nombre'))
+            ->add('apellido', null, array('label' => 'form.registroFormType.label.apellido'))
+            ->add('telefono', null, array('label' => 'form.registroFormType.label.telefono'))
+            ->add('matricula', null, array('label' => 'form.registroFormType.label.matricula'))
+            ->add('registrar', 'submit', array('label' => 'form.registroFormType.boton.registrar')); 
     }
 
     public function getName()

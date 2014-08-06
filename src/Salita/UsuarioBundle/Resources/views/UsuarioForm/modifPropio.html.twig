@@ -6,29 +6,42 @@
 {% endblock %}
 
 {% block contenido %}
-	<h3>Modificacion de mis datos</h3>
+	<h3>
+	    {% trans %}
+	        usuariobundle.UsuarioForm.modifPropio.titulo
+	    {% endtrans %}
+	</h3>
 	</br>
+	{% set nombrePlaceholder = 'usuariobundle.UsuarioForm.modif.nombrePlaceholder' | trans %}
+    {% set apellidoPlaceholder = 'usuariobundle.UsuarioForm.modif.apellidoPlaceholder' | trans %}
+    {% set emailPlaceholder = 'usuariobundle.UsuarioForm.modif.emailPlaceholder' | trans %}
+    {% set telefonoPlaceholder = 'usuariobundle.UsuarioForm.modif.telefonoPlaceholder' | trans %}
+    {% set matriculaPlaceholder = 'usuariobundle.UsuarioForm.modif.matriculaPlaceholder' | trans %}
 
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
 	    <div class="form-group col-sm-12">
-	      {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre completo del usuario' } }) }}
+	      {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder } }) }}
 	    </div>
 	    <div class="form-group col-sm-12">
-	      {{ form_row(form.apellido, { 'attr': { 'placeholder': 'Apellido del usuario' } }) }}
+	      {{ form_row(form.apellido, { 'attr': { 'placeholder': apellidoPlaceholder } }) }}
 	    </div>
 	    <div class="form-group col-sm-12">
-	      {{ form_row(form.email, { 'attr': { 'placeholder': 'Correo electrónico del usuario' } }) }}
+	      {{ form_row(form.email, { 'attr': { 'placeholder': emailPlaceholder } }) }}
 	    </div>
 	    <div class="form-group col-sm-12">
-	      {{ form_row(form.telefono, { 'attr': { 'placeholder': 'Teléfono del usuario' } }) }}
+	      {{ form_row(form.telefono, { 'attr': { 'placeholder': telefonoPlaceholder } }) }}
 	    </div>
 	    <div class="form-group col-sm-12">
-	      {{ form_row(form.matricula, { 'attr': { 'placeholder': 'Matrícula del usuario (en caso de ser médico)' } }) }}
+	      {{ form_row(form.matricula, { 'attr': { 'placeholder': matriculaPlaceholder } }) }}
 	    </div>
         <div class="form-group col-sm-8">
           <div class="col-sm-offset-7">
-            <a href="{{path('fos_user_change_password')}}">Cambiar clave</a>
+            <a href="{{path('fos_user_change_password')}}">
+                {% trans %}
+                    usuariobundle.UsuarioForm.modifPropio.linkCambiarClave
+                {% endtrans %}
+            </a>
           </div>
         </div>
 	    <div class="form-group col-sm-8">
@@ -37,7 +50,5 @@
 	      </div>
 	    </div>
 	{{ form_end(form) }}
-
     <br/>
-	{# <a href="{{path('fos_user_change_password')}}">Cambiar clave</a> #}
 {% endblock %}

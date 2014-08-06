@@ -25,9 +25,9 @@ class PlanProcRespFormController extends MyController
    			    ? 'alta_planprocresp'
    			    : 'resultado_operacion_plan';
    			$sessionManager = $this->getSessionManager();
-   			$mensaje = 'El plan del paciente se agrego exitosamente';
-   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);		
-   			//$session->set('mensaje', $mensaje);
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->cargaPlanPacienteExitoMsg();
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl($nextAction));
    		}
    		return $this->render(
@@ -41,9 +41,11 @@ class PlanProcRespFormController extends MyController
     {
     	$repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
     	$plan = $repoPlanes->find($idPlan);
+    	$translator = $this->getTranslator();
     	if(!$plan)
     	{
-    		throw $this->createNotFoundException("Plan inexistente para el paciente");
+    		$mensaje = $this->getDialogsManager()->getPlanPacienteInexistenteMsg();
+    		throw $this->createNotFoundException($translator->trans($mensaje));
     	}
     	$form = $this->createForm(new ModPlanProcRespType(), $plan);
     	$request = $this->getRequest();
@@ -51,9 +53,9 @@ class PlanProcRespFormController extends MyController
    		if ($form->isValid())
    		{
    			$this->getPersistenceManager()->updatePlanProcreacionResponsable($plan);
-   			$mensaje = 'El plan del paciente se modifico exitosamente';
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
+   			$mensaje = $this->getDialogsManager()->modifPlanPacienteExitoMsg();
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
    		return $this->render(

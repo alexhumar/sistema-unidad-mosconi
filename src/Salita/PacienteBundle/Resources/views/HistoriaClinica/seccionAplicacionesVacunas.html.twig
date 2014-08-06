@@ -1,6 +1,7 @@
 {# Recibe como parametros: aplicaciones #}
 
 {% if (aplicaciones|length > 0) %}
+  <div class="jumbotron">
   <div class="row">
 	  <div class="tituloSeccion">
 	      {% trans %}
@@ -24,5 +25,6 @@
 	      </br>
 	    </div>
 	  {% endfor %}
+  </div>
   </div>
 {% endif %}

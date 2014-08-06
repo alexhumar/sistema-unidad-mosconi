@@ -1,145 +1,46 @@
 #messages.es.yml
-pacientebundle.antecedentes.modif.exito: Los antecedentes del paciente se modificaron exitosamente
-pacientebundle.aplicacionVacuna.new.exito: La aplicacion de vacuna fue registrada exitosamente
-pacientebundle.consulta.new.exito: La consulta fue ingresada exitosamente
-pacientebundle.estudio.new.exito: El estudio del paciente se cargo exitosamente en el sistema
-pacientebundle.paciente.modif.exito: La modificacion de los datos del paciente se realizó con exito
-pacientebundle.paciente.new.exito: El paciente se cargo exitosamente en el sistema
-pacientebundle.notFoundException.antecedentes: Antecedentes inexistentes
-
-pacientebundle.modifFamiliarClinico.modif.titulo: Modificacion de antecedente familiar clinico
-pacientebundle.modifFamiliarObstetrico.modif.titulo: Modificacion de antecedente familiar obstetrico
-pacientebundle.modifPersonalClinico.modif.titulo: Modificacion de antecedente personal clínico
-pacientebundle.modifPersonalObstetrico.modif.titulo: Modificacion de antecedente personal obstetrico
-pacientebundle.modifantecedente.otrosPlaceholder: Observaciones varias (opcional)
-pacientebundle.modifPersonalObstetrico.gpPlaceholder: Cantidad de gestas previas
-pacientebundle.modifPersonalObstetrico.caPlaceholder: Cantidad de abortos
-pacientebundle.modifPersonalObstetrico.ccPlaceholder: Cantidad de cesareas
-pacientebundle.modifPersonalObstetrico.cpPlaceholder: Cantidad de partos
-pacientebundle.aplicacionVacuna.list.titulo: Aplicaciones de vacuna
-pacientebundle.aplicacionVacuna.list.tituloTablaVacuna: Vacuna
-pacientebundle.aplicacionVacuna.list.tituloTablaFecha: Fecha
-pacientebundle.busqueda.ingresoDatos.titulo: Busqueda de paciente
-pacientebundle.busqueda.ingresoDatos.palabraPlaceholder: Palabra de busqueda
-pacientebundle.busqueda.resultado.titulo: Resultado de la busqueda de paciente
-pacientebundle.busqueda.resultado.tituloTabla: Nombre y apellido
-pacientebundle.busqueda.resultado.linkSeleccionar: Seleccionar
-pacientebundle.consultaForm.new.oaPlaceholder: Anotaciones asociadas a la consulta
-pacientebundle.consultaForm.new.titulo: Alta de anotaciones de consulta
-pacientebundle.estudioForm.new.titulo: Alta de estudio
-pacientebundle.estudioForm.new.rePlaceholder: Resultado del estudio
-pacientebundle.estudioForm.new.npPlaceholder: Numero de protocolo
-
-pacientebundle.HistoriaClinica.generacionHC.footer: Historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
-pacientebundle.HistoriaClinica.resumenHC.footer: Resumen de historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
-pacientebundle.HistoriaClinica.ingresoFechas.titulo: Seleccion de fechas para el resumen de historia clinica
-pacientebundle.HistoriaClinica.seccionAntecedentes.cvm55: Cardiovascular menor a 55
-pacientebundle.HistoriaClinica.seccionAntecedentes.asma: Asma
-pacientebundle.HistoriaClinica.seccionAntecedentes.tm: Trastornos mentales
-pacientebundle.HistoriaClinica.seccionAntecedentes.alergias: Alergias
-pacientebundle.HistoriaClinica.seccionAntecedentes.adtab: Adicciones/Tabaquismo
-pacientebundle.HistoriaClinica.seccionAntecedentes.infectoc: Infectocontagiosas
-pacientebundle.HistoriaClinica.seccionAntecedentes.tuberc: Tuberculosis
-pacientebundle.HistoriaClinica.seccionAntecedentes.diabetes: Diabetes
-pacientebundle.HistoriaClinica.seccionAntecedentes.hiart: Hipertensión arterial
-pacientebundle.HistoriaClinica.seccionAntecedentes.otros: Otros
-pacientebundle.HistoriaClinica.seccionAntecedentes.otros.NA: N/A
-pacientebundle.HistoriaClinica.seccionAntecedentes.preecec: Preeclampsia/Eclampsia
-pacientebundle.HistoriaClinica.seccionAntecedentes.meds: Medicamentos
-pacientebundle.HistoriaClinica.seccionAntecedentes.tatuajes: Tatuajes
-pacientebundle.HistoriaClinica.seccionAntecedentes.traumat: Traumatismos
-pacientebundle.HistoriaClinica.seccionAntecedentes.intprev: Internaciones previas
-pacientebundle.HistoriaClinica.seccionAntecedentes.drogas: Drogas
-pacientebundle.HistoriaClinica.seccionAntecedentes.tabaq: Tabaquismo
-pacientebundle.HistoriaClinica.seccionAntecedentes.alcoh: Alcoholismo
-pacientebundle.HistoriaClinica.seccionAntecedentes.cirpelv: Cirugía pelviana
-pacientebundle.HistoriaClinica.seccionAntecedentes.infert: Infertilidad
-pacientebundle.HistoriaClinica.seccionAntecedentes.vih: VIH
-pacientebundle.HistoriaClinica.seccionAntecedentes.cardnefr: Cardiopatía/Nefropatía
-pacientebundle.HistoriaClinica.seccionAntecedentes.condmedgr: Condición médica grave
-pacientebundle.HistoriaClinica.seccionAntecedentes.sifilis: Sífilis
-pacientebundle.HistoriaClinica.seccionAntecedentes.gprev: Gestas previas
-pacientebundle.HistoriaClinica.seccionAntecedentes.abortos: Abortos
-pacientebundle.HistoriaClinica.seccionAntecedentes.cesar: Cesáreas
-pacientebundle.HistoriaClinica.seccionAntecedentes.partos: Partos
-pacientebundle.HistoriaClinica.antecedentesFamiliaresClinicos.titulo: Antecedentes Familiares Clínicos
-pacientebundle.HistoriaClinica.antecedentesFamiliaresObstetricos.titulo: Antecedentes Familiares Obstétricos
-pacientebundle.HistoriaClinica.antecedentesPersonalesClinicos.titulo: Antecedentes Personales Clínicos
-pacientebundle.HistoriaClinica.antecedentesPersonalesObstetricos.titulo: Antecedentes Personales Obstétricos
-pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.titulo: Aplicaciones de Vacunas
-pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloVacuna: Vacuna
-pacientebundle.HistoriaClinica.seccionAplicacionesVacuna.subtituloFecha: Fecha
-pacientebundle.HistoriaClinica.seccionConsultas.titulo: Consultas
-pacientebundle.HistoriaClinica.seccionConsultas.subtituloFecHor: Fecha y hora
-pacientebundle.HistoriaClinica.seccionConsultas.subtituloDiag: Diagnotisco
-pacientebundle.HistoriaClinica.seccionConsultas.subtituloAnot: Anotaciones
-pacientebundle.HistoriaClinica.seccionConsultas.otros.NA: N/A
-pacientebundle.HistoriaClinica.seccionConsultas.medico: Médico
-pacientebundle.HistoriaClinica.seccionEstudios.titulo: Estudios
-pacientebundle.HistoriaClinica.seccionEstudios.subtituloFecHor: Fecha y hora
-pacientebundle.HistoriaClinica.seccionEstudios.subtituloMetodo: Método
-pacientebundle.HistoriaClinica.seccionEstudios.subtituloResultado: Resultado
-pacientebundle.HistoriaClinica.seccionEstudios.subtituloMedico: Médico
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.titulo: Datos Filiatorios
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloNombre: Nombre completo
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDoc: Tipo y nro. de documento
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMovil: Télefono móvil
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloDomicilio: Domicilio
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloSexo: Sexo
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem: Femenino
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas: Masculino
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Fecha de nacimiento
-pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telefono fijo
-pacientebundle.HistoriaClinica.general.si: Si
-pacientebundle.HistoriaClinica.general.no: No
-
-pacientebundle.Menu.principal.titulo: "Menu de opciones del paciente %apePaciente%, %nomPaciente%"
-pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.titulo: Antecedentes
-pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersClin: Modificar los antecedentes personales clinicos
-pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntPersObs: Modificar los antecedentes personales obstetricos
-pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamClin: Modificar los antecedentes familiares clinicos
-pacientebundle.Menu.seccionAntecedentes.panelAntecedentes.modifAntFamObs: Modificar los antecedentes familiares obstetricos
-pacientebundle.Menu.seccionConsultas.panelConsultas.titulo: Consultas
-pacientebundle.Menu.seccionConsultas.panelConsultas.regCons: Registrar una consulta
-pacientebundle.Menu.seccionDatosFiliatorios.panelDatosFiliatorios.titulo: Datos Filiatorios
-pacientebundle.Menu.seccionDatosFiliatorios.panelDatosFiliatorios.modifDF: Modificar los datos filiatorios
-pacientebundle.Menu.seccionEstudios.panelEstudios.titulo: Estudios
-pacientebundle.Menu.seccionEstudios.panelEstudios.regEst: Registrar un estudio
-pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.titulo: Historia Clínica
-pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genHC: Generar historia clinica
-pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genResHC: Generar resumen de historia clinica
-pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.titulo: Proyecto Procreacion Responsable
-pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.agregar: Agregar un plan
-pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listHab: Listado de planes habilitados
-pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listDes: Listado de planes deshabilitados
-pacientebundle.Menu.seccionTurnos.panelTurnos.titulo: Turnos
-pacientebundle.Menu.seccionTurnos.panelTurnos.agregarConFec: Agregar un turno con fecha
-pacientebundle.Menu.seccionTurnos.panelTurnos.agregarInmediato: Agregar un turno inmediato
-pacientebundle.Menu.seccionVacunacion.panelVacunacion.titulo: Vacunacion
-pacientebundle.Menu.seccionVacunacion.panelVacunacion.registrar: Registrar la aplicacion de una vacuna
-pacientebundle.Menu.seccionVacunacion.panelVacunacion.listado: Listado de aplicaciones de vacuna
-pacientebundle.PacienteForm.datosFiliatorios.titulo: Modificacion de datos filiatorios de paciente
-pacientebundle.PacienteForm.new.titulo: Registro de paciente
-
-pacientebundle.PacienteForm.form.nroDocPlaceholder: Numero de documento
-pacientebundle.PacienteForm.form.nombrePlaceholder: Nombre del paciente
-pacientebundle.PacienteForm.form.apellidoPlaceholder: Apellido del paciente
-pacientebundle.PacienteForm.form.telFijoPlaceholder: Numero de telefono fijo del paciente
-pacientebundle.PacienteForm.form.telMovilPlaceholder: Numero de telefono celular del paciente
-pacientebundle.PacienteForm.form.paisPlaceholder: Pais de origen del paciente
-pacientebundle.PacienteForm.form.partidoPlaceholder: Partido donde reside el paciente
-pacientebundle.PacienteForm.form.localidadPlaceholder: Localidad donde reside el paciente
-pacientebundle.PacienteForm.form.barrioPlaceholder: Barrio donde reside el paciente
-pacientebundle.PacienteForm.form.callePlaceholder: Calle donde reside el paciente
-pacientebundle.PacienteForm.form.numeroCallePlaceholder: Numero de la direccion
-pacientebundle.PacienteForm.form.calleEntre1Placeholder: Entre calle
-pacientebundle.PacienteForm.form.calleEntre2Placeholder: Y calle
-
-pacientebundle.OpcionesMenu.principal: Principal
-pacientebundle.OpcionesMenu.cambiarPaciente: Cambiar paciente
-
-pacientebundle.aplicacionvacuna.noresultfound.message: "- No hay aplicaciones de vacunas -"
-pacientebundle.general.noresultfound.message: "- No se han encontrado resultados- "
-
-#MUESTRA DE TRADUCCION EN UN FORM TYPE. VOY A TENER QUE PONERLE LABEL A TODO
-form.barrioType.guardarYNuevo: Guardar y nuevo
+planbundle.notFoundException.plan: Plan inexistente
+planbundle.notFoundException.planPaciente: Plan inexistente para el paciente
+planbundle.entregaplan.new.exito: La entrega del plan se registro correctamente
+planbundle.metodoAnticonceptivo.new.exito: El metodo anticonceptivo se cargo exitosamente en el sistema
+planbundle.planpaciente.new.exito: El plan del paciente se agrego exitosamente
+planbundle.planpaciente.modif.exito: El plan del paciente se modifico exitosamente
+planbundle.EntregaPlanProcRespForm.listado.titulo: Entregas de plan procreacion responsable
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaPac: Paciente
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaMet: Método
+planbundle.EntregaPlanProcRespForm.listado.tituloTablaFec: Fecha
+planbundle.EntregaPlanProcRespForm.new.titulo: Registro de entrega (plan procreacion responsable)
+planbundle.EntregaPlanProcRespForm.new.confirm: ¿Confirma el registro de entrega?
+planbundle.MetodoAnticonceptivoForm.new.nombrePlaceholder: Nombre del método anticonceptivo
+planbundle.MetodoAnticonceptivoForm.new.titulo: Alta de metodo anticonceptivo
+planbundle.PlanProcRespForm.listado.titulo: Planes habilitados
+planbundle.PlanProcRespForm.listado.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listado.tituloTablaPeriod: Periodicidad
+planbundle.PlanProcRespForm.listado.linkTablaPeriod: Modificar
+planbundle.PlanProcRespForm.listado.linkTablaDeshab: Deshabilitar
+planbundle.PlanProcRespForm.listado.linkTablaRegEnt: Registrar entrega
+planbundle.PlanProcRespForm.listado.linkTablaListEnt: Listar entregas
+planbundle.PlanProcRespForm.listadoDes.titulo: Planes deshabilitados
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPlan: Plan
+planbundle.PlanProcRespForm.listadoDes.tituloTablaPeriod: Periodicidad
+planbundle.PlanProcRespForm.listadoDes.linkTablaHab: Habilitar
+planbundle.PlanProcRespForm.listadoDes.linkTablaListEnt: Listar entregas
+planbundle.PlanProcRespForm.modif.titulo: Modificación de plan procreacion responsable
+planbundle.PlanProcRespForm.modif.periodicidadPlaceholder: Periodicidad de entrega (valor numérico)
+planbundle.PlanProcRespForm.new.titulo: Alta de plan procreacion responsable
+planbundle.PlanProcRespForm.new.periodicidadPlaceholder: Periodicidad de entrega (valor numérico)
+planbundle.PlanProcRespForm.noresultfound.deshab.message: "- No hay planes deshabilitados -"
+planbundle.PlanProcRespForm.noresultfound.message: "- No hay planes habilitados -"
+planbundle.general.noresultfound.message: "- No se han encontrado resultados -"
+planbundle.base.linkMenu: Menu de %nombreRol%
+#Traducciones asociadas a los form types
+form.entregaPlanProcRespType.boton.confirmar: Confirmar registro de entrega
+form.metodoAnticonceptivoType.label.nombre: Nombre
+form.metodoAnticonceptivoType.boton.guardar: Guardar
+form.metodoAnticonceptivoType.boton.guardarYNuevo: Guardar y nuevo
+form.modPlanProcRespType.label.periodicidad: Periodicidad
+form.modPlanProcRespType.boton.modificar: Modificar plan
+form.planProcRespType.label.periodicidad: Periodicidad
+form.planProcRespType.label.metodoAnticonceptivo: Metodo Anticonceptivo
+form.planProcRespType.boton.guardar: Guardar
+form.planProcRespType.boton.guardarYNuevo: Guardar y nuevo

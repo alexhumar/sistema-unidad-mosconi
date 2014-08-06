@@ -1,0 +1,29 @@
+#messages.es.yml
+turnobundle.turnopaciente.new.exito: El turno para el paciente se agrego exitosamente
+turnobundle.Listados.turnosDelDia.titulo: Turnos del día
+turnobundle.Listados.turnosDelDia.tituloTablaNomAp: Nombre y Apellido
+turnobundle.Listados.turnosDelDia.tituloTablaMotivo: Motivo
+turnobundle.Listados.turnosDelDia.tituloTablaEspecialidad: Especialidad
+turnobundle.Listados.turnosDelDia.tituloTablaProfesional: Profesional
+turnobundle.Listados.turnosDelDia.tituloTablaFecHor: Fecha y hora
+turnobundle.Listados.turnosDelDia.linkTablaFecHor: Atender
+turnobundle.Listados.turnosDelDiaEsp.titulo: Turnos del día
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaNomAp: Nombre y Apellido
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaMotivo: Motivo
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaProfesional: Profesional
+turnobundle.Listados.turnosDelDiaEsp.tituloTablaFecHor: Fecha y hora
+turnobundle.Listados.turnosDelDiaEsp.linkTablaFecHor: Atender
+turnobundle.SeleccionFechaHora.ingresoDatos.titulo: Selección de fecha y hora para el turno
+turnobundle.TurnoForm.new.titulo: Alta de turno inmediato
+turnobundle.TurnoForm.new.medicoPreferidoPlaceholder: Medico preferido por el paciente (opcional)
+turnobundle.TurnoForm.new.motivoPlaceholder: Motivo que origino el turno
+turnobundle.TurnoForm.newConFecHor.titulo: Alta de turno futuro
+turnobundle.TurnoForm.newConFecHor.medicoPreferidoPlaceholder: Medico preferido por el paciente (opcional)
+turnobundle.TurnoForm.newConFecHor.motivoPlaceholder: Motivo que origino el turno
+turnobundle.general.noresultfound.message: "-No hay turnos-"
+turnobundle.base.linkMenu: Menu de %nombreRol%
+#Traducciones asociadas a los form types
+form.turnoType.label.especialidad: Especialidad
+form.turnoType.label.medicoPreferido: Medico preferido
+form.turnoType.label.motivo: Motivo
+form.turnoType.boton.guardar: Guardar turno

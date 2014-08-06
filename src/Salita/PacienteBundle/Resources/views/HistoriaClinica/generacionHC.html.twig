@@ -8,25 +8,10 @@
 {% block contenido %}
 
   {{ include('SalitaPacienteBundle:HistoriaClinica:seccionDatosFiliatorios.html.twig') }}
-
-  <div class="row">
-      <div class="col-sm-3">
-          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesClinicos.html.twig', 
-             { antecedentePC: antecedentePC }) }}
-      </div>  
-      <div class="col-sm-3">
-          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesObstetricos.html.twig', 
-             { antecedentePO: antecedentePO }) }}
-      </div>      
-      <div class="col-sm-3">
-          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresClinicos.html.twig', 
-             { antecedenteFC: antecedenteFC }) }}
-      </div>    
-      <div class="col-sm-3">
-          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresObstetricos.html.twig', 
-             { antecedenteFO: antecedenteFO }) }}
-      </div>
-  </div>
+  
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentes.html.twig', 
+      { antecedentePC: antecedentePC, antecedentePO: antecedentePO, antecedenteFC: antecedenteFC,
+        antecedenteFO: antecedenteFO }) }}
 
   {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
      { consultas: consultas, estudios: estudios }) }}

@@ -10,12 +10,12 @@ class AntecedentePersonalClinicoType extends AntecedentePersonalType
     	parent::buildForm($builder, $options);
     	
         $builder
-            ->add('medicamentos', 'checkbox', array('label' => 'Medicamentos', 'required' => false))
-            ->add('tatuajes', 'checkbox', array('label' => 'Tatuajes', 'required' => false))
-            ->add('infectoContagiosas', 'checkbox', array('label' => 'Infectocontagiosas', 'required' => false))
-            ->add('traumatismos', 'checkbox', array('label' => 'Traumatismos', 'required' => false))
-            ->add('internacionesPrevias', 'checkbox', array('label' => 'Internaciones previas', 'required' => false))
-            ->add('modificar', 'submit', array('label' => 'Modificar antecedentes personales clinicos'));
+            ->add('medicamentos', 'checkbox', array('label' => 'form.antecedentesType.label.meds', 'required' => false))
+            ->add('tatuajes', 'checkbox', array('label' => 'form.antecedentesType.label.tatuajes', 'required' => false))
+            ->add('infectoContagiosas', 'checkbox', array('label' => 'form.antecedentesType.label.infectocont', 'required' => false))
+            ->add('traumatismos', 'checkbox', array('label' => 'form.antecedentesType.label.traumat', 'required' => false))
+            ->add('internacionesPrevias', 'checkbox', array('label' => 'form.antecedentesType.label.intPrev', 'required' => false))
+            ->add('modificar', 'submit', array('label' => 'form.antecedentePersonalClinicoType.boton.modificar'));
     }
     
     public function getName()

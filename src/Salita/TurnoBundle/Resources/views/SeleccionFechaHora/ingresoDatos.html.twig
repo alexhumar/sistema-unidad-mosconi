@@ -1,7 +1,11 @@
 {% extends "SalitaTurnoBundle::base.html.twig" %}
 
 {% block contenido %}
-    <h3>Selección de fecha y hora para el turno</h3>
+    <h3>
+        {% trans %}
+            turnobundle.SeleccionFechaHora.ingresoDatos.titulo
+        {% endtrans %}
+    </h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}

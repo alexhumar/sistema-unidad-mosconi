@@ -10,8 +10,8 @@ class ConsultaType extends AbstractType
     {
         
         $builder
-            ->add('otrasAnotaciones', null, array('label' => 'Otras Anotaciones', 'required' => false))
-            ->add('agregar', 'submit', array('label' => 'Agregar consulta'));
+            ->add('otrasAnotaciones', null, array('label' => 'form.consultaType.label.otrasAnotaciones', 'required' => false))
+            ->add('agregar', 'submit', array('label' => 'form.consultaType.boton.agregar'));
 
     }
     

@@ -134,5 +134,84 @@ pacientebundle.OpcionesMenu.principal: Principal
 pacientebundle.OpcionesMenu.cambiarPaciente: Cambiar paciente
 pacientebundle.aplicacionvacuna.noresultfound.message: "- No hay aplicaciones de vacunas -"
 pacientebundle.general.noresultfound.message: "- No se han encontrado resultados- "
-#MUESTRA DE TRADUCCION EN UN FORM TYPE. VOY A TENER QUE PONERLE LABEL A TODO
-form.barrioType.guardarYNuevo: Guardar y nuevo
+pacientebundle.base.linkMenu: Menu de %nombreRol%
+#traducciones de form types
+form.antecedentesType.label.cardMenorA55: Cardiovascular menor a 55
+form.antecedentesType.label.asma: Asma
+form.antecedentesType.label.trastMent: Trastornos mentales
+form.antecedentesType.label.alergias: Alergias
+form.antecedentesType.label.adicTabaq: Adicciones/Tabaquismo
+form.antecedentesType.label.infectocont: Infectocontagiosas
+form.antecedenteFamiliarClinicoType.boton.modificar: Modificar antecedentes familiares clinicos
+form.antecedentesType.label.preecEcl: Preeclampasia/Eclampsia
+form.antecedenteFamiliarObstetricoType.boton.modificar: Modificar antecedentes familiares obstetricos
+form.antecedentesType.label.tuberculosis: Tuberculosis
+form.antecedentesType.label.diabetes: Diabetes
+form.antecedentesType.label.hipArt: Hipertensión arterial
+form.antecedentesType.label.otros: Otros
+form.antecedentesType.label.meds: Medicamentos
+form.antecedentesType.label.tatuajes: Tatuajes
+form.antecedentesType.label.traumat: Traumatismos
+form.antecedentesType.label.intPrev: Internaciones previas
+form.antecedentePersonalClinicoType.boton.modificar: Modificar antecedentes personales clinicos
+form.antecedentesType.label.cirugPelv: Cirugía pelviana
+form.antecedentesType.label.infert: Infertilidad
+form.antecedentesType.label.vih: VIH
+form.antecedentesType.label.cardNef: Cardiopatía/Nefropatía
+form.antecedentesType.label.condMedGrave: Condición médica grave
+form.antecedentesType.label.gestPrev: Gestas previas
+form.antecedentesType.label.abortos: Abortos
+form.antecedentesType.label.cesareas: Cesáreas
+form.antecedentesType.label.partos: Partos
+form.antecedentesType.label.sifilis: Sífilis
+form.antecedentePersonalObstetricoType.boton.modificar: Modificar antecedentes personales obstetricos
+form.antecedentesType.label.drogas: Drogas
+form.antecedentesType.label.tabaquismo: Tabaquismo
+form.antecedentesType.label.alcohol: Alcoholismo
+form.paciente.busquedaType.label.palabra: Palabra de busqueda
+form.paciente.busquedaType.label.criterio: Criterio
+form.paciente.busquedaType.choice.dni: DNI
+form.paciente.busquedaType.choice.nombre: Nombre
+form.paciente.busquedaType.choice.apellido: Apellido
+form.paciente.busquedaType.boton.buscar: Buscar paciente
+form.consultaType.label.otrasAnotaciones: Otras Anotaciones
+form.consultaType.boton.agregar: Agregar consulta
+form.datosFiliatoriosModificacionType.boton.guardar: Modificar datos filiatorios de paciente
+form.datosFiliatoriosRegistroType.boton.guardar: Registrar paciente
+form.estudioType.label.resultado: Resultado
+form.estudioType.label.nroProtocolo: Nro de Protocolo
+form.estudioType.label.metodoEstudio: Metodo de estudio
+form.estudioType.boton.agregar: Agregar estudio
+form.fechasResumenHCType.label.desdeDia: Desde dia
+form.fechasResumenHCType.label.desdeMes: Desde mes
+form.fechasResumenHCType.label.desdeAnio: Desde año
+form.fechasResumenHCType.label.hastaDia: Hasta dia
+form.fechasResumenHCType.label.hastaMes: Hasta mes
+form.fechasResumenHCType.label.hastaAnio: Hasta año
+form.fechasResumenHCType.boton.generar: Generar resumen de historia clinica
+form.fechaYHoraTurnoType.label.dia: Dia
+form.fechaYHoraTurnoType.label.mes: Mes
+form.fechaYHoraTurnoType.label.anio: Año
+form.fechaYHoraTurnoType.label.hora: Hora
+form.fechaYHoraTurnoType.label.minuto: Minuto
+form.fechaYHoraTurnoType.boton.seleccionar: Proceder a la carga de turno
+form.datosFiliatoriosType.label.tipoDocumento: Tipo de documento
+form.datosFiliatoriosType.label.nroDoc: Numero de documento
+form.datosFiliatoriosType.label.nombre: Nombre
+form.datosFiliatoriosType.label.apellido: Apellido
+form.datosFiliatoriosType.label.fecNac: Fecha de Nacimiento
+form.datosFiliatoriosType.label.sexo: Sexo
+form.datosFiliatoriosType.choice.femenino: Femenino
+form.datosFiliatoriosType.choice.masculino: Masculino
+form.datosFiliatoriosType.label.telFijo: Telefono Fijo
+form.datosFiliatoriosType.label.telMovil: Telefono Movil
+form.datosFiliatoriosType.label.pais: Pais de origen
+form.datosFiliatoriosType.label.calle: Calle
+form.datosFiliatoriosType.label.numero: Numero
+form.datosFiliatoriosType.label.calleEntre1: Entre calle
+form.datosFiliatoriosType.label.calleEntre2: y calle
+form.datosFiliatoriosType.label.partido: Partido
+form.datosFiliatoriosType.label.localidad: Localidad
+form.datosFiliatoriosType.label.barrio: Barrio
+form.datosFiliatoriosType.widget.localidad.emptyValue: Selecciona una localidad
+form.datosFiliatoriosType.widget.barrio.emptyValue: Selecciona un barrio

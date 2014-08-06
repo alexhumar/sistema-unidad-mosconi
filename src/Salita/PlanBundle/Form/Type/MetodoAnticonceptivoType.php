@@ -8,9 +8,9 @@ class MetodoAnticonceptivoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre', 'textarea', array('required' => 'true', 'label' => 'Nombre'))
-        		->add('guardar', 'submit')
-        		->add('guardarynuevo', 'submit', array('label' => 'Guardar y nuevo'));
+        $builder->add('nombre', 'textarea', array('required' => 'true', 'label' => 'form.metodoAnticonceptivoType.label.nombre'))
+        		->add('guardar', 'submit', array('label' => 'form.metodoAnticonceptivoType.boton.guardar'))
+        		->add('guardarynuevo', 'submit', array('label' => 'form.metodoAnticonceptivoType.boton.guardarYNuevo'));
     }
 
     public function getName()

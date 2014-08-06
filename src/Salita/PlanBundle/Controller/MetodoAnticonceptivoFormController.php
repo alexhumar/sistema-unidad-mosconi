@@ -21,9 +21,10 @@ class MetodoAnticonceptivoFormController extends MyController
    			$nextAction = $form->get('guardarynuevo')->isClicked()
    			    ? 'alta_metodoanticonceptivo'
    			    : 'resultado_operacion';
-   			$mensaje = 'El metodo anticonceptivo se cargo exitosamente en el sistema';
+   			$translator = $this->getTranslator();
+   			$mensaje = $this->getDialogsManager()->cargaMetodoAnticonceptivoExitoMsg();
    			$sessionManager = $this->getSessionManager();
-   			$sessionManager->setMensajeResultadoOperacion($nextAction, $mensaje);
+   			$sessionManager->setMensajeResultadoOperacion($nextAction, $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl($nextAction));
    		}
    		return $this->render(

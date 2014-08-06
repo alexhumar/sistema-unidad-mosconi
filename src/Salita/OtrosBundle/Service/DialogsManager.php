@@ -88,5 +88,74 @@ class DialogsManager
 		return 'pacientebundle.paciente.new.exito';
 	}
 	
+	/* Mensajes de PlanBundle */
 	
+	public function getPlanInexistenteMsg()
+	{
+		return 	'planbundle.notFoundException.plan';
+	}
+	
+	public function cargaEntregaPlanExitoMsg()
+	{
+		return 'planbundle.entregaplan.new.exito';
+	}
+	
+	public function cargaMetodoAnticonceptivoExitoMsg()
+	{
+		return 'planbundle.metodoAnticonceptivo.new.exito';
+	}
+	
+	public function cargaPlanPacienteExitoMsg()
+	{
+		return 'planbundle.planpaciente.new.exito';
+	}
+	
+	public function getPlanPacienteInexistenteMsg()
+	{
+		return 	'planbundle.notFoundException.planPaciente';
+	}
+	
+	public function modifPlanPacienteExitoMsg()
+	{
+		return 'planbundle.planpaciente.modif.exito';
+	}
+	
+	/* Mensajes de TurnoBundle */
+	
+	public function cargaTurnoPacienteExitoMsg()
+	{
+		return 'turnobundle.turnopaciente.new.exito';
+	}
+	
+	/* Mensajes de UsuarioBundle */
+	
+	public function cambioPasswordUsuarioExitoMsg()
+	{
+		return 'usuariobundle.cambioPassword.exito';
+	}
+	
+	public function getUsuarioInexistenteMsg()
+	{
+		return 'usuariobundle.notFoundException.usuario';
+	}
+	
+	public function modifUsuarioExitoMsg()
+	{
+		return 'usuariobundle.cambioDatos.exito';
+	}
+	
+	public function modifUsuarioPropioExitoMsg()
+	{
+		return 'usuariobundle.cambioDatosPropio.exito';
+	}
+	
+	public function asignacionEspecialidadExitoMsg()
+	{
+		return 'usuariobundle.asignacionEspecialidad.exito';
+	}
+	
+	public function usuarioNoMedicoErrorMsg()
+	{
+		return 'usuariobundle.usuarioNoMedico.error';
+	}
 }

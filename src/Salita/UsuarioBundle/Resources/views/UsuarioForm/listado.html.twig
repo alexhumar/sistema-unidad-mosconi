@@ -1,13 +1,34 @@
 {% extends "::base.html.twig" %}
 
 {% block contenido %}
-  <h3>Listado de usuarios</h3>
+  <h3>
+      {% trans %}
+          usuariobundle.UsuarioForm.listado.titulo
+      {% endtrans %}
+  </h3>
   <table id="tabla">
-    <thead><tr><th>Nombre y Apellido</th><th></th></tr></thead>
+    <thead>
+        <tr>
+            <th>
+                {% trans %}
+                    usuariobundle.UsuarioForm.listado.tituloTablaNomAp
+                {% endtrans %}
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
       {% for usuario in usuarios %} 
-        <tr><td>{{usuario.nombre}} {{usuario.apellido}}</td>
-        <td><a href="{{ path('seleccion_usuario', { 'id': usuario.id }) }}">Asignar rol</a></td></tr>
+        <tr>
+            <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+            <td>
+                <a href="{{ path('seleccion_usuario', { 'id': usuario.id }) }}">
+                    {% trans %}
+                        usuariobundle.UsuarioForm.listado.linkAsignarRol
+                    {% endtrans %}
+                </a>
+            </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

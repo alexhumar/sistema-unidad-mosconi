@@ -24,8 +24,9 @@ class TurnoController extends MyController
     		$medico = $session->get('usuario');
     		/*Da de alta un turno del momento*/
 			$this->getPersistenceManager()->saveNowTurno($turno, $medico, $paciente);
-    		$mensaje = 'El turno para el paciente se agrego exitosamente';
-    		$session->set('mensaje', $mensaje);
+			$translator = $this->getTranslator();
+    		$mensaje = $this->getDialogsManager()->cargaTurnoPacienteExitoMsg();
+    		$session->set('mensaje', $translator->trans($mensaje));
     		return $this->redirect($this->generateUrl('resultado_operacion_turno'));
     	}
     	return $this->render(
@@ -52,9 +53,10 @@ class TurnoController extends MyController
     		$medico = $session->get('usuario');
     		$this->getPersistenceManager()->saveTurno($turno, $medico, $paciente, $session->get('fecha'), $session->get('hora'));
     		$session->remove('fecha');
-    		$session->remove('hora'); 		
-    		$mensaje = 'El turno para el paciente se agrego exitosamente';
-    		$session->set('mensaje', $mensaje);
+    		$session->remove('hora');
+    		$translator = $this->getTranslator();
+    		$mensaje = $this->getDialogsManager()->cargaTurnoPacienteExitoMsg();
+    		$session->set('mensaje', $translator->trans($mensaje));
     		return $this->redirect($this->generateUrl('resultado_operacion_turno'));
     		
     	}

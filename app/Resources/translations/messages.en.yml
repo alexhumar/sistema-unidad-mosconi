@@ -1,0 +1,20 @@
+#messages.en.yml
+#Traducciones complementarias a las de FOSUserBundle.es.yml
+security.login.nav.linkAcercaDe: About
+security.login.nav.linkContacto: Contact
+security.login.titulo: Login
+security.login.form.usernamePlaceholder: Username
+security.login.form.passwordPlaceholder: Password
+registration.register_content.titulo: Registro de usuario
+registration.register_content.form.emailPlaceholder: User email
+registration.register_content.form.usernamePlaceholder: Username for account
+registration.register_content.form.passwordPlaceholder: Enter the password
+registration.register_content.form.passwordAgainPlaceholder: Repeat the password
+registration.register_content.form.nombrePlaceholder: Full name
+registration.register_content.form.apellidoPlaceholder: Surname
+registration.register_content.form.telefonoPlaceholder: Telephone
+registration.register_content.form.matriculaPlaceholder: Registration number (in case of doctor)
+change_password.titulo: Changing password
+change_password.form.currentPasswordPlaceholder: Enter the current password
+change_password.form.newPasswordFirstPlaceholder: Enter the new password
+change_password.form.newPasswordSecondPlaceholder: Repeat the new password

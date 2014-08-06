@@ -7,16 +7,34 @@
 
 {% block opcionesMenuAdministrador %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li>
+      <a href="{{path('menu_principal')}}">
+          {% trans with { '%nombreRol%': nombreRolSeleccionado } %}
+              otrosbundle.base.linkMenu
+          {% endtrans %}
+      </a>
+  </li>
 {% endblock %}
 
 {% block opcionesMenuSecretaria %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li>
+      <a href="{{path('menu_principal')}}">
+          {% trans with { '%nombreRol%': nombreRolSeleccionado } %}
+              otrosbundle.base.linkMenu
+          {% endtrans %}
+      </a>
+  </li>
 {% endblock %}
 
 {% block opcionesMenuMedico %}
   {% set nombreRolSeleccionado = app.session.get('rolSeleccionado').getNombre() %}
-  <li><a href="{{path('menu_principal')}}">Menu de {{nombreRolSeleccionado}}</a></li>
+  <li>
+      <a href="{{path('menu_principal')}}">
+          {% trans with { '%nombreRol%': nombreRolSeleccionado } %}
+              otrosbundle.base.linkMenu
+          {% endtrans %}
+      </a>
+  </li>
 {% endblock %}
 {#----------------------------------------------------------------------------------#}

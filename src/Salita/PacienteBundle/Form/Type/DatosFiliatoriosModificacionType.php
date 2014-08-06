@@ -10,7 +10,7 @@ class DatosFiliatoriosModificacionType extends DatosFiliatoriosType
     	parent::buildForm($builder, $options);
     	
         $builder
-            ->add('guardar', 'submit', array('label' => 'Modificar datos filiatorios de paciente'));
+            ->add('guardar', 'submit', array('label' => 'form.datosFiliatoriosModificacionType.boton.guardar'));
     }
 
     public function getName()

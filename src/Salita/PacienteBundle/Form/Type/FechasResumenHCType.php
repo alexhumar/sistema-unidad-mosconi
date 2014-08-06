@@ -56,13 +56,13 @@ class FechasResumenHCType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('diaDesde', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
-            ->add('mesDesde', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
-            ->add('anioDesde', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
-            ->add('diaHasta', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
-            ->add('mesHasta', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
-            ->add('anioHasta', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
-            ->add('generar', 'submit', array('label' => 'Generar resumen de historia clinica'));
+            ->add('diaDesde', 'choice', array('label' => 'form.fechasResumenHCType.label.desdeDia', 'choices' => $this->getDias()))
+            ->add('mesDesde', 'choice', array('label' => 'form.fechasResumenHCType.label.desdeMes', 'choices' => $this->getMeses()))
+            ->add('anioDesde', 'choice', array('label' => 'form.fechasResumenHCType.label.desdeAnio', 'choices' => $this->getAnios()))
+            ->add('diaHasta', 'choice', array('label' => 'form.fechasResumenHCType.label.hastaDia', 'choices' => $this->getDias()))
+            ->add('mesHasta', 'choice', array('label' => 'form.fechasResumenHCType.label.hastaMes', 'choices' => $this->getMeses()))
+            ->add('anioHasta', 'choice', array('label' => 'form.fechasResumenHCType.label.hastaAnio', 'choices' => $this->getAnios()))
+            ->add('generar', 'submit', array('label' => 'form.fechasResumenHCType.boton.generar'));
     }
 
     public function getName()

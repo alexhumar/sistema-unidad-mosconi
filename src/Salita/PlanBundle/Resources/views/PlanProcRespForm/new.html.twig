@@ -6,12 +6,18 @@
 {% endblock %}
 
 {% block contenido %}
-    <h3>Alta de plan procreacion responsable</h3>
+    <h3>
+        {% trans %}
+            planbundle.PlanProcRespForm.new.titulo
+        {% endtrans %}
+    </h3>
     <br/>
+    {% set periodicidadPlaceholder = 'planbundle.PlanProcRespForm.new.periodicidadPlaceholder' | trans %}
+    
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
-        {{ form_row(form.periodicidad, { 'attr': { 'placeholder': 'Periodicidad de entrega (valor numérico)' } }) }}
+        {{ form_row(form.periodicidad, { 'attr': { 'placeholder': periodicidadPlaceholder } }) }}
       </div>
       <div class="form-group col-sm-12">
         {{ form_row(form.metodoAnticonceptivo) }}

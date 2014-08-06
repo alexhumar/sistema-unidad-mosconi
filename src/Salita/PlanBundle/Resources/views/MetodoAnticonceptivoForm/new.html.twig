@@ -7,12 +7,18 @@
 {% endblock %}
 
 {% block contenido %}
-    <h3>Alta de metodo anticonceptivo</h3>
+    <h3>
+        {% trans %}
+            planbundle.MetodoAnticonceptivoForm.new.titulo
+        {% endtrans %}
+    </h3>
     <br/>
+    {% set nombrePlaceholder = 'planbundle.MetodoAnticonceptivoForm.new.nombrePlaceholder' | trans %}
+    
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-12">
-        {{ form_row(form.nombre, { 'attr': { 'placeholder': 'Nombre del método anticonceptivo' } }) }}
+        {{ form_row(form.nombre, { 'attr': { 'placeholder': nombrePlaceholder } }) }}
       </div>
       <div class="form-group col-sm-8">
         <div class="col-sm-offset-5">

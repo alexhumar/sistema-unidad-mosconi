@@ -1,0 +1,21 @@
+{# Recibe como parametros: antecedenteFO, antecedentePC, antecedenteFC, antecedentePO #}
+  <div class="jumbotron">
+  <div class="row">
+      <div class="col-sm-3">
+          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesClinicos.html.twig', 
+             { antecedentePC: antecedentePC }) }}
+      </div>  
+      <div class="col-sm-3">
+          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesPersonalesObstetricos.html.twig', 
+             { antecedentePO: antecedentePO }) }}
+      </div>      
+      <div class="col-sm-3">
+          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresClinicos.html.twig', 
+             { antecedenteFC: antecedenteFC }) }}
+      </div>    
+      <div class="col-sm-3">
+          {{ include('SalitaPacienteBundle:HistoriaClinica:seccionAntecedentesFamiliaresObstetricos.html.twig', 
+             { antecedenteFO: antecedenteFO }) }}
+      </div>
+  </div>
+  </div>

@@ -1,25 +1,76 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
 {% block contenido %}
-  <h3>Planes habilitados</h3>
+  <h3>
+      {% trans %}
+          planbundle.PlanProcRespForm.listado.titulo
+      {% endtrans %}
+  </h3>
   </br>
   {% if planes|length > 0 %}
     <table>
-      <thead><tr><th>Plan</th><th>Periodicidad</th><th></th><th></th><th></th><th></th></tr></thead>
+      <thead>
+          <tr>
+              <th>
+                  {% trans %}
+                      planbundle.PlanProcRespForm.listado.tituloTablaPlan
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      planbundle.PlanProcRespForm.listado.tituloTablaPeriod
+                  {% endtrans %}
+              </th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
       <tbody>
         {% for planprocresp in planes %}
           <div id="planHab">
-            <tr><td>{{planprocresp.nombre}}</td>
+            <tr>
+            <td>{{planprocresp.nombre}}</td>
             <td>{{planprocresp.periodicidad}}</td>
-            <td><a href="{{ path('modif_plan', { 'idPlan': planprocresp.id }) }}">Modificar</a></td>
-            <td><a href="{{ path('deshabilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">Deshabilitar</a></td>
-            <td><a href="{{ path('alta_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Registrar entrega</a></td>
-            <td><a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">Listar entregas</a></td></tr>
+            <td>
+                <a href="{{ path('modif_plan', { 'idPlan': planprocresp.id }) }}">
+                    {% trans %}
+                        planbundle.PlanProcRespForm.listado.linkTablaPeriod
+                    {% endtrans %}
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('deshabilitacion_planprocresp', { 'idPlan': planprocresp.id }) }}">
+                    {% trans %}
+                        planbundle.PlanProcRespForm.listado.linkTablaDeshab
+                    {% endtrans %}
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('alta_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">
+                    {% trans %}
+                        planbundle.PlanProcRespForm.listado.linkTablaRegEnt
+                    {% endtrans %}
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('listado_entregaplanprocresp', { 'idPlan': planprocresp.id }) }}">
+                    {% trans %}
+                        planbundle.PlanProcRespForm.listado.linkTablaListEnt
+                    {% endtrans %}
+                </a>
+            </td>
+            </tr>
           </div>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">- No hay planes habilitados -</h4>
+    <h4 id="nota">
+        {% trans %}
+            planbundle.PlanProcRespForm.noresultfound.message
+        {% endtrans %}
+    </h4>
   {% endif %}
 {% endblock %}

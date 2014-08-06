@@ -22,4 +22,27 @@ otrosbundle.busquedaDiagnostico.resultado.linkSeleccionar: Select
 otrosbundle.busquedaDiagnostico.resultado.tituloTabla: Diagnostic
 otrosbundle.metodoEstudioForm.new.titulo: Adding method study
 otrosbundle.metodoEstudioForm.new.nombrePlaceholder: Name of the method of study
-general.noresultfound.message: - No results found -
+otrosbundle.base.linkMenu: Menu of %nombreRol%
+general.noresultfound.message: "- No results found -"
+#Traducciones de form types
+form.barrioType.label.nombre: Name of neighborhood
+form.barrioType.label.localidad: Place
+form.barrioType.boton.guardar: Save
+form.barrioType.boton.guardarYNuevo: Save and add
+form.busquedaDiagnosticoType.label.diagnostico: Diagnosis
+form.busquedaDiagnosticoType.boton.buscar: Search diagnosis
+form.busquedaType.label.vacuna: Vaccine
+form.busquedaType.boton.buscar: Search vaccine
+form.localidadType.label.nombre: Name of place
+form.localidadType.label.partido: Location
+form.localidadType.boton.guardar: Save
+form.localidadType.boton.guardarYNuevo: Save and add
+form.metodoEstudioType.label.nombre: Name
+form.metodoEstudioType.boton.guardar: Save
+form.metodoEstudioType.boton.guardarYNuevo: Save and add
+form.paisType.label.nombre: Country name
+form.paisType.boton.guardar: Save
+form.paisType.boton.guardarYNuevo: Save and add
+form.partidoType.label.nombre: Location name
+form.partidoType.boton.guardar: Save
+form.partidoType.boton.guardarYNuevo: Save and add

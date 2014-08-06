@@ -3,7 +3,11 @@
 {% block menu %} {% endblock %}
 
 {% block contenido %}
-	<h3>Ingresar al sistema como</h3>
+	<h3>
+	    {% trans %}
+	        usuariobundle.EleccionRolForm.eleccionRol.titulo
+	    {% endtrans %}
+	</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}

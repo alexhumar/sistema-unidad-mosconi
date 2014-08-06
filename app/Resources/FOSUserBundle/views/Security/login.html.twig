@@ -1,8 +1,20 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block menu %}
-  <li class="active"><a class="active" href="#acercade">Acerca de</a></li>
-  <li><a href="#contacto">Contacto</a></li>
+  <li class="active">
+      <a class="active" href="#acercade">
+          {% trans %}
+              security.login.nav.linkAcercaDe
+          {% endtrans %}
+      </a>
+  </li>
+  <li>
+      <a href="#contacto">
+          {% trans %}
+              security.login.nav.linkContacto
+          {% endtrans %}
+      </a>
+  </li>
 {% endblock %}
 
 {% block stylesheets %}
@@ -21,15 +33,22 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <p class="panel-title">Inicio de sesion</p>
+    <p class="panel-title">
+        {% trans %}
+            security.login.titulo
+        {% endtrans %}
+    </p>
   </div>
+  {% set usernamePlaceholder = 'security.login.form.usernamePlaceholder' | trans %}
+  {% set passwordPlaceholder = 'security.login.form.passwordPlaceholder' | trans %}
+  
   <div class="panel-body">  
     <form class="form-signin" role="form" action="{{ path("fos_user_security_check") }}" method="post">
       <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-      <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Nombre de usuario" autofocus/>
+      <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ usernamePlaceholder }}" autofocus/>
 
-      <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Contraseña"/>
+      <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="{{ passwordPlaceholder }}"/>
 
       <label class="checkbox">
         <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}

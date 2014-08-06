@@ -1,0 +1,75 @@
+#messages.es.yml
+usuariobundle.cambioPassword.exito: El cambio de contraseña ha sido realizado con éxito
+usuariobundle.notFoundException.usuario: El usuario no existe
+usuariobundle.cambioDatos.exito: Los datos del usuario fueron modificados exitosamente
+usuariobundle.cambioDatosPropio.exito: Sus datos fueron modificados exitosamente
+usuariobundle.asignacionEspecialidad.exito: La especialidad fue asignada exitosamente al medico
+usuariobundle.usuarioNoMedico.error: El usuario no es medico
+usuariobundle.EleccionRolForm.eleccionRol.titulo: Ingresar al sistema como
+usuariobundle.Menu.opciones.principal: Principal
+usuariobundle.Menu.opciones.misDatos: Mis Datos
+usuariobundle.Menu.opciones.pacientes: Pacientes
+usuariobundle.Menu.opciones.turnosDelDia: Turnos del dia
+usuariobundle.Menu.opciones.turnosDelDiaEspecialidad: Turnos del dia
+usuariobundle.Menu.opciones.salir: Salir
+usuariobundle.Menu.principal.usuarios.tituloPanel: Usuarios
+usuariobundle.Menu.principal.usuarios.linkAgregar: Agregar usuario
+usuariobundle.Menu.principal.usuarios.linkAdmRoles: Administrar roles
+usuariobundle.Menu.principal.usuarios.linkListAdmins: Listar administradores
+usuariobundle.Menu.principal.usuarios.linkListMeds: Listar medicos
+usuariobundle.Menu.principal.usuarios.linkListSecs: Listar secretarias
+usuariobundle.Menu.principal.pacientes.tituloPanel: Pacientes
+usuariobundle.Menu.principal.pacientes.linkAltaPaciente: Alta de paciente
+usuariobundle.Menu.principal.barrios.tituloPanel: Barrios
+usuariobundle.Menu.principal.pacientes.linkAltaBarrio: Alta de barrio
+usuariobundle.Menu.principal.estudiosGinecologicos.tituloPanel: Estudios Ginecologicos
+usuariobundle.Menu.principal.pacientes.linkAltaMetEstGin: Alta de metodo de estudio ginecologico
+usuariobundle.Menu.principal.planProcResp.tituloPanel: Plan Procreacion Responsable
+usuariobundle.Menu.principal.planProcResp.linkAltaMetAntic: Alta de metodo anticonceptivo
+usuariobundle.UsuarioForm.asignacionEspecialidad.titulo: Asignacion de especialidad
+usuariobundle.UsuarioForm.asignacionRol.titulo: Asignacion de rol
+usuariobundle.UsuarioForm.listado.titulo: Listado de usuarios
+usuariobundle.UsuarioForm.listado.tituloTablaNomAp: Nombre y Apellido
+usuariobundle.UsuarioForm.listado.linkAsignarRol: Asignar rol
+usuariobundle.UsuarioForm.listadoAdministradores.titulo: Listado de administradores
+usuariobundle.UsuarioForm.listadoAdministradores.tituloTablaNomAp: Nombre y Apellido
+usuariobundle.UsuarioForm.listadoAdministradores.linkEditar: Editar
+usuariobundle.UsuarioForm.listadoAdministradores.linkBorrar: Dar de baja
+usuariobundle.UsuarioForm.listadoMedicos.titulo: Listado de médicos
+usuariobundle.UsuarioForm.listadoMedicos.TituloTablaNomAp: Nombre y Apellido
+usuariobundle.UsuarioForm.listadoMedicos.linkEditar: Editar
+usuariobundle.UsuarioForm.listadoMedicos.linkBorrar: Dar de baja
+usuariobundle.UsuarioForm.listadoSecretarias.titulo: Listado de secretarias
+usuariobundle.UsuarioForm.listadoSecretarias.TituloTablaNomAp: Nombre y Apellido
+usuariobundle.UsuarioForm.listadoSecretarias.linkEditar: Editar
+usuariobundle.UsuarioForm.listadoSecretarias.linkBorrar: Dar de baja
+usuariobundle.UsuarioForm.modif.nombrePlaceholder: Nombre completo del usuario
+usuariobundle.UsuarioForm.modif.apellidoPlaceholder: Apellido del usuario
+usuariobundle.UsuarioForm.modif.emailPlaceholder: Correo electrónico del usuario
+usuariobundle.UsuarioForm.modif.telefonoPlaceholder: Teléfono del usuario
+usuariobundle.UsuarioForm.modif.matriculaPlaceholder: Matrícula del usuario (en caso de ser médico)
+usuariobundle.UsuarioForm.modif.titulo: "Modificacion de usuario %apellido%, %nombre%"
+usuariobundle.UsuarioForm.modifPropio.titulo: Modificacion de mis datos
+usuariobundle.UsuarioForm.modifPropio.nombrePlaceholder: Nombre completo del usuario
+usuariobundle.UsuarioForm.modifPropio.apellidoPlaceholder: Apellido del usuario
+usuariobundle.UsuarioForm.modifPropio.emailPlaceholder: Correo electrónico del usuario
+usuariobundle.UsuarioForm.modifPropio.telefonoPlaceholder: Teléfono del usuario
+usuariobundle.UsuarioForm.modifPropio.matriculaPlaceholder: Matrícula del usuario (en caso de ser médico)
+usuariobundle.UsuarioForm.modifPropio.linkCambiarClave: Cambiar clave
+#Traducciones asociadas a los form type
+form.cambioPasswordFormType.boton.actualizar: Actualizar contraseña
+form.especialidadUsuarioType.label.especialidad: Especialidad
+form.especialidadUsuarioType.boton.asignar: Asignar especialidad
+form.registroFormType.label.nombre: Nombre
+form.registroFormType.label.apellido: Apellido
+form.registroFormType.label.telefono: Telefono
+form.registroFormType.label.matricula: Matricula
+form.registroFormType.boton.registrar: Registrar usuario
+form.rolType.label.nombre: Rol
+form.rolType.boton.asignar: Elegir rol
+form.usuarioType.label.nombre: Nombre
+form.usuarioType.label.apellido: Apellido
+form.usuarioType.label.email: Email
+form.usuarioType.label.telefono: Telefono
+form.usuarioType.label.matricula: Matricula
+form.usuarioType.boton.modificar: Modificar datos

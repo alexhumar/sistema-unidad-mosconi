@@ -1,18 +1,48 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
 {% block contenido %}
-  <h3>Entregas de plan procreación responsable</h3>
+  <h3>
+      {% trans %}
+          planbundle.EntregaPlanProcRespForm.listado.titulo
+      {% endtrans %}
+  </h3>
   </br>
   {% if entregasplanprocresp|length > 0 %}
     <table>
-      <thead><tr><th>Paciente</th><th>Método</th><th>Fecha</th></thead>
+      <thead>
+          <tr>
+              <th>
+                  {% trans %}
+                      planbundle.EntregaPlanProcRespForm.listado.tituloTablaPac
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      planbundle.EntregaPlanProcRespForm.listado.tituloTablaMet
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      planbundle.EntregaPlanProcRespForm.listado.tituloTablaFec
+                  {% endtrans %}
+              </th>
+          </tr>
+      </thead>
       <tbody>
         {% for entregaplanprocresp in entregasplanprocresp %}
-          <tr><td>{{entregaplanprocresp.nombrePac}} {{entregaplanprocresp.apellidoPac}}</td><td>{{entregaplanprocresp.metodo}}</td><td>{{entregaplanprocresp.fecha}}</td></tr>
+          <tr>
+              <td>{{entregaplanprocresp.nombrePac}} {{entregaplanprocresp.apellidoPac}}</td>
+              <td>{{entregaplanprocresp.metodo}}</td>
+              <td>{{entregaplanprocresp.fecha}}</td>
+          </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">- No se han encontrado resultados -</h4>
+    <h4 id="nota">
+        {% trans %}
+            planbundle.general.noresultfound.message
+        {% endtrans %}
+    </h4>
   {% endif %}
 {% endblock %}

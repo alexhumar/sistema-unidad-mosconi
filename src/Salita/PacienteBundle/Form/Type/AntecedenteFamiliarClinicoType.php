@@ -10,13 +10,13 @@ class AntecedenteFamiliarClinicoType extends AntecedenteFamiliarType
     	parent::buildForm($builder, $options);
         
         $builder
-            ->add('cardiovascularMenorA55', 'checkbox', array('label' => 'Cardiovascular menor a 55', 'required' => false))
-            ->add('asma', 'checkbox', array('label' => 'Asma', 'required' => false))
-            ->add('trastornosMentales', 'checkbox', array('label' => 'Trastornos mentales', 'required' => false))
-            ->add('alergias', 'checkbox', array('label' => 'Alergias', 'required' => false))
-            ->add('adiccionesTabaquismo', 'checkbox', array('label' => 'Adicciones/Tabaquismo', 'required' => false))
-            ->add('infectoContagiosas', 'checkbox', array('label' => 'Infectocontagiosas', 'required' => false))
-            ->add('modificar', submit, array('label' => 'Modificar antecedentes familiares clinicos'));
+            ->add('cardiovascularMenorA55', 'checkbox', array('label' => 'form.antecedentesType.label.cardMenorA55', 'required' => false))
+            ->add('asma', 'checkbox', array('label' => 'form.antecedentesType.label.asma', 'required' => false))
+            ->add('trastornosMentales', 'checkbox', array('label' => 'form.antecedentesType.label.trastMent', 'required' => false))
+            ->add('alergias', 'checkbox', array('label' => 'form.antecedentesType.label.alergias', 'required' => false))
+            ->add('adiccionesTabaquismo', 'checkbox', array('label' => 'form.antecedentesType.label.adicTabaq', 'required' => false))
+            ->add('infectoContagiosas', 'checkbox', array('label' => 'form.antecedentesType.label.infectocont', 'required' => false))
+            ->add('modificar', submit, array('label' => 'form.antecedenteFamiliarClinicoType.boton.modificar'));
     }
     
     public function getName()

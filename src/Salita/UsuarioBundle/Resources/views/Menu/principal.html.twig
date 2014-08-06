@@ -16,14 +16,48 @@
        <div class="col-sm-4">
          <div class="panel panel-primary">
            <div class="panel-heading">
-             <h3 class="panel-title">Usuarios</h3>
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.usuarios.tituloPanel
+                 {% endtrans %}
+             </h3>
            </div>
            <div class="panel-body">
-             <div><a href="{{path('fos_user_registration_register')}}">Agregar usuario</a></div>
-             <div><a href="{{path('listado_usuario')}}">Administrar roles</a></div>
-             <div><a href="{{path('listado_administrador')}}">Listar administradores</a></div>
-             <div><a href="{{path('listado_medico')}}">Listar medicos</a></div>
-             <div><a href="{{path('listado_secretaria')}}">Listar secretarias</a></div>
+             <div>
+                 <a href="{{path('fos_user_registration_register')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkAgregar
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_usuario')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkAdmRoles
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_administrador')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListAdmins
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_medico')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListMeds
+                     {% endtrans %}
+                 </a>
+             </div>
+             <div>
+                 <a href="{{path('listado_secretaria')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.usuarios.linkListSecs
+                     {% endtrans %}
+                 </a>
+             </div>
            </div>
          </div>
        </div>
@@ -32,10 +66,20 @@
        <div class="col-sm-4">
          <div class="panel panel-primary">
            <div class="panel-heading">
-             <h3 class="panel-title">Pacientes</h3>
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.pacientes.tituloPanel
+                 {% endtrans %}
+             </h3>
            </div>
            <div class="panel-body">
-             <div><a href="{{path('alta_paciente')}}">Alta de paciente</a></div>
+             <div>
+                 <a href="{{path('alta_paciente')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaPaciente
+                     {% endtrans %}
+                 </a>
+             </div>
            </div>
          </div>
        </div>
@@ -43,10 +87,20 @@
        <div class="col-sm-4">
          <div class="panel panel-primary">
            <div class="panel-heading">
-             <h3 class="panel-title">Barrios</h3>
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.barrios.tituloPanel
+                 {% endtrans %}
+             </h3>
            </div>
            <div class="panel-body">
-             <div><a href="{{path('alta_barrio')}}">Alta de barrio</a></div>
+             <div>
+                 <a href="{{path('alta_barrio')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaBarrio
+                     {% endtrans %}
+                 </a>
+             </div>
            </div>
          </div>
        </div>
@@ -55,10 +109,20 @@
        <div class="col-sm-4">
          <div class="panel panel-primary">
            <div class="panel-heading">
-             <h3 class="panel-title">Estudios Ginecologicos</h3>
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.estudiosGinecologicos.tituloPanel
+                 {% endtrans %}
+             </h3>
            </div>
            <div class="panel-body">
-             <div><a href="{{path('alta_metodoestudio')}}">Alta de metodo de estudio ginecologico</a></div>
+             <div>
+                 <a href="{{path('alta_metodoestudio')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.pacientes.linkAltaMetEstGin
+                     {% endtrans %}
+                 </a>
+             </div>
            </div>
          </div>
        </div>
@@ -66,10 +130,20 @@
        <div class="col-sm-4">
          <div class="panel panel-primary">
            <div class="panel-heading">
-             <h3 class="panel-title">Plan Procreacion Responsable</h3>
+             <h3 class="panel-title">
+                 {% trans %}
+                     usuariobundle.Menu.principal.planProcResp.tituloPanel
+                 {% endtrans %}
+             </h3>
            </div>
            <div class="panel-body">
-             <div><a href="{{path('alta_metodoanticonceptivo')}}">Alta de metodo anticonceptivo</a></div>
+             <div>
+                 <a href="{{path('alta_metodoanticonceptivo')}}">
+                     {% trans %}
+                         usuariobundle.Menu.principal.planProcResp.linkAltaMetAntic
+                     {% endtrans %}
+                 </a>
+             </div>
            </div>
          </div>
        </div>

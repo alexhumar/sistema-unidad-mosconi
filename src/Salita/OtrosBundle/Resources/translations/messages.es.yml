@@ -22,4 +22,27 @@ otrosbundle.busquedaDiagnostico.resultado.linkSeleccionar: Seleccionar
 otrosbundle.busquedaDiagnostico.resultado.tituloTabla: Diagnostico
 otrosbundle.metodoEstudioForm.new.titulo: Alta de metodo de estudio
 otrosbundle.metodoEstudioForm.new.nombrePlaceholder: Nombre del metodo de estudio
-general.noresultfound.message: - No se han encontrado resultados -
+otrosbundle.base.linkMenu: Menu de %nombreRol%
+general.noresultfound.message: "- No se han encontrado resultados -"
+#Traducciones de form types
+form.barrioType.label.nombre: Nombre del barrio
+form.barrioType.label.localidad: Localidad
+form.barrioType.boton.guardar: Guardar
+form.barrioType.boton.guardarYNuevo: Guardar y nuevo
+form.busquedaDiagnosticoType.label.diagnostico: Diagnostico
+form.busquedaDiagnosticoType.boton.buscar: Buscar diagnostico
+form.busquedaType.label.vacuna: Vacuna
+form.busquedaType.boton.buscar: Buscar vacuna
+form.localidadType.label.nombre: Nombre de localidad
+form.localidadType.label.partido: Partido
+form.localidadType.boton.guardar: Guardar
+form.localidadType.boton.guardarYNuevo: Guardar y nuevo
+form.metodoEstudioType.label.nombre: Nombre
+form.metodoEstudioType.boton.guardar: Guardar
+form.metodoEstudioType.boton.guardarYNuevo: Guardar y nuevo
+form.paisType.label.nombre: Nombre del pais
+form.paisType.boton.guardar: Guardar
+form.paisType.boton.guardarYNuevo: Guardar y nuevo
+form.partidoType.label.nombre: Nombre de partido
+form.partidoType.boton.guardar: Guardar
+form.partidoType.boton.guardarYNuevo: Guardar y nuevo

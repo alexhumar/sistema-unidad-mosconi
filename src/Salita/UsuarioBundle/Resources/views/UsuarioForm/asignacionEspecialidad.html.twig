@@ -3,7 +3,11 @@
 {% block menu %} {% endblock %}
 
 {% block contenido %}
-	<h3>Asignacion de especialidad</h3>
+	<h3>
+	    {% trans %}
+	        usuariobundle.UsuarioForm.asignacionEspecialidad.titulo
+	    {% endtrans %}
+	</h3>
     <br/>
     {{ form_start(form) }}
       {{ form_errors(form) }}

@@ -6,18 +6,60 @@
   {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
   {% set autenticadoComoAdministrador = usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) %}
 
-  <h3>Turnos del día</h3>
+  <h3>
+      {% trans %}
+          turnobundle.Listados.turnosDelDia.titulo
+      {% endtrans %}
+  </h3>
   </br>
   {% if turnos|length > 0 %}
     <table id="tabla">
-      <thead><tr><th>Nombre y Apellido</th><th>Motivo</th><th>Especialidad</th><th>Profesional</th><th>Fecha y hora</th></tr></thead>
+      <thead>
+          <tr>
+              <th>
+                  {% trans %}
+                      turnobundle.Listados.turnosDelDia.tituloTablaNomAp
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      turnobundle.Listados.turnosDelDia.tituloTablaMotivo
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      turnobundle.Listados.turnosDelDia.tituloTablaEspecialidad
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      turnobundle.Listados.turnosDelDia.tituloTablaProfesional
+                  {% endtrans %}
+              </th>
+              <th>
+                  {% trans %}
+                      turnobundle.Listados.turnosDelDia.tituloTablaFecHor
+                  {% endtrans %}
+              </th>
+          </tr>
+      </thead>
       <tbody>
         {% for turno in turnos %}
           <div class="turno">
             <tr>
-              <td>{{turno.nombre}} {{turno.apellido}}</td><td>{{turno.motivo}}</td><td>{{turno.especialidad}}</td><td>{{turno.medico}}</td><td>{{turno.fecha}} - {{turno.hora}}</td>
+              <td>{{turno.nombre}} {{turno.apellido}}</td>
+              <td>{{turno.motivo}}</td>
+              <td>{{turno.especialidad}}</td>
+              <td>{{turno.medico}}</td>
+              <td>{{turno.fecha}} - {{turno.hora}}</td>
               {% if autenticadoComoAdministrador %}
-                <td><a href="{{path('atencion_turno', { 'idTurno': turno.id }) }}">Atender</a></td>
+                <td>
+                    <a href="{{path('atencion_turno', { 'idTurno': turno.id }) }}">
+                        {% trans %}
+                            turnobundle.Listados.turnosDelDia.linkTablaFecHor
+                        {% endtrans %}
+                    </a>
+                </td>
               {% endif %} 
             </tr>
           </div>
@@ -25,6 +67,10 @@
       </tbody>
     </table>
   {% else %}
-    <h4 id="nota">-No hay turnos-</h4>
+    <h4 id="nota">
+        {% trans %}
+            turnobundle.general.noresultfound.message
+        {% endtrans %}
+    </h4>
   {% endif %}
 {% endblock %}

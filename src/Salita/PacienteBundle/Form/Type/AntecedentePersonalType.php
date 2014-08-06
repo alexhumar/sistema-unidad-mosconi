@@ -9,13 +9,13 @@ class AntecedentePersonalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tuberculosis', 'checkbox', array('label' => 'Tuberculosis', 'required' => false))
-            ->add('diabetes', 'checkbox', array('label' => 'Diabetes', 'required' => false))
-            ->add('hipertensionArterial', 'checkbox', array('label' => 'Hipertensión arterial', 'required' => false))
-            ->add('drogas', 'checkbox', array('label' => 'Drogas', 'required' => false))
-            ->add('tabaquismo', 'checkbox', array('label' => 'Tabaquismo', 'required' => false))
-            ->add('alcoholismo', 'checkbox', array('label' => 'Alcoholismo', 'required' => false))
-            ->add('otros', 'textarea', array('label' => 'Otros', 'required' => false));
+            ->add('tuberculosis', 'checkbox', array('label' => 'form.antecedentesType.label.tuberculosis', 'required' => false))
+            ->add('diabetes', 'checkbox', array('label' => 'form.antecedentesType.label.diabetes', 'required' => false))
+            ->add('hipertensionArterial', 'checkbox', array('label' => 'form.antecedentesType.label.hipArt', 'required' => false))
+            ->add('drogas', 'checkbox', array('label' => 'form.antecedentesType.label.drogas', 'required' => false))
+            ->add('tabaquismo', 'checkbox', array('label' => 'form.antecedentesType.label.tabaquismo', 'required' => false))
+            ->add('alcoholismo', 'checkbox', array('label' => 'form.antecedentesType.label.alcohol', 'required' => false))
+            ->add('otros', 'textarea', array('label' => 'form.antecedentesType.label.otros', 'required' => false));
     }
     
     public function getName()

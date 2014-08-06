@@ -134,5 +134,84 @@ pacientebundle.OpcionesMenu.principal: Main
 pacientebundle.OpcionesMenu.cambiarPaciente: Change patient
 pacientebundle.aplicacionvacuna.noresultfound.message: "- No vaccine applications -"
 pacientebundle.general.noresultfound.message: "- No results found -"
-#MUESTRA DE TRADUCCION EN UN FORM TYPE
-form.barrioType.guardarYNuevo: Save and add
+pacientebundle.base.linkMenu: Menu of %nombreRol%
+#traducciones de form types
+form.antecedentesType.label.cardMenorA55: Cardiovascular less than 55
+form.antecedentesType.label.asma: Asthma
+form.antecedentesType.label.trastMent: Mental disorders
+form.antecedentesType.label.alergias: Allergies
+form.antecedentesType.label.adicTabaq: Addictions/Smoking
+form.antecedentesType.label.infectocont: Infectious
+form.antecedenteFamiliarClinicoType.boton.modificar: Change clinical family history
+form.antecedentesType.label.preecEcl: Preeclampasia/Eclampsia
+form.antecedenteFamiliarObstetricoType.boton.modificar: Change family history obstetrical
+form.antecedentesType.label.tuberculosis: Tuberculosis
+form.antecedentesType.label.diabetes: Diabetes
+form.antecedentesType.label.hipArt: Hypertension
+form.antecedentesType.label.otros: Others
+form.antecedentesType.label.meds: Medicine
+form.antecedentesType.label.tatuajes: Tatoos
+form.antecedentesType.label.traumat: Injuries
+form.antecedentesType.label.intPrev: Previous admissions
+form.antecedentePersonalClinicoType.boton.modificar: Change personal clinical history
+form.antecedentesType.label.cirugPelv: Pelvic surgery
+form.antecedentesType.label.infert: Infertility
+form.antecedentesType.label.vih: VIH
+form.antecedentesType.label.cardNef: Heart disease/Nephropathy
+form.antecedentesType.label.condMedGrave: Serious medical condition
+form.antecedentesType.label.gestPrev: Previous deeds
+form.antecedentesType.label.abortos: Abortions
+form.antecedentesType.label.cesareas: Caesarean section
+form.antecedentesType.label.partos: Births
+form.antecedentesType.label.sifilis: Syphilis
+form.antecedentePersonalObstetricoType.boton.modificar: Change obstetrical personal history
+form.antecedentesType.label.drogas: Drugs
+form.antecedentesType.label.tabaquismo: Smoking
+form.antecedentesType.label.alcohol: Alcoholism
+form.paciente.busquedaType.label.palabra: Search term
+form.paciente.busquedaType.label.criterio: Criteria
+form.paciente.busquedaType.choice.dni: Document number
+form.paciente.busquedaType.choice.nombre: Name
+form.paciente.busquedaType.choice.apellido: Surname
+form.paciente.busquedaType.boton.buscar: Search patient
+form.consultaType.label.otrasAnotaciones: Other annotations
+form.consultaType.boton.agregar: Add consultation
+form.datosFiliatoriosModificacionType.boton.guardar: Change patient data
+form.datosFiliatoriosRegistroType.boton.guardar: Add patient
+form.estudioType.label.resultado: Result
+form.estudioType.label.nroProtocolo: Protocol number
+form.estudioType.label.metodoEstudio: Study method
+form.estudioType.boton.agregar: Add study
+form.fechasResumenHCType.label.desdeDia: Since day
+form.fechasResumenHCType.label.desdeMes: Since month
+form.fechasResumenHCType.label.desdeAnio: Since year
+form.fechasResumenHCType.label.hastaDia: Until day
+form.fechasResumenHCType.label.hastaMes: Until month
+form.fechasResumenHCType.label.hastaAnio: Until year
+form.fechasResumenHCType.boton.generar: Generate summary of medical history
+form.fechaYHoraTurnoType.label.dia: Day
+form.fechaYHoraTurnoType.label.mes: Month
+form.fechaYHoraTurnoType.label.anio: Year
+form.fechaYHoraTurnoType.label.hora: Time
+form.fechaYHoraTurnoType.label.minuto: Minute
+form.fechaYHoraTurnoType.boton.seleccionar: Proceed to add the shift
+form.datosFiliatoriosType.label.tipoDocumento: Document type
+form.datosFiliatoriosType.label.nroDoc: Document number
+form.datosFiliatoriosType.label.nombre: Name
+form.datosFiliatoriosType.label.apellido: Surname
+form.datosFiliatoriosType.label.fecNac: Date of birth
+form.datosFiliatoriosType.label.sexo: Gender
+form.datosFiliatoriosType.choice.femenino: Female
+form.datosFiliatoriosType.choice.masculino: Male
+form.datosFiliatoriosType.label.telFijo: Telephone
+form.datosFiliatoriosType.label.telMovil: Mobilephone
+form.datosFiliatoriosType.label.pais: Country of origin
+form.datosFiliatoriosType.label.calle: Street
+form.datosFiliatoriosType.label.numero: Number
+form.datosFiliatoriosType.label.calleEntre1: Between street
+form.datosFiliatoriosType.label.calleEntre2: and street
+form.datosFiliatoriosType.label.partido: Region
+form.datosFiliatoriosType.label.localidad: Place
+form.datosFiliatoriosType.label.barrio: Neighborhood
+form.datosFiliatoriosType.widget.localidad.emptyValue: Select a place
+form.datosFiliatoriosType.widget.barrio.emptyValue: Select a neighborhood

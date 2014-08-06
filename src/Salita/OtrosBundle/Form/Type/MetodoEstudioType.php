@@ -8,9 +8,9 @@ class MetodoEstudioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre', 'textarea', array('required' => true, 'label' => 'Nombre'))
-        		->add('guardar', 'submit')
-        		->add('guardarynuevo', 'submit', array('label' => 'Guardar y nuevo'));
+        $builder->add('nombre', 'textarea', array('required' => true, 'label' => 'form.metodoEstudioType.label.nombre'))
+        		->add('guardar', 'submit', array('label' => 'form.metodoEstudioType.boton.guardar'))
+        		->add('guardarynuevo', 'submit', array('label' => 'form.metodoEstudioType.boton.guardarYNuevo'));
     }
 
     public function getName()

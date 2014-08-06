@@ -15,7 +15,7 @@ class CambioPasswordFormType extends BaseType
 
         /* Aca se agregan los campos que necesitamos al formulario de cambio de contraseña */
         $builder
-            ->add('cambiarPassword', 'submit', array('label' => 'Actualizar contraseña')); 
+            ->add('cambiarPassword', 'submit', array('label' => 'form.cambioPasswordFormType.boton.actualizar')); 
     }
 
     public function getName()

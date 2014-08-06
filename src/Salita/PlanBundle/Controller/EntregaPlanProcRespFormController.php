@@ -19,14 +19,16 @@ class EntregaPlanProcRespFormController extends MyController
    		{
    			$repoPlanes = $this->getReposManager()->getPlanesProcreacionResponsableRepo();
    			$plan = $repoPlanes->find($idPlan);
+   			$translator = $this->getTranslator();
    			if(!$plan)
    			{
-   				throw $this->createNotFoundException("Plan inexistente");
+   				$mensaje = $this->getDialogsManager()->getPlanInexistenteMsg();
+   				throw $this->createNotFoundException($translator->trans($mensaje));
    			}
    			$this->getPersistenceManager()->saveEntregaPlanProcreacionResponsable($plan, $entrega);
-   			$mensaje = 'La entrega del plan se registro correctamente';
+   			$mensaje = $this->getDialogsManager()->cargaEntregaPlanExitoMsg();
    			$session = $this->getSession();
-   			$session->set('mensaje', $mensaje);
+   			$session->set('mensaje', $translator->trans($mensaje));
    			return $this->redirect($this->generateUrl('resultado_operacion_plan'));
    		}
    		return $this->render(

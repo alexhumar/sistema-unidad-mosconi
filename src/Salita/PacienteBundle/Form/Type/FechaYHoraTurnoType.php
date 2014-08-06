@@ -88,12 +88,12 @@ class FechaYHoraTurnoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dia', 'choice', array('label' => 'Día', 'choices' => $this->getDias()))
-            ->add('mes', 'choice', array('label' => 'Mes', 'choices' => $this->getMeses()))
-            ->add('anio', 'choice', array('label' => 'Año', 'choices' => $this->getAnios()))
-            ->add('hora', 'choice', array('label' => 'Hora', 'choices' => $this->getHoras()))
-            ->add('minutos', 'choice', array('label' => 'Minuto', 'choices' => $this->getMinutos()))
-            ->add('seleccionar', 'submit', array('label' => 'Proceder a la carga de turno'));
+            ->add('dia', 'choice', array('label' => 'form.fechaYHoraTurnoType.label.dia', 'choices' => $this->getDias()))
+            ->add('mes', 'choice', array('label' => 'form.fechaYHoraTurnoType.label.mes', 'choices' => $this->getMeses()))
+            ->add('anio', 'choice', array('label' => 'form.fechaYHoraTurnoType.label.anio', 'choices' => $this->getAnios()))
+            ->add('hora', 'choice', array('label' => 'form.fechaYHoraTurnoType.label.hora', 'choices' => $this->getHoras()))
+            ->add('minutos', 'choice', array('label' => 'form.fechaYHoraTurnoType.label.minuto', 'choices' => $this->getMinutos()))
+            ->add('seleccionar', 'submit', array('label' => 'form.fechaYHoraTurnoType.boton.seleccionar'));
     }
 
     public function getName()

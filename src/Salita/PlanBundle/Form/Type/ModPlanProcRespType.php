@@ -9,8 +9,8 @@ class ModPlanProcRespType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('periodicidad', null, array('required' => 'false', 'label' => 'Periodicidad'))
-            ->add('modificar', 'submit', array('label' => 'Modificar plan'));
+            ->add('periodicidad', null, array('required' => 'false', 'label' => 'form.modPlanProcRespType.label.periodicidad'))
+            ->add('modificar', 'submit', array('label' => 'form.modPlanProcRespType.boton.modificar'));
     }
 
     public function getName()

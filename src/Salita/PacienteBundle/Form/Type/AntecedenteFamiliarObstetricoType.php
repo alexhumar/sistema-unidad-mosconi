@@ -10,8 +10,8 @@ class AntecedenteFamiliarObstetricoType extends AntecedenteFamiliarType
     	parent::buildForm($builder, $options);
     	
         $builder
-            ->add('preeclampsiaEclampsia', 'checkbox', array('label' => 'Preeclampasia/Eclampsia', 'required' => false))
-            ->add('modificar', 'submit', array('label' => 'Modificar antecedentes familiares obstetricos'));
+            ->add('preeclampsiaEclampsia', 'checkbox', array('label' => 'form.antecedentesType.label.preecEcl', 'required' => false))
+            ->add('modificar', 'submit', array('label' => 'form.antecedenteFamiliarObstetricoType.boton.modificar'));
     }
     
     public function getName()

@@ -1,6 +1,7 @@
 {# Recibe como parametros: consultas, estudios #}
 
 {% if (consultas|length > 0) %}
+  <div class="jumbotron">
   <div class="row">
   <div class="tituloSeccion">
       {% trans %}
@@ -45,9 +46,11 @@
     </div>
   {% endfor %}
   </div>
+  </div>
 {% endif %}
 
 {% if paciente.isMujer() and (estudios|length > 0) %}
+  <div class="jumbotron">
   <div class="row">
 	  <div class="tituloSeccion">
 	      {% trans %}
@@ -83,5 +86,6 @@
 	      </br>
 	    </div>
 	  {% endfor %}
+  </div>
   </div>
 {% endif %}

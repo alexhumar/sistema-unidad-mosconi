@@ -8,9 +8,9 @@ class PartidoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')
-        		->add('guardar', 'submit')
-        		->add('guardarynuevo', 'submit');
+        $builder->add('nombre', null, array('label' => 'form.partidoType.label.nombre'))
+        		->add('guardar', 'submit', array('label' => 'form.partidoType.boton.guardar'))
+        		->add('guardarynuevo', 'submit', array('label' => 'form.partidoType.boton.guardarYNuevo'));
     }
 
     public function getName()

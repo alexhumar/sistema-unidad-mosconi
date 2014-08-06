@@ -1,0 +1,75 @@
+#messages.en.yml
+usuariobundle.cambioPassword.exito: The password change has been successfully
+usuariobundle.notFoundException.usuario: User does not exist
+usuariobundle.cambioDatos.exito: User data were modified successfully
+usuariobundle.cambioDatosPropio.exito: Their data were modified successfully
+usuariobundle.asignacionEspecialidad.exito: The specialty was successfully assigned to medical
+usuariobundle.usuarioNoMedico.error: User is not medical
+usuariobundle.EleccionRolForm.eleccionRol.titulo: Login as
+usuariobundle.Menu.opciones.principal: Main
+usuariobundle.Menu.opciones.misDatos: My data
+usuariobundle.Menu.opciones.pacientes: Patients
+usuariobundle.Menu.opciones.turnosDelDia: Shifts of the day
+usuariobundle.Menu.opciones.turnosDelDiaEspecialidad: Shifts of the day
+usuariobundle.Menu.opciones.salir: Exit
+usuariobundle.Menu.principal.usuarios.tituloPanel: Users
+usuariobundle.Menu.principal.usuarios.linkAgregar: Add users
+usuariobundle.Menu.principal.usuarios.linkAdmRoles: Add roles
+usuariobundle.Menu.principal.usuarios.linkListAdmins: List administrators
+usuariobundle.Menu.principal.usuarios.linkListMeds: List doctors
+usuariobundle.Menu.principal.usuarios.linkListSecs: List secretaries
+usuariobundle.Menu.principal.pacientes.tituloPanel: Patients
+usuariobundle.Menu.principal.pacientes.linkAltaPaciente: Add patient
+usuariobundle.Menu.principal.barrios.tituloPanel: Neighborhoods
+usuariobundle.Menu.principal.pacientes.linkAltaBarrio: Add neighborhood
+usuariobundle.Menu.principal.estudiosGinecologicos.tituloPanel: Gynaecologists studies
+usuariobundle.Menu.principal.pacientes.linkAltaMetEstGin: Add gynecological study method
+usuariobundle.Menu.principal.planProcResp.tituloPanel: Responsible Parenthood Plan
+usuariobundle.Menu.principal.planProcResp.linkAltaMetAntic: Add contraceptive method
+usuariobundle.UsuarioForm.asignacionEspecialidad.titulo: Assignment of specialty
+usuariobundle.UsuarioForm.asignacionRol.titulo: Role Assignment
+usuariobundle.UsuarioForm.listado.titulo: List of users
+usuariobundle.UsuarioForm.listado.tituloTablaNomAp: Name and surname
+usuariobundle.UsuarioForm.listado.linkAsignarRol: Assign role
+usuariobundle.UsuarioForm.listadoAdministradores.titulo: List of administrators
+usuariobundle.UsuarioForm.listadoAdministradores.tituloTablaNomAp: Name and surname
+usuariobundle.UsuarioForm.listadoAdministradores.linkEditar: Edit
+usuariobundle.UsuarioForm.listadoAdministradores.linkBorrar: Remove
+usuariobundle.UsuarioForm.listadoMedicos.titulo: List of doctors
+usuariobundle.UsuarioForm.listadoMedicos.TituloTablaNomAp: Name and surname
+usuariobundle.UsuarioForm.listadoMedicos.linkEditar: Edit
+usuariobundle.UsuarioForm.listadoMedicos.linkBorrar: Remove
+usuariobundle.UsuarioForm.listadoSecretarias.titulo: List of secretaries
+usuariobundle.UsuarioForm.listadoSecretarias.TituloTablaNomAp: Name and surname
+usuariobundle.UsuarioForm.listadoSecretarias.linkEditar: Edit
+usuariobundle.UsuarioForm.listadoSecretarias.linkBorrar: Remove
+usuariobundle.UsuarioForm.modif.nombrePlaceholder: Full name of user
+usuariobundle.UsuarioForm.modif.apellidoPlaceholder: User surname
+usuariobundle.UsuarioForm.modif.emailPlaceholder: User email
+usuariobundle.UsuarioForm.modif.telefonoPlaceholder: Phone user
+usuariobundle.UsuarioForm.modif.matriculaPlaceholder: Medical registration (if you are a doctor)
+usuariobundle.UsuarioForm.modif.titulo: "Edit of user %apellido%, %nombre%"
+usuariobundle.UsuarioForm.modifPropio.titulo: Edit my data
+usuariobundle.UsuarioForm.modifPropio.nombrePlaceholder: Full name of user
+usuariobundle.UsuarioForm.modifPropio.apellidoPlaceholder: User surname
+usuariobundle.UsuarioForm.modifPropio.emailPlaceholder: User email
+usuariobundle.UsuarioForm.modifPropio.telefonoPlaceholder: Phone user
+usuariobundle.UsuarioForm.modifPropio.matriculaPlaceholder: Medical registration (if you are a doctor)
+usuariobundle.UsuarioForm.modifPropio.linkCambiarClave: Change password
+#Traducciones asociadas a los form type
+form.cambioPasswordFormType.boton.actualizar: Update password
+form.especialidadUsuarioType.label.especialidad: Specialty
+form.especialidadUsuarioType.boton.asignar: Assign specialty
+form.registroFormType.label.nombre: Name
+form.registroFormType.label.apellido: Surname
+form.registroFormType.label.telefono: Telephone
+form.registroFormType.label.matricula: Registration number
+form.registroFormType.boton.registrar: Add user
+form.rolType.label.nombre: Role
+form.rolType.boton.asignar: Choose role
+form.usuarioType.label.nombre: Name
+form.usuarioType.label.apellido: Surname
+form.usuarioType.label.email: Email
+form.usuarioType.label.telefono: Telephone
+form.usuarioType.label.matricula: Registration number
+form.usuarioType.boton.modificar: Change data

@@ -13,6 +13,7 @@ class ChangePasswordController extends BaseController
     public function changePasswordAction()
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
+        $translator = $this->container->get('translator');
         if (!is_object($user)) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -20,11 +21,9 @@ class ChangePasswordController extends BaseController
         $formHandler = $this->container->get('fos_user.change_password.form.handler');
         $process = $formHandler->process($user);
         if ($process) {
-        	echo("hola");
-            $this->container->get('session')->set('mensaje', 'El cambio de contraseña ha sido realizado con éxito');
-            echo("hola1");
+        	$mensaje = $this->container->get('dialogs_manager')->cambioPasswordUsuarioExitoMsg();
+            $this->container->get('session')->set('mensaje', $translator->trans($mensaje));
             $nextAction = 'resultado_operacion_usuario';
-            echo("hola2");
             return new RedirectResponse($this->container->get('router')->generate($nextAction));
         }
         return $this->container->get('templating')->renderResponse(

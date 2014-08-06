@@ -1,9 +1,15 @@
 {% extends "SalitaPlanBundle::base.html.twig" %}
 
 {% block contenido %}
-    <h3>Registro de entrega (plan procreacion responsable)</h3>
+    <h3>
+        {% trans %}
+            planbundle.EntregaPlanProcRespForm.new.titulo
+        {% endtrans %}
+    </h3>
     <br/>
-	¿Confirma el registro de entrega?
+	{% trans %}
+	    planbundle.EntregaPlanProcRespForm.new.confirm
+	{% endtrans %}
     {{ form_start(form) }}
       {{ form_errors(form) }}
       <div class="form-group col-sm-1">

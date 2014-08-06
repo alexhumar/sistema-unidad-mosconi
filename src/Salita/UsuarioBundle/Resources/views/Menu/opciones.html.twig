@@ -1,12 +1,48 @@
 {# Este template recibe adminexpression como parametro. Por ejemplo, desde ::base.html.twig #}
 
-  <li class="current_page_item"><a href="{{path('menu_principal')}}">Principal</a></li>
-  <li><a href="{{path('modif_usuario_propio')}}">Mis Datos</a></li>
-  <li><a href="{{path('menu_paciente')}}">Pacientes</a></li>
+  <li class="current_page_item">
+      <a href="{{path('menu_principal')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.principal
+          {% endtrans %}
+      </a>
+  </li>
+  <li>
+      <a href="{{path('modif_usuario_propio')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.misDatos
+          {% endtrans %}
+      </a>
+  </li>
+  <li>
+      <a href="{{path('menu_paciente')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.pacientes
+          {% endtrans %}
+      </a>
+  </li>
 
 {% if is_granted(expression(medicoexpression)) %}
-  <li><a href="{{path('listado_turnos_especialidad')}}">Turnos del dia</a></li>
+  <li>
+      <a href="{{path('listado_turnos_especialidad')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.turnosDelDiaEspecialidad
+          {% endtrans %}
+      </a>
+  </li>
 {% else %}
-  <li><a href="{{path('listado_turnos')}}">Turnos del dia</a></li>
+  <li>
+      <a href="{{path('listado_turnos')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.turnosDelDia
+          {% endtrans %}
+      </a>
+  </li>
 {% endif %}
-  <li><a href="{{path('fos_user_security_logout')}}">Salir</a></li>
+  <li>
+      <a href="{{path('fos_user_security_logout')}}">
+          {% trans %}
+              usuariobundle.Menu.opciones.salir
+          {% endtrans %}
+      </a>
+  </li>
