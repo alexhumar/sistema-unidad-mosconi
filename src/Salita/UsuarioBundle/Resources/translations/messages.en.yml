@@ -73,3 +73,7 @@ form.usuarioType.label.email: Email
 form.usuarioType.label.telefono: Telephone
 form.usuarioType.label.matricula: Registration number
 form.usuarioType.boton.modificar: Change data
+#Traducciones asociadas a las validaciones
+usuariobundle.usuario.nombre.notBlank: Complete this field please
+usuariobundle.usuario.apellido.notBlank: Complete this field please
+usuariobundle.usuario.telefono.notBlank: Complete this field please

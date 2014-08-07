@@ -27,3 +27,5 @@ form.turnoType.label.especialidad: Specialty
 form.turnoType.label.medicoPreferido: Preferred doctor
 form.turnoType.label.motivo: Cause
 form.turnoType.boton.guardar: Save shift
+#Traducciones asociadas a las validaciones
+turnobundle.turno.motivo.notBlank: Reason of the shift

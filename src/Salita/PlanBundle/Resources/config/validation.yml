@@ -4,14 +4,14 @@ Salita\PlanBundle\Entity\MetodoAnticonceptivo:
     properties:
         nombre:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'planbundle.metodoAnticonceptivo.nombre.notBlank'
             
 Salita\PlanBundle\Entity\PlanProcResp:
     properties:
         periodicidad:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'planbundle.planProcResp.periodicidad.notBlank'
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: La periodicidad debe ser un valor numérico.
+                message: 'planbundle.planProcResp.periodicidad.regex'

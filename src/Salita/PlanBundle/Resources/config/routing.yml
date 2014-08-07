@@ -52,4 +52,4 @@ modif_plan:
 resultado_operacion_plan:
     pattern: /resultado/operacion/plan
     defaults: { _controller: SalitaPlanBundle:Mensajes:resultado }  
-    methods: [GET]  
+    methods: [GET]

@@ -46,3 +46,11 @@ form.paisType.boton.guardarYNuevo: Save and add
 form.partidoType.label.nombre: Location name
 form.partidoType.boton.guardar: Save
 form.partidoType.boton.guardarYNuevo: Save and add
+#Traducciones de validations
+otrosbundle.validation.busqueda.palabra.notBlank: You must enter a search word
+otrosbundle.validation.barrio.nombre.notBlank: You must enter a neighborhood name 
+otrosbundle.validation.barrio.nombre.minMessage: The name can not contain less than {{limit}} characters
+otrosbundle.validation.barrio.nombre.maxMessage: The name can not contain more than {{limit}} characters
+otrosbundle.validation.barrio.localidad.notNull: You must enter the location to which the district belongs
+otrosbundle.validation.metodoEstudio.nombre.notBlank: You must enter a name for the method of study
+otrosbundle.validation.metodoEstudio.nombre.maxMessage: The name can not contain more than {{limit}} characters

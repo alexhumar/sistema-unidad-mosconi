@@ -46,3 +46,11 @@ form.paisType.boton.guardarYNuevo: Guardar y nuevo
 form.partidoType.label.nombre: Nombre de partido
 form.partidoType.boton.guardar: Guardar
 form.partidoType.boton.guardarYNuevo: Guardar y nuevo
+#Traducciones de validations
+otrosbundle.validation.busqueda.palabra.notBlank: Debe ingresar la palabra de busqueda
+otrosbundle.validation.barrio.nombre.notBlank: Debe ingresar un nombre de barrio 
+otrosbundle.validation.barrio.nombre.minMessage: El nombre no puede contener menos de {{ limit }} letras
+otrosbundle.validation.barrio.nombre.maxMessage: El nombre no puede contener mas de {{ limit }} letras
+otrosbundle.validation.barrio.localidad.notNull: Debe ingresar la localidad a la que pertenece el barrio
+otrosbundle.validation.metodoEstudio.nombre.notBlank: Debe ingresar un nombre para el metodo de estudio
+otrosbundle.validation.metodoEstudio.nombre.maxMessage: El nombre no puede contener mas de {{ limit }} letras

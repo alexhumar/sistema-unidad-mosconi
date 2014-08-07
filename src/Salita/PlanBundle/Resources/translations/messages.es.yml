@@ -44,3 +44,7 @@ form.planProcRespType.label.periodicidad: Periodicidad
 form.planProcRespType.label.metodoAnticonceptivo: Metodo Anticonceptivo
 form.planProcRespType.boton.guardar: Guardar
 form.planProcRespType.boton.guardarYNuevo: Guardar y nuevo
+#Traducciones correspondientes a las validaciones
+planbundle.metodoAnticonceptivo.nombre.notBlank: Complete este campo por favor
+planbundle.planProcResp.periodicidad.notBlank: Complete este campo por favor
+planbundle.planProcResp.periodicidad.regex: La periodicidad debe ser un valor numérico

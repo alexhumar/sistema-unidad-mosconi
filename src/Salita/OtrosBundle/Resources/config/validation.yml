@@ -3,7 +3,7 @@ Salita\OtrosBundle\Clases\Busqueda:
     properties:
         palabra:
             - NotBlank:
-                message: "Debe ingresar la palabra de busqueda"
+                message: 'otrosbundle.validation.busqueda.palabra.notBlank'
                 
 #Validaciones de las clases bajo el directorio Entity
 Salita\OtrosBundle\Entity\Barrio:
@@ -12,15 +12,15 @@ Salita\OtrosBundle\Entity\Barrio:
     properties:
         nombre:
             - NotBlank:
-                message: "Debe ingresar un nombre de barrio"
+                message: 'otrosbundle.validation.barrio.nombre.notBlank'
             - Length:
                 min: 5
                 max: 50
-                minMessage: "El nombre no puede contener menos de {{ limit }} letras"
-                maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
+                minMessage: "otrosbundle.validation.barrio.nombre.minMessage"
+                maxMessage: "otrosbundle.validation.barrio.nombre.maxMessage"
         localidad:
             - NotNull:
-                message: "Debe ingresar la localidad a la que pertenece el barrio"
+                message: 'otrosbundle.validation.barrio.localidad.notNull'
 
 Salita\OtrosBundle\Entity\MetodoEstudio:
     constraints:
@@ -28,7 +28,7 @@ Salita\OtrosBundle\Entity\MetodoEstudio:
     properties:
         nombre:
             - NotBlank:
-                message: "Debe ingresar un nombre para el metodo de estudio"
+                message: 'otrosbundle.validation.metodoEstudio.nombre.notBlank'
             - Length:
                 max: 50
-                maxMessage: "El nombre no puede contener mas de {{ limit }} letras"
+                maxMessage: "otrosbundle.validation.metodoEstudio.nombre.maxMessage"

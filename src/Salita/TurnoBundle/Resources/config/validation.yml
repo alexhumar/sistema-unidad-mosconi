@@ -5,4 +5,4 @@ Salita\TurnoBundle\Entity\Turno:
             - NotNull: ~
         motivo:
             - NotBlank:
-                message: "El motivo del turno"
+                message: 'turnobundle.turno.motivo.notBlank'

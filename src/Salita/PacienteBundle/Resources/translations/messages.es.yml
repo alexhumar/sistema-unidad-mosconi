@@ -215,3 +215,18 @@ form.datosFiliatoriosType.label.localidad: Localidad
 form.datosFiliatoriosType.label.barrio: Barrio
 form.datosFiliatoriosType.widget.localidad.emptyValue: Selecciona una localidad
 form.datosFiliatoriosType.widget.barrio.emptyValue: Selecciona un barrio
+#Traducciones de validations
+pacientebundle.paciente.nroDoc.regex: El numero de documento no puede contener letras
+pacientebundle.paciente.nombre.regex: El nombre no puede contener numeros
+pacientebundle.paciente.apellido.regex: El apellido no puede contener numeros
+pacientebundle.paciente.telefonoFijo.regex: El telefono fijo no puede contener letras
+pacientebundle.paciente.telefonoMovil.regex: El telefono movil no puede contener letras
+pacientebundle.paciente.calle.notBlank: Complete este campo por favor
+pacientebundle.paciente.numero.notBlank: Complete este campo por favor
+pacientebundle.antecedentePersonalObstetrico.gestasPrevias.regex: La cantidad de gestas previas no puede contener letras
+pacientebundle.antecedentePersonalObstetrico.abortos.regex: La cantidad de abortos no puede contener letras
+pacientebundle.antecedentePersonalObstetrico.cesareas.regex: La cantidad de cesáreas no puede contener letras
+pacientebundle.antecedentePersonalObstetrico.partos.regex: La cantidad de partos no puede contener letras
+pacientebundle.estudio.resultado.notBlank: Complete este campo por favor
+pacientebundle.estudio.nroProtocolo.notBlank: Complete este campo por favor
+pacientebundle.busqueda.palabra.notBlank: Complete este campo por favor

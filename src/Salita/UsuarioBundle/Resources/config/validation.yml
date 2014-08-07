@@ -3,10 +3,10 @@ Salita\UsuarioBundle\Entity\Usuario:
     properties:
         nombre:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'usuariobundle.usuario.nombre.notBlank'
         apellido:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'usuariobundle.usuario.apellido.notBlank'
         telefono:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'usuariobundle.usuario.telefono.notBlank'

@@ -8,37 +8,37 @@ Salita\PacienteBundle\Entity\Paciente:
         nroDoc:
             - NotBlank: ~
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: El numero de documento no puede contener letras.
+                message: 'pacientebundle.paciente.nroDoc.regex'
         nombre:
             - NotBlank: ~
             - Regex:
-                pattern: "/\d/"
+                pattern: '/\d/'
                 match:   false
-                message: El nombre no puede contener numeros.
+                message: 'pacientebundle.paciente.nombre.regex'
         apellido:
             - NotBlank: ~
             - Regex:
-                pattern: "/\d/"
+                pattern: '/\d/'
                 match:   false
-                message: El apellido no puede contener numeros.
+                message: 'pacientebundle.paciente.apellido.regex'
         telefonoFijo:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: El telefono fijo no puede contener letras.
+                message: 'pacientebundle.paciente.telefonoFijo.regex'
         telefonoMovil:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: El telefono movil no puede contener letras
+                message: 'pacientebundle.paciente.telefonoMovil.regex'
         calle:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'pacientebundle.paciente.calle.notBlank'
         numero:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'pacientebundle.paciente.numero.notBlank'
         pais:
             - NotNull: ~
         barrio:
@@ -54,37 +54,37 @@ Salita\PacienteBundle\Entity\AntecedentePersonalObstetrico:
     properties:
         gestasPrevias:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: La cantidad de gestas previas no puede contener letras.
+                message: 'pacientebundle.antecedentePersonalObstetrico.gestasPrevias.regex'
         abortos:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: La cantidad de abortos no puede contener letras.
+                message: 'pacientebundle.antecedentePersonalObstetrico.abortos.regex'
         cesareas:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: La cantidad de cesáreas no puede contener letras.        
+                message: 'pacientebundle.antecedentePersonalObstetrico.cesareas.regex'
         partos:
             - Regex:
-                pattern: "/^([0-9])*$/"
+                pattern: '/^([0-9])*$/'
                 match:   true
-                message: La cantidad de partos no puede contener letras.
+                message: 'pacientebundle.antecedentePersonalObstetrico.partos.regex'
                 
 Salita\PacienteBundle\Entity\Estudio:
     properties:
         resultado:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'pacientebundle.estudio.resultado.notBlank'
         nroProtocolo:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'pacientebundle.estudio.nroProtocolo.notBlank'
                 
 #Validaciones de las clases bajo el directorio Clases
 Salita\PacienteBundle\Clases\Busqueda:
     properties:
         palabra:
             - NotBlank:
-                message: Complete este campo por favor.
+                message: 'pacientebundle.busqueda.palabra.notBlank'

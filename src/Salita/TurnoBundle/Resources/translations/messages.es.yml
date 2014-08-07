@@ -27,3 +27,5 @@ form.turnoType.label.especialidad: Especialidad
 form.turnoType.label.medicoPreferido: Medico preferido
 form.turnoType.label.motivo: Motivo
 form.turnoType.boton.guardar: Guardar turno
+#Traducciones asociadas a las validaciones
+turnobundle.turno.motivo.notBlank: El motivo del turno
