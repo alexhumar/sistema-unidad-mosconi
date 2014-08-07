@@ -72,3 +72,9 @@ fos_user:
     change_password:
         form:
             type: salita_usuario_cambio_password
+
+# Configuracion del bundle de i18n
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales: [en, es]
+    strategy: prefix #Tambien esta la alternativa: prefix_except_default

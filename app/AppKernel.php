@@ -22,6 +22,10 @@ class AppKernel extends Kernel
             new Salita\PlanBundle\SalitaPlanBundle(),
             new Salita\TurnoBundle\SalitaTurnoBundle(),
             new Salita\UsuarioBundle\SalitaUsuarioBundle(),
+        	/*Bundle de i18n*/
+        	new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+        	/* Not required, but recommended for better extraction */
+        	new JMS\TranslationBundle\JMSTranslationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
