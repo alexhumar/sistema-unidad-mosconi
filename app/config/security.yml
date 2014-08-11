@@ -21,12 +21,11 @@ security:
                 target: fos_user_security_login
             anonymous:    true
 
-    access_control:  
-        - { path: ^/(es|en)/admin/, role: ROLE_ADMIN }
+    access_control: 
         - { path: ^/(es|en)/alta/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/alta/barrio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/(es|en)/alta/consulta, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
-        - { path: ^/(es|en)/alta/entregaplanprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/alta/entregaplanprocresp/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/alta/estudio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/alta/metodoanticonceptivo, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/alta/metodoEstudio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
@@ -41,15 +40,15 @@ security:
         - { path: ^/(es|en)/busqueda/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/(es|en)/busqueda/vacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/change-password, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
-        - { path: ^/(es|en)/del/medico/.*, role: ROLE_ADMINISTRADOR }
-        - { path: ^/(es|en)/del/secretaria/.*, role: ROLE_ADMINISTRADOR }
+        - { path: '^/(es|en)/del/medico/\.*', role: ROLE_ADMINISTRADOR }
+        - { path: '^/(es|en)/del/secretaria/\.*', role: ROLE_ADMINISTRADOR }
         - { path: ^/(es|en)/elegirRol/usuario, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
-        - { path: ^/(es|en)/deshabilitacion/planprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/deshabilitacion/planprocresp/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/generarHC/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/generarResumenHC/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
-        - { path: ^/(es|en)/habilitacion/planprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/habilitacion/planprocresp/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/listado/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
-        - { path: ^/(es|en)/listado/entregaplanprocresp/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/listado/entregaplanprocresp/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/listado/medico, role: ROLE_ADMINISTRADOR }
         - { path: ^/(es|en)/listado/planprocresp, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/listado/secretaria, role: ROLE_ADMINISTRADOR }
@@ -66,13 +65,13 @@ security:
         - { path: ^/(es|en)/modificacion/antecedentePersonalClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/modificacion/antecedentePersonalObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/modificacion/datosfiliatorios, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
-        - { path: ^/(es|en)/modificacion/usuario/.*, role: ROLE_ADMINISTRADOR }
+        - { path: '^/(es|en)/modificacion/usuario/\.*', role: ROLE_ADMINISTRADOR }
         - { path: ^/(es|en)/modificacion/usuariopropio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
-        - { path: ^/(es|en)/register/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_ADMIN ] }
+        - { path: '^/(es|en)/register/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_ADMIN ] }
         - { path: ^/(es|en)/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/(es|en)/seleccion/diagnostico/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/seleccion/diagnostico/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/seleccion/fechorturno, role: ROLE_MEDICO }
-        - { path: ^/(es|en)/seleccion/vacuna/.*, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
+        - { path: '^/(es|en)/seleccion/vacuna/\.*', roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
 
     role_hierarchy:
         ROLE_ADMIN:       [ROLE_USER, ROLE_ADMINISTRADOR] #Atento si esto jode. Agregue ADMINISTRADOR el 25/06/14.
