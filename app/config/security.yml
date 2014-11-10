@@ -65,6 +65,7 @@ security:
         - { path: ^/(es|en)/modificacion/antecedentePersonalClinico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/modificacion/antecedentePersonalObstetrico, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/modificacion/datosfiliatorios, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/(es|en)/modificacion/observacionesHistoriaClinica, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO]}
         - { path: '^/(es|en)/modificacion/usuario/.*', role: ROLE_ADMINISTRADOR }
         - { path: ^/(es|en)/modificacion/usuariopropio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: '^/(es|en)/register/.*', roles: [ ROLE_ADMINISTRADOR, ROLE_ADMIN ] }

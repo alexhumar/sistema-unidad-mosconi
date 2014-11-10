@@ -3,6 +3,12 @@
     text-decoration: underline;
     margin: 10px;
 }
+
+.tituloSeccionAntecedente {
+    text-transform: uppercase;
+    text-decoration: underline;
+    margin: 10px 10px 10px 0';
+}
  .aux {
     font-weight: bold;
  }

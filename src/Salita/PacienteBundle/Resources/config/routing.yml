@@ -47,6 +47,10 @@ modificacion_datosFiliatorios:
     pattern: /modificacion/datosfiliatorios
     defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarDatosFiliatorios }
     
+modificacion_observacionesHC:
+    pattern: /modificacion/observacionesHistoriaClinica
+    defaults: { _controller: SalitaPacienteBundle:PacienteForm:modificarObservacionesHC }
+    
 modif_antecedenteFamiliarClinico:
     pattern:  /modificacion/antecedenteFamiliarClinico
     defaults: { _controller: SalitaPacienteBundle:AntecedenteFamiliarClinicoForm:modif }

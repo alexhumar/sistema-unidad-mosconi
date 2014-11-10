@@ -29,7 +29,7 @@ pacientebundle.estudioForm.new.titulo: Alta de estudio
 pacientebundle.estudioForm.new.rePlaceholder: Resultado del estudio
 pacientebundle.estudioForm.new.npPlaceholder: Numero de protocolo
 pacientebundle.HistoriaClinica.generacionHC.footer: Historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
-pacientebundle.HistoriaClinica.resumenHC.footer: Resumen de historia clinica generada por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
+pacientebundle.HistoriaClinica.resumenHC.footer: Resumen de historia clinica generado por %nombreUsuarioGenerador% %apellidoUsuarioGenerador%
 pacientebundle.HistoriaClinica.ingresoFechas.titulo: Seleccion de fechas para el resumen de historia clinica
 pacientebundle.HistoriaClinica.seccionAntecedentes.cvm55: Cardiovascular menor a 55
 pacientebundle.HistoriaClinica.seccionAntecedentes.asma: Asma
@@ -88,6 +88,8 @@ pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem: Femenino
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas: Masculino
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Fecha de nacimiento
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telefono fijo
+pacientebundle.HistoriaClinica.seccionObservaciones.titulo: Observaciones del medico
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloObservaciones: Observaciones
 pacientebundle.HistoriaClinica.general.si: Si
 pacientebundle.HistoriaClinica.general.no: No
 pacientebundle.Menu.principal.titulo: "Menu de opciones del paciente %apePaciente%, %nomPaciente%"
@@ -105,6 +107,7 @@ pacientebundle.Menu.seccionEstudios.panelEstudios.regEst: Registrar un estudio
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.titulo: Historia Clínica
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genHC: Generar historia clinica
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genResHC: Generar resumen de historia clinica
+pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.modifObsHC: Modificar observaciones de paciente
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.titulo: Proyecto Procreacion Responsable
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.agregar: Agregar un plan
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listHab: Listado de planes habilitados
@@ -130,6 +133,8 @@ pacientebundle.PacienteForm.form.callePlaceholder: Calle donde reside el pacient
 pacientebundle.PacienteForm.form.numeroCallePlaceholder: Numero de la direccion
 pacientebundle.PacienteForm.form.calleEntre1Placeholder: Entre calle
 pacientebundle.PacienteForm.form.calleEntre2Placeholder: Y calle
+pacientebundle.PacienteForm.observacionesHC.titulo: Modificacion de observaciones para la historia clinica
+pacientebundle.PacienteForm.form.observacionesHC: Observaciones de la historia clinica
 pacientebundle.OpcionesMenu.principal: Principal
 pacientebundle.OpcionesMenu.cambiarPaciente: Cambiar paciente
 pacientebundle.aplicacionvacuna.noresultfound.message: "- No hay aplicaciones de vacunas -"
@@ -215,6 +220,8 @@ form.datosFiliatoriosType.label.localidad: Localidad
 form.datosFiliatoriosType.label.barrio: Barrio
 form.datosFiliatoriosType.widget.localidad.emptyValue: Selecciona una localidad
 form.datosFiliatoriosType.widget.barrio.emptyValue: Selecciona un barrio
+form.observacionesHCType.label.observaciones: Observaciones para la historia clinica
+form.observacionesHCType.boton.modificar: Modificar observaciones
 #Traducciones de validations
 pacientebundle.paciente.nroDoc.regex: El numero de documento no puede contener letras
 pacientebundle.paciente.nombre.regex: El nombre no puede contener numeros

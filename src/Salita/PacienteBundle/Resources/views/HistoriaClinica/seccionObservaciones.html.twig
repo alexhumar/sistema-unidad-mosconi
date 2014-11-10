@@ -1,0 +1,19 @@
+<div class="jumbotron">
+<div class="row">
+<div class="tituloSeccion">
+    {% trans %}
+          pacientebundle.HistoriaClinica.seccionObservaciones.titulo
+    {% endtrans %}
+</div><br>
+  <div class="col-sm-6">
+    <span class="aux">
+        {% trans %}
+            pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloObservaciones
+        {% endtrans %}
+    </span>
+    <span class="datos">
+        {{paciente.observacionesHistoriaClinica}}
+    </span><br>
+  </div>
+</div>
+</div>

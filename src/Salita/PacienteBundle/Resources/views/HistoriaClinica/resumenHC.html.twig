@@ -11,6 +11,8 @@
 
   {{ include('SalitaPacienteBundle:HistoriaClinica:seccionConsultas.html.twig', 
      { consultas: consultas, estudios: estudios }) }}
+     
+  {{ include('SalitaPacienteBundle:HistoriaClinica:seccionObservaciones.html.twig') }}
 
   {% set nomUsuarioGenerador = usuarioGenerador.getNombre() %}
   {% set apeUsuarioGenerador = usuarioGenerador.getApellido() %}

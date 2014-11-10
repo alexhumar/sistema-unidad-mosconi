@@ -88,6 +88,8 @@ pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFem: Female
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloMas: Male
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloFecNac: Birthday
 pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloTelFijo: Telephone
+pacientebundle.HistoriaClinica.seccionObservaciones.titulo: Observations doctor
+pacientebundle.HistoriaClinica.seccionDatosFiliatorios.subtituloObservaciones: Observations
 pacientebundle.HistoriaClinica.general.si: Yes
 pacientebundle.HistoriaClinica.general.no: No
 pacientebundle.Menu.principal.titulo: "Patient menu options %apePaciente%, %nomPaciente%"
@@ -105,6 +107,7 @@ pacientebundle.Menu.seccionEstudios.panelEstudios.regEst: Add study
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.titulo: Medical history
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genHC: Print medical history
 pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.genResHC: Print summary of medical history
+pacientebundle.Menu.seccionHistoriaClinica.panelHistoriaClinica.modifObsHC: Change patient observations
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.titulo: Responsible procreation
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.agregar: Add plan
 pacientebundle.Menu.seccionPlanProcreacionResponsable.panelPlanProcResp.listHab: List of enabled plans
@@ -130,6 +133,8 @@ pacientebundle.PacienteForm.form.callePlaceholder: Street where the patient resi
 pacientebundle.PacienteForm.form.numeroCallePlaceholder: Address number
 pacientebundle.PacienteForm.form.calleEntre1Placeholder: Between street
 pacientebundle.PacienteForm.form.calleEntre2Placeholder: And street
+pacientebundle.PacienteForm.observacionesHC.titulo: Change observations for clinical history
+pacientebundle.PacienteForm.form.observacionesHC: Observations of clinical history
 pacientebundle.OpcionesMenu.principal: Main
 pacientebundle.OpcionesMenu.cambiarPaciente: Change patient
 pacientebundle.aplicacionvacuna.noresultfound.message: "- No vaccine applications -"
@@ -215,6 +220,8 @@ form.datosFiliatoriosType.label.localidad: Place
 form.datosFiliatoriosType.label.barrio: Neighborhood
 form.datosFiliatoriosType.widget.localidad.emptyValue: Select a place
 form.datosFiliatoriosType.widget.barrio.emptyValue: Select a neighborhood
+form.observacionesHCType.label.observaciones: Observations for clinical history
+form.observacionesHCType.boton.modificar: Change observations
 #Traducciones de validations
 pacientebundle.paciente.nroDoc.regex: The number of document can not contain letters
 pacientebundle.paciente.nombre.regex: The name can not contain numbers

@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/paciente/observacionesHC.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/errores.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block contenido %}
+  <h3>
+      {% trans %}
+          pacientebundle.PacienteForm.observacionesHC.titulo
+      {% endtrans %}
+  </h3>
+  <br/>
+  {% set observacionesPlaceholder = 'pacientebundle.PacienteForm.form.observacionesHC' | trans %}
+
+  {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="form-group col-sm-12">
+      {{ form_row(form.observacionesHistoriaClinica, { 'attr': { 'placeholder': observacionesPlaceholder } }) }}
+    </div>
+    <div class="form-group col-sm-8">
+      <div class="col-sm-offset-6">
+        {{ form_row(form.modificar) }}
+      </div>
+    </div>
+  {{ form_end(form) }}
+{% endblock %}
