@@ -9,8 +9,15 @@
      {% set usuario = app.session.get('usuario') %}
      {% set rolSeleccionado = app.session.get('rolSeleccionado') %}
      {% set codigoRolSeleccionado = rolSeleccionado.getCodigo() %}
-
-     <div class="row">
+     
+     <div class="tituloMenu">
+       <h3>
+           {% trans with { '%nomUsuario%': usuario.username } %}
+               usuariobundle.Menu.principal.titulo
+           {% endtrans %}
+       </h3>
+     </div>
+     <br>
 
      {% if usuario.isAuthenticatedAdministrador(codigoRolSeleccionado) %}
        <div class="col-sm-4">
@@ -149,5 +156,4 @@
        </div>
      {% endif %}
 
-     </div> {# end div class row #}
 {% endblock %}

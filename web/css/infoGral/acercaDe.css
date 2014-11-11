@@ -1,0 +1,16 @@
+.infoAcercaDe {
+    text-align: center;
+    font-style: oblique;
+}
+
+.tituloAcercaDe {
+	text-align: center;
+	font-size: large;
+}
+
+.alert {
+	width: 60%;
+	position: absolute;
+	top: 125px;
+	left: 20%;
+}

@@ -1,0 +1,37 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/infoGral/contacto.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block menu %}
+  <li class="active">
+      {{ include('SalitaOtrosBundle:linksHeader:linkInicioSesion.html.twig') }}
+  </li>
+  <li>
+      {{ include('SalitaOtrosBundle:linksHeader:linkAcercaDe.html.twig') }}
+  </li>
+{% endblock %}
+
+{% block fos_user_content %}
+  <div class="alert alert-info" role="alert">
+    <span class="mensaje">
+      {% trans %}
+        security.login.contacto.mensaje
+      {% endtrans %} 
+    </span>
+    <br><br>
+    <span class="persona">
+      {% trans %}
+        security.login.contacto.persona
+      {% endtrans %}
+    </span>
+    <br><br>
+    <span class="agradecimientos">
+      {% trans %}
+        security.login.contacto.agradecimientos
+      {% endtrans %}
+    </span>
+  </div>
+{% endblock %}

@@ -2,7 +2,13 @@
 #Traducciones complementarias a las de FOSUserBundle.es.yml
 security.login.nav.linkAcercaDe: About
 security.login.nav.linkContacto: Contact
+security.login.nav.linkInicioSesion: Login
 security.login.titulo: Login
+security.login.acercade.titulo: About
+security.login.acercade.info: Designed for the management of patients attending the unit and their respective shifts. Allows charging of patients, studies and consultations with selected specialists, in addition to managing their turns for a given vaccine applications, and project management of accessions to responsible procreation, allowing generation of medical records in order to display the most important data each patient.
+security.login.contacto.mensaje: 'For any problem and/or inquiry please use the following information & oacute; n contact:'
+security.login.contacto.persona: Alex Humar - alexhumar25@gmail.com
+security.login.contacto.agradecimientos: Thank you
 security.login.form.usernamePlaceholder: Username
 security.login.form.passwordPlaceholder: Password
 registration.register_content.titulo: Registro de usuario

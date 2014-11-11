@@ -22,6 +22,7 @@ security:
             anonymous:    true
 
     access_control: 
+        - { path: ^/(es|en)/acercaDe, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(es|en)/alta/aplicacionvacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/alta/barrio, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/(es|en)/alta/consulta, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
@@ -40,6 +41,7 @@ security:
         - { path: ^/(es|en)/busqueda/paciente, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
         - { path: ^/(es|en)/busqueda/vacuna, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO] }
         - { path: ^/(es|en)/change-password, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }
+        - { path: ^/(es|en)/contacto, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/(es|en)/del/medico/.*', role: ROLE_ADMINISTRADOR }
         - { path: '^/(es|en)/del/secretaria/.*', role: ROLE_ADMINISTRADOR }
         - { path: ^/(es|en)/elegirRol/usuario, roles: [ ROLE_ADMINISTRADOR, ROLE_MEDICO, ROLE_SECRETARIA] }

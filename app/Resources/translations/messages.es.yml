@@ -2,7 +2,13 @@
 #Traducciones complementarias a las de FOSUserBundle.es.yml
 security.login.nav.linkAcercaDe: Acerca de
 security.login.nav.linkContacto: Contacto
+security.login.nav.linkInicioSesion: Inicio de sesion
 security.login.titulo: Inicio de sesion
+security.login.acercade.titulo: Acerca de
+security.login.acercade.info: Creado para la administraci&oacute;n de los pacientes que concurren a la unidad y sus respectivos turnos. Permite la carga de pacientes, estudios y consultas con determinados especialistas, ademas de la administraci&oacute;n de sus turnos, aplicaciones para una vacuna dada, y manejo de adhesiones al proyecto procreaci&oacute;n responsable, permitiendo generar historias cl&iacute;nicas con el objetivo de visualizar los datos m&aacute;s importantes de cada paciente.
+security.login.contacto.mensaje: 'Ante cualquier inconveniente y/o consulta favor de recurrir a la siguiente informaci&oacute;n de contacto:'
+security.login.contacto.persona: Alex Humar - alexhumar25@gmail.com
+security.login.contacto.agradecimientos: Muchas gracias
 security.login.form.usernamePlaceholder: Nombre de usuario
 security.login.form.passwordPlaceholder: Contraseña
 registration.register_content.titulo: Registro de usuario

@@ -1,0 +1,22 @@
+.alert {
+	left: 23%;
+    position: absolute;
+    text-align: center;
+    top: 125px;
+    width: 55%;
+}
+
+.mensaje {
+	font-style: oblique;
+	font-size: large;
+}
+
+.persona {
+	font-style: oblique;
+	font-size: x-large;	
+}
+
+.agradecimientos {
+    font-weight: bold;
+    font-size: x-large;	
+}

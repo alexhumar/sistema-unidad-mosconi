@@ -12,6 +12,7 @@ usuariobundle.Menu.opciones.pacientes: Patients
 usuariobundle.Menu.opciones.turnosDelDia: Shifts of the day
 usuariobundle.Menu.opciones.turnosDelDiaEspecialidad: Shifts of the day
 usuariobundle.Menu.opciones.salir: Exit
+usuariobundle.Menu.principal.titulo: "Menu of %nomUsuario%"
 usuariobundle.Menu.principal.usuarios.tituloPanel: Users
 usuariobundle.Menu.principal.usuarios.linkAgregar: Add users
 usuariobundle.Menu.principal.usuarios.linkAdmRoles: Add roles

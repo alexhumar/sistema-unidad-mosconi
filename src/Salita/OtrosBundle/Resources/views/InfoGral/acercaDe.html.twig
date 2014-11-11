@@ -1,0 +1,31 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/infoGral/acercaDe.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block menu %}
+  <li class="active">
+      {{ include('SalitaOtrosBundle:linksHeader:linkInicioSesion.html.twig') }}
+  </li>
+  <li>
+      {{ include('SalitaOtrosBundle:linksHeader:linkContacto.html.twig') }}
+  </li>
+{% endblock %}
+
+{% block fos_user_content %}
+  <div class="alert alert-info" role="alert">
+    <span class="tituloAcercaDe">
+      {% trans %}
+        security.login.acercade.titulo
+      {% endtrans %} 
+    </span>
+    <br>
+    <span class="infoAcercaDe">
+      {% trans %}
+        security.login.acercade.info
+      {% endtrans %}
+    </span>
+  </div>
+{% endblock %}

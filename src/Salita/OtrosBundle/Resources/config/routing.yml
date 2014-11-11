@@ -3,6 +3,9 @@
 #Y el alta de partidos!!
 #Y el listado de partidos!!
 #Y la modificacion de partidos!!
+acerca_de:
+    pattern: /acercaDe
+    defaults: { _controller: SalitaOtrosBundle:InfoGral:acercaDe }
 
 alta_barrio:
     pattern: /alta/barrio
@@ -28,6 +31,10 @@ busqueda_paciente:
 busqueda_vacuna:
     pattern: /busqueda/vacuna
     defaults: { _controller: SalitaOtrosBundle:Busqueda:buscar }
+    
+contacto:
+    pattern: /contacto
+    defaults: { _controller: SalitaOtrosBundle:InfoGral:contacto }
     
 localidades_de_partido:
     pattern: /localidades/de/partido
