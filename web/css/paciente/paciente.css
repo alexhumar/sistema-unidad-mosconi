@@ -5,7 +5,10 @@ body {
 .panel {
   margin-left: 25px;
   max-width: 380px;
-  min-height: 115px;
+}
+
+.panel-body {
+  min-height: 130px;
 }
 
 .page-header {
