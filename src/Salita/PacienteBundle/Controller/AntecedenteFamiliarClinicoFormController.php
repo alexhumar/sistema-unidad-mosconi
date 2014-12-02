@@ -27,7 +27,7 @@ class AntecedenteFamiliarClinicoFormController extends MyController
     	{
     		$em = $this->getEntityManager();
     		$em->flush();
-    		$mensaje = $this->getDiaglogsManager()->modificacionAntecedentesExitoMsg();
+    		$mensaje = $this->getDialogsManager()->modificacionAntecedentesExitoMsg();
     		$session->set('mensaje', $translator->trans($mensaje));
     		return $this->redirect($this->generateUrl('resultado_operacion_paciente'));
     	}
