@@ -16,7 +16,7 @@ class AntecedenteFamiliarClinicoType extends AntecedenteFamiliarType
             ->add('alergias', 'checkbox', array('label' => 'form.antecedentesType.label.alergias', 'required' => false))
             ->add('adiccionesTabaquismo', 'checkbox', array('label' => 'form.antecedentesType.label.adicTabaq', 'required' => false))
             ->add('infectoContagiosas', 'checkbox', array('label' => 'form.antecedentesType.label.infectocont', 'required' => false))
-            ->add('modificar', submit, array('label' => 'form.antecedenteFamiliarClinicoType.boton.modificar'));
+            ->add('modificar', 'submit', array('label' => 'form.antecedenteFamiliarClinicoType.boton.modificar'));
     }
     
     public function getName()

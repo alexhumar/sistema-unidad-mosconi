@@ -14,7 +14,7 @@ class EntregaPlanProcRespRepository extends EntityRepository
     	         		   pac.apellido as apellidoPac')
     	         ->join('eppr.plan', 'p')
     	         ->join('p.paciente', 'pac')
-    	         ->join('p.metodoAnticonceptivo m')
+    	         ->join('p.metodoAnticonceptivo', 'm')
     	         ->where('p.id = :id_plan')
     	         ->setParameter('id_plan', $id)
     	         ->orderBy('eppr.fecha', 'DESC')

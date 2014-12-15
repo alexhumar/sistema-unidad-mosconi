@@ -86,11 +86,11 @@ class UsuarioFormController extends MyController
     	);
     }
 
-    /*Modificacion de usuario propio (fase POST)*/
+    /*Modificacion de usuario propio */
     public function modifPropioAction()
     {
     	$session = $this->getSession();
-    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'));
+    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuario'), $this);
         $form = $this->createForm(new UsuarioType(), $usuario);
         $request = $this->getRequest();
     	$form->handleRequest($request);
@@ -189,7 +189,7 @@ class UsuarioFormController extends MyController
    			{
    				return $this->redirect($this->generateUrl('listado_usuario'));
    			}
-   			$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
+   			$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'), $this);
    			/*Asigna el rol elegido al usuario y retorna un mensaje en base al resultado de las validaciones*/
 			if ($this->getRolesManager()->assignRoleToUser($usuario, $rolElegido, $session))
 			{
@@ -217,7 +217,7 @@ class UsuarioFormController extends MyController
     	{
     		return $this->redirect($this->generateUrl('listado_usuario'));
     	}
-    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'));
+    	$usuario = $this->getPersistenceManager()->getRepoUserFromSessionUser($session->get('usuarioSeleccionado'), $this);
     	if ($usuario->isMedico())
     	{
     		$form = $this->createForm(new EspecialidadUsuarioType(), $usuario);
